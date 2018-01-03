@@ -212,7 +212,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Contracts\IConnectedUsers.cs" />
     <Compile Include="Contracts\ITopicsRepo.cs" />
-    <Compile Include="Contracts\IUserConnections.cs" />
+    <Compile Include="Contracts\IUserConnectionsRepo.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201801031026586_AddingDomainModels.cs" />
     <Compile Include="Migrations\201801031026586_AddingDomainModels.Designer.cs">
       <DependentUpon>201801031026586_AddingDomainModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801031244416_AddUserPropertyToUserConnectionsTable.cs" />
+    <Compile Include="Migrations\201801031244416_AddUserPropertyToUserConnectionsTable.Designer.cs">
+      <DependentUpon>201801031244416_AddUserPropertyToUserConnectionsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enums\TopicDeletionVerdictEnum.cs" />
@@ -327,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801031026586_AddingDomainModels.resx">
       <DependentUpon>201801031026586_AddingDomainModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801031244416_AddUserPropertyToUserConnectionsTable.resx">
+      <DependentUpon>201801031244416_AddUserPropertyToUserConnectionsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

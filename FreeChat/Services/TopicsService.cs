@@ -18,7 +18,7 @@ namespace FreeChat.Services
             => _topicsRepoRepository.GetTopicById(Id);
 
         public IEnumerable<Topics> GetActiveTopics()
-            => _topicsRepoRepository.GetGetActiveTopics();
+            => _topicsRepoRepository.GetActiveTopics();
 
         public IEnumerable<Topics> GetActiveTopicsByGenre(string genre)
             => _topicsRepoRepository.GetActiveTopicsByGenre(genre);
