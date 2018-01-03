@@ -1,4 +1,5 @@
-﻿using FreeChat.Models;
+﻿using FreeChat.Contracts;
+using FreeChat.Models;
 using FreeChat.Models.Domain;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,11 +7,11 @@ using System.Linq;
 
 namespace FreeChat.Repositories
 {
-    public class TopicsRepository
+    public class TopicsRepoRepository : ITopicsRepo
     {
         private readonly ApplicationDbContext _context;
 
-        public TopicsRepository(ApplicationDbContext context)
+        public TopicsRepoRepository(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -40,5 +41,6 @@ namespace FreeChat.Repositories
             _context.Entry(topic).State = EntityState.Deleted;
             return _context.SaveChanges();
         }
+
     }
 }

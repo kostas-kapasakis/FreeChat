@@ -211,7 +211,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Contracts\IConnectedUsers.cs" />
-    <Compile Include="Contracts\ITopics.cs" />
+    <Compile Include="Contracts\ITopicsRepo.cs" />
     <Compile Include="Contracts\IUserConnections.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -228,6 +228,7 @@
       <DependentUpon>201801031026586_AddingDomainModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Enums\TopicDeletionVerdictEnum.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Domain\ConnectedUsers.cs" />
@@ -236,6 +237,9 @@
     <Compile Include="Models\Domain\Topics.cs" />
     <Compile Include="Models\Domain\UserConnections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ConnectedUsersRepository.cs" />
+    <Compile Include="Repositories\TopicsRepoRepository.cs" />
+    <Compile Include="Repositories\UserConnectionsRepository.cs" />
     <Compile Include="Services\ConnectedUsersService.cs" />
     <Compile Include="Services\TopicsService.cs" />
     <Compile Include="Services\UserConnectionsService.cs" />
@@ -303,7 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

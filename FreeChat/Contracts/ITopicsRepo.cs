@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace FreeChat.Contracts
 {
-    public interface ITopics
+    public interface ITopicsRepo
     {
         Topics GetTopicById(long Id);
-        IEnumerable<Topics> GetGetActiveTopics();
+        IEnumerable<Topics> GetActiveTopics();
         IEnumerable<Topics> GetActiveTopicsByGenre(string genre);
         int DeleteTopicById(long Id);
     }

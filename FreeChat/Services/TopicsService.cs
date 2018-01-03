@@ -7,26 +7,26 @@ namespace FreeChat.Services
 {
     public class TopicsService
     {
-        private readonly ITopics _topicsRepository;
+        private readonly ITopicsRepo _topicsRepoRepository;
 
-        public TopicsService(ITopics topicsRepository)
+        public TopicsService(ITopicsRepo topicsRepoRepository)
         {
-            _topicsRepository = topicsRepository;
+            _topicsRepoRepository = topicsRepoRepository;
         }
 
         public Topics GetTopicById(long Id)
-            => _topicsRepository.GetTopicById(Id);
+            => _topicsRepoRepository.GetTopicById(Id);
 
         public IEnumerable<Topics> GetActiveTopics()
-            => _topicsRepository.GetGetActiveTopics();
+            => _topicsRepoRepository.GetGetActiveTopics();
 
         public IEnumerable<Topics> GetActiveTopicsByGenre(string genre)
-            => _topicsRepository.GetActiveTopicsByGenre(genre);
+            => _topicsRepoRepository.GetActiveTopicsByGenre(genre);
 
         public TopicDeletionVerdictEnum DeleteTopicById(long Id)
         {
 
-            var verdict = _topicsRepository.DeleteTopicById(Id);
+            var verdict = _topicsRepoRepository.DeleteTopicById(Id);
 
             return verdict <= 0
                 ? TopicDeletionVerdictEnum.TopicNotFound
