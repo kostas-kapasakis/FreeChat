@@ -1,4 +1,5 @@
-﻿using FreeChat.Contracts;
+﻿using AutoMapper;
+using FreeChat.Contracts;
 using FreeChat.Models.Domain;
 using FreeChat.Models.DTO;
 using FreeChat.Models.Enums;
@@ -26,14 +27,16 @@ namespace FreeChat.Services
             => _topicsRepoRepository.GetActiveTopicsByGenre(genre);
 
 
-        public bool AddTopic(CreateChatRoomDto chatRoom)
+        public bool AddTopic(TopicsDto chatRoom)
         {
             if (chatRoom.DateCreated < DateTime.Today)
                 chatRoom.DateCreated = DateTime.Today;
 
             chatRoom.DateExpired = chatRoom.DateCreated.AddDays(10);
 
-            return _topicsRepoRepository.AddTopic(chatRoom);
+            var topic = Mapper.Map<TopicsDto, Topics>(chatRoom);
+
+            return _topicsRepoRepository.AddTopic(topic);
         }
 
 

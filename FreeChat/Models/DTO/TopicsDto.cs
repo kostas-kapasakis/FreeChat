@@ -2,7 +2,7 @@
 
 namespace FreeChat.Models.DTO
 {
-    public class CreateChatRoomDto
+    public class TopicsDto
     {
         public string Name { get; set; }
         public string Genre { get; set; }

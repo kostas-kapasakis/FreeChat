@@ -14,7 +14,7 @@ namespace FreeChat.Controllers.API
         }
 
         [HttpPost]
-        public IHttpActionResult CreateRoom(CreateChatRoomDto chatRoom)
+        public IHttpActionResult CreateRoom(TopicsDto chatRoom)
         {
             return Ok(_service.AddTopic(chatRoom));
         }

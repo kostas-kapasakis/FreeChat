@@ -1,7 +1,6 @@
 ﻿using FreeChat.Contracts;
 using FreeChat.Models;
 using FreeChat.Models.Domain;
-using FreeChat.Models.DTO;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -32,18 +31,18 @@ namespace FreeChat.Repositories
             return _context.Topics.Where(x => x.Genre == genre);
         }
 
-        public bool AddTopic(CreateChatRoomDto chatRoom)
+        public bool AddTopic(Topics topic)
         {
-            var newChatRoom = new Topics
-            {
-                Name = chatRoom.Name,
-                Genre = chatRoom.Genre,
-                Active = true,
-                DateCreated = chatRoom.DateCreated,
-                DateExpired = chatRoom.DateExpired
-            };
+            //            var newChatRoom = new Topics
+            //            {
+            //                Name = chatRoom.Name,
+            //                Genre = chatRoom.Genre,
+            //                Active = true,
+            //                DateCreated = chatRoom.DateCreated,
+            //                DateExpired = chatRoom.DateExpired
+            //            };
 
-            _context.Topics.Add(newChatRoom);
+            _context.Topics.Add(topic);
 
             return true;
         }
