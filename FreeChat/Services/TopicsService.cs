@@ -1,6 +1,8 @@
 ﻿using FreeChat.Contracts;
 using FreeChat.Models.Domain;
+using FreeChat.Models.DTO;
 using FreeChat.Models.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace FreeChat.Services
@@ -22,6 +24,19 @@ namespace FreeChat.Services
 
         public IEnumerable<Topics> GetActiveTopicsByGenre(string genre)
             => _topicsRepoRepository.GetActiveTopicsByGenre(genre);
+
+
+        public bool AddTopic(CreateChatRoomDto chatRoom)
+        {
+            if (chatRoom.DateCreated < DateTime.Today)
+                chatRoom.DateCreated = DateTime.Today;
+
+            chatRoom.DateExpired = chatRoom.DateCreated.AddDays(10);
+
+            return _topicsRepoRepository.AddTopic(chatRoom);
+        }
+
+
 
         public TopicDeletionVerdictEnum DeleteTopicById(long Id)
         {
