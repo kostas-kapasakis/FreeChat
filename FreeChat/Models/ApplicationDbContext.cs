@@ -1,5 +1,4 @@
 ﻿using FreeChat.Models.Domain;
-using FreeChat.Models.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 

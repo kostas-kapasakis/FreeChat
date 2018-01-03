@@ -4,8 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" type="text/css" href="~/Content/about.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/chatEngine.css">   
+    <link rel="stylesheet" type="text/css" href="~/Content/CreateRoom.css">
+
 
 </head>
 <body>
@@ -17,13 +25,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div>                    
+                    <a href="@Url.Action("Index", "Home")" class="nav navbar-brand">Free Chat 
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    </a>
+                </div>
+              
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Create Chat Room", "Create", "RoomCreator")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,12 +45,11 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Free Chat</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+  
     @RenderSection("scripts", required: false)
 </body>
 </html>

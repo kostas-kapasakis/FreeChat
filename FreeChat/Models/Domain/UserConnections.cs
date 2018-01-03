@@ -1,6 +1,4 @@
-﻿using FreeChat.Models.Identity;
-
-namespace FreeChat.Models.Domain
+﻿namespace FreeChat.Models.Domain
 {
     public class UserConnections
     {

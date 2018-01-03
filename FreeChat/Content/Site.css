@@ -3,6 +3,9 @@
     padding-bottom: 20px;
 }
 
+.form-horizontal .control-label {
+    margin-right: 15px;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -21,4 +24,175 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#container {
+    width: 350px
+}
+
+#tabbox {
+    height: 40px
+}
+
+#panel {
+    background-color: #FFF;
+    height: 300px;
+}
+
+
+/*Bootsrap Overrides*/
+
+
+.panel-heading {
+    padding: 10px 15px;
+}
+
+.navbar-inverse {
+    background-color: #4a629a;
+    border-color: #4a629a;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #ffffff;
+    }
+
+    .navbar-inverse .navbar-brand {
+        color: #ffffff;
+    }
+
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: #3c4d75;
+    }
+
+    .navbar-inverse .navbar-nav > .dropdown > a .caret {
+        border-top-color: #ffffff;
+        border-bottom-color: #ffffff;
+    }
+
+
+.dropdown-menu {
+    box-shadow: none;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    padding: 12px 15px;
+    margin-left: -30px;
+    margin-right: 40px;
+}
+
+body {
+    font-size: 17px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Open sans,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-size: 17px;
+    border-radius: 9px;
+}
+
+.col-sm-6 {
+    border: 3px #b8eee7;
+}
+
+#allrooms {
+    margin-top: 3%;
+    width: 70%;
+    margin-left: 15%;
+}
+
+#allroomButton {
+    width: 7em;
+    margin-left: 10%;
+}
+
+#music {
+    border: 3px #b8eee7;
+}
+
+.thumbnail {
+    margin-top: 10%;
+    height: 370px;
+}
+
+    .thumbnail a {
+        position: absolute;
+        margin: auto;
+        bottom: 10px;
+        right: 35%;
+    }
+
+    .thumbnail h3 {
+        position: absolute;
+        margin: auto;
+        bottom: 40%;
+        right: 40%
+    }
+
+    .thumbnail h5 {
+        position: absolute;
+        margin: auto;
+        bottom: 25%;
+        line-height: 130%;
+    }
+
+#username {
+    text-overflow: ellipsis;
+}
+
+#freeChatInfotable tr td {
+    width: 12em;
+    padding-right: 10%;
+    text-overflow: ellipsis;
+}
+
+.category {
+    margin-bottom: 5%;
+}
+
+#topRightMenu, #topRightMenu li {
+    text-overflow: ellipsis;
+    width: 220px;
+}
+
+#rightMenuUl {
+    width: 220px;
+    text-overflow: ellipsis;
+}
+
+#users {
+    margin-right: 10%;
+}
+
+#RoomDetails {
+    background-color: red;
+    display: none;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+#info:hover + #RoomDetails {
+    z-index: 2;
+    display: block;
 }

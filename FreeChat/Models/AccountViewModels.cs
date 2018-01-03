@@ -8,6 +8,7 @@ namespace FreeChat.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
     }
 
     public class ExternalLoginListViewModel
@@ -53,6 +54,8 @@ namespace FreeChat.Models
         [EmailAddress]
         public string Email { get; set; }
 
+
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -64,10 +67,18 @@ namespace FreeChat.Models
 
     public class RegisterViewModel
     {
+
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+
+        public string Name { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

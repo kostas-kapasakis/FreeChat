@@ -1,5 +1,4 @@
-﻿using FreeChat.Models.Identity;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FreeChat.Models.Domain
 {

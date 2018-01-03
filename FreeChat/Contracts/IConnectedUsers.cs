@@ -1,4 +1,4 @@
-﻿using FreeChat.Models.Identity;
+﻿using FreeChat.Models;
 using System.Collections.Generic;
 
 namespace FreeChat.Contracts

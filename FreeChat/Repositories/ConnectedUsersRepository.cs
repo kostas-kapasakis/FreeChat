@@ -1,6 +1,5 @@
 ﻿using FreeChat.Contracts;
 using FreeChat.Models;
-using FreeChat.Models.Identity;
 using System.Collections.Generic;
 using System.Linq;
 
