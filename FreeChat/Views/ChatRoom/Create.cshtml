@@ -1,4 +1,4 @@
-﻿@*@model FreeChat.Models.DTO.TopicsDto
+﻿@model FreeChat.Models.ViewModels.CreateRoomViewModel
 @{
     ViewBag.Title = "Create";
 }
@@ -9,28 +9,30 @@
     Want to chat about whatever you like?<br>
     Create the chat room you want
 </h3><br />
+
+
 <div id="form" class="container">
-    @using (Html.BeginForm("Create", "ChatRoom"))
+    @using (Ajax.BeginForm("CreateRoom", "RoomCreator",new AjaxOptions{ HttpMethod = "POST"}))
     {
         <p class="alert alert-info">All fields are <strong>required</strong>.</p>
         @Html.AntiForgeryToken()
 
         <div class="form-group">
-            @Html.LabelFor(m => m.)
-            @Html.DropDownListFor(m => m.MainTopic, new SelectList(Model.MainTopics, "Id", "Name"), "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MainTopic)
+            @Html.LabelFor(m => m.MainCategories)
+            @Html.DropDownListFor(m => m.MainCategories, new SelectList(Model.MainCategories, "Id", "Name"), "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MainCategories)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.chatroomName)
-            @Html.TextBoxFor(m => m.chatroomName, new { @class = "form-control", autofocus = "autofocus" })
-            @Html.ValidationMessageFor(m => m.chatroomName)
+            @Html.LabelFor(m => m.Topic.Name)
+            @Html.TextBoxFor(m => m.Topic.Name, new { @class = "form-control", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.Topic.Name)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.TopicTheme)
-            @Html.TextBoxFor(m => m.TopicTheme, new { @class = "form-control", autofocus = "autofocus" })
-            @Html.ValidationMessageFor(m => m.TopicTheme)
+            @Html.LabelFor(m => m.Topic.Description)
+            @Html.TextBoxFor(m => m.Topic.Description, new { @class = "form-control", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.Topic.Description)
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
@@ -67,8 +69,7 @@
                         </li>
                         <li class="list-group-item">
                             <p>
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>Then choose a name for the chatroom as it will be<br />
-                                displayed in the chat room list
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>Then choose a name for the chatroom 
                             </p>
                         </li>
                         <li class="list-group-item">
@@ -106,13 +107,6 @@
                             Topic of each new room must be relative<br />
                             with the category selected
                         </li>
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                            Topic of discussion field is a description <br />
-                            of Chat Room's name
-                        </li>
-
-
                     </ul>
                 </div>
             </div>
@@ -125,14 +119,6 @@
 <div class="panel panel-default" id="footer">
     <div class="panel-body">
         @Html.ActionLink("Back to Chat Rooms List", "Index", "Home")
-        <!--<div id="animate-div" class="marquee">
-                  <p>Available Categories</p>
-                  @foreach (var item in Model.MainTopics)
-                  {
-                      <p>@item.Name</p>
-                  }
-
-          </div>-->
     </div>
 </div>
 
@@ -146,4 +132,4 @@
         });
     </script>
 
-}*@
+}

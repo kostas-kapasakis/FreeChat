@@ -12,5 +12,6 @@ namespace FreeChat.Models.Domain
 
         public bool Active { get; set; }
 
+        public Topics Topics { get; set; }
     }
 }
