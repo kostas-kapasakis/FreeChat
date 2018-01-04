@@ -22,8 +22,7 @@ namespace FreeChat
             //Autofac Configuration
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
-            //builder.RegisterSource(new ViewRegistrationSource());
-            //builder.RegisterFilterProvider();
+
 
             builder.RegisterModule(new RepositoryModule());
             builder.RegisterModule(new ServiceModule());

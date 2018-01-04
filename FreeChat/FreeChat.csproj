@@ -233,6 +233,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\MonitorHub.cs" />
     <Compile Include="Migrations\201801031020208_InitialMigrationCreationOfMainModels.cs" />
     <Compile Include="Migrations\201801031020208_InitialMigrationCreationOfMainModels.Designer.cs">
       <DependentUpon>201801031020208_InitialMigrationCreationOfMainModels.cs</DependentUpon>
@@ -260,6 +262,14 @@
     <Compile Include="Migrations\201801041056043_AddingDescriptionColumnInTheTopicsTable.cs" />
     <Compile Include="Migrations\201801041056043_AddingDescriptionColumnInTheTopicsTable.Designer.cs">
       <DependentUpon>201801041056043_AddingDescriptionColumnInTheTopicsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.cs" />
+    <Compile Include="Migrations\201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.Designer.cs">
+      <DependentUpon>201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801041552395_SeedTheNewColumnInMAinCategoriesTable.cs" />
+    <Compile Include="Migrations\201801041552395_SeedTheNewColumnInMAinCategoriesTable.Designer.cs">
+      <DependentUpon>201801041552395_SeedTheNewColumnInMAinCategoriesTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -396,6 +406,7 @@
     <Content Include="Content\images\tick.png" />
     <Content Include="Content\images\trips.jpg" />
     <Content Include="Content\images\xicon.jpg" />
+    <Content Include="Content\IndexPage.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -472,7 +483,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -508,6 +518,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801041056043_AddingDescriptionColumnInTheTopicsTable.resx">
       <DependentUpon>201801041056043_AddingDescriptionColumnInTheTopicsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.resx">
+      <DependentUpon>201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041552395_SeedTheNewColumnInMAinCategoriesTable.resx">
+      <DependentUpon>201801041552395_SeedTheNewColumnInMAinCategoriesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

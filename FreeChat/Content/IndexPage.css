@@ -1,0 +1,16 @@
+﻿
+#AllRoomsPanel {
+    display: none;   
+}
+
+
+#panelMessage {
+    margin-left: auto;
+}
+
+
+/*Bootsrap Overrides*/
+
+.glyphicon-arrow-righ {
+    color: black;
+}

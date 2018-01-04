@@ -3,8 +3,22 @@
 @{
     ViewBag.Title = "Free Chat";   
 }
-
+<script src="http://localhost:50239/signalr/hubs"></script>
 @*@Styles.Render()*@
+
+
+<div class="container">
+    <div class="panel panel-info" id="AllRoomsPanel">
+        <h4 id="panelMessage">Back to all available rooms
+            <a href="#" id="allRoomsButton" class="btn btn-info" role="button">
+                Go<i class="glyphicon glyphicon-arrow-righ"></i>
+            </a>
+        </h4>
+    </div>
+    
+
+
+</div>
 
 
 
