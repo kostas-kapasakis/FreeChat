@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FreeChat.Models.Domain
 {
@@ -11,6 +12,8 @@ namespace FreeChat.Models.Domain
         public DateTime DateCreated { get; set; }
         public DateTime DateExpired { get; set; }
         public long MaxClientsOnline { get; set; }
+
+        public ICollection<MainCategories> MainCategory { get; set; }
 
     }
 }

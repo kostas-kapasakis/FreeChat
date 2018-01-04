@@ -1,4 +1,4 @@
-﻿@model FreeChat.ViewModels.ChatFormViewModel
+﻿@*@model FreeChat.Models.DTO.TopicsDto
 @{
     ViewBag.Title = "Create";
 }
@@ -16,7 +16,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-group">
-            @Html.LabelFor(m => m.MainTopic)
+            @Html.LabelFor(m => m.)
             @Html.DropDownListFor(m => m.MainTopic, new SelectList(Model.MainTopics, "Id", "Name"), "", new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.MainTopic)
         </div>
@@ -146,4 +146,4 @@
         });
     </script>
 
-}
+}*@

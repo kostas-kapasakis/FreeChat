@@ -9,7 +9,7 @@ namespace FreeChat.Models
         public DbSet<Topics> Topics { get; set; }
         public DbSet<UserConnections> UserConnections { get; set; }
         public DbSet<ConnectedUsers> ConnectedUsers { get; set; }
-
+        public DbSet<MainCategories> MainCategories { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
