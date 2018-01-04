@@ -1,7 +1,7 @@
-﻿using FreeChat.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FreeChat.Models;
 
-namespace FreeChat.Contracts
+namespace FreeChat.Repositories.Interfaces
 {
     public interface IConnectedUsers
     {

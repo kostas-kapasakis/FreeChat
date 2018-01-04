@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
-using FreeChat.Contracts;
 using FreeChat.Models.Domain;
 using FreeChat.Models.DTO;
 using FreeChat.Models.Enums;
+using FreeChat.Repositories.Interfaces;
+using FreeChat.Services.ServicesInterfaces;
 using System;
 using System.Collections.Generic;
 
 namespace FreeChat.Services
 {
-    public class TopicsService
+    public class TopicsService : ITopicsService
     {
         private readonly ITopicsRepo _topicsRepoRepository;
 
@@ -26,6 +27,8 @@ namespace FreeChat.Services
         public IEnumerable<Topics> GetActiveTopicsByGenre(string genre)
             => _topicsRepoRepository.GetActiveTopicsByGenre(genre);
 
+        public IEnumerable<MainCategories> GetMainCategories()
+            => _topicsRepoRepository.GetMainCategories();
 
         public bool AddTopic(TopicsDto chatRoom)
         {

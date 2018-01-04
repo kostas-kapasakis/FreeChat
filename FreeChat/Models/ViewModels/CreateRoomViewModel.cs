@@ -13,5 +13,11 @@ namespace FreeChat.Models.ViewModels
         public string ChatroomName { get; set; }
 
         public Topics Topic { get; set; }
+
+        public CreateRoomViewModel()
+        {
+
+        }
+
     }
 }

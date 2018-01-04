@@ -27,27 +27,27 @@ namespace FreeChat
                       "~/Content/site.css"));
 
 
-            bundles.Add(new ScriptBundle("/bundles/ChatEngineView").Include(
+            bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(
                 "~/Scripts/jquery.signalR-2.2.2.min.js",
                 "~/Scripts/Controllers/chatEngineController.js",
                 "~/Scripts/Services/chatEngineService.js"));
 
-            bundles.Add(new StyleBundle("/bundles/ChatEngineViewStyle").Include(
+            bundles.Add(new StyleBundle("~/bundles/ChatEngineViewStyle").Include(
                 "~/Content/ChatEngine.css"));
 
 
 
-            bundles.Add(new ScriptBundle("/bundles/ChatRoomView").Include(
+            bundles.Add(new ScriptBundle("~/bundles/ChatRoomView").Include(
                 "~/Scripts/Controllers/chatRoomController.js",
                 "~/Scripts/Services/chatRoomService.js",
                 "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
-            bundles.Add(new StyleBundle("/bundles/ChatRoomViewStyle").Include(
+            bundles.Add(new StyleBundle("~/bundles/ChatRoomViewStyle").Include(
                 "~/Content/CreateRoom.css"));
 
 
 
-            bundles.Add(new ScriptBundle("/bundles/IndexView").Include(
+            bundles.Add(new ScriptBundle("~/bundles/IndexView").Include(
                 "~/Scripts/jquery.signalR-2.2.2.min.js",
                 "~/Scripts/Controllers/indexController.js",
                 "~/Scripts/Controllers/monitorController.js",

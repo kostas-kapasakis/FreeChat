@@ -1,13 +1,24 @@
-﻿using System.Web.Mvc;
+﻿using FreeChat.Models.ViewModels;
+using FreeChat.Services.ServicesInterfaces;
+using System.Web.Mvc;
 
 namespace FreeChat.Controllers
 {
     public class ChatRoomController : Controller
     {
-        // GET: ChatRoom
+        private readonly ITopicsService _service;
+
+        public ChatRoomController(ITopicsService service)
+        {
+            _service = service;
+        }
+
+
         public ActionResult Create()
         {
-            return View();
+            var mainCategories = _service.GetMainCategories();
+
+            return View("Create", new CreateRoomViewModel { MainCategories = mainCategories });
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using FreeChat.Models.Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FreeChat.Models.Domain;
 
-namespace FreeChat.Contracts
+namespace FreeChat.Repositories.Interfaces
 {
     public interface IUserConnectionsRepo
     {

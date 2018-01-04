@@ -1,10 +1,11 @@
-﻿using FreeChat.Contracts;
-using FreeChat.Models;
+﻿using FreeChat.Models;
+using FreeChat.Repositories.Interfaces;
 using System.Collections.Generic;
+using FreeChat.Services.ServicesInterfaces;
 
 namespace FreeChat.Services
 {
-    public class ConnectedUsersService
+    public class ConnectedUsersService : IConnectedUsersService
     {
         private readonly IConnectedUsers _connectedUserRepo;
 

@@ -1,7 +1,7 @@
-﻿using FreeChat.Contracts;
-using FreeChat.Models;
+﻿using FreeChat.Models;
 using System.Collections.Generic;
 using System.Linq;
+using FreeChat.Repositories.Interfaces;
 
 namespace FreeChat.Repositories
 {

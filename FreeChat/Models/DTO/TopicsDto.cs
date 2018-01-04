@@ -4,6 +4,10 @@ namespace FreeChat.Models.DTO
 {
     public class TopicsDto
     {
+        public TopicsDto()
+        {
+
+        }
         public string Name { get; set; }
         public string Genre { get; set; }
         public bool Active { get; set; }

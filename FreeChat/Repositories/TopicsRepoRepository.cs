@@ -1,6 +1,6 @@
-﻿using FreeChat.Contracts;
-using FreeChat.Models;
+﻿using FreeChat.Models;
 using FreeChat.Models.Domain;
+using FreeChat.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -33,20 +33,16 @@ namespace FreeChat.Repositories
 
         public bool AddTopic(Topics topic)
         {
-            //            var newChatRoom = new Topics
-            //            {
-            //                Name = chatRoom.Name,
-            //                Genre = chatRoom.Genre,
-            //                Active = true,
-            //                DateCreated = chatRoom.DateCreated,
-            //                DateExpired = chatRoom.DateExpired
-            //            };
 
             _context.Topics.Add(topic);
 
             return true;
         }
 
+        public IEnumerable<MainCategories> GetMainCategories()
+        {
+            return _context.MainCategories.Where(x => x.Active);
+        }
 
         public int DeleteTopicById(long Id)
         {

@@ -1,5 +1,5 @@
 ﻿using FreeChat.Models.DTO;
-using FreeChat.Services;
+using FreeChat.Services.ServicesInterfaces;
 using System.Web.Http;
 using System.Web.Mvc;
 
@@ -7,9 +7,9 @@ namespace FreeChat.Controllers.API
 {
     public class RoomCreatorController : ApiController
     {
-        private readonly TopicsService _service;
+        private readonly ITopicsService _service;
 
-        public RoomCreatorController(TopicsService service)
+        public RoomCreatorController(ITopicsService service)
         {
             _service = service;
         }

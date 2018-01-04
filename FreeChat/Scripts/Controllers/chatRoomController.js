@@ -18,4 +18,8 @@
         
     }
 
+    function InitialListeners() {
+        $(_document).on("click","#")
+    }
+
 }(window.ChatRoomController = window.ChatRoomController || {}, jQuery, document, console, ChatRoomService));

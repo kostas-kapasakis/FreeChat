@@ -1,13 +1,13 @@
-﻿using FreeChat.Services;
+﻿using FreeChat.Services.ServicesInterfaces;
 using System.Web.Http;
 
 namespace FreeChat.Controllers.API
 {
     public class RoomListsController : ApiController
     {
-        private readonly TopicsService _service;
+        private readonly ITopicsService _service;
 
-        public RoomListsController(TopicsService service)
+        public RoomListsController(ITopicsService service)
         {
             _service = service;
         }
