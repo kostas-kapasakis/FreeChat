@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace FreeChat
 {
@@ -26,6 +25,32 @@ namespace FreeChat
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+            bundles.Add(new ScriptBundle("/bundles/ChatEngineView").Include(
+                "~/Scripts/jquery.signalR-2.2.2.min.js",
+                "~/Scripts/Controllers/chatEngineController.js",
+                "~/Scripts/Services/chatEngineService.js"));
+
+            bundles.Add(new StyleBundle("/bundles/ChatEngineViewStyle").Include(
+                "~/Content/ChatEngine.css"));
+
+
+
+            bundles.Add(new ScriptBundle("/bundles/ChatRoomView").Include(
+                "~/Scripts/Controllers/chatRoomController.js",
+                "~/Scripts/Services/chatRoomService.js"));
+
+            bundles.Add(new StyleBundle("/bundles/ChatRoomViewStyle").Include(
+                "~/Content/CreateRoom.css"));
+
+
+
+            bundles.Add(new ScriptBundle("/bundles/IndexView").Include(
+                "~/Scripts/jquery.signalR-2.2.2.min.js",
+                "~/Scripts/Controllers/indexController.js",
+                "~/Scripts/Controllers/monitorController.js",
+                "~/Scripts/Services/IndexService.js"));
         }
     }
 }

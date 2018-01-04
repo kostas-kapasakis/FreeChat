@@ -1,7 +1,149 @@
-﻿
+﻿@model FreeChat.ViewModels.ChatFormViewModel
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
+
+<h3>
+    Want to chat about whatever you like?<br>
+    Create the chat room you want
+</h3><br />
+<div id="form" class="container">
+    @using (Html.BeginForm("Create", "ChatRoom"))
+    {
+        <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MainTopic)
+            @Html.DropDownListFor(m => m.MainTopic, new SelectList(Model.MainTopics, "Id", "Name"), "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MainTopic)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.chatroomName)
+            @Html.TextBoxFor(m => m.chatroomName, new { @class = "form-control", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.chatroomName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.TopicTheme)
+            @Html.TextBoxFor(m => m.TopicTheme, new { @class = "form-control", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.TopicTheme)
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+
+
+</div>
+
+<div id="createInfo" class="alert alert-info">
+
+
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+                <center>
+                    <h5 class="mb-0">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Steps explanation
+                        </a>
+                    </h5>
+                </center>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="card-block">
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <p>
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                &nbsp;&nbsp;Choose one of the available categories
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p>
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>Then choose a name for the chatroom as it will be<br />
+                                displayed in the chat room list
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p>
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                Finally describe the topic of the new chat room <br />
+                                and click submit
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingThree">
+                <center>
+                    <h5 class="mb-0">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+
+                            Info about New Chat Rooms
+                        </a>
+                    </h5>
+                </center>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="card-block">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            No one is a chat room owner
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            Topic of each new room must be relative<br />
+                            with the category selected
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            Topic of discussion field is a description <br />
+                            of Chat Room's name
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="panel panel-default" id="footer">
+    <div class="panel-body">
+        @Html.ActionLink("Back to Chat Rooms List", "Index", "Home")
+        <!--<div id="animate-div" class="marquee">
+                  <p>Available Categories</p>
+                  @foreach (var item in Model.MainTopics)
+                  {
+                      <p>@item.Name</p>
+                  }
+
+          </div>-->
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("/bundles/ChatRoomView")
+    @Styles.Render("/bundles/ChatRoomViewStyle")
+    <script type="text/javascript">
+        $(function () {
+            ChatRoomController.Init();
+        });
+    </script>
+
+}
