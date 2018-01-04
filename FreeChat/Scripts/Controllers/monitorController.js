@@ -1,5 +1,24 @@
-﻿(function() {
+﻿(function () {
+    "use strict";
     var monitor;
+
+    var _$doc;
+    var _$html;
+    var _config;
+
+    self.Init = function (config) {
+        digestConfig(config);
+        initImpl(config);
+    };
+
+    function digestConfig(config) {
+        _config = config;
+    };
+
+    function initImpl(config) {
+
+    }
+
 
     $(function () {
 

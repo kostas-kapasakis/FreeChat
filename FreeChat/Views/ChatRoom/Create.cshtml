@@ -12,7 +12,7 @@
 
 
 <div id="form" class="container">
-    @using (Ajax.BeginForm("CreateRoom", "RoomCreator",new AjaxOptions{ HttpMethod = "POST"}))
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id ="createRoomForm" }))
     {
         <p class="alert alert-info">All fields are <strong>required</strong>.</p>
         @Html.AntiForgeryToken()

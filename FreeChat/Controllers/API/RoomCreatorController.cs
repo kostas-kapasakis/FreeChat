@@ -1,6 +1,7 @@
 ﻿using FreeChat.Models.DTO;
 using FreeChat.Services;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace FreeChat.Controllers.API
 {
@@ -13,7 +14,8 @@ namespace FreeChat.Controllers.API
             _service = service;
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
+        [ValidateAntiForgeryToken]
         public IHttpActionResult CreateRoom(TopicsDto chatRoom)
         {
             return Ok(_service.AddTopic(chatRoom));
