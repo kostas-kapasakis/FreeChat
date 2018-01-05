@@ -6,7 +6,7 @@
     var _config;
 
 
-    console.log(_indexService);
+   
     self.Init = function (config) {
         digestConfig(config);
         initImpl(config);
@@ -38,7 +38,7 @@
     function DisplayMainCategories() {
 
        
-        _indexService.LoadMainCategories({
+        _indexService.GetMainCategories({
             done: function (data) {
                 console.log(data);
             },

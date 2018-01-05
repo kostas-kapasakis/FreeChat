@@ -3,17 +3,16 @@
 
 
     var dudfunc = function () { };
-    var _baseUrl = "/API/RoomLists/";
+    var _baseUrl = "/api/RoomList/";
 
 
 
-    self.LoadMainCategories = function (config) {
+    self.GetMainCategories = function (config) {
         return invoke(config,
             {
                 url: "GetMainCategories",
                 method: "GET",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8;"
+                dataType: "json"
             },
             _baseUrl);
 

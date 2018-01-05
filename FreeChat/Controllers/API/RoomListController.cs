@@ -3,11 +3,11 @@ using System.Web.Http;
 
 namespace FreeChat.Controllers.API
 {
-    public class RoomListsController : ApiController
+    public class RoomListController : ApiController
     {
         private readonly ITopicsService _service;
 
-        public RoomListsController(ITopicsService service)
+        public RoomListController(ITopicsService service)
         {
             _service = service;
         }

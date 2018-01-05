@@ -226,7 +226,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\RoomCreatorController.cs" />
-    <Compile Include="Controllers\API\RoomListsController.cs" />
+    <Compile Include="Controllers\API\RoomListController.cs" />
     <Compile Include="Controllers\ChatRoomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
