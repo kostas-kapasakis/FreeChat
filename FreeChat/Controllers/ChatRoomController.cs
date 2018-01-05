@@ -1,5 +1,9 @@
-﻿using FreeChat.Models.ViewModels;
+﻿using AutoMapper;
+using FreeChat.Models.Domain;
+using FreeChat.Models.DTO;
+using FreeChat.Models.ViewModels;
 using FreeChat.Services.ServicesInterfaces;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace FreeChat.Controllers
@@ -18,7 +22,10 @@ namespace FreeChat.Controllers
         {
             var mainCategories = _service.GetMainCategories();
 
-            return View("Create", new CreateRoomViewModel { MainCategories = mainCategories });
+            return View("Create", new CreateRoomViewModel
+            {
+                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
+            });
         }
     }
 }

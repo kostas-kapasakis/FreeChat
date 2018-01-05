@@ -2,18 +2,17 @@
 using FreeChat.Models.Domain;
 using FreeChat.Models.DTO;
 
-namespace FreeChat.App_Start
+namespace FreeChat
 {
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-            Mapper.Initialize(ini =>
-            {
-                ini.CreateMap<Topics, TopicsDto>();
-                ini.CreateMap<TopicsDto, Topics>();
-            });
 
+            CreateMap<Topics, TopicsDto>();
+            CreateMap<TopicsDto, Topics>();
+            CreateMap<MainCategories, MainCategoriesDto>();
+            CreateMap<MainCategoriesDto, MainCategories>();
         }
     }
 }

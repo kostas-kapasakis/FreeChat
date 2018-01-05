@@ -7,13 +7,13 @@ namespace FreeChat.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SeedTheNewColumnInMAinCategoriesTable : IMigrationMetadata
+    public sealed partial class ChangeTypeInMainCategoriesImageColumn : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedTheNewColumnInMAinCategoriesTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeTypeInMainCategoriesImageColumn));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801041552395_SeedTheNewColumnInMAinCategoriesTable"; }
+            get { return "201801050918553_ChangeTypeInMainCategoriesImageColumn"; }
         }
         
         string IMigrationMetadata.Source

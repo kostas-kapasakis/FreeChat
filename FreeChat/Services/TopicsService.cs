@@ -27,8 +27,15 @@ namespace FreeChat.Services
         public IEnumerable<Topics> GetActiveTopicsByGenre(string genre)
             => _topicsRepoRepository.GetActiveTopicsByGenre(genre);
 
-        public IEnumerable<MainCategories> GetMainCategories()
-            => _topicsRepoRepository.GetMainCategories();
+        public IEnumerable<MainCategoriesDto> GetMainCategories()
+        {
+            var categories = _topicsRepoRepository.GetMainCategories();
+
+            return Mapper.Map<IEnumerable<MainCategories>, IEnumerable<MainCategoriesDto>>(categories);
+
+        }
+
+
 
         public bool AddTopic(TopicsDto chatRoom)
         {

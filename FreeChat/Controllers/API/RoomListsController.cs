@@ -35,6 +35,13 @@ namespace FreeChat.Controllers.API
         }
 
 
+        [HttpGet]
+        public IHttpActionResult GetMainCategories()
+            => Ok(_service.GetMainCategories());
+
+
+
+
 
     }
 }

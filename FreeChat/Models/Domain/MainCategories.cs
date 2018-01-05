@@ -12,7 +12,7 @@ namespace FreeChat.Models.Domain
 
         public bool Active { get; set; }
 
-        public byte[] CategoryImage { get; set; }
+        public string CategoryImage { get; set; }
 
         public string CategoryDescription { get; set; }
 

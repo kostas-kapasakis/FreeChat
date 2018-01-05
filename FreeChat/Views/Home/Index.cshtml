@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Free Chat";   
 }
-<script src="http://localhost:50239/signalr/hubs"></script>
+@*<script src="http://localhost:50239/signalr/hubs"></script>*@
 @*@Styles.Render()*@
 
 
@@ -15,7 +15,7 @@
             </a>
         </h4>
     </div>
-    
+  
 
 
 </div>
@@ -29,7 +29,9 @@
 
     <script type="text/javascript">
         $(function() {
-            IndexController.Init();
+            IndexController.Init({
+                Index:true
+            });
         });
     </script>
 

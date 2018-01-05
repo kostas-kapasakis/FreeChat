@@ -14,6 +14,9 @@ namespace FreeChat
     {
         protected void Application_Start()
         {
+
+            AutoMapper.Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

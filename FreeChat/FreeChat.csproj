@@ -267,13 +267,14 @@
     <Compile Include="Migrations\201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.Designer.cs">
       <DependentUpon>201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801041552395_SeedTheNewColumnInMAinCategoriesTable.cs" />
-    <Compile Include="Migrations\201801041552395_SeedTheNewColumnInMAinCategoriesTable.Designer.cs">
-      <DependentUpon>201801041552395_SeedTheNewColumnInMAinCategoriesTable.cs</DependentUpon>
+    <Compile Include="Migrations\201801050918553_ChangeTypeInMainCategoriesImageColumn.cs" />
+    <Compile Include="Migrations\201801050918553_ChangeTypeInMainCategoriesImageColumn.Designer.cs">
+      <DependentUpon>201801050918553_ChangeTypeInMainCategoriesImageColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domain\MainCategories.cs" />
+    <Compile Include="Models\DTO\MainCategoriesDto.cs" />
     <Compile Include="Models\DTO\TopicsDto.cs" />
     <Compile Include="Models\Enums\TopicDeletionVerdictEnum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -522,8 +523,8 @@
     <EmbeddedResource Include="Migrations\201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.resx">
       <DependentUpon>201801041548342_AddingCategoryImageandCategoryDesscriptionColumn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801041552395_SeedTheNewColumnInMAinCategoriesTable.resx">
-      <DependentUpon>201801041552395_SeedTheNewColumnInMAinCategoriesTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801050918553_ChangeTypeInMainCategoriesImageColumn.resx">
+      <DependentUpon>201801050918553_ChangeTypeInMainCategoriesImageColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

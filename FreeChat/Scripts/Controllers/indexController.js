@@ -16,6 +16,7 @@
 
     function initImpl(config) {
         InitialListeners();
+        DisplayMainCategories();
     }
 
     function InitialListeners() {
@@ -30,6 +31,20 @@
 
         $('#allrooms').fadeOut();
         $("#chatrooms").fadeIn();
+    }
+
+    function DisplayMainCategories() {
+
+        _indexService.LoadMainCategories({
+            done: function (data) {
+                console.log(data);
+            },
+            fail: function (jqXhr) {
+                _console.log("Error in getting main Categories");
+                _console.log(jqXhr);
+            }
+        });
+
     }
 
 }(window.IndexController = window.IndexController || {}, jQuery, document, console, IndexService));

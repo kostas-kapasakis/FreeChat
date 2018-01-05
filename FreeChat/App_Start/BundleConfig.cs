@@ -51,7 +51,7 @@ namespace FreeChat
                 "~/Scripts/jquery.signalR-2.2.2.min.js",
                 "~/Scripts/Controllers/indexController.js",
                 "~/Scripts/Controllers/monitorController.js",
-                "~/Scripts/Services/IndexService.js"));
+                "~/Scripts/Services/indexService.js"));
         }
     }
 }
