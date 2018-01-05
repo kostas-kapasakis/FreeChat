@@ -5,6 +5,8 @@
     var _$html;
     var _config;
 
+
+    console.log(_indexService);
     self.Init = function (config) {
         digestConfig(config);
         initImpl(config);
