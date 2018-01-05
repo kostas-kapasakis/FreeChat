@@ -1,4 +1,4 @@
-﻿(function (self, $,jsonLib, _document, _console, undefined) {
+﻿(function (self, $, jsonLib, _document, _console, undefined) {
     "use strict";
 
 

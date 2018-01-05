@@ -5,7 +5,7 @@
     var _$html;
     var _config;
 
-    self.Init = function(config) {
+    self.Init = function (config) {
         digestConfig(config);
         initImpl(config);
     };
@@ -35,6 +35,7 @@
 
     function DisplayMainCategories() {
 
+       
         _indexService.LoadMainCategories({
             done: function (data) {
                 console.log(data);

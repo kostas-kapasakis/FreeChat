@@ -25,13 +25,11 @@
 
 
 @section scripts{
-    @Scripts.Render("/bundles/IndexView")
+    @Scripts.Render("~/bundles/IndexView")
 
     <script type="text/javascript">
         $(function() {
-            IndexController.Init({
-                Index:true
-            });
+            IndexController.Init();
         });
     </script>
 
