@@ -392,6 +392,12 @@ namespace FreeChat.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult SignOut()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login", "Account");
+        }
+
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
