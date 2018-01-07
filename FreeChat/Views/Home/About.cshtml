@@ -1,108 +1,68 @@
-﻿@Styles.Render("~/Content/Template.css")
+﻿@{
+    ViewBag.Title = "About";
+}
 
-<div class="container">
 
-    <!-- Page Heading -->
-    <h1 class="my-4">
-        Page Heading
-        <small>Secondary Text</small>
-    </h1>
-
+<div id="GeneralInfo" class="container">
     <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project One</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project Two</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project Three</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project Four</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project Five</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project Six</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-                </div>
-            </div>
+
+
+        <div id="freeChatInfo" class="col">
+            <center><img id="logo" src="~/Content/images/chat_image.png" width="150" height="90" /></center>
+            <br />
+            <center>
+                <h4>
+                    <strong>Free Chat</strong> is a chat room system created and developed by Kostas Kapasakis <br />
+
+                    Registered users have the oppurtunity to enter to any of the available chat rooms
+                    <br />or create one and choose the topic they want to discuss on
+                </h4>
+            </center><br />
+
         </div>
     </div>
-    <!-- /.row -->
-    <!-- Pagination -->
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-            </a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-            </a>
-        </li>
-    </ul>
 
+    <div class="row" id="aboutrow">
+        <div id="second" class="col-lg-7">
+            <h4><strong>Free Chat</strong> is created and developed using the following technologies :</h4>
+            <ul>
+                <li>
+                    <p>ASP.NET MVC 5</p>
+                </li>
+                <li>
+                    <p>Entity Framework 6</p>
+                </li>
+                <li>
+                    <p>Signal-R 2.2.1</p>
+                </li>
+                <li>
+                    <p> Javascript </p>
+                </li>
+                <li>
+                    <p>HTML5  CSS3-Bootstrap </p>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div id="Contact" class="col-lg-5">
+            <ul>
+                <li><h4>Contact Us:</h4></li>
+                <li>
+                    <p><a>kkkapasakis@yahoo.gr</a></p>
+                </li>
+                <li>
+                    <p><a>konstantinos.kapasakis@nielsen.com</a></p>
+                </li>
+                <li>
+                    <p>LinkedIn : Kostas kapasakis</p>
+                </li>
+                <li>
+                    <p>Stack Overflow: k.explorer</p>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-
-
-<!-- /.container -->

@@ -18,9 +18,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 </head>
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-light" id="page-top">
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Free Chat</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
         <footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © Your Website 2017</small>
+                    <small>Copyright © Free Chat @DateTime.Now.Year</small>
                 </div>
             </div>
         </footer>
@@ -54,6 +54,8 @@
             <i class="fa fa-angle-up"></i>
         </a>
         <!-- Logout Modal-->
+    @if (Context.User.Identity.IsAuthenticated)
+    {
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -71,6 +73,7 @@
                 </div>
             </div>
         </div>
+    }
         <!-- Bootstrap core JavaScript-->
         <script src="~/vendor/jquery/jquery.min.js"></script>
         <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
