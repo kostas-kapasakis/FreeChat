@@ -2,6 +2,7 @@
 
 namespace FreeChat.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ChartsController : Controller
     {
         // GET: Charts
