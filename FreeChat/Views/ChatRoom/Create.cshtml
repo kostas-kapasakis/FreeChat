@@ -1,9 +1,10 @@
 ﻿@model FreeChat.Models.ViewModels.CreateRoomViewModel
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminTemplate.cshtml";
 }
 
-
+@Styles.Render("/bundles/ChatRoomViewStyle")
 
 <h3>
     Want to chat about whatever you like?<br>
@@ -123,13 +124,13 @@
 </div>
 
 
-@section scripts{
-    @Scripts.Render("/bundles/ChatRoomView")
-    @Styles.Render("/bundles/ChatRoomViewStyle")
-    <script type="text/javascript">
-        $(function () {
-            ChatRoomController.Init();
-        });
-    </script>
-
-}
+@*@section scripts{*@
+@*    @Scripts.Render("/bundles/ChatRoomView")*@
+@*    @Styles.Render("/bundles/ChatRoomViewStyle")*@
+@*    <script type="text/javascript">*@
+@*        $(function () {*@
+@*            ChatRoomController.Init();*@
+@*        });*@
+@*    </script>*@
+@**@
+@*}*@
