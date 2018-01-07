@@ -1,36 +1,47 @@
 ﻿@model FreeChat.Models.DTO.TopicsDto
     
 @{
-    ViewBag.Title = "Free Chat";   
+    ViewBag.Title = "Free Chat";
+    Layout = "~/Views/Shared/_AdminTemplate.cshtml";
 }
 @*<script src="http://localhost:50239/signalr/hubs"></script>*@
 @*@Styles.Render()*@
 
 
-<div class="container">
-    <div class="panel panel-info" id="AllRoomsPanel">
-        <h4 id="panelMessage">Back to all available rooms
-            <a href="#" id="allRoomsButton" class="btn btn-info" role="button">
-                Go<i class="glyphicon glyphicon-arrow-righ"></i>
-            </a>
-        </h4>
+@*<div class="container">*@
+@*    <div class="panel panel-info" id="AllRoomsPanel">*@
+@*        <h4 id="panelMessage">Back to all available rooms*@
+@*            <a href="#" id="allRoomsButton" class="btn btn-info" role="button">*@
+@*                Go<i class="glyphicon glyphicon-arrow-righ"></i>*@
+@*            </a>*@
+@*        </h4>*@
+@*    </div>*@
+@*  *@
+@**@
+@**@
+@*</div>*@
+@**@
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Data Table Example
     </div>
-  
-
-
+    <div class="card-body">
+        <div class="table-responsive">
+                       
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
 
-
-
-
-
-@section scripts{
-    @Scripts.Render("~/bundles/IndexView")
-
-    <script type="text/javascript">
-        $(function() {
-            IndexController.Init();
-        });
-    </script>
-
-}
+@**@
+@*@section scripts{*@
+@*    @Scripts.Render("~/bundles/IndexView")*@
+@**@
+@*    <script type="text/javascript">*@
+@*        $(function() {*@
+@*            IndexController.Init();*@
+@*        });*@
+@*    </script>*@
+@**@
+@*}*@
