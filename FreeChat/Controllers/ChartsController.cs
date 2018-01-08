@@ -1,8 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using FreeChat.Models;
+using System.Web.Mvc;
 
 namespace FreeChat.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = RoleName.Admin)]
     public class ChartsController : Controller
     {
         // GET: Charts

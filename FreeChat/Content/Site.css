@@ -196,3 +196,6 @@ h6,
     z-index: 2;
     display: block;
 }
+#register_container {
+    max-width: 300px;
+}
