@@ -273,6 +273,10 @@
     <Compile Include="Migrations\201801050918553_ChangeTypeInMainCategoriesImageColumn.Designer.cs">
       <DependentUpon>201801050918553_ChangeTypeInMainCategoriesImageColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801081509504_SeedUsers.cs" />
+    <Compile Include="Migrations\201801081509504_SeedUsers.Designer.cs">
+      <DependentUpon>201801081509504_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domain\MainCategories.cs" />
@@ -308,7 +312,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ChatEngine.css" />
-    <Content Include="Content\Contact.css" />
     <Content Include="Content\CreateRoom.css" />
     <Content Include="Content\images\chat2.jpg" />
     <Content Include="Content\images\chat_image.png" />
@@ -598,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801050918553_ChangeTypeInMainCategoriesImageColumn.resx">
       <DependentUpon>201801050918553_ChangeTypeInMainCategoriesImageColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801081509504_SeedUsers.resx">
+      <DependentUpon>201801081509504_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
