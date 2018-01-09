@@ -8,6 +8,7 @@
   $("#sidenavToggler").click(function(e) {
     e.preventDefault();
     $("body").toggleClass("sidenav-toggled");
+    $("#searchBar").toggle();
     $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
     $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
   });
@@ -15,6 +16,7 @@
   $(".navbar-sidenav .nav-link-collapse").click(function(e) {
     e.preventDefault();
     $("body").removeClass("sidenav-toggled");
+      $("#searchBar").toggle();
   });
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function(e) {

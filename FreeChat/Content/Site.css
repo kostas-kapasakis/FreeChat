@@ -204,3 +204,14 @@ h6,
     text-overflow: ellipsis;
     width: 220px;
 }
+
+.navbar-brand {
+    margin-left: 2% !important;
+    font-family: 'Dosis';
+    font-size: x-large;
+}
+
+#searchBarInput {
+    margin-left: 4%;
+    width: 180px;
+}

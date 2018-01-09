@@ -173,9 +173,11 @@ body.fixed-nav {
     color: #adb5bd; }
 
 #mainNav.fixed-top.navbar-light .sidenav-toggler {
-  background-color: #dee2e6; }
-  #mainNav.fixed-top.navbar-light .sidenav-toggler a i {
-    color: rgba(0, 0, 0, 0.5); }
+    background-color: #6F89D6;
+}
+    #mainNav.fixed-top.navbar-light .sidenav-toggler a i {
+        color: #6F89D6
+    }
 
 #mainNav.fixed-top.navbar-custom1 .sidenav-toggler {
     background-color: #ccebff;
@@ -278,12 +280,16 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
       background: #343a40; } }
 
 #mainNav.navbar-light .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
-  color: rgba(0, 0, 0, 0.5); }
+    color: #495057;
+}
 
 #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
-  color: rgba(0, 0, 0, 0.5); }
-  #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
-    color: rgba(0, 0, 0, 0.7); }
+    color: #6F89D6;
+}
+#mainNav.fixed-top.navbar-light .sidenav-toggler #toggler {
+    color: black !important;
+}
+
 
 #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
 #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
@@ -393,3 +399,8 @@ footer.sticky-footer {
 @media (min-width: 992px) {
   body.sidenav-toggled footer.sticky-footer {
     width: calc(100% - 55px); } }
+
+
+.navbar-sidenav .nav-item:first-child {
+    margin-top: 3%!important;
+}

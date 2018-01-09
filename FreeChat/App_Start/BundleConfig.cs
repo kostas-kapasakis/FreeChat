@@ -35,7 +35,7 @@ namespace FreeChat
                 "~/vendor/jquery-easing/jquery.easing.min.js",
                 "~/vendor/datatables/jquery.dataTables.js",
                 "~/vendor/datatables/dataTables.bootstrap4.js",
-                "~/Scripts/AdminTemplate/sb-admin.min.js",
+                "~/Scripts/AdminTemplate/sb-admin.js",
                 "~/Scripts/AdminTemplate/sb-admin-datatables.min.js"
 
                 ));
