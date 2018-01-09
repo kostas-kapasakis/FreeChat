@@ -22,26 +22,35 @@
 @*</div>*@
 @**@
 
-<div class="card mb-3">
-    <div class="card-header">
-        <i class="fa fa-table"></i> Data Table Example
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-                       
+
+<script>
+   
+</script>
+<div id="loader"></div>
+
+<div id="IndexContainer">
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Data Table Example
         </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                       
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
 
-@**@
-@*@section scripts{*@
-@*    @Scripts.Render("~/bundles/IndexView")*@
-@**@
-@*    <script type="text/javascript">*@
-@*        $(function() {*@
-@*            IndexController.Init();*@
-@*        });*@
-@*    </script>*@
-@**@
-@*}*@
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/IndexView")
+
+    <script type="text/javascript">
+        $(function() {
+            IndexController.Init();
+        });
+    </script>
+
+}

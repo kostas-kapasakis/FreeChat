@@ -173,7 +173,7 @@ body.fixed-nav {
     color: #adb5bd; }
 
 #mainNav.fixed-top.navbar-light .sidenav-toggler {
-    background-color: #6F89D6;
+    background-color: #f8f9fa;
 }
     #mainNav.fixed-top.navbar-light .sidenav-toggler a i {
         color: #6F89D6
@@ -218,6 +218,7 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 
 .content-wrapper {
   overflow-x: hidden;
+    overflow-y: auto;
   background: white; }
   @media (min-width: 992px) {
     .content-wrapper {
@@ -284,7 +285,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 }
 
 #mainNav.navbar-light .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
-    color: #6F89D6;
+    color: black;
 }
 #mainNav.fixed-top.navbar-light .sidenav-toggler #toggler {
     color: black !important;

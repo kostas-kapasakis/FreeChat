@@ -4,12 +4,14 @@
     var _$doc;
     var _$html;
     var _config;
-
+    var _loadingVar;
 
    
     self.Init = function (config) {
+        LoadingAnimation();
         digestConfig(config);
         initImpl(config);
+        showPage();
     };
 
     function digestConfig(config) {
@@ -48,6 +50,17 @@
             }
         });
 
+    }
+
+   
+
+    function LoadingAnimation() {
+        _loadingVar = setTimeout(showPage, 1000);
+    }
+
+    function showPage() {
+        $("#loader").css("display", "none");
+        $("#IndexContainer").css("display", "block");
     }
 
 }(window.IndexController = window.IndexController || {}, jQuery, document, console, IndexService));
