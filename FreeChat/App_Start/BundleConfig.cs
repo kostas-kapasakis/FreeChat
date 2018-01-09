@@ -44,7 +44,8 @@ namespace FreeChat
                     "~/vendor/bootstrap/css/bootstrap.min.css",
                     "~/vendor/font-awesome/css/font-awesome.min.css",
                     "~/vendor/datatables/dataTables.bootstrap4.css",
-                    "~/Content/sb-admin.css"
+                    "~/Content/sb-admin.css",
+                    "~/Content/Site.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(

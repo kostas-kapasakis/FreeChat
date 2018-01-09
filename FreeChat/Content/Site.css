@@ -199,3 +199,8 @@ h6,
 #register_container {
     max-width: 300px;
 }
+
+#topRightMenu, #topRightMenu li {
+    text-overflow: ellipsis;
+    width: 220px;
+}
