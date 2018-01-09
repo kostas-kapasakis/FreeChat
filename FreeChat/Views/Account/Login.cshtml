@@ -6,22 +6,22 @@
 }
 <table class="table">
     <tr>
-        <td class="col-md-8">
-            <img id="logo" src="~/Content/images/chat_image.png" class="img-responsive" width="400" height="350" alt="logo image"/>
+        <td class="col-md-4">
+            
         </td>
         <td class="col-md-4">
             <div class="row">
                 <div class="col-md-10">
                     <section id="loginForm">
                         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
+                        {
                             @Html.AntiForgeryToken()
                             <h4>Log In</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 control-label" })
-                                <div class="col-md-12">
+                                <div class="col-md-10">
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 </div>
@@ -30,7 +30,7 @@
 
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
-                                <div class="col-md-12">
+                                <div class="col-md-10">
                                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                 </div>
@@ -45,33 +45,39 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Log in" class="btn btn-default" />
+                                    <input type="submit" value="Log in" class="btn btn-primary" />
+                                    
+                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                    
+                                </div>
+                            <br>
+                                <div class="col-md-offset-2 col-md-10">  
+                                    <a href="@Url.Action("Register","Account")"  class="btn btn-info">Not a member yet ?</a>
                                 </div>
                             </div>
-                            <p>
-                                @Html.ActionLink("Not a member yet ?", "Register",new{} ,new {@class="btn btn-default" })
-                            </p>
-                            @* Enable this once you have account confirmation enabled for password reset functionality
-                                <p>
-                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                </p>*@
-                             }
+                            
+                           
+
+                           
+@*                                 <p>*@
+@*                                   @Html.ActionLink("Forgot your password?", "ForgotPassword")*@
+@*                                </p>*@
+                        }
+                        <div class="col-md-12">
+                            <section id="socialLoginForm">
+                                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                            </section>
+                        </div>
                     </section>
                 </div>
 
 
             </div>
         </td>
+        <td class="col-md-4">
+            </td>
     </tr>
-    <tr>
-        <td>
-            <div class="col-md-8">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
-            </div>
-        </td>
-    </tr>
+   
 </table>
 @*@section Scripts {*@
 @*    @Scripts.Render("~/bundles/jqueryval")*@
