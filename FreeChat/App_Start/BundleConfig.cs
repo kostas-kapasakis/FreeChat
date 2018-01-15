@@ -23,10 +23,11 @@ namespace FreeChat
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //                      "~/Content/bootstrap.css",
+
                       "~/Content/sb-admin.css",
 
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                "~/Content/bootstrap.css"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/adminTemplateLayout").Include(
@@ -41,11 +42,11 @@ namespace FreeChat
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/adminTemplateLayoutStyle").Include(
-                    "~/vendor/bootstrap/css/bootstrap.min.css",
                     "~/vendor/font-awesome/css/font-awesome.min.css",
                     "~/vendor/datatables/dataTables.bootstrap4.css",
                     "~/Content/sb-admin.css",
-                    "~/Content/Site.css"
+                    "~/Content/Site.css",
+                    "~/vendor/bootstrap/css/bootstrap.min.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(

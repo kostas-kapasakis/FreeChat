@@ -8,7 +8,7 @@
 
    
     self.Init = function (config) {
-        LoadingAnimation();
+        //LoadingAnimation();
         digestConfig(config);
         initImpl(config);
         showPage();

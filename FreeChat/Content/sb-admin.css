@@ -405,3 +405,5 @@ footer.sticky-footer {
 .navbar-sidenav .nav-item:first-child {
     margin-top: 3%!important;
 }
+
+/*Bootrap override for chrome different representation of login*/
