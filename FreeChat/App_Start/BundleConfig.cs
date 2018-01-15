@@ -23,16 +23,36 @@ namespace FreeChat
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //                      "~/Content/bootstrap.css",
+
                       "~/Content/sb-admin.css",
 
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                "~/Content/bootstrap.css"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/adminTemplateLayout").Include(
+                "~/vendor/jquery/jquery.min.js",
+                "~/vendor/bootstrap/js/bootstrap.bundle.min.js",
+                "~/vendor/jquery-easing/jquery.easing.min.js",
+                "~/vendor/datatables/jquery.dataTables.js",
+                "~/vendor/datatables/dataTables.bootstrap4.js",
+                "~/Scripts/AdminTemplate/sb-admin.js",
+                "~/Scripts/AdminTemplate/sb-admin-datatables.min.js"
+
+                ));
+
+            bundles.Add(new StyleBundle("~/bundles/adminTemplateLayoutStyle").Include(
+                    "~/vendor/font-awesome/css/font-awesome.min.css",
+                    "~/vendor/datatables/dataTables.bootstrap4.css",
+                    "~/Content/sb-admin.css",
+                    "~/Content/Site.css",
+                    "~/vendor/bootstrap/css/bootstrap.min.css"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(
-                "~/Scripts/jquery.signalR-2.2.2.min.js",
-                "~/Scripts/Controllers/chatEngineController.js",
-                "~/Scripts/Services/chatEngineService.js"));
+             "~/Scripts/jquery.signalR-2.2.2.min.js",
+             "~/Scripts/Controllers/chatEngineController.js",
+             "~/Scripts/Services/chatEngineService.js"));
 
             bundles.Add(new StyleBundle("~/bundles/ChatEngineViewStyle").Include(
                 "~/Content/ChatEngine.css"));
@@ -50,11 +70,19 @@ namespace FreeChat
 
 
             bundles.Add(new ScriptBundle("~/bundles/IndexView").Include(
+                "~/vendor/jquery/jquery.min.js",
                 "~/Scripts/jquery.signalR-2.2.2.min.js",
                 "~/Scripts/Services/indexService.js",
                 "~/Scripts/Controllers/indexController.js",
                 "~/Scripts/Controllers/monitorController.js")
                 );
+
+
+            bundles.Add(new ScriptBundle("~/bundles/ChartsView").Include(
+                "~/vendor/chart.js/Chart.min.js",
+                "~/Scripts/AdminTemplate/sb-admin-charts.min.js"
+                ));
+
         }
     }
 }

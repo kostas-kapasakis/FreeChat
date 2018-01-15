@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: white !important;
 }
 
 .form-horizontal .control-label {
@@ -20,24 +21,24 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-#container {
-    width: 350px
-}
-
-#tabbox {
-    height: 40px
-}
-
-#panel {
-    background-color: #FFF;
-    height: 300px;
-}
+/*input,*/
+/*select,*/
+/*textarea {*/
+/*    max-width: 280px;*/
+/*}*/
+/**/
+/*#container {*/
+/*    width: 350px*/
+/*}*/
+/**/
+/*#tabbox {*/
+/*    height: 40px*/
+/*}*/
+/**/
+/*#panel {*/
+/*    background-color: #FFF;*/
+/*    height: 300px;*/
+/*}*/
 
 
 /*Bootsrap Overrides*/
@@ -195,4 +196,196 @@ h6,
 #info:hover + #RoomDetails {
     z-index: 2;
     display: block;
+}
+#register_container {
+    max-width: 300px;
+}
+
+#topRightMenu, #topRightMenu li {
+    text-overflow: ellipsis;
+    width: 220px;
+}
+
+.navbar-brand {
+    margin-left: 2% !important;
+    font-family: 'Dosis';
+    font-size: x-large;
+}
+
+#searchBarInput {
+    margin-left: 4%;
+    width: 180px;
+}
+
+#mainNav, #leftNavBar {
+    background-color: #ccebff !important;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+}
+
+#IndexContainer {
+    display: none;
+    text-align: center;
+}
+
+.table td {
+    float: left !important;
+    display: block !important;
+}
+
+
+
+/*Bootsrap Overrides*/
+.glyphicon-arrow-right {
+    color: black;
+}
+
+.img-list {
+    list-style-type: none;
+}
+#imglistMainCategories .list {
+    list-style-type: none !important;
+    max-width: 1400px;
+    margin: 20px auto;
+}
+
+
+#imglistMainCategories .img-list .li-img a {
+    text-decoration: none !important;
+}
+
+#imglistMainCategories .li-sub p {
+    margin: 0;
+}
+
+#imglistMainCategories .list li {
+    border-bottom: 1px solid #ccc;
+    display: table;
+    border-collapse: collapse;
+    float: left;
+    width: 100%;
+}
+
+#imglistMainCategories .inner {
+    display: table-row;
+    overflow: hidden;
+}
+
+#imglistMainCategories .li-img {
+    display: table-cell;
+    vertical-align: middle;
+    width: 30%;
+    padding-right: 1em;
+}
+
+    #imglistMainCategories .li-img img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+#imglistMainCategories .li-text {
+    display: table-cell;
+    vertical-align: middle;
+    width: 70%;
+}
+
+#imglistMainCategories .li-head {
+    margin: 10px 0 0 0;
+}
+
+#imglistMainCategories .li-sub {
+    margin: 0;
+}
+
+@media all and (min-width: 45em) {
+    #imglistMainCategories .list li {
+        float: left;
+        width: 50%;
+    }
+}
+
+@media all and (min-width: 75em) {
+    #imglistMainCategories .list li {
+        width: 33.33333%;
+    }
+}
+
+/* for flexbox */
+@supports(display: flex) {
+    #imglistMainCategories .list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        #imglistMainCategories .li-img,
+        #imglistMainCategories .li-text,
+        #imglistMainCategories .list li {
+            display: block;
+            float: none;
+        }
+
+    #imglistMainCategories .li-img {
+        align-self: center; /* to match the middle alignment of the original */
+    }
+
+    #imglistMainCategories .inner {
+        display: flex;
+    }
+}
+
+/* for grid */
+@supports(display: grid) {
+    #imglistMainCategories .list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+
+        #imglistMainCategories .list li {
+            width: auto; /* this overrides the media queries */
+        }
 }

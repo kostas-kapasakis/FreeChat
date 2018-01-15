@@ -64,18 +64,18 @@
 
                         <li class="list-group-item">
                             <p>
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                                &nbsp;&nbsp;Choose one of the available categories
+                                <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>
+                                Choose one of the available categories
                             </p>
                         </li>
                         <li class="list-group-item">
                             <p>
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>Then choose a name for the chatroom 
+                                <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>Then choose a name for the chatroom 
                             </p>
                         </li>
                         <li class="list-group-item">
                             <p>
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>
                                 Finally describe the topic of the new chat room <br />
                                 and click submit
                             </p>
@@ -99,12 +99,12 @@
             <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="card-block">
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        <li class="list-group-item ">                       
+                            <i class="fa fa-fw fa-check-square"></i>
                             No one is a chat room owner
                         </li>
                         <li class="list-group-item">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>
                             Topic of each new room must be relative<br />
                             with the category selected
                         </li>
@@ -124,13 +124,13 @@
 </div>
 
 
-@*@section scripts{*@
-@*    @Scripts.Render("/bundles/ChatRoomView")*@
-@*    @Styles.Render("/bundles/ChatRoomViewStyle")*@
-@*    <script type="text/javascript">*@
-@*        $(function () {*@
-@*            ChatRoomController.Init();*@
-@*        });*@
-@*    </script>*@
-@**@
-@*}*@
+@section scripts{
+    @Scripts.Render("/bundles/ChatRoomView")
+    @Styles.Render("/bundles/ChatRoomViewStyle")
+    <script type="text/javascript">
+        $(function () {
+            ChatRoomController.Init();
+        });
+    </script>
+
+}

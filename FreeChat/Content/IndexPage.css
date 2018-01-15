@@ -8,9 +8,6 @@
     margin-left: auto;
 }
 
-
-/*Bootsrap Overrides*/
-
-.glyphicon-arrow-righ {
-    color: black;
+#IndexContainer {
+    display: block;
 }

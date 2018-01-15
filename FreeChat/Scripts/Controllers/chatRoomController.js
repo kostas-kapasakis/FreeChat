@@ -26,7 +26,9 @@
                     genre: $("#MainCategories").find(":selected").attr("value"),
                     description: $("#Topic_Description").val()
                 },
-                done: function(data) {
+                done: function (data) {
+
+                    console.log("mphke");
                     $("#Topic_Name").val("");
                     $("#Topic_Description").val("");
                     $("#MainCategories").val("");

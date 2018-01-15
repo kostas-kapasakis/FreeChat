@@ -3,8 +3,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace FreeChat
 {
@@ -53,15 +57,28 @@ namespace FreeChat
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            var facebookOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "454854064912285",
+                AppSecret = "192c44df3d2d160e5401c8c90cd10dbe",
+                Scope = { "email" },
+                Provider = new FacebookAuthenticationProvider()
+                {
+                    OnAuthenticated = (context) =>
+                    {
+                        context.Identity.AddClaim(new Claim("urn:facebook:accesstoken", context.AccessToken, ClaimValueTypes.String, "Facebook"));
+                        return Task.FromResult(0);
+                    }
+                }
+            };
+            app.UseFacebookAuthentication(
+                facebookOptions);
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "225318615651-t7rp6jgv0m31gbnj14bk9f38sosnkfr7.apps.googleusercontent.com",
+                ClientSecret = "yKKoDcYIgSVHBJK9ROcvuayT"
+            });
         }
     }
 }

@@ -1104,9 +1104,9 @@ pre code {
   .col-md-3 {
     width: 25%;
   }
-  .col-md-4 {
-    width: 33.33333333333333%;
-  }
+    .col-md-4 {
+        width: 33.33333333333333%!important;
+        
   .col-md-5 {
     width: 41.66666666666667%;
   }
