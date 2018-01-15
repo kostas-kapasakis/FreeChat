@@ -70,6 +70,7 @@ namespace FreeChat
 
 
             bundles.Add(new ScriptBundle("~/bundles/IndexView").Include(
+                "~/vendor/jquery/jquery.min.js",
                 "~/Scripts/jquery.signalR-2.2.2.min.js",
                 "~/Scripts/Services/indexService.js",
                 "~/Scripts/Controllers/indexController.js",
