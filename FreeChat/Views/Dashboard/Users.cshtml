@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+}
+
+
+<div id="IndexContainer">
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Registered Users
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/IndexView")
+
+    <script type="text/javascript">
+        $(function() {
+            IndexController.Init();
+        });
+    </script>
+
+}
