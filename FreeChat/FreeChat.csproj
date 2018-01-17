@@ -20,9 +20,9 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -285,6 +285,10 @@
     <Compile Include="Migrations\201801081509504_SeedUsers.cs" />
     <Compile Include="Migrations\201801081509504_SeedUsers.Designer.cs">
       <DependentUpon>201801081509504_SeedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801171930334_ProperSeedingInMainCategories.cs" />
+    <Compile Include="Migrations\201801171930334_ProperSeedingInMainCategories.Designer.cs">
+      <DependentUpon>201801171930334_ProperSeedingInMainCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -628,6 +632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801081509504_SeedUsers.resx">
       <DependentUpon>201801081509504_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801171930334_ProperSeedingInMainCategories.resx">
+      <DependentUpon>201801171930334_ProperSeedingInMainCategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
