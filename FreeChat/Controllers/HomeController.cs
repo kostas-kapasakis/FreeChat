@@ -26,5 +26,15 @@ namespace FreeChat.Controllers
 
             return View();
         }
+
+        public ActionResult MainCategories()
+        {
+            return View();
+        }
+
+        public ActionResult AllChatRooms()
+        {
+            return View();
+        }
     }
 }

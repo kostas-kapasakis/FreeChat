@@ -585,6 +585,8 @@
     <Content Include="Views\Dashboard\AdminDashboard.cshtml" />
     <Content Include="Views\Charts\Charts.cshtml" />
     <Content Include="Views\Account\LoginAlternative.cshtml" />
+    <Content Include="Views\Home\MainCategories.cshtml" />
+    <Content Include="Views\Home\AllChatRooms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

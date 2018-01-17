@@ -1,0 +1,22 @@
+﻿
+
+@{
+    ViewBag.Title = "Free Chat";
+    Layout = "~/Views/Shared/_AdminTemplate.cshtml";
+}
+
+<div class="container" id="container-categories-img-list">
+    <ul class="list img-list" id="imglistMainCategories"></ul>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/IndexView")
+
+    <script type="text/javascript">
+        $(function() {
+            IndexController.Init();
+        });
+    </script>
+
+}
