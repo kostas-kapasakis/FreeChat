@@ -31,14 +31,16 @@ namespace FreeChat
 
 
             bundles.Add(new ScriptBundle("~/bundles/adminTemplateLayout").Include(
-                "~/vendor/jquery/jquery.min.js",
-                "~/vendor/bootstrap/js/bootstrap.bundle.min.js",
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/bootbox.min.js",
+                "~/Scripts/Datatables/jquery.datatables.js",
+                "~/Scripts/Datatables/datatables.bootstrap.js",
                 "~/vendor/jquery-easing/jquery.easing.min.js",
-                "~/vendor/datatables/jquery.dataTables.js",
                 "~/vendor/datatables/dataTables.bootstrap4.js",
                 "~/Scripts/AdminTemplate/sb-admin.js",
-                "~/Scripts/AdminTemplate/sb-admin-datatables.min.js",
-                "~/Scripts/bootbox.min.js"
+                "~/Scripts/AdminTemplate/sb-admin-datatables.min.js"
+                
 
                 ));
 
