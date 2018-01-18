@@ -24,11 +24,11 @@
     }
 
     function initialListeners() {
-        $(_document).on("click",
-            "#allRoomsButton",
-            function() {
-                LoadAllrooms();
-            });
+//        $(_document).on("click",
+//            "#allRoomsButton",
+//            function() {
+//                LoadAllrooms();
+//            });
 
         $(_document).on("mouseenter",
             ".inner",
@@ -46,14 +46,14 @@
 
 
     }
-    function LoadAllrooms() {
-        $("#musicChatRoomsdiv").hide();
-        $("#sportsChatRoomsdiv").hide();
-        $("#tripsChatRoomsdiv").hide();
-
-        $('#allrooms').fadeOut();
-        $("#chatrooms").fadeIn();
-    }
+//    function LoadAllrooms() {
+//        $("#musicChatRoomsdiv").hide();
+//        $("#sportsChatRoomsdiv").hide();
+//        $("#tripsChatRoomsdiv").hide();
+//
+//        $('#allrooms').fadeOut();
+//        $("#chatrooms").fadeIn();
+//    }
 
     function displayMainCategories() {
 

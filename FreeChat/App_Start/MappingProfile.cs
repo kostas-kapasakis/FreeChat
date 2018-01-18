@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FreeChat.Models;
 using FreeChat.Models.Domain;
 using FreeChat.Models.DTO;
 
@@ -13,6 +14,8 @@ namespace FreeChat
             CreateMap<TopicsDto, Topics>();
             CreateMap<MainCategories, MainCategoriesDto>();
             CreateMap<MainCategoriesDto, MainCategories>();
+            CreateMap<ApplicationUser, UserDto>();
+            CreateMap<UserDto, ApplicationUser>();
         }
     }
 }

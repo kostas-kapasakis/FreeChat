@@ -1,27 +1,29 @@
 ﻿using FreeChat.Models;
+using FreeChat.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using FreeChat.Repositories.Interfaces;
 
 namespace FreeChat.Repositories
 {
-    public class ConnectedUsersRepository : IConnectedUsers
+    public class UsersRepository : IUsers
     {
         private readonly ApplicationDbContext _context;
 
-        public ConnectedUsersRepository(ApplicationDbContext context)
+        public UsersRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public long CountConnectedUsers()
+        public long CountRegisteredUsers()
         {
             return _context.ConnectedUsers.Count();
         }
 
-        public IEnumerable<ApplicationUser> GetConnectedUsers()
+        public IEnumerable<ApplicationUser> GetRegisteredUsers()
         {
             return _context.Users;
         }
+
+
     }
 }

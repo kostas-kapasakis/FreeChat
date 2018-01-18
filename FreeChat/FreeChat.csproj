@@ -239,6 +239,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\RoomCreatorController.cs" />
     <Compile Include="Controllers\API\RoomListController.cs" />
+    <Compile Include="Controllers\API\UsersController.cs" />
     <Compile Include="Controllers\ChartsController.cs" />
     <Compile Include="Controllers\ChatRoomController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="Models\Domain\MainCategories.cs" />
     <Compile Include="Models\DTO\MainCategoriesDto.cs" />
     <Compile Include="Models\DTO\TopicsDto.cs" />
+    <Compile Include="Models\DTO\UserDto.cs" />
     <Compile Include="Models\Enums\TopicDeletionVerdictEnum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -306,14 +308,14 @@
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ConnectedUsersRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IConnectedUsers.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUsers.cs" />
     <Compile Include="Repositories\Interfaces\ITopicsRepo.cs" />
     <Compile Include="Repositories\Interfaces\IUserConnectionsRepo.cs" />
     <Compile Include="Repositories\TopicsRepoRepository.cs" />
     <Compile Include="Repositories\UserConnectionsRepository.cs" />
-    <Compile Include="Services\ConnectedUsersService.cs" />
-    <Compile Include="Services\ServicesInterfaces\IConnectedUsersService.cs" />
+    <Compile Include="Services\UsersService.cs" />
+    <Compile Include="Services\ServicesInterfaces\IUsersService.cs" />
     <Compile Include="Services\ServicesInterfaces\ITopicsService.cs" />
     <Compile Include="Services\ServicesInterfaces\IUserConnectionsService.cs" />
     <Compile Include="Services\TopicsService.cs" />
@@ -445,6 +447,8 @@
     <Content Include="Scripts\AdminTemplate\sb-admin-datatables.min.js" />
     <Content Include="Scripts\AdminTemplate\sb-admin.js" />
     <Content Include="Scripts\AdminTemplate\sb-admin.min.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -466,9 +470,13 @@
     <Content Include="Scripts\Controllers\chatRoomController.js" />
     <Content Include="Scripts\Controllers\indexController.js" />
     <Content Include="Scripts\Controllers\monitorController.js" />
+    <Content Include="Scripts\copy_csv_xls_pdf.swf" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="vendor\datatables\jquery.dataTables.js" />
+    <Content Include="vendor\datatables\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -483,8 +491,11 @@
     <Content Include="Scripts\Services\chatEngineService.js" />
     <Content Include="Scripts\Services\chatRoomService.js" />
     <Content Include="Scripts\Services\indexService.js" />
+    <Content Include="Scripts\TableTools.js" />
+    <Content Include="Scripts\TableTools_orig.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\ZeroClipboard.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -501,7 +512,6 @@
     <Content Include="vendor\chart.js\Chart.min.js" />
     <Content Include="vendor\datatables\dataTables.bootstrap4.css" />
     <Content Include="vendor\datatables\dataTables.bootstrap4.js" />
-    <Content Include="vendor\datatables\jquery.dataTables.js" />
     <Content Include="vendor\font-awesome\css\font-awesome.css" />
     <Content Include="vendor\font-awesome\css\font-awesome.min.css" />
     <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />

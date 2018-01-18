@@ -4,29 +4,122 @@
 }
 
 
-<div id="IndexContainer">
+
     <div class="card mb-3">
         <div class="card-header">
             <i class="fa fa-table"></i> Registered Users
         </div>
         <div class="card-body">
             <div class="table-responsive">
-
+                <table id="registeredUsers" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Change Status</th>
+                    <th>Remove User</th>
+                  
+                </tr>
+                </thead>
+                <tbody></tbody>
+                </table>
             </div>
         </div>
         <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
     </div>
-</div>
+
 
 
 
 @section scripts{
     @Scripts.Render("~/bundles/IndexView")
 
-    <script type="text/javascript">
-        $(function() {
-            IndexController.Init();
+    @*    <script type="text/javascript">*@
+    @*        $(function() {*@
+    @*            IndexController.Init();*@
+    @*        });*@
+    @*    </script>*@
+
+    <script>
+        $(document).ready(function() {
+            var table = $("#registeredUsers").DataTable({
+                ajax: {
+                    type: "GET",
+                    url: "/api/Users/GetRegisteredUsers",
+                    dataSrc: ""
+                },
+
+                columns: [
+                    {
+                        data: "Id"
+                    },
+                    {
+                        data: "UserName"
+                    },
+                    {
+                        data: "Email"
+                    },
+                    {
+                        data: "Id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete'  id='changeStatusUserBtn' data-user-id=" +
+                                data +
+                                ">Change Status</button>";
+                        }
+                    },
+                    {
+                        data: "Id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete' id='deleteUserBtn' data-user-id=" +
+                                data +
+                                ">Delete Users</button>";
+                        }
+                    }
+                ]
+            });
+
+
+            $("#registeredUsers").on("click",
+                "#changeStatusUserBtn",
+                function() {
+                    var button = $(this);
+
+                    bootbox.confirm("Change Status of User?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/customers/" + button.attr("data-customer-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        table.row(button.parents("tr")).remove().draw();
+                                    }
+                                });
+                            }
+                        });
+                });
+
+            $("#registeredUsers").on("click",
+                "#deleteUserBtn",
+                function() {
+                    var button = $(this);
+
+                    bootbox.confirm("Delete User?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/api/customers/" + button.attr("data-customer-id"),
+                                    method: "DELETE",
+                                    success: function() {
+                                        table.row(button.parents("tr")).remove().draw();
+                                    }
+                                });
+                            }
+                        });
+                });
+
         });
     </script>
+
 
 }
