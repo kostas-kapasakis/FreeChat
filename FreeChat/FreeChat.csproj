@@ -20,9 +20,12 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -265,10 +268,6 @@
     <Compile Include="Migrations\201801041036384_AddNavigationPropertyInMainCategories.cs" />
     <Compile Include="Migrations\201801041036384_AddNavigationPropertyInMainCategories.Designer.cs">
       <DependentUpon>201801041036384_AddNavigationPropertyInMainCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801041038199_SeedInitialValuesToMainCategories.cs" />
-    <Compile Include="Migrations\201801041038199_SeedInitialValuesToMainCategories.Designer.cs">
-      <DependentUpon>201801041038199_SeedInitialValuesToMainCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201801041056043_AddingDescriptionColumnInTheTopicsTable.cs" />
     <Compile Include="Migrations\201801041056043_AddingDescriptionColumnInTheTopicsTable.Designer.cs">
@@ -620,9 +619,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801041036384_AddNavigationPropertyInMainCategories.resx">
       <DependentUpon>201801041036384_AddNavigationPropertyInMainCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801041038199_SeedInitialValuesToMainCategories.resx">
-      <DependentUpon>201801041038199_SeedInitialValuesToMainCategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801041056043_AddingDescriptionColumnInTheTopicsTable.resx">
       <DependentUpon>201801041056043_AddingDescriptionColumnInTheTopicsTable.cs</DependentUpon>

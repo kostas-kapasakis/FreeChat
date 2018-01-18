@@ -416,3 +416,7 @@ h6,
     }
 }
 
+
+#register_container {
+    box-sizing:unset !important;
+}
