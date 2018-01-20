@@ -18,40 +18,40 @@ namespace FreeChat
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
 
-                      "~/Content/sb-admin.css",
 
-                      "~/Content/site.css",
-                "~/Content/bootstrap.css"));
-
+            //-----------------------Admin Template Bundles 
 
             bundles.Add(new ScriptBundle("~/bundles/adminTemplateLayout").Include(
                 "~/Scripts/jquery-{version}.js",
-                "~/vendor/bootstrap/js/bootstrap.min.js",
-                "~/Scripts/bootbox.min.js",
-                "~/vendor/datatables/jquery.dataTables.js",
-                "~/vendor/datatables-plugins/dataTables.bootstrap.js",
-                "~/vendor/datatables-responsive/dataTables.responsive.js",
-                                "~/vendor/datatables/dataTables.bootstrap4.js",
-                "~/Scripts/AdminTemplate/sb-admin.js"
+                "~/Scripts/bootstrap4/bootstrap.bundle.js",
+                "~/Scripts/bootbox.js",
+                "~/Scripts/AdminTemplate/sb-admin.js",
+                "~/Scripts/datatables/jquery.dataTables.min.js",
+                "~/Scripts/datatables/dataTables.bootstrap4.js",
+                "~/Scripts/datatables/dataTables.responsive.min.js",
+                "~/Scripts/datatables/responsive.bootstrap4.min.js"
+
 
 
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/adminTemplateLayoutStyle").Include(
-                                        "~/vendor/bootstrap/css/bootstrap.min.css",
-                    //                    "~/Content/bootstrap.min.css",
-                    //                    "~/vendor/datatables-plugins/dataTables.bootstrap.css",
-                    //                    "~/vendor/datatables-responsive/dataTables.responsive.css",
-                    "~/Content/sb-admin.css",
-                    "~/Content/Site.css",
-                    "~/vendor/font-awesome/css/font-awesome.min.css"
-                ));
+                "~/Content/bootstrap4/bootstrap.min.css",
+                "~/Content/sb-admin.css",
+                "~/Content/datatables/css/datatables.bootstrap4.min.css",
+                "~/Content/datatables/css/responsive.bootstrap.min.css",
+                "~/Content/Site.css",
+                "~/Content/font-awesome/css/font-awesome.min.css"
+              ));
+
+            //-----------------------End of Admin Template Bundles 
+
+
+
+
+            //---------------------------------Views Bundles
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(
              "~/Scripts/jquery.signalR-2.2.2.min.js",
@@ -82,9 +82,12 @@ namespace FreeChat
 
 
             bundles.Add(new ScriptBundle("~/bundles/ChartsView").Include(
-                "~/vendor/chart.js/Chart.min.js",
+                "~/Scripts/chart.js/Chart.min.js",
                 "~/Scripts/AdminTemplate/sb-admin-charts.min.js"
                 ));
+
+
+            //----------------------------------End of Views Bundles
 
         }
     }

@@ -5,9 +5,9 @@
     font-family: 'Open Sans', sans-serif!important;
 }
 
-.form-horizontal .control-label {
-    margin-right: 15px;
-}
+/*.form-horizontal .control-label {*/
+/*    margin-right: 15px;*/
+/*}*/
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -84,7 +84,7 @@
 }
 
 body {
-    font-size: 17px;
+    font-size: 15px;
 }
 
 body,
@@ -273,10 +273,10 @@ h6,
     text-align: center;
 }
 
-.table td {
-    float: left !important;
-    display: block !important;
-}
+/*.table td {*/
+/*    float: left !important;*/
+/*    display: block !important;*/
+/*}*/
 
 
 
