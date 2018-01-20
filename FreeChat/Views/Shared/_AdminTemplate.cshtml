@@ -7,6 +7,7 @@
     <title>Free Chat</title>
 
     @Styles.Render("~/bundles/adminTemplateLayoutStyle")
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"> 
 
@@ -64,10 +65,13 @@
             </div>
         </div>
     }
+        
+    @Scripts.Render("~/bundles/adminTemplateLayout")
 
     @RenderSection("Scripts", false)
 
-    @Scripts.Render("~/bundles/adminTemplateLayout")
+   
 </div>
+
 </body>
 </html>

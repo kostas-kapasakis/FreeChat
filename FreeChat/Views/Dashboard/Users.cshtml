@@ -3,7 +3,7 @@
     ViewBag.Title = "Users";
 }
 
-
+@Styles.Render("~/bundles/adminTemplateLayoutStyle")
 
     <div class="card mb-3">
         <div class="card-header">
@@ -14,7 +14,7 @@
                 <table id="registeredUsers" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Id </th>
                     <th>UserName</th>
                     <th>Email</th>
                     <th>Change Status</th>
@@ -35,21 +35,20 @@
 @section scripts{
     @Scripts.Render("~/bundles/IndexView")
 
-    @*    <script type="text/javascript">*@
-    @*        $(function() {*@
-    @*            IndexController.Init();*@
-    @*        });*@
-    @*    </script>*@
+@*        <script type="text/javascript">*@
+@*            $(function() {*@
+@*                IndexController.Init();*@
+@*            });*@
+@*        </script>*@
 
     <script>
         $(document).ready(function() {
-            var table = $("#registeredUsers").DataTable({
+           $("#registeredUsers").DataTable({
                 ajax: {
-                    type: "GET",
+                  
                     url: "/api/Users/GetRegisteredUsers",
                     dataSrc: ""
                 },
-
                 columns: [
                     {
                         data: "Id"
@@ -62,18 +61,18 @@
                     },
                     {
                         data: "Id",
-                        render: function(data) {
-                            return "<button class='btn-link js-delete'  id='changeStatusUserBtn' data-user-id=" +
-                                data +
-                                ">Change Status</button>";
+                        render: function(data,type,user) {
+                            return "<button class='btn-link js-delete'  id='changeStatusUserBtn' data-user-id='" +
+                                user.Id +
+                                "'>Change Status</button>";
                         }
                     },
                     {
                         data: "Id",
-                        render: function(data) {
-                            return "<button class='btn-link js-delete' id='deleteUserBtn' data-user-id=" +
-                                data +
-                                ">Delete Users</button>";
+                        render: function (data, type, user) {
+                            return "<button class='btn-default js-delete' id='deleteUserBtn' data-user-id='" +
+                                user.Id +
+                                "'>Delete Users</button>";
                         }
                     }
                 ]

@@ -32,24 +32,25 @@ namespace FreeChat
 
             bundles.Add(new ScriptBundle("~/bundles/adminTemplateLayout").Include(
                 "~/Scripts/jquery-{version}.js",
-                "~/Scripts/bootstrap.js",
+                "~/vendor/bootstrap/js/bootstrap.min.js",
                 "~/Scripts/bootbox.min.js",
-                "~/Scripts/Datatables/jquery.datatables.js",
-                "~/Scripts/Datatables/datatables.bootstrap.js",
-                "~/vendor/jquery-easing/jquery.easing.min.js",
-                "~/vendor/datatables/dataTables.bootstrap4.js",
-                "~/Scripts/AdminTemplate/sb-admin.js",
-                "~/Scripts/AdminTemplate/sb-admin-datatables.min.js"
-                
+                "~/vendor/datatables/jquery.dataTables.js",
+                "~/vendor/datatables-plugins/dataTables.bootstrap.js",
+                "~/vendor/datatables-responsive/dataTables.responsive.js",
+                                "~/vendor/datatables/dataTables.bootstrap4.js",
+                "~/Scripts/AdminTemplate/sb-admin.js"
+
 
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/adminTemplateLayoutStyle").Include(
-                    "~/vendor/font-awesome/css/font-awesome.min.css",
-                    "~/vendor/datatables/dataTables.bootstrap4.css",
+                                        "~/vendor/bootstrap/css/bootstrap.min.css",
+                    //                    "~/Content/bootstrap.min.css",
+                    //                    "~/vendor/datatables-plugins/dataTables.bootstrap.css",
+                    //                    "~/vendor/datatables-responsive/dataTables.responsive.css",
                     "~/Content/sb-admin.css",
                     "~/Content/Site.css",
-                    "~/vendor/bootstrap/css/bootstrap.min.css"
+                    "~/vendor/font-awesome/css/font-awesome.min.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(
@@ -73,7 +74,6 @@ namespace FreeChat
 
 
             bundles.Add(new ScriptBundle("~/bundles/IndexView").Include(
-                "~/vendor/jquery/jquery.min.js",
                 "~/Scripts/jquery.signalR-2.2.2.min.js",
                 "~/Scripts/Services/indexService.js",
                 "~/Scripts/Controllers/indexController.js",
