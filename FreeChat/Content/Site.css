@@ -420,3 +420,14 @@ h6,
 #register_container {
     box-sizing:unset !important;
 }
+
+#registeredUsers {
+    width: 100%;
+   
+}
+#registeredUsers_paginate {
+    float: right;
+}
+#allChatRooms_paginate {
+    float: right;
+}

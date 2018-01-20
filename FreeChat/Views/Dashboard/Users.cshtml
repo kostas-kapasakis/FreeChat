@@ -3,15 +3,15 @@
     ViewBag.Title = "Users";
 }
 
-@*@Styles.Render("~/bundles/adminTemplateLayoutStyle")*@
+@Styles.Render("~/bundles/adminTemplateLayoutStyle")
 
     <div class="card m-5">
         <div class="card-header">
             <i class="fa fa-table"></i> Registered Users
         </div>
         <div class="card-body">
-            <div class="container">
-                <table id="registeredUsers" class="table table-bordered table-hover">
+            <div class="table-responsive">
+                <table id="registeredUsers" class="table table-bordered" >
                 <thead>
                 <tr>
                     <th>Id</th>

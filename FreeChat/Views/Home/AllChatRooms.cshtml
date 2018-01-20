@@ -4,25 +4,34 @@
     Layout = "~/Views/Shared/_AdminTemplate.cshtml";
 }
 
+<div class="row align-items-center justify-content-center">
+    <div class="col">
+            @Html.ActionLink("Create Room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })       
+    </div>
+</div>
 
-
-<p>
-    @Html.ActionLink("Create Room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })
-</p>
-
-<table id="allChatRooms" class="table table-bordered table-hover">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Genre</th>
-        <th>Description</th>
-        <th>Date Created</th>
-        <th>Date Expired</th>
-    </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-
+<div class="card m-5">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Registered Users
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+                <table id="allChatRooms" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Genre</th>
+                        <th>Description</th>
+                        <th>Date Created</th>
+                        <th>Date Expired</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
+</div>
 
 @section scripts
 {
@@ -47,11 +56,25 @@
                         data: "Description"
                     },
                     {
-                        data: "DateCreated"
+                        data: "DateCreated",
+                        render:function(data) {
+                            var dateString = data;                        
+                            var yearDate = dateString.substring(0, dateString.indexOf("T"));
+                            var time = dateString.substring(dateString.indexOf("T")+1, dateString.length-4);
+                            return yearDate + "  " + time;
+                        }
+                    
                     },
                     {
-                        data: "DateExpired"
-                    },
+                        data: "DateExpired",
+                        render:function(data) {
+                            var dateString = data;
+                            var yearDate = dateString.substring(0, dateString.indexOf("T"));
+                            var time = dateString.substring(dateString.indexOf("T")+1, dateString.length-4);
+                           return yearDate + "  " + time;
+                        }
+                    
+                    }
                 ]
             });
 
