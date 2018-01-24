@@ -15,10 +15,10 @@
     }
 
     function initImpl(config) {
-        InitialListeners();
+        initialListeners();
     }
 
-    function InitialListeners() {
+    function initialListeners() {
         $(_document).on("click","#createRoomForm",function() {
             _chatRoomService.createRoom({
                 data: {

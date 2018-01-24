@@ -6,19 +6,19 @@
     margin-right:10%;
     margin-bottom:-10%;
 }
-h3{
-    line-height:130%;
-}
-#form{
-    display:inline-block;
-    width:550px;
-}
-.form-group{
-    width:500px;
-}
-#createInfo ul{
-    list-style:none;
-}
+/*h3{*/
+/*    line-height:130%;*/
+/*}*/
+/*#form{*/
+/*    display:inline-block;*/
+/*    width:550px;*/
+/*}*/
+/*.form-group{*/
+/*    width:500px;*/
+/*}*/
+/*#createInfo ul{*/
+/*    list-style:none;*/
+/*}*/
 /*Bootstrap Overrides*/
 
 /*.list-group li:before {*/

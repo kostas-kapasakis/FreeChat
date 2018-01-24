@@ -20,12 +20,9 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -293,6 +290,10 @@
     <Compile Include="Migrations\201801201009413_ProperSeedingToTopicsTable.cs" />
     <Compile Include="Migrations\201801201009413_ProperSeedingToTopicsTable.Designer.cs">
       <DependentUpon>201801201009413_ProperSeedingToTopicsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801241750214_AddActiveProperty.cs" />
+    <Compile Include="Migrations\201801241750214_AddActiveProperty.Designer.cs">
+      <DependentUpon>201801241750214_AddActiveProperty.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -808,6 +809,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801201009413_ProperSeedingToTopicsTable.resx">
       <DependentUpon>201801201009413_ProperSeedingToTopicsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801241750214_AddActiveProperty.resx">
+      <DependentUpon>201801241750214_AddActiveProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

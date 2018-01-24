@@ -7,6 +7,6 @@ namespace FreeChat.Services.ServicesInterfaces
     {
         long CountRegisteredUsers();
         IEnumerable<ApplicationUser> GetRegisteredUsers();
-
+        bool UpdateUserStatus(bool status, string userId);
     }
 }

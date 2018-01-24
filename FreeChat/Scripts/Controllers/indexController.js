@@ -43,21 +43,16 @@
                 var $target = this;
                 $($target).parent("li").find("button").css("display", "none");
             });
-
+        $(_document).on("click",".goToRoomsBtn",
+            function() {
+                var categId = $(this).parents("li").attr("data-categ-id");
+                window.location = "/Home/AllChatRooms";
+            });
 
     }
-//    function LoadAllrooms() {
-//        $("#musicChatRoomsdiv").hide();
-//        $("#sportsChatRoomsdiv").hide();
-//        $("#tripsChatRoomsdiv").hide();
-//
-//        $('#allrooms').fadeOut();
-//        $("#chatrooms").fadeIn();
-//    }
 
-    function displayMainCategories() {
 
-       
+    function displayMainCategories() { 
         _indexService.GetMainCategories({
             done: function (data) {
                 populateMainCategoriesList(data);
@@ -84,7 +79,7 @@
             function(index, obj) {
                 $("#imglistMainCategories").append
                 (
-                    `<li>
+                    `<li data-categ-id='${obj.Id}'>
                         <a href='#' class='inner'>
                            <div  class='li-img'> <img src='${obj.CategoryImage}' alt='${obj.Name}' height='120px'/></div>                                                                        <div class='li-text'>
                            <h3 class='li-head'>${obj.Name}</h3>

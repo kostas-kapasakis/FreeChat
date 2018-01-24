@@ -6,13 +6,13 @@
 
 @Styles.Render("/bundles/ChatRoomViewStyle")
 
-<h3>
-    Want to chat about whatever you like?<br>
+<h4>
+    Want to chat ?<br>
     Create the chat room you want
-</h3><br />
+</h4><br />
 
 
-<div id="form" class="container">
+<div id="form">
     @using (Html.BeginForm(null, null, FormMethod.Post, new { id ="createRoomForm" }))
     {
         <p class="alert alert-info">All fields are <strong>required</strong>.</p>
@@ -42,91 +42,15 @@
 
 </div>
 
-<div id="createInfo" class="alert alert-info">
 
-
-    <div id="accordion" role="tablist" aria-multiselectable="true">
-
-        <div class="card">
-            <div class="card-header" role="tab" id="headingOne">
-                <center>
-                    <h5 class="mb-0">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                            Steps explanation
-                        </a>
-                    </h5>
-                </center>
-            </div>
-            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                <div class="card-block">
-                    <ul class="list-group">
-
-                        <li class="list-group-item">
-                            <p>
-                                <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>
-                                Choose one of the available categories
-                            </p>
-                        </li>
-                        <li class="list-group-item">
-                            <p>
-                                <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>Then choose a name for the chatroom 
-                            </p>
-                        </li>
-                        <li class="list-group-item">
-                            <p>
-                                <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>
-                                Finally describe the topic of the new chat room <br />
-                                and click submit
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" role="tab" id="headingThree">
-                <center>
-                    <h5 class="mb-0">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-
-                            Info about New Chat Rooms
-                        </a>
-                    </h5>
-                </center>
-            </div>
-            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="card-block">
-                    <ul class="list-group">
-                        <li class="list-group-item ">                       
-                            <i class="fa fa-fw fa-check-square"></i>
-                            No one is a chat room owner
-                        </li>
-                        <li class="list-group-item">
-                            <span class="fa fa-fw fa-check-square" aria-hidden="true"></span>
-                            Topic of each new room must be relative<br />
-                            with the category selected
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
-</div>
-<div class="panel panel-default" id="footer">
-    <div class="panel-body">
+<div class="container" id="footer">
+    
         @Html.ActionLink("Back to Chat Rooms List", "Index", "Home")
-    </div>
 </div>
 
 
 @section scripts{
     @Scripts.Render("/bundles/ChatRoomView")
-    @Styles.Render("/bundles/ChatRoomViewStyle")
     <script type="text/javascript">
         $(function () {
             ChatRoomController.Init();

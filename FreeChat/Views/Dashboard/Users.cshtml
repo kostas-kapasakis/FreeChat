@@ -17,8 +17,8 @@
                     <th>Id</th>
                     <th>UserName</th>
                     <th>Email</th>
-                    <th>Change Status</th>
-                    <th>Remove User</th>
+                    <th>Status</th>
+                  
 
                 </tr>
                 </thead>
@@ -35,22 +35,23 @@
 @section scripts{
     @Scripts.Render("~/bundles/IndexView")
 
-@*        <script type="text/javascript">*@
-@*            $(function() {*@
-@*                IndexController.Init();*@
-@*            });*@
-@*        </script>*@
+    @*        <script type="text/javascript">*@
+    @*            $(function() {*@
+    @*                IndexController.Init();*@
+    @*            });*@
+    @*        </script>*@
 
     <script>
+
+        var $table;
+
         $(document).ready(function() {
-           $("#registeredUsers").DataTable({
+            $table = $("#registeredUsers").DataTable({
                 ajax: {
-                  
                     url: "/api/Users/GetRegisteredUsers",
                     dataSrc: ""
                 },
                 columns: [
-                  
                     {
                         data: "Id"
                     },
@@ -62,18 +63,19 @@
                     },
                     {
                         data: "Id",
-                        render: function(data,type,user) {
-                            return "<button class='btn-info js-delete'  id='changeStatusUserBtn' data-user-id='" +
-                                user.Id +
-                                "'>Change Status</button>";
-                        }
-                    },
-                    {
-                        data: "Id",
-                        render: function (data, type, user) {
-                            return "<button class='btn-info js-delete' id='deleteUserBtn' data-user-id='" +
-                                user.Id +
-                                "'>Delete Users</button>";
+                        render: function(data, type, user) {
+
+                            if (user.Active) {
+                                console.log("active");
+                                console.log(user);
+                                return `<button class='btn-link js-deactivate btn-info' data-user-id=${user.Id
+                                    }>Deactivate</button>`;
+                            } else {
+                                console.log("deaactive");
+                                console.log(user);
+                                return `<button class='btn-link js-deactivate btn-warning' data-user-id=${user.Id
+                                    }>Activate</button>`;
+                            }
                         }
                     }
                 ]
@@ -81,43 +83,45 @@
 
 
             $("#registeredUsers").on("click",
-                "#changeStatusUserBtn",
+                ".js-deactivate",
                 function() {
-                    var button = $(this);
+                    if ($(this).hasClass("active")) {
+                        var button = $(this);
+                        var userId = button.attr("data-user-id");
+                        bootbox.confirm("Are you sure you want to deactivate this user?",
+                            function(result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: `/api/Users/UpdateUserActiveStatus?status=false&userId=${userId}`,
+                                        method: "POST",
+                                        success: function(response) {
+                                            $table.row(button.text("Activate").removeClass("btn-info")
+                                                .addClass("btn-warning")).draw();
 
-                    bootbox.confirm("Change Status of User?",
-                        function(result) {
-                            if (result) {
-                                $.ajax({
-                                    url: "/api/customers/" + button.attr("data-customer-id"),
-                                    method: "DELETE",
-                                    success: function() {
-                                        table.row(button.parents("tr")).remove().draw();
-                                    }
-                                });
-                            }
-                        });
+                                        }
+                                    });
+                                }
+                            });
+                    } else {
+                        var button2 = $(this);
+                        var userId2 = button2.attr("data-user-id");
+                        bootbox.confirm("Are you sure you want to activate this user?",
+                            function(result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: `/api/Users/UpdateUserActiveStatus?status=false&userId=${userId2}`,
+                                        method: "POST",
+                                        success: function(response) {
+                                            $table.row(button2.text("Deactivate").removeClass("btn-warning")
+                                                .addClass("btn-info")).draw();
+
+
+                                        }
+                                    });
+                                }
+                            });
+                    }
                 });
-
-            $("#registeredUsers").on("click",
-                "#deleteUserBtn",
-                function() {
-                    var button = $(this);
-
-                    bootbox.confirm("Delete User?",
-                        function(result) {
-                            if (result) {
-                                $.ajax({
-                                    url: "/api/customers/" + button.attr("data-customer-id"),
-                                    method: "DELETE",
-                                    success: function() {
-                                        table.row(button.parents("tr")).remove().draw();
-                                    }
-                                });
-                            }
-                        });
-                });
-
         });
     </script>
 

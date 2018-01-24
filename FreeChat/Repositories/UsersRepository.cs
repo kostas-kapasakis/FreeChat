@@ -1,6 +1,7 @@
 ﻿using FreeChat.Models;
 using FreeChat.Repositories.Interfaces;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace FreeChat.Repositories
@@ -22,6 +23,19 @@ namespace FreeChat.Repositories
         public IEnumerable<ApplicationUser> GetRegisteredUsers()
         {
             return _context.Users;
+        }
+
+        public bool UpdateUserStatus(bool status, string userId)
+        {
+            var user = _context.Users.FirstOrDefault(x => x.Id == userId);
+
+            if (user == null) { return false; }
+
+            user.Active = status;
+            _context.Entry(user).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return true;
         }
 
 

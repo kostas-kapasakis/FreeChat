@@ -34,5 +34,11 @@ namespace FreeChat.Controllers.API
             return Ok(_service.CountRegisteredUsers());
         }
 
+        [HttpPost]
+        public bool UpdateUserActiveStatus(bool status, string userId)
+        {
+            return _service.UpdateUserStatus(status, userId);
+        }
+
     }
 }

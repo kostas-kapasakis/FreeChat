@@ -8,6 +8,8 @@ namespace FreeChat.Repositories.Interfaces
         IEnumerable<ApplicationUser> GetRegisteredUsers();
         long CountRegisteredUsers();
 
+        bool UpdateUserStatus(bool status, string userId);
+
 
 
 

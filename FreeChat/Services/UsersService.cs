@@ -23,6 +23,10 @@ namespace FreeChat.Services
 
         }
 
+        public bool UpdateUserStatus(bool status, string userId)
+        {
+            return _userRepo.UpdateUserStatus(status, userId);
+        }
 
 
     }
