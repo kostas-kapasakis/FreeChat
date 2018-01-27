@@ -24,11 +24,6 @@
     }
 
     function initialListeners() {
-//        $(_document).on("click",
-//            "#allRoomsButton",
-//            function() {
-//                LoadAllrooms();
-//            });
 
         $(_document).on("mouseenter",
             ".inner",
@@ -46,7 +41,7 @@
         $(_document).on("click",".goToRoomsBtn",
             function() {
                 var categId = $(this).parents("li").attr("data-categ-id");
-                window.location = "/Home/AllChatRooms";
+                window.location = "/Home/AllChatRooms"; 
             });
 
     }

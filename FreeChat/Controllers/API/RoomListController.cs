@@ -24,9 +24,9 @@ namespace FreeChat.Controllers.API
         }
 
         [HttpGet]
-        public IHttpActionResult GetRoomsForSpecificGenre(string genre)
+        public IHttpActionResult GetRoomsForSpecificGenre(long id)
         {
-            var genreRooms = _service.GetActiveTopicsByGenre(genre);
+            var genreRooms = _service.GetActiveTopicsByGenreId(id);
 
             if (genreRooms == null)
                 return BadRequest();

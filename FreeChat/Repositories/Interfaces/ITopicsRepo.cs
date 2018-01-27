@@ -5,12 +5,12 @@ namespace FreeChat.Repositories.Interfaces
 {
     public interface ITopicsRepo
     {
-        Topics GetTopicById(long Id);
+        Topics GetTopicById(long id);
         IEnumerable<Topics> GetActiveTopics();
-        IEnumerable<Topics> GetActiveTopicsByGenre(string genre);
+        IEnumerable<Topics> GetActiveTopicsByGenreId(long id);
         IEnumerable<MainCategories> GetMainCategories();
         bool AddTopic(Topics chatRoom);
-        int DeleteTopicById(long Id);
+        int DeleteTopicById(long id);
 
     }
 }

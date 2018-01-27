@@ -18,14 +18,14 @@ namespace FreeChat.Services
             _topicsRepoRepository = topicsRepoRepository;
         }
 
-        public Topics GetTopicById(long Id)
-            => _topicsRepoRepository.GetTopicById(Id);
+        public Topics GetTopicById(long id)
+            => _topicsRepoRepository.GetTopicById(id);
 
         public IEnumerable<Topics> GetActiveTopics()
             => _topicsRepoRepository.GetActiveTopics();
 
-        public IEnumerable<Topics> GetActiveTopicsByGenre(string genre)
-            => _topicsRepoRepository.GetActiveTopicsByGenre(genre);
+        public IEnumerable<Topics> GetActiveTopicsByGenreId(long id)
+            => _topicsRepoRepository.GetActiveTopicsByGenreId(id);
 
         public IEnumerable<MainCategoriesDto> GetMainCategories()
         {
@@ -51,10 +51,10 @@ namespace FreeChat.Services
 
 
 
-        public TopicDeletionVerdictEnum DeleteTopicById(long Id)
+        public TopicDeletionVerdictEnum DeleteTopicById(long id)
         {
 
-            var verdict = _topicsRepoRepository.DeleteTopicById(Id);
+            var verdict = _topicsRepoRepository.DeleteTopicById(id);
 
             return verdict <= 0
                 ? TopicDeletionVerdictEnum.TopicNotFound

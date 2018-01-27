@@ -760,6 +760,7 @@
     <Content Include="Views\Home\MainCategories.cshtml" />
     <Content Include="Views\Home\AllChatRooms.cshtml" />
     <Content Include="Views\Dashboard\Users.cshtml" />
+    <Content Include="Views\Home\RoomsOfaTopicPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

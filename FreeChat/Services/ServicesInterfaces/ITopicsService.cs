@@ -7,11 +7,11 @@ namespace FreeChat.Services.ServicesInterfaces
 {
     public interface ITopicsService
     {
-        Topics GetTopicById(long Id);
+        Topics GetTopicById(long id);
         IEnumerable<Topics> GetActiveTopics();
-        IEnumerable<Topics> GetActiveTopicsByGenre(string genre);
+        IEnumerable<Topics> GetActiveTopicsByGenreId(long id);
         IEnumerable<MainCategoriesDto> GetMainCategories();
         bool AddTopic(TopicsDto chatRoom);
-        TopicDeletionVerdictEnum DeleteTopicById(long Id);
+        TopicDeletionVerdictEnum DeleteTopicById(long id);
     }
 }

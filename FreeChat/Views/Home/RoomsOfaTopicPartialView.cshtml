@@ -1,0 +1,89 @@
+﻿
+<div class="card m-5">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Registered Users
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="TopicsOfARoom" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Genre</th>
+                    <th>Description</th>
+                    <th>Date Expired</th>
+                    <th>Go</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
+</div>
+
+@section scripts
+{
+    
+<script>
+
+        var $table;
+        $(document).ready(function() {
+            $table = $("#TopicsOfARoom").DataTable({
+                ajax: {
+                    url: "/api/RoomList/GetAllRooms",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "Name"
+                    },
+                    {
+                        data: "Genre"
+                    },
+                    {
+                        data: "Description"
+                    },
+                    {
+                        data: "DateExpired",
+                        render: function(data) {
+                            var dateString = data;
+                            var yearDate = dateString.substring(0, dateString.indexOf("T"));
+                            var time = dateString.substring(dateString.indexOf("T") + 1, dateString.length - 4);
+                            return yearDate + "  " + time;
+                        }
+
+                    },
+                    {
+                        data: "Id",
+                        render: function(data, type, room) {
+                            return `<button class='btn-info js-goToRoom' data-user-id=${data.Id
+                                }>Go to Room</button>`;
+                        }
+                    }
+                ]
+            });
+            $table.fnFilter("music");
+            $("#TopicsOfARoom").on("click",
+                ".js-deactivate",
+                function() {
+                    bootbox.confirm("Enter Room ?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: `/api/Users/UpdateUserActiveStatus?status=false&userId=${userId}`,
+                                    method: "POST",
+                                    success: function(response) {
+                                        $table.row(button.text("Activate").removeClass("btn-info")
+                                            .addClass("btn-warning")).draw();
+
+                                    }
+                                });
+                            }
+                        });
+
+                });
+
+        });
+</script>
+}
