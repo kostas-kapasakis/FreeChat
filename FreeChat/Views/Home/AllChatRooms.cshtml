@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_AdminTemplate.cshtml";
 }
 
+
+
 <div class="row align-items-center justify-content-center">
     <div class="col">
             @Html.ActionLink("Create Room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })       
@@ -69,34 +71,16 @@
                     },
                     {
                         data: "Id",
-                        render: function(data, type, room) {
-                            return `<button class='btn-info js-goToRoom' data-user-id=${data.Id
-                                }>Go to Room</button>`;
+                        render: function (data, type, room) {
+                            var link =
+                                '@Html.ActionLink("Enter Room ", "ChatEngine", "ChatEngine", new { roomId = -1}, null)';
+
+                            link = link.replace("-1", data.Id);
+                            return link;
                         }
                     }
                 ]
             });
-            $table.fnFilter("music");
-            $("#registeredUsers").on("click",
-                ".js-deactivate",
-                function() {
-                    bootbox.confirm("Enter Room ?",
-                        function(result) {
-                            if (result) {
-                                $.ajax({
-                                    url: `/api/Users/UpdateUserActiveStatus?status=false&userId=${userId}`,
-                                    method: "POST",
-                                    success: function(response) {
-                                        $table.row(button.text("Activate").removeClass("btn-info")
-                                            .addClass("btn-warning")).draw();
-
-                                    }
-                                });
-                            }
-                        });
-
-                });
-
         });
     </script>
 }
