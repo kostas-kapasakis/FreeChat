@@ -55,8 +55,9 @@ namespace FreeChat
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(
              "~/Scripts/jquery.signalR-2.2.2.min.js",
-             "~/Scripts/Controllers/chatEngineController.js",
-             "~/Scripts/Services/chatEngineService.js"));
+             "~/Scripts/Services/chatEngineService.js",
+             "~/Scripts/Controllers/chatEngineController.js"
+             ));
 
             bundles.Add(new StyleBundle("~/bundles/ChatEngineViewStyle").Include(
                 "~/Content/ChatEngine.css"));
