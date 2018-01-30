@@ -13,7 +13,7 @@
 
 
 <div id="form">
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { id ="createRoomForm" }))
+    @using (Html.BeginForm("Create", "ChatRoom"))
     {
         <p class="alert alert-info">All fields are <strong>required</strong>.</p>
         @Html.AntiForgeryToken()

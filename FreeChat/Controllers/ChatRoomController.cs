@@ -27,5 +27,16 @@ namespace FreeChat.Controllers
                 MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
             });
         }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(TopicsDto chatRoom)
+        {
+            var verdict = _service.AddTopic(chatRoom);
+
+            return RedirectToAction("MainCategories", "Home");
+
+        }
     }
 }

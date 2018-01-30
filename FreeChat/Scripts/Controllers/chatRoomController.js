@@ -19,27 +19,27 @@
     }
 
     function initialListeners() {
-        $(_document).on("click","#createRoomForm",function() {
-            _chatRoomService.createRoom({
-                data: {
-                    name: $("#Topic_Name").val(),
-                    genre: $("#MainCategories").find(":selected").attr("value"),
-                    description: $("#Topic_Description").val()
-                },
-                done: function (data) {
-
-                    console.log("mphke");
-                    $("#Topic_Name").val("");
-                    $("#Topic_Description").val("");
-                    $("#MainCategories").val("");
-
-                },
-                fail: function(jqXhr) {
-                    _console.log("Error in Submiting the form");
-                    _console.log(jqXhr);
-                }
-            });
-        });
-    }
+//        $(_document).on("click","#createRoomForm",function() {
+//            _chatRoomService.createRoom({
+//                data: {
+//                    name: $("#Topic_Name").val(),
+//                    genre: $("#MainCategories").find(":selected").attr("value"),
+//                    description: $("#Topic_Description").val()
+//                },
+//                done: function (data) {
+//
+//                    console.log("mphke");
+//                    $("#Topic_Name").val("");
+//                    $("#Topic_Description").val("");
+//                    $("#MainCategories").val("");
+//
+//                },
+//                fail: function(jqXhr) {
+//                    _console.log("Error in Submiting the form");
+//                    _console.log(jqXhr);
+//                }
+//            });
+//        });
+//    }
 
 }(window.ChatRoomController = window.ChatRoomController || {}, jQuery, document, console, ChatRoomService));
