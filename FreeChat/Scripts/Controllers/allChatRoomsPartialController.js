@@ -58,10 +58,8 @@
 
             $.ajax({
                 method: "get",
-                url: "/api/ChatEngineApi/Chatengine",
-                data: {
-                    roomId: roomId
-                },
+                url: "/api/ChatEngineApi/Chatengine?roomId="+roomId,
+               
                 success: function(data) {
                     if (data) {
                         console.log(data);
