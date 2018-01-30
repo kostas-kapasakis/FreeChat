@@ -4,11 +4,42 @@
     ViewBag.Title = "Free Chat";
     Layout = "~/Views/Shared/_AdminTemplate.cshtml";
 }
+@Styles.Render("~/bundles/IndexViewStyle")
 
 <div class="container" id="container-categories-img-list">
     <ul class="list img-list" id="imglistMainCategories"></ul>
 </div>
 
+<div class="card text-center" id="redirectPanel">
+    <div class="card-block" id="cardBlock">
+        @Html.ActionLink("Back to Main Categories","MainCategories","Home", null,new { @class = "btn btn-primary"})
+
+        @Html.ActionLink("Create a room","Create","ChatRoom",null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<div class="card m-5" id="roomsByCategory">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Chat Rooms
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="ChatRoomsByGenre" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Genre</th>
+                    <th>Description</th>
+                    <th>Date Expired</th>
+                    <th>Go</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
+</div>
 
 @section scripts{
     @Scripts.Render("~/bundles/IndexView")

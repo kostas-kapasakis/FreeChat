@@ -9,7 +9,7 @@ namespace FreeChat.Services.ServicesInterfaces
     {
         Topics GetTopicById(long id);
         IEnumerable<Topics> GetActiveTopics();
-        IEnumerable<Topics> GetActiveTopicsByGenreId(long id);
+        IEnumerable<TopicsDto> GetActiveTopicsByGenreId(long id);
         IEnumerable<MainCategoriesDto> GetMainCategories();
         bool AddTopic(TopicsDto chatRoom);
         TopicDeletionVerdictEnum DeleteTopicById(long id);

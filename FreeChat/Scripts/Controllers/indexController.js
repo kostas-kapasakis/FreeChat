@@ -41,12 +41,53 @@
         $(_document).on("click",".goToRoomsBtn",
             function() {
                 var categId = $(this).parents("li").attr("data-categ-id");
-                window.location = "/Home/AllChatRooms"; 
+                displayRoomsByCateg();
+                populateDataTable(categId);
             });
 
     }
+    function displayRoomsByCateg() {
+        $("#container-categories-img-list").fadeOut(200);
+        $("#roomsByCategory").fadeIn(300);
+        $("#redirectPanel").fadeIn(300);
+    }
 
+    function populateDataTable(id) {
+        
+        var $tablebyGenre = $("#ChatRoomsByGenre").DataTable({
+            ajax: {
+                url: "/api/RoomList/GetRoomsForSpecificGenre?id="+id,
+                dataSrc: ""
+            },
+            columns: [
+                {
+                    data: "Name"
+                },
+                {
+                    data: "Genre"
+                },
+                {
+                    data: "Description"
+                },
+                {
+                    data: "DateExpired",
+                    render: function (data) {
+                        var dateString = data;
+                        var yearDate = dateString.substring(0, dateString.indexOf("T"));
+                        var time = dateString.substring(dateString.indexOf("T") + 1, dateString.length - 4);
+                        return yearDate + "  " + time;
+                    }
 
+                },
+                {
+                    data: "Id",
+                    render: function (data, type, room) {
+                        return "<button class='btn btn-success roominitBtn' id='" + data + "'>Enter Room</button>";
+                    }
+                }
+            ]
+        });
+    }
     function displayMainCategories() { 
         _indexService.GetMainCategories({
             done: function (data) {

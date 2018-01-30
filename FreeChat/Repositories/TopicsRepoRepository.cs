@@ -28,7 +28,7 @@ namespace FreeChat.Repositories
 
         public IEnumerable<Topics> GetActiveTopicsByGenreId(long id)
         {
-            return _context.Topics.Where(x => x.Id == id);
+            return _context.Topics.Where(x => x.MainCategoryId == id);
         }
 
         public bool AddTopic(Topics topic)

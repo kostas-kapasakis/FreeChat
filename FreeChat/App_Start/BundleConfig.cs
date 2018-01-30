@@ -81,6 +81,9 @@ namespace FreeChat
                 "~/Scripts/Controllers/monitorController.js")
                 );
 
+            bundles.Add(new StyleBundle("~/bundles/IndexViewStyle").Include(
+                "~/Content/IndexPage.css"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/ChartsView").Include(
                 "~/Scripts/chart.js/Chart.min.js",

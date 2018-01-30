@@ -18,7 +18,7 @@ namespace FreeChat.Controllers
         public ActionResult ChatStart(Topic roomTopic)
         {
             var currentUser = System.Web.HttpContext.Current.User.Identity.Name;
-            var
+//            var
             return View("Chatengine");
         }
     }

@@ -16,6 +16,6 @@ namespace FreeChat.Models.Domain
 
         public string CategoryDescription { get; set; }
 
-        public Topics Topics { get; set; }
+       
     }
 }

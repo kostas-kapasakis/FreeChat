@@ -11,3 +11,20 @@
 #IndexContainer {
     display: block;
 }
+
+
+#roomsByCategory {
+    display: none;
+}
+#redirectPanel {
+    margin-top: 2%;
+    display: none;
+}
+
+#cardBlock a:first-child {
+   
+    margin-right: 60%;
+}
+#cardBlock {
+    background-color: #007bff;
+}

@@ -35,54 +35,7 @@
         <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
 </div>
 
-@section scripts
-{
 
-@*    @Scripts.Render("~/bundles/IndexView")*@
-
-@*    <script>*@
-@*        var $table;*@
-@*        $(document).ready(function() {*@
-@*            $table = $("#allChatRooms").DataTable({*@
-@*                ajax: {*@
-@*                    url: "/api/RoomList/GetAllRooms",*@
-@*                    dataSrc: ""*@
-@*                },*@
-@*                columns: [*@
-@*                    {*@
-@*                        data: "Name"*@
-@*                    },*@
-@*                    {*@
-@*                        data: "Genre"*@
-@*                    },*@
-@*                    {*@
-@*                        data: "Description"*@
-@*                    },*@
-@*                    {*@
-@*                        data: "DateExpired",*@
-@*                        render: function(data) {*@
-@*                            var dateString = data;*@
-@*                            var yearDate = dateString.substring(0, dateString.indexOf("T"));*@
-@*                            var time = dateString.substring(dateString.indexOf("T") + 1, dateString.length - 4);*@
-@*                            return yearDate + "  " + time;*@
-@*                        }*@
-@**@
-@*                    },*@
-@*                    {*@
-@*                        data: "Id",*@
-@*                        render: function (data, type, room) {*@
-@*                            var link =*@
-@*                                '@Html.ActionLink("Enter Room ", "ChatEngine", "ChatEngine", new { roomId = -1, @class = "btn btn-success" }, null)';*@
-@**@
-@*                            link = link.replace("-1", data.Id);*@
-@*                            return link;*@
-@*                        }*@
-@*                    }*@
-@*                ]*@
-@*            });*@
-@*        });*@
-    @*    </script>*@
-    
     
     @Scripts.Render("~/bundles/allChatRoomsPartial")
     <script>

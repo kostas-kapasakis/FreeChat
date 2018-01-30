@@ -20,12 +20,9 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -299,6 +296,22 @@
     <Compile Include="Migrations\201801241750214_AddActiveProperty.cs" />
     <Compile Include="Migrations\201801241750214_AddActiveProperty.Designer.cs">
       <DependentUpon>201801241750214_AddActiveProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801301808521_addForeignKeyToTopicsTables.cs" />
+    <Compile Include="Migrations\201801301808521_addForeignKeyToTopicsTables.Designer.cs">
+      <DependentUpon>201801301808521_addForeignKeyToTopicsTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801301818227_refiningForeignKey.cs" />
+    <Compile Include="Migrations\201801301818227_refiningForeignKey.Designer.cs">
+      <DependentUpon>201801301818227_refiningForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801301820293_populateForeignKey.cs" />
+    <Compile Include="Migrations\201801301820293_populateForeignKey.Designer.cs">
+      <DependentUpon>201801301820293_populateForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801301835193_supplementatySeedignToMainCategTopics.cs" />
+    <Compile Include="Migrations\201801301835193_supplementatySeedignToMainCategTopics.Designer.cs">
+      <DependentUpon>201801301835193_supplementatySeedignToMainCategTopics.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -822,6 +835,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801241750214_AddActiveProperty.resx">
       <DependentUpon>201801241750214_AddActiveProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801301808521_addForeignKeyToTopicsTables.resx">
+      <DependentUpon>201801301808521_addForeignKeyToTopicsTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801301818227_refiningForeignKey.resx">
+      <DependentUpon>201801301818227_refiningForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801301820293_populateForeignKey.resx">
+      <DependentUpon>201801301820293_populateForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801301835193_supplementatySeedignToMainCategTopics.resx">
+      <DependentUpon>201801301835193_supplementatySeedignToMainCategTopics.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
