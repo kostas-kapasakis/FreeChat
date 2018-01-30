@@ -64,6 +64,7 @@
                     if (data) {
                         console.log(data);
                         console.log("roomExists");
+                        window.location = "/ChatEngine/ChatStart";
                     } else {
                         alert("Room Anavailable");
                     }    

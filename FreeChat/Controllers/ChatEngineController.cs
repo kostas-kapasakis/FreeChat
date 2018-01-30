@@ -16,6 +16,8 @@ namespace FreeChat.Controllers
 
         public ActionResult ChatStart()
         {
+
+
             return View("Chatengine");
         }
     }
