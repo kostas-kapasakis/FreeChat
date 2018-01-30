@@ -35,6 +35,17 @@ namespace FreeChat.Services
 
         }
 
+        public TopicValidationPriorEnteringEnum ValidateRoom(long id)
+        {
+            var topic = _topicsRepoRepository.GetTopicById(id);
+            if (topic == null)
+            {
+                return TopicValidationPriorEnteringEnum.RoomIsNotActivatedAnymore;
+            }
+
+            return topic.Active ? TopicValidationPriorEnteringEnum.RoomExistsAndisAvailable : TopicValidationPriorEnteringEnum.RoomExistsButIsnotAvailable;
+        }
+
 
 
         public bool AddTopic(TopicsDto chatRoom)

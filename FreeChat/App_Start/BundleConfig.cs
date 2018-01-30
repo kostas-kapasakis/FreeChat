@@ -87,6 +87,12 @@ namespace FreeChat
                 ));
 
 
+            bundles.Add(new ScriptBundle("~/bundles/allChatRoomsPartial").Include(
+                "~/Scripts/Services/indexService.js",
+                "~/Scripts/Controllers/allChatRoomsPartialController.js"
+                ));
+
+
             //----------------------------------End of Views Bundles
 
         }

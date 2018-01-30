@@ -20,9 +20,12 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -234,6 +237,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\ChatEngineApiController.cs" />
     <Compile Include="Controllers\API\RoomCreatorController.cs" />
     <Compile Include="Controllers\API\RoomListController.cs" />
     <Compile Include="Controllers\API\UsersController.cs" />
@@ -303,6 +307,7 @@
     <Compile Include="Models\DTO\TopicsDto.cs" />
     <Compile Include="Models\DTO\UserDto.cs" />
     <Compile Include="Models\Enums\TopicDeletionVerdictEnum.cs" />
+    <Compile Include="Models\Enums\TopicValidationPriorEnteringEnum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Domain\ConnectedUsers.cs" />
@@ -320,6 +325,7 @@
     <Compile Include="Repositories\Interfaces\IUserConnectionsRepo.cs" />
     <Compile Include="Repositories\TopicsRepoRepository.cs" />
     <Compile Include="Repositories\UserConnectionsRepository.cs" />
+    <Compile Include="Services\NewtonJsonResult.cs" />
     <Compile Include="Services\UsersService.cs" />
     <Compile Include="Services\ServicesInterfaces\IUsersService.cs" />
     <Compile Include="Services\ServicesInterfaces\ITopicsService.cs" />
@@ -574,6 +580,7 @@
     <Content Include="Content\fonts\franchise-bold-webfont.woff" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Scripts\Controllers\allChatRoomsPartialController.js" />
     <Content Include="Scripts\Controllers\chatEngineController.js" />
     <Content Include="Scripts\Controllers\chatRoomController.js" />
     <Content Include="Scripts\Controllers\indexController.js" />

@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using FreeChat.Services.ServicesInterfaces;
 using System.Web.Mvc;
 
 namespace FreeChat.Controllers
 {
     public class ChatEngineController : Controller
     {
-        
-        public ActionResult Chatengine()
+
+        private readonly ITopicsService _service;
+
+        public ChatEngineController(ITopicsService service)
+        {
+            _service = service;
+        }
+
+
+        public ActionResult ChatStart()
         {
             return View("Chatengine");
         }

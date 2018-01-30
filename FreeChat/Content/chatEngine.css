@@ -1,5 +1,6 @@
 ﻿body{
     font-size:16px;
+    overflow-y: hidden;
 }
 .main_section{
     position:relative;
@@ -9,7 +10,7 @@
    
 }
 .container{
-    height:80%;
+    height:100%;
 }
 #custom-search-input {
   background: #daf5f7 none repeat scroll 0 0;
