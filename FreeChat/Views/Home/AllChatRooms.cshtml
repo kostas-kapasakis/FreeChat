@@ -8,7 +8,7 @@
 
 <div class="row align-items-center justify-content-center">
     <div class="col">
-            @Html.ActionLink("Create Room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })       
+        @Html.ActionLink("Create Room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })
     </div>
 </div>
 
@@ -18,8 +18,8 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-                <table id="allChatRooms" class="table table-bordered table-hover">
-                    <thead>
+            <table id="allChatRooms" class="table table-bordered table-hover">
+                <thead>
                     <tr>
                         <th>Name</th>
                         <th>Genre</th>
@@ -27,20 +27,20 @@
                         <th>Date Expired</th>
                         <th>Go</th>
                     </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
-        <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
+    </div>
+    <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
 </div>
 
 
-    
+@section scripts{
     @Scripts.Render("~/bundles/allChatRoomsPartial")
     <script>
-           $(function() {
-               AllChatRoomsPartialController.Init();
-            });
+        $(function () {
+            AllChatRoomsPartialController.Init();
+        });
     </script>
 }

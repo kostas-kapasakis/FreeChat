@@ -54,9 +54,13 @@ namespace FreeChat.Controllers
                 Genre = genre.Select(room => room.Name).SingleOrDefault(),
                 Active = true,
             };
-            var verdict = _service.AddTopic(topic);
 
-            return RedirectToAction("MainCategories", "Home");
+            return _service.AddTopic(topic)
+                ? RedirectToAction("MainCategories", "Home")
+                : RedirectToAction("CustomError", "CustomError");
+
+
+
 
         }
     }

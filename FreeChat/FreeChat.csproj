@@ -244,6 +244,7 @@
     <Compile Include="Controllers\ChartsController.cs" />
     <Compile Include="Controllers\ChatEngineController.cs" />
     <Compile Include="Controllers\ChatRoomController.cs" />
+    <Compile Include="Controllers\CustomErrorController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -790,6 +791,7 @@
     <Content Include="Views\Dashboard\Users.cshtml" />
     <Content Include="Views\Home\RoomsOfaTopicPartialView.cshtml" />
     <Content Include="Views\ChatEngine\Chatengine.cshtml" />
+    <Content Include="Views\CustomError\CustomError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
