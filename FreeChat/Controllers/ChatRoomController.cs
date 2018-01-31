@@ -6,6 +6,7 @@ using FreeChat.Services.ServicesInterfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace FreeChat.Controllers
 {
@@ -44,7 +45,7 @@ namespace FreeChat.Controllers
                     MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
                 });
             }
-
+            var user = User.Identity.GetUserId();
             var genre = mainCategories.Where(x => x.Id == chatRoom.Topic.MainCategoryId);
             var topic = new TopicsDto
             {
@@ -53,6 +54,7 @@ namespace FreeChat.Controllers
                 MainCategoryId = chatRoom.Topic.MainCategoryId,
                 Genre = genre.Select(room => room.Name).SingleOrDefault(),
                 Active = true,
+                UserId = user
             };
 
             return _service.AddTopic(topic)

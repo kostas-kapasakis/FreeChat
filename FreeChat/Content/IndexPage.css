@@ -28,3 +28,15 @@
 #cardBlock {
     background-color: #007bff;
 }
+
+#redirectPanel2 {
+    margin-top: 2%;
+}
+
+#cardBlock2 a:first-child {
+    margin-right: 60%;
+}
+
+#cardBlock2 {
+    background-color: #007bff;
+}

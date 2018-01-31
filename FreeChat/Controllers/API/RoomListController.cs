@@ -39,6 +39,9 @@ namespace FreeChat.Controllers.API
         public IHttpActionResult GetMainCategories()
             => Ok(_service.GetMainCategories());
 
+        [HttpGet]
+        public IHttpActionResult GetUserTopics(string id)
+            => Ok(_service.GetUserTopics(id));
 
 
 

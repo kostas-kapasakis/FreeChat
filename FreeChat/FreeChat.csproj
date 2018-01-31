@@ -20,12 +20,9 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -248,6 +245,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsersAreaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -320,6 +318,18 @@
     <Compile Include="Migrations\201801311406354_overrideConventions.cs" />
     <Compile Include="Migrations\201801311406354_overrideConventions.Designer.cs">
       <DependentUpon>201801311406354_overrideConventions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801311939114_addUserCreatorColummnInTopics.cs" />
+    <Compile Include="Migrations\201801311939114_addUserCreatorColummnInTopics.Designer.cs">
+      <DependentUpon>201801311939114_addUserCreatorColummnInTopics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801311946248_ChangetheUserCreatorType.cs" />
+    <Compile Include="Migrations\201801311946248_ChangetheUserCreatorType.Designer.cs">
+      <DependentUpon>201801311946248_ChangetheUserCreatorType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801311948438_seedtheUserCreatorColumn.cs" />
+    <Compile Include="Migrations\201801311948438_seedtheUserCreatorColumn.Designer.cs">
+      <DependentUpon>201801311948438_seedtheUserCreatorColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -792,6 +802,7 @@
     <Content Include="Views\Home\RoomsOfaTopicPartialView.cshtml" />
     <Content Include="Views\ChatEngine\Chatengine.cshtml" />
     <Content Include="Views\CustomError\CustomError.cshtml" />
+    <Content Include="Views\UsersArea\MyRooms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -859,6 +870,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801311406354_overrideConventions.resx">
       <DependentUpon>201801311406354_overrideConventions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801311939114_addUserCreatorColummnInTopics.resx">
+      <DependentUpon>201801311939114_addUserCreatorColummnInTopics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801311946248_ChangetheUserCreatorType.resx">
+      <DependentUpon>201801311946248_ChangetheUserCreatorType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801311948438_seedtheUserCreatorColumn.resx">
+      <DependentUpon>201801311948438_seedtheUserCreatorColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

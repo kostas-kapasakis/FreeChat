@@ -23,6 +23,9 @@ namespace FreeChat.Models.Domain
         public DateTime DateExpired { get; set; }
         public long MaxClientsOnline { get; set; }
 
+        public ApplicationUser UserCreator { get; set; }
+        public string UserCreatorId { get; set; }
+
         [DisplayName("Main Categories")]
         public long MainCategoryId { get; set; }//convention that teats this property as an foreign key
 

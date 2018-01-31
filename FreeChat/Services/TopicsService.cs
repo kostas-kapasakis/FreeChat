@@ -47,7 +47,9 @@ namespace FreeChat.Services
                 return TopicValidationPriorEnteringEnum.RoomIsNotActivatedAnymore;
             }
 
-            return topic.Active ? TopicValidationPriorEnteringEnum.RoomExistsAndisAvailable : TopicValidationPriorEnteringEnum.RoomExistsButIsnotAvailable;
+            return topic.Active
+                ? TopicValidationPriorEnteringEnum.RoomExistsAndisAvailable
+                : TopicValidationPriorEnteringEnum.RoomExistsButIsnotAvailable;
         }
 
 
@@ -75,6 +77,13 @@ namespace FreeChat.Services
             return verdict <= 0
                 ? TopicDeletionVerdictEnum.TopicNotFound
                 : TopicDeletionVerdictEnum.TopicSuccesfullyDeleted;
+        }
+
+
+
+        public IEnumerable<Topics> GetUserTopics(string id)
+        {
+            return _topicsRepoRepository.GetUserTopics(id);
         }
     }
 }

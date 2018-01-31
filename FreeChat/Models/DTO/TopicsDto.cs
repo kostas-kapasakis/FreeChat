@@ -23,5 +23,6 @@ namespace FreeChat.Models.DTO
         [Required]
         public long MainCategoryId { get; set; }
 
+        public string UserId { get; set; }
     }
 }

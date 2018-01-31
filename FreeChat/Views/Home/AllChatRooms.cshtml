@@ -4,14 +4,15 @@
     Layout = "~/Views/Shared/_AdminTemplate.cshtml";
 }
 
+@Styles.Render("~/bundles/allChatRoomsViewStyle")
 
+<div class="card text-center" id="redirectPanel2">
+    <div class="card-block" id="cardBlock2">
+        @Html.ActionLink("Back to Main Categories", "MainCategories", "Home", null, new { @class = "btn btn-primary" })
 
-<div class="row align-items-center justify-content-center">
-    <div class="col">
-        @Html.ActionLink("Create Room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Create a room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })
     </div>
 </div>
-
 <div class="card m-5">
     <div class="card-header">
         <i class="fa fa-table"></i> Chat Rooms

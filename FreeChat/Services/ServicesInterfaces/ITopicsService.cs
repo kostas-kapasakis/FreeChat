@@ -14,7 +14,7 @@ namespace FreeChat.Services.ServicesInterfaces
         bool AddTopic(TopicsDto chatRoom);
         TopicDeletionVerdictEnum DeleteTopicById(long id);
         TopicValidationPriorEnteringEnum ValidateRoom(long id);
-
+        IEnumerable<Topics> GetUserTopics(string id);
 
 
     }

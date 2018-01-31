@@ -96,6 +96,10 @@ namespace FreeChat
                 "~/Scripts/Controllers/allChatRoomsPartialController.js"
                 ));
 
+            bundles.Add(new StyleBundle("~/bundles/allChatRoomsViewStyle").Include(
+                "~/Content/IndexPage.css"
+                ));
+
 
             //----------------------------------End of Views Bundles
 

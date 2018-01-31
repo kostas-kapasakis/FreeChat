@@ -56,5 +56,11 @@ namespace FreeChat.Repositories
             return _context.SaveChanges();
         }
 
+        public IEnumerable<Topics> GetUserTopics(string id)
+        {
+            var topics = _context.Topics.Where(x => x.UserCreatorId == id).Where(x => x.Active);
+
+            return topics;
+        }
     }
 }

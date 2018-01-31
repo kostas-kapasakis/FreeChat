@@ -11,6 +11,6 @@ namespace FreeChat.Repositories.Interfaces
         IEnumerable<MainCategories> GetMainCategories();
         bool AddTopic(Topics chatRoom);
         int DeleteTopicById(long id);
-
+        IEnumerable<Topics> GetUserTopics(string id);
     }
 }
