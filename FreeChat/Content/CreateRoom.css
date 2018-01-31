@@ -6,31 +6,7 @@
     margin-right:10%;
     margin-bottom:-10%;
 }
-/*h3{*/
-/*    line-height:130%;*/
-/*}*/
-/*#form{*/
-/*    display:inline-block;*/
-/*    width:550px;*/
-/*}*/
-/*.form-group{*/
-/*    width:500px;*/
-/*}*/
-/*#createInfo ul{*/
-/*    list-style:none;*/
-/*}*/
-/*Bootstrap Overrides*/
 
-/*.list-group li:before {*/
-/*    /*Using a Bootstrap glyphicon as the bullet point!1!*/
-/*    content: "\e080";*/
-/*    font-family: 'Glyphicons Halflings';*/
-/*    font-size: 15px;*/
-/*    float: left;*/
-/*    margin-top: auto;*/
-/*    margin-left: -17px;*/
-/*    color: #CCCCCC;*/
-/*}*/
 a {
     color:#27428d;
     font-family:Open sans;
@@ -48,3 +24,10 @@ a:hover{
 
 
 
+#cardBlockCreateRoom {
+    background-color: #007bff;
+}
+
+body {
+    overflow-y: hidden;
+}

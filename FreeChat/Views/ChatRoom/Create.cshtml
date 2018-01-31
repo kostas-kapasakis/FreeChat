@@ -1,4 +1,4 @@
-﻿@model FreeChat.Models.ViewModels.CreateRoomViewModel
+﻿@model FreeChat.Models.ViewModels.NewChatRoomViewModel
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminTemplate.cshtml";
@@ -6,55 +6,47 @@
 
 @Styles.Render("/bundles/ChatRoomViewStyle")
 
-<h4>
-    Want to chat ?<br>
-    Create the chat room you want
-</h4><br />
 
 
-<div id="form">
-    @using (Html.BeginForm("Create", "ChatRoom"))
-    {
-        <p class="alert alert-info">All fields are <strong>required</strong>.</p>
-        @Html.AntiForgeryToken()
+<div class="container">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.MainCategories)
-            @Html.DropDownListFor(m => m.MainCategories, new SelectList(Model.MainCategories, "Id", "Name"), "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MainCategories)
-        </div>
+    <div class="row">
+    <div class="col-lg-2"></div>
+    <div id="form" class="col-lg-8">
+        <h4>
+            Want to chat ?<br>
+            Create the chat room you want
+        </h4><br />
+        @using (Html.BeginForm("CreateRoom", "ChatRoom"))
+        {
+            <p class="alert alert-info">
+                All fields are <strong>required</strong>.
+            </p>
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Topic.Name)
-            @Html.TextBoxFor(m => m.Topic.Name, new { @class = "form-control", autofocus = "autofocus" })
-            @Html.ValidationMessageFor(m => m.Topic.Name)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Topic.MainCategoryId)
+                @Html.DropDownListFor(m => m.Topic.MainCategoryId, new SelectList(Model.MainCategories, "Id", "Name"), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MainCategories)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Topic.Description)
-            @Html.TextBoxFor(m => m.Topic.Description, new { @class = "form-control", autofocus = "autofocus" })
-            @Html.ValidationMessageFor(m => m.Topic.Description)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Topic.Name)
+                @Html.TextBoxFor(m => m.Topic.Name, new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(m => m.Topic.Name)
+            </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
-    }
+            <div class="form-group">
+                @Html.LabelFor(m => m.Topic.Description)
+                @Html.TextBoxFor(m => m.Topic.Description, new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(m => m.Topic.Description)
+            </div>
 
+            <button type="submit" class="btn btn-primary">Save</button>
+            @Html.ActionLink("Back to Chat Rooms list", "MainCategories", "Home", null, new { @class = "btn btn-warning" })
+        }
 
+    </div>
+        <div class="col-lg-2"></div>
+    </div>
 </div>
-
-
-<div class="container" id="footer">
-    
-        @Html.ActionLink("Back to Chat Rooms List", "Index", "Home")
-</div>
-
-
-@section scripts{
-    @Scripts.Render("/bundles/ChatRoomView")
-    <script type="text/javascript">
-        $(function () {
-            ChatRoomController.Init();
-        });
-    </script>
-
-}

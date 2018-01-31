@@ -66,8 +66,8 @@ namespace FreeChat
 
             bundles.Add(new ScriptBundle("~/bundles/ChatRoomView").Include(
                 "~/Scripts/Controllers/chatRoomController.js",
-                "~/Scripts/Services/chatRoomService.js",
-                "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+                "~/Scripts/Services/chatRoomService.js"
+               ));
 
             bundles.Add(new StyleBundle("~/bundles/ChatRoomViewStyle").Include(
                 "~/Content/CreateRoom.css"));

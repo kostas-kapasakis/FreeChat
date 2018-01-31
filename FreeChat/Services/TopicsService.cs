@@ -26,10 +26,10 @@ namespace FreeChat.Services
 
         public IEnumerable<TopicsDto> GetActiveTopicsByGenreId(long id)
         {
-           var topics =  _topicsRepoRepository.GetActiveTopicsByGenreId(id);
+            var topics = _topicsRepoRepository.GetActiveTopicsByGenreId(id);
             return Mapper.Map<IEnumerable<Topics>, IEnumerable<TopicsDto>>(topics);
         }
-            
+
 
         public IEnumerable<MainCategoriesDto> GetMainCategories()
         {
@@ -60,6 +60,7 @@ namespace FreeChat.Services
             chatRoom.DateExpired = chatRoom.DateCreated.AddDays(10);
 
             var topic = Mapper.Map<TopicsDto, Topics>(chatRoom);
+            topic.MaxClientsOnline = 100;
 
             return _topicsRepoRepository.AddTopic(topic);
         }

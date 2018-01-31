@@ -18,23 +18,24 @@ namespace FreeChat.Repositories
 
         public Topics GetTopicById(long Id)
         {
-            return _context.Topics.First(x => x.Id == Id);
+            return _context.Topics.Include(c => c.MainCategory).FirstOrDefault(x => x.Id == Id);
         }
 
         public IEnumerable<Topics> GetActiveTopics()
         {
-            return _context.Topics.Where(x => x.Active);
+            return _context.Topics.Include(c => c.MainCategory).Where(x => x.Active);
         }
 
         public IEnumerable<Topics> GetActiveTopicsByGenreId(long id)
         {
-            return _context.Topics.Where(x => x.MainCategoryId == id);
+            return _context.Topics.Include(c => c.MainCategory).Where(x => x.MainCategoryId == id);
         }
 
         public bool AddTopic(Topics topic)
         {
 
             _context.Topics.Add(topic);
+            _context.SaveChanges();
 
             return true;
         }

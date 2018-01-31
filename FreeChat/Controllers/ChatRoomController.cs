@@ -4,6 +4,7 @@ using FreeChat.Models.DTO;
 using FreeChat.Models.ViewModels;
 using FreeChat.Services.ServicesInterfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace FreeChat.Controllers
@@ -22,7 +23,7 @@ namespace FreeChat.Controllers
         {
             var mainCategories = _service.GetMainCategories();
 
-            return View("Create", new CreateRoomViewModel
+            return View("Create", new NewChatRoomViewModel
             {
                 MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
             });
@@ -31,9 +32,29 @@ namespace FreeChat.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TopicsDto chatRoom)
+        public ActionResult CreateRoom(NewChatRoomViewModel chatRoom)
         {
-            var verdict = _service.AddTopic(chatRoom);
+            var mainCategories = _service.GetMainCategories();
+
+            if (!ModelState.IsValid)
+            {
+
+                return View("Create", new NewChatRoomViewModel
+                {
+                    MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
+                });
+            }
+
+            var genre = mainCategories.Where(x => x.Id == chatRoom.Topic.MainCategoryId);
+            var topic = new TopicsDto
+            {
+                Name = chatRoom.Topic.Name,
+                Description = chatRoom.Topic.Description,
+                MainCategoryId = chatRoom.Topic.MainCategoryId,
+                Genre = genre.Select(room => room.Name).SingleOrDefault(),
+                Active = true,
+            };
+            var verdict = _service.AddTopic(topic);
 
             return RedirectToAction("MainCategories", "Home");
 

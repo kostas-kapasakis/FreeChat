@@ -4,20 +4,10 @@ using System.ComponentModel;
 
 namespace FreeChat.Models.ViewModels
 {
-    public class CreateRoomViewModel
+    public class NewChatRoomViewModel
     {
         [DisplayName("Category")]
         public IEnumerable<MainCategories> MainCategories { get; set; }
-
-        [DisplayName("Chat Room Name")]
-        public string ChatroomName { get; set; }
-
         public Topics Topic { get; set; }
-
-        public CreateRoomViewModel()
-        {
-
-        }
-
     }
 }

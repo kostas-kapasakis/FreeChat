@@ -18,7 +18,7 @@
         initialListeners();
     }
 
-    function initialListeners() {
+    function initialListeners() {}
 //        $(_document).on("click","#createRoomForm",function() {
 //            _chatRoomService.createRoom({
 //                data: {
