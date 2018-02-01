@@ -3,10 +3,10 @@ using FreeChat.Models.Domain;
 using FreeChat.Models.DTO;
 using FreeChat.Models.ViewModels;
 using FreeChat.Services.ServicesInterfaces;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 
 namespace FreeChat.Controllers
 {
@@ -54,7 +54,7 @@ namespace FreeChat.Controllers
                 MainCategoryId = chatRoom.Topic.MainCategoryId,
                 Genre = genre.Select(room => room.Name).SingleOrDefault(),
                 Active = true,
-                UserId = user
+                UserCreatorId = user
             };
 
             return _service.AddTopic(topic)
