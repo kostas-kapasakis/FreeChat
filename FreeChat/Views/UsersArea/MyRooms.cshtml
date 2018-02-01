@@ -1,33 +1,57 @@
-﻿
+﻿@model FreeChat.Models.ViewModels.MyRoomsViewModel
 @{
     ViewBag.Title = "MyRooms";
 }
 
-<h2>MyRooms</h2>
+@Styles.Render("~/bundles/MyRoomsViewStyle")
 
-<div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small>Donec id elit non mi porta.</small>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Donec id elit non mi porta.</small>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Donec id elit non mi porta.</small>
-    </a>
+
+
+
+<div class="container">
+    <div class="list-group" id="myRoomsCardGroup">
+        @{
+            if (Model.MyTopics.Any())
+            {
+                foreach (var room in Model.MyTopics)
+                {
+
+
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"> @room.Name</h5>
+                            <small>Genre:&nbsp;@room.Genre</small>
+                        </div>
+                        <p class="mb-1">Description :&nbsp; @room.Description</p>
+                        <small>Date Expiring:&nbsp;@room.DateExpired</small>
+                        <span class="pull-right">
+                            <span class="btn btn btn-default">
+                                <span class="fa fa-arrow-circle-o-right fa-2x "aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Enter Room!"></span>
+                            </span>
+                        </span>
+                    </a>
+
+
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("Create", "ChatRoom")" class="list-group-item list-group-item-action flex-column align-items-start list-group-item-warning">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">No Rooms Yet</h5>
+                        <small>@DateTime.Today</small>
+                    </div>
+                    <p class="mb-1">Create a Room</p>
+               
+                    <span class="pull-right">
+                        <span class="btn btn btn-default">
+                            <span class="fa fa-arrow-circle-o-right fa-2x "aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Create a Room!"></span>
+                        </span>
+                    </span>
+                </a>
+            }
+
+        }
+    </div>
+
 </div>

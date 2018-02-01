@@ -101,6 +101,10 @@ namespace FreeChat
                 ));
 
 
+            bundles.Add(new StyleBundle("~/bundles/MyRoomsViewStyle").Include(
+                "~/Content/MyRooms.css"
+            ));
+
             //----------------------------------End of Views Bundles
 
         }

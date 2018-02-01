@@ -1,4 +1,4 @@
-﻿
+﻿@model FreeChat.Models.ViewModels.MainCategoriesViewModel
 
 @{
     ViewBag.Title = "Free Chat";
@@ -7,7 +7,27 @@
 @Styles.Render("~/bundles/IndexViewStyle")
 
 <div class="container" id="container-categories-img-list">
-    <ul class="list img-list" id="imglistMainCategories"></ul>
+    <ul class="list img-list" id="imglistMainCategories">
+       @{
+           foreach (var categ in Model.MainCategories)
+           {
+           <li data-categ-id='@categ.Id'>
+               <a href='#' class='inner'>
+                   <div class='li-img'>
+                       <img src='@categ.CategoryImage' alt='@categ.Name' height='120'/>
+                   </div>                                                                        
+                   <div class='li-text'>
+                       <h3 class='li-head'>@categ.Name</h3>
+                       <div class='li-sub'>
+                           <p>@categ.CategoryDescription</p>
+                       </div>
+                   </div>
+               </a>
+               <button type="button" class="btn btn-primary goToRoomsBtn">See Rooms</button>
+           </li>               
+           }
+       }
+    </ul>
 </div>
 
 <div class="card text-center" id="redirectPanel">
@@ -17,6 +37,8 @@
         @Html.ActionLink("Create a room","Create","ChatRoom",null, new { @class = "btn btn-primary" })
     </div>
 </div>
+
+
 
 <div class="card m-5" id="roomsByCategory">
     <div class="card-header">

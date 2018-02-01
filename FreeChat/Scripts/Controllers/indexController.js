@@ -20,7 +20,6 @@
 
     function initImpl(config) {
         initialListeners();
-        displayMainCategories();
     }
 
     function initialListeners() {
@@ -88,45 +87,12 @@
             ]
         });
     }
-    function displayMainCategories() { 
-        _indexService.GetMainCategories({
-            done: function (data) {
-                populateMainCategoriesList(data);
-                showPage();
-            },
-            fail: function (jqXhr) {
-                _console.log("Error in getting main Categories");
-                _console.log(jqXhr);
-            }
-        });
-
-    }
-
    
 
     function loadingAnimation() {
         loadingVar = setTimeout(showPage, 1000);
     }
 
-
-    function populateMainCategoriesList(data) {
-
-        $.each(data,
-            function(index, obj) {
-                $("#imglistMainCategories").append
-                (
-                    `<li data-categ-id='${obj.Id}'>
-                        <a href='#' class='inner'>
-                           <div  class='li-img'> <img src='${obj.CategoryImage}' alt='${obj.Name}' height='120px'/></div>                                                                        <div class='li-text'>
-                           <h3 class='li-head'>${obj.Name}</h3>
-                           <div class='li-sub'> <p>${obj.CategoryDescription}.</p> 
-                       </div></div></a><button type="button" class="btn btn-primary goToRoomsBtn">See Rooms</button></li>`
-
-                );
-
-            });
-        $(".goToRoomsBtn").css("display", "none");
-    }
 
 
     function showPage() {

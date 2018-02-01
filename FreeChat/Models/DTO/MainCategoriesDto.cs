@@ -1,4 +1,6 @@
-﻿namespace FreeChat.Models.DTO
+﻿using System;
+
+namespace FreeChat.Models.DTO
 {
     public class MainCategoriesDto
     {
@@ -9,5 +11,7 @@
         public string CategoryImage { get; set; }
 
         public string CategoryDescription { get; set; }
+
+        public DateTime DateExpired { get; set; }
     }
 }

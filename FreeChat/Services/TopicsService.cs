@@ -81,9 +81,10 @@ namespace FreeChat.Services
 
 
 
-        public IEnumerable<Topics> GetUserTopics(string id)
+        public IEnumerable<TopicsDto> GetUserTopics(string id)
         {
-            return _topicsRepoRepository.GetUserTopics(id);
+            var userTopics = _topicsRepoRepository.GetUserTopics(id);
+            return Mapper.Map<IEnumerable<Topics>, IEnumerable<TopicsDto>>(userTopics);
         }
     }
 }

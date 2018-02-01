@@ -1,0 +1,19 @@
+﻿body {
+}
+
+#myRoomsCardGroup {
+    min-width: 450px;
+    margin-top: 2% !important;
+    margin-bottom: 2% !important;
+    margin-left: 2% !important;
+}
+
+
+.tooltip.right .tooltip-inner {
+    color: #fff;
+    text-align: center;
+    background-color: #b3d9ff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}

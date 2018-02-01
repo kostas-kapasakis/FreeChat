@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using FreeChat.Models.ViewModels;
+using FreeChat.Services.ServicesInterfaces;
 using System.Web.Mvc;
 
 namespace FreeChat.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly ITopicsService _topicsService;
+
+        public HomeController(ITopicsService topicsService)
         {
-            return View();
+            _topicsService = topicsService;
         }
+
         [AllowAnonymous]
         public ActionResult About()
         {
@@ -29,7 +30,11 @@ namespace FreeChat.Controllers
 
         public ActionResult MainCategories()
         {
-            return View();
+            var mainCategories = _topicsService.GetMainCategories();
+            return View("MainCategories", new MainCategoriesViewModel
+            {
+                MainCategories = mainCategories
+            });
         }
 
         public ActionResult AllChatRooms()
