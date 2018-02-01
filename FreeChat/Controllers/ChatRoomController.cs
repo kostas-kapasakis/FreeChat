@@ -58,7 +58,7 @@ namespace FreeChat.Controllers
             };
 
             return _service.AddTopic(topic)
-                ? RedirectToAction("AllChatRooms", "Home")
+                ? RedirectToAction("MyRooms", "UsersArea")
                 : RedirectToAction("CustomError", "CustomError");
 
 

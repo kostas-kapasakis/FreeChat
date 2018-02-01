@@ -6,19 +6,7 @@
 
         @if (Context.User.Identity.IsAuthenticated)
         {
-            <li class="nav-item"  id="searchBar">
-                <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Search for..." id="searchBarInput">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            </li>
-
+            
             if (Context.User.IsInRole("Administrator"))
             {
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
