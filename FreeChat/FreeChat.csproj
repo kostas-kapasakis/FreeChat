@@ -334,6 +334,10 @@
     <Compile Include="Migrations\201801311948438_seedtheUserCreatorColumn.Designer.cs">
       <DependentUpon>201801311948438_seedtheUserCreatorColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802011637107_AddRoomsLEftColumn.cs" />
+    <Compile Include="Migrations\201802011637107_AddRoomsLEftColumn.Designer.cs">
+      <DependentUpon>201802011637107_AddRoomsLEftColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Domain\MainCategories.cs" />
@@ -342,7 +346,7 @@
     <Compile Include="Models\DTO\UserDto.cs" />
     <Compile Include="Models\Enums\TopicDeletionVerdictEnum.cs" />
     <Compile Include="Models\Enums\TopicValidationPriorEnteringEnum.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Domain\ConnectedUsers.cs" />
     <Compile Include="Models\Domain\Topics.cs" />
@@ -884,6 +888,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801311948438_seedtheUserCreatorColumn.resx">
       <DependentUpon>201801311948438_seedtheUserCreatorColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802011637107_AddRoomsLEftColumn.resx">
+      <DependentUpon>201802011637107_AddRoomsLEftColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

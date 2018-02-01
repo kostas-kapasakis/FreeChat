@@ -16,9 +16,11 @@ namespace FreeChat.Models
             return userIdentity;
 
 
-            
+
         }
         public bool Active { get; set; }
+
+        public int RoomsLeft { get; set; } = 10;
     }
 
 

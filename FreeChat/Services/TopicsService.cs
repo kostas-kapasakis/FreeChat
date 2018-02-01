@@ -59,7 +59,7 @@ namespace FreeChat.Services
             if (chatRoom.DateCreated < DateTime.Today)
                 chatRoom.DateCreated = DateTime.Today;
 
-            chatRoom.DateExpired = chatRoom.DateCreated.AddDays(10);
+            chatRoom.DateExpired = chatRoom.DateCreated.AddDays(5);
 
             var topic = Mapper.Map<TopicsDto, Topics>(chatRoom);
             topic.MaxClientsOnline = 100;

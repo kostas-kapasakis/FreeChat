@@ -13,6 +13,10 @@ namespace FreeChat.Controllers
             _topicsService = topicsService;
         }
 
+        public HomeController()
+        {
+        }
+
         [AllowAnonymous]
         public ActionResult About()
         {

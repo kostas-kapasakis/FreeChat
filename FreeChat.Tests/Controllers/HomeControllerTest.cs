@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using FreeChat.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FreeChat;
-using FreeChat.Controllers;
+using System.Web.Mvc;
 
 namespace FreeChat.Tests.Controllers
 {
@@ -19,7 +14,7 @@ namespace FreeChat.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.MainCategories() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

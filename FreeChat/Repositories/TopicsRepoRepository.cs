@@ -33,6 +33,15 @@ namespace FreeChat.Repositories
 
         public bool AddTopic(Topics topic)
         {
+            var user = _context.Users.SingleOrDefault(x => x.Id == topic.UserCreatorId);
+            if (user == null || user.RoomsLeft == 0)
+                return false;
+
+            user.RoomsLeft--;
+
+            _context.Users.Attach(user);
+            _context.Entry(user).Property(x => x.RoomsLeft).IsModified = true;
+
 
             _context.Topics.Add(topic);
             _context.SaveChanges();
