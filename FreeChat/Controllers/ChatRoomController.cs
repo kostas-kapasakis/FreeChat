@@ -12,21 +12,33 @@ namespace FreeChat.Controllers
 {
     public class ChatRoomController : Controller
     {
-        private readonly ITopicsService _service;
+        private readonly ITopicsService _topicsService;
+        private readonly IUsersService _usersService;
 
-        public ChatRoomController(ITopicsService service)
+        public ChatRoomController(ITopicsService topicsService, IUsersService usersService)
         {
-            _service = service;
+            _topicsService = topicsService;
+            _usersService = usersService;
         }
 
 
         public ActionResult Create()
         {
-            var mainCategories = _service.GetMainCategories();
+
+            var user = User.Identity.GetUserId();
+            var mainCategories = _topicsService.GetMainCategories();
+            var roomsLeft = _topicsService.RoomsRemainingForUser(user);
+            var userTopics = _topicsService.GetUserTopics(user);
+            var topicsDtos = userTopics as IList<TopicsDto> ?? userTopics.ToList();
+            var roomsCreated = topicsDtos.Count;
 
             return View("Create", new NewChatRoomViewModel
             {
-                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
+                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories),
+                RoomsLeft = roomsLeft,
+                RoomsCreated = roomsCreated,
+                UserTopics = topicsDtos
+
             });
         }
 
@@ -35,7 +47,7 @@ namespace FreeChat.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateRoom(NewChatRoomViewModel chatRoom)
         {
-            var mainCategories = _service.GetMainCategories();
+            var mainCategories = _topicsService.GetMainCategories();
 
             if (!ModelState.IsValid)
             {
@@ -57,7 +69,7 @@ namespace FreeChat.Controllers
                 UserCreatorId = user
             };
 
-            return _service.AddTopic(topic)
+            return _topicsService.AddTopic(topic)
                 ? RedirectToAction("MyRooms", "UsersArea")
                 : RedirectToAction("CustomError", "CustomError");
 

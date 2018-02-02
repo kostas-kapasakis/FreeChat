@@ -21,6 +21,8 @@ namespace FreeChat.Models
         public bool Active { get; set; }
 
         public int RoomsLeft { get; set; } = 10;
+
+        public string Role { get; set; } = "RegisteredUser";
     }
 
 

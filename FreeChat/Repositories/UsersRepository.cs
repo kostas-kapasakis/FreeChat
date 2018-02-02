@@ -1,4 +1,5 @@
 ﻿using FreeChat.Models;
+using FreeChat.Models.Enums;
 using FreeChat.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -36,6 +37,16 @@ namespace FreeChat.Repositories
             _context.SaveChanges();
 
             return true;
+        }
+
+        public bool IsAdmin(string userId)
+        {
+            var user = _context.Users.FirstOrDefault(x => x.Id == userId);
+
+            if (user == null)
+                return false;
+
+            return user.Role == UsersRole.Admin;
         }
 
 

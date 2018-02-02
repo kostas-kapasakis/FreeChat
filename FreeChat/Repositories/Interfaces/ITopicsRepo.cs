@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using FreeChat.Models.Domain;
+﻿using FreeChat.Models.Domain;
+using System.Collections.Generic;
 
 namespace FreeChat.Repositories.Interfaces
 {
@@ -12,5 +12,6 @@ namespace FreeChat.Repositories.Interfaces
         bool AddTopic(Topics chatRoom);
         int DeleteTopicById(long id);
         IEnumerable<Topics> GetUserTopics(string id);
+        int RoomsRemainingForUser(string id);
     }
 }

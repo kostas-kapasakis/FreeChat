@@ -1,4 +1,8 @@
-﻿#createInfo {
+﻿body {
+    position: relative;
+}
+
+#createInfo {
     width:40%;
     float:right;
     position:relative;
@@ -28,6 +32,15 @@ a:hover{
     background-color: #007bff;
 }
 
-body {
-    overflow-y: hidden;
+.row {
+    margin-top: 5%!important;
+    max-height: 20% !important;
+}
+
+#userRoomsList {
+    overflow-y: scroll;
+}
+#usersInfo #nav-tabContent #list-messages {
+    height: 220px !important;
+    overflow-y: auto !important;
 }

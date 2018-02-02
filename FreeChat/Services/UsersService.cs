@@ -28,6 +28,10 @@ namespace FreeChat.Services
             return _userRepo.UpdateUserStatus(status, userId);
         }
 
+        public bool IsAdmin(string userId)
+        {
+            return _userRepo.IsAdmin(userId);
+        }
 
     }
 }

@@ -10,7 +10,7 @@ namespace FreeChat.Repositories.Interfaces
 
         bool UpdateUserStatus(bool status, string userId);
 
-
+        bool IsAdmin(string userId);
 
 
     }
