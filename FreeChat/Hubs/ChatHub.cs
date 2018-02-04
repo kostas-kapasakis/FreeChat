@@ -40,7 +40,7 @@ namespace FreeChat.Hubs
         // (1) Send the Callers Client Username to the view 
         public void SendUsername()
         {
-            string name = Context.User.Identity.Name;
+            var name = Context.User.Identity.Name;
             Clients.Caller.SendName(name);
 
         }
@@ -66,7 +66,7 @@ namespace FreeChat.Hubs
                 {
                     Message = message,
                     UserName = Context.User.Identity.Name,
-                    TimeSend = DateTime.Now.ToShortTimeString().ToString()
+                    TimeSend = DateTime.Now.ToShortTimeString()
                 });
             }
 

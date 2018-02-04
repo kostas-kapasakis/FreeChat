@@ -61,9 +61,8 @@
                 url: "/api/ChatEngineApi/Chatengine?roomId="+roomId,
                
                 success: function(data) {
-                    if (data) {
-                       
-                        window.location = "/ChatEngine/ChatStart";
+                    if (data) {                
+                        window.location = "/ChatEngine/ChatStart?roomid=" + roomId;
                     } else {
                         alert("Room Anavailable");
                     }    

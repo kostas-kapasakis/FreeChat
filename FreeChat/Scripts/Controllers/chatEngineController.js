@@ -23,7 +23,10 @@
 
     self.Init = function (config) {
         digestConfig(config);
+        listeners();
+
         initImpl(config);
+      
     };
 
     function digestConfig(config) {
@@ -31,6 +34,8 @@
     };
 
     function initImpl(config) {
+
+        $("#sidenavToggler").trigger("click");
 
         _roomName = config.RoomName;
      
@@ -344,6 +349,13 @@
         return imagePath;
     }
 
-
+    function listeners() {
+        $(document).ready(function() {          
+            $("#hideShowInfoButton").live("click", function (event) {
+                console.log("hit");
+                $("#chatEngineHeadContainer").toggle("show");
+                });      
+        });
+    }
 
 }(window.ChatEngineController = window.ChatEngineController || {},jQuery,document,console,ChatEngineService));

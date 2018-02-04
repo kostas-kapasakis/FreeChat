@@ -1,4 +1,4 @@
-﻿
+﻿@model FreeChat.Models.ViewModels.ChatEngineViewModel
 @using Microsoft.Owin.Security
 
 @{   ViewBag.Title = "ChatEngine";
@@ -9,81 +9,154 @@
 
 @*<script src="http://localhost:44345/signalr/hubs"></script>*@
 
-<div class="container">
-    <div class="row">
-    <div class="col-lg-10 message_section">
-        <div class="row" id="rowChatEngine">
-            <div class="new_message_head">
+@*<div class="container">*@
+@*    <div class="row">*@
+@*        <div class="col-lg-10 message_section">*@
+@*           *@
+@*            <div id="rowChatEngine">*@
+@*                <div class="new_message_head" >*@
+@**@
+@*                    <div class="pull-left">*@
+@*                        <div id="date"></div>*@
+@*                    </div>*@
+@*                    <div class="pull-right">*@
+@*                        <button class="btn btn-warning" id="leaveRoom" style="background-color: red;">Leave Room</button>*@
+@**@
+@*                    </div>*@
+@*                    <div id="roomsinfoContainer">*@
+@*                    <ul class="list-group " id="roomsInfo">*@
+@*                        <li class="list-group-item"><strong>Name</strong>&nbsp;&nbsp;@Model.Name</li>*@
+@*                        <li class="list-group-item"><strong>Description</strong>&nbsp;&nbsp;@Model.Description</li>*@
+@*                        <li class="list-group-item"><strong>Genre</strong>&nbsp;&nbsp;@Model.Genre</li>*@
+@*                    </ul>*@
+@*                      *@
+@*                    </div>*@
+@**@
+@*                </div><!--new_message_head-->*@
+@**@
+@*                <div class="chat_area">*@
+@**@
+@*                    <ul class="inner-list"></ul>*@
+@*                </div><!--chat_area-->*@
+@*                <div class="message_write">*@
+@*                    <textarea class="form-control" placeholder="type a message" id="messageTyped"></textarea>*@
+@*                    <button class="pull-right btn btn-success col-md-1" id="send">Send</button>*@
+@**@
+@*                </div>*@
+@*            </div>*@
+@*        </div>*@
+@*        <div class="col-lg-2 chat_sidebar">*@
+@*            <div id="rowChatEngine2">*@
+@*                <div id="custom-search-input">*@
+@*                    <div class="input-group col-md-12">*@
+@*                        <input type="text" class=" search-query form-control" placeholder="Conversation"/>*@
+@*                        <button class="btn btn-danger" type="button">*@
+@*                            <span class="glyphicon glyphicon-search"></span>*@
+@*                        </button>*@
+@*                    </div>*@
+@*                </div>*@
+@*                <div class="dropdown all_conversation">*@
+@*                    <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*@
+@*                        <i class="fa fa-weixin" aria-hidden="true"></i>*@
+@*                        All Online Users*@
+@*                        <span class="caret pull-right"></span>*@
+@*                    </button>*@
+@*                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">*@
+@*                        <li>*@
+@*                            <a href="#"> Private Chat </a>*@
+@**@
+@*                        </li>*@
+@**@
+@**@
+@*                    </ul>*@
+@*                </div>*@
+@*                <div class="member_list">*@
+@**@
+@**@
+@*                    <ul class="list-unstyled"></ul>*@
+@*                </div>*@
+@*            </div>*@
+@*        </div>*@
+@*    </div>*@
+@*</div>*@
 
-                <div class="pull-left">
-                    <div id="date"></div>
+<div class="container-fluid" id="ChatEngineContainer">
+    <div class="row" id="chatEngineHeadContainer">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="chatenginehead">
+                        <ul class="list-group" id="roomsInfo">
+                            <li class="list-group-item"><strong>Name</strong>&nbsp;&nbsp;@Model.Name</li>
+                            <li class="list-group-item"><strong>Description</strong>&nbsp;&nbsp;@Model.Description</li>
+                            <li class="list-group-item"><strong>Genre</strong>&nbsp;&nbsp;@Model.Genre</li>
+@*                            <a href="#" class="list-group-item list-group-item-action text-center" id="hideshowRoomInfos">Hide infos</a>*@
+                        </ul>
+                    </div>
                 </div>
-                <div class="pull-right">
-                    <button class="btn btn-warning" id="leaveRoom" style="background-color: red;">Leave Room</button>
-
+                <div class="col-lg-6">
+                    <ul class="list-group " id="roomsInfo2">
+                        <li class="list-group-item"><strong>Date</strong>&nbsp;&nbsp;@DateTime.Now</li>
+                        <li class="list-group-item"><strong>Expiring</strong>&nbsp;&nbsp;@Model.ExpirationDate
+                        <br/><strong>Created</strong>&nbsp;&nbsp;@Model.CreatedDate</li>
+                        <li class="list-group-item"><strong>Created</strong>&nbsp;&nbsp;@Model.CreatedDate</li>
+                    </ul>
                 </div>
-                <div class="text-center">
-                    <h4> Topic Of Discussion</h4>
-                    <h3> @ViewData["RoomTitle"]</h3>
-                </div>
-
-            </div><!--new_message_head-->
-
-            <div class="chat_area">
-
+               
+            </div>
+           
+        </div>
+        <div class="col-lg-2">
+            <ul class="list-group" id="roomsInfo3">
+                <li class="list-group-item text-center" id="usersConnected"><strong>Users Connected</strong><div class="text-center"><h1><a href="#">1</a></h1> </div></li>
+               
+            </ul>
+        </div>
+  
+    </div>
+    <button class="btn btn-info align-content-center" id="hideShowInfoButton">Hide Infos</button>      
+    <div class="row" id="chatEngineMiddle">
+        <div class="col-lg-10">
+            <div id="messagesArea">
                 <ul class="inner-list"></ul>
-            </div><!--chat_area-->
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="member_list">            
+                <ul class="list-unstyled"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="chatEngineFooterContainer">
+        <div class="col-lg-10" id="chatEngineFooter">
             <div class="message_write">
                 <textarea class="form-control" placeholder="type a message" id="messageTyped"></textarea>
                 <button class="pull-right btn btn-success col-md-1" id="send">Send</button>
-
             </div>
         </div>
-    </div>
-        <div class="col-lg-2 chat_sidebar">
-            <div class="row" id="rowChatEngine2">
-                <div id="custom-search-input">
-                    <div class="input-group col-md-12">
-                        <input type="text" class=" search-query form-control" placeholder="Conversation"/>
-                        <button class="btn btn-danger" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="dropdown all_conversation">
-                    <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-weixin" aria-hidden="true"></i>
-                        All Online Users
-                        <span class="caret pull-right"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li>
-                            <a href="#"> Private Chat </a>
-
-                        </li>
-
-
-                    </ul>
-                </div>
-                <div class="member_list">
-
-
-                    <ul class="list-unstyled"></ul>
-                </div>
-            </div>
+        <div class="col-lg-2">
+		
         </div>
     </div>
+
 </div>
-
-
 @section scripts{
     @Scripts.Render("~/bundles/ChatEngineView")
 
     <script type="text/javascript">
         $(function () {
-            ChatEngineController.Init({
-                RoomName:
+            $(document).ready(function() {          
+                $("#hideShowInfoButton").on("click", function (event) {
+                    $(this).text(function(i, text) {
+                        return text === "Hide Infos" ? "Show Infos" : "Hide Infos";
+                    });
+                    $("#chatEngineHeadContainer").slideToggle();
+                });      
             });
+            $("#sidenavToggler").trigger("click");
+//            ChatEngineController.Init({
+//                RoomName:"@Model.Name.ToString()"
+//            });
         });
     </script>
 

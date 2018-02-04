@@ -364,6 +364,7 @@
     <Compile Include="Models\Domain\UserConnections.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleName.cs" />
+    <Compile Include="Models\ViewModels\ChatEngineViewModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoriesViewModel.cs" />
     <Compile Include="Models\ViewModels\MyRoomsViewModel.cs" />
     <Compile Include="Models\ViewModels\NewChatRoomViewModel.cs" />
