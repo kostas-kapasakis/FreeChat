@@ -382,9 +382,7 @@
 .chatEngineMode {
     background-color: #daf5f7;
 }
-.leaveRoom:hover {
-    background-color: #ff6666;
-}
+
 .list-onlineUsers {
     list-style-type: none;
 }

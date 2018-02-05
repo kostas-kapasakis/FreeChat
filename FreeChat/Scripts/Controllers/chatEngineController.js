@@ -110,12 +110,6 @@
         d.toLocaleTimeString();
         userFullName = message[0];
         realMessage = message[1];
-        console.log(userFullName);
-        console.log(realMessage);
-
-
-
-
 
         var user = message[0].substring(0, 4);
 
@@ -172,13 +166,11 @@
             _$chat.server.sendMessageToRoom(_roomName, $('#messageTyped').val());
         }
         else {
-
             alert("You have to type something first");
-
         }
 
         //katharismos tou text area meta apo apostolh munhmatos
-        document.getElementById('messageTyped').value = "";
+        $("#messageTyped").text("");
 
         //krataw to div sunexws se scroll bottom wste na fainontai ta kainourgia munhmata
         //$(".chat_area").scrollTop($(".chat_area")[0].scrollHeight);
