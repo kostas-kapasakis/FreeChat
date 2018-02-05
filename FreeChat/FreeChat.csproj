@@ -20,12 +20,9 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -238,6 +235,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ChatEngineApiController.cs" />
+    <Compile Include="Controllers\API\Email.cs" />
     <Compile Include="Controllers\API\RoomCreatorController.cs" />
     <Compile Include="Controllers\API\RoomListController.cs" />
     <Compile Include="Controllers\API\UsersController.cs" />
@@ -262,6 +260,7 @@
       <DependentUpon>201802021337470_ChangeAdminRoleColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ConnectionMapping.cs" />
+    <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\Enums\UsersRoleEnum.cs" />
     <Compile Include="Models\MessageDetail.cs" />
     <Compile Include="Hubs\MonitorHub.cs" />
@@ -377,7 +376,9 @@
     <Compile Include="Repositories\Interfaces\IUserConnectionsRepo.cs" />
     <Compile Include="Repositories\TopicsRepoRepository.cs" />
     <Compile Include="Repositories\UserConnectionsRepository.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\NewtonJsonResult.cs" />
+    <Compile Include="Services\ServicesInterfaces\IEmailService.cs" />
     <Compile Include="Services\UsersService.cs" />
     <Compile Include="Services\ServicesInterfaces\IUsersService.cs" />
     <Compile Include="Services\ServicesInterfaces\ITopicsService.cs" />

@@ -1,1 +1,75 @@
-﻿
+﻿@model FreeChat.Models.EmailFormModel
+
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            @using (Ajax.BeginForm("", "Email", new AjaxOptions{HttpMethod = "POST",Url = "/api/Email/SendEmail"}))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Send your comments.</h4>
+                <hr />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FromName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromEmail, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FromEmail)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Message)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Send" />
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+   
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(function() {
+            $(document).ready(function(){ 
+                $('#characterLeft').text('140 characters left');
+                $('#message').keydown(function () {
+                    var max = 140;
+                    var len = $(this).val().length;
+                    if (len >= max) {
+                        $('#characterLeft').text('You have reached the limit');
+                        $('#characterLeft').addClass('red');
+                        $('#btnSubmit').addClass('disabled');            
+                    } 
+                    else {
+                        var ch = max - len;
+                        $('#characterLeft').text(ch + ' characters left');
+                        $('#btnSubmit').removeClass('disabled');
+                        $('#characterLeft').removeClass('red');            
+                    }
+                });    
+            });
+        });
+    </script>
+
+}
+  
