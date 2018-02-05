@@ -252,7 +252,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\Chat.cs" />
     <Compile Include="Migrations\201802021335531_addRoleColumnInapplicationUser.cs" />
     <Compile Include="Migrations\201802021335531_addRoleColumnInapplicationUser.Designer.cs">
       <DependentUpon>201802021335531_addRoleColumnInapplicationUser.cs</DependentUpon>

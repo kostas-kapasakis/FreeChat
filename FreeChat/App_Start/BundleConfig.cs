@@ -25,6 +25,7 @@ namespace FreeChat
 
             bundles.Add(new ScriptBundle("~/bundles/adminTemplateLayout").Include(
                 "~/Scripts/jquery-{version}.js",
+                "~/Scripts/jquery.signalR-2.2.2.min.js",
                 "~/Scripts/bootstrap4/bootstrap.bundle.js",
                 "~/Scripts/bootbox.js",
                 "~/Scripts/AdminTemplate/sb-admin.js",
@@ -54,7 +55,7 @@ namespace FreeChat
             //---------------------------------Views Bundles
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(
-             "~/Scripts/jquery.signalR-2.2.2.min.js",
+
              "~/Scripts/Services/chatEngineService.js",
              "~/Scripts/Controllers/chatEngineController.js"
              ));
@@ -75,7 +76,7 @@ namespace FreeChat
 
 
             bundles.Add(new ScriptBundle("~/bundles/IndexView").Include(
-                "~/Scripts/jquery.signalR-2.2.2.min.js",
+
                 "~/Scripts/Services/indexService.js",
                 "~/Scripts/Controllers/indexController.js",
                 "~/Scripts/Controllers/monitorController.js")

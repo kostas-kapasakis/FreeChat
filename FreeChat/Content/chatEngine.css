@@ -1,5 +1,5 @@
-﻿body{
-    font-size:16px;
+﻿body {
+    font-size: 16px;
     overflow: hidden;
 }
 .main_section{
@@ -93,11 +93,7 @@
   line-height: 30px;
   padding: 3px 20px;
 }
-   .member_list .chat-body {
-   margin-left: 47px;
-   margin-top: 0;
-  
-   }
+ 
    .top_nav {
 
    overflow: visible;
@@ -105,11 +101,11 @@
    .member_list .contact_sec {
    margin-top: 3px;
    }
+
    .member_list li {
-   padding: 6px;
    font-size:14px;
    border-bottom: 1px solid #dddddd;
-   padding: 6px 0px 6px 0px;
+   padding: 6px 0 6px 0;
    }
    .member_list ul {
    border: 1px solid #dddddd;
@@ -127,7 +123,7 @@
    border-bottom:none;
    }
    .member_list {
-   height: 600px;
+    min-height: 600px;
    overflow-x: hidden;
    overflow-y: auto;
    
@@ -170,12 +166,9 @@
   height:100px;
 }
 #rowChatEngine,rowChatEngine2{
-    top:0px;
-    margin-top:0px;
+    top:0;
+    margin-top:0;
 }
-
-
-
 .message_section {
    
    height:80%;
@@ -340,30 +333,72 @@
     padding-left: 0 !important;
 
 }
+.chatEngineMiddle .col-lg-2 {
+    padding-left: 0 !important;  
+} 
 
-#chatEngineHeadContainer ul .list-group-item:nth-child(2) {
-    height: 70px;
-}
 #hideShowInfoButton {
-    top: 3%;
+    top: 2%;
     right: 35%;
     float: right;
     z-index: 3339879789877;
     position: fixed;
 }
-#chatEngineFooter {
-    bottom: 0;
-    position: fixed;   
-    padding-bottom: 3%;
+#leaveRoomBtn {
+    top: 2%;
+    right: 28%;
+    float: right;
+    z-index: 3339879789877;
+    position: fixed;
 }
 
-#roomsInfo3, #usersConnected {
+#chatEngineFooter {
+    border: 1px solid #d1e0e0;
+    margin-bottom: 5%;
+}
+#chatEngineFooterContainer {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#roomsInfo, #roomsInfo2,#roomsInfo3, #usersConnected, .member_list {
     height: 100%;
     width: 100%;
 }
 #chatEngineMiddle {
-    background-color: #c6ddf1;
+    background-color: white;
+    overflow-y: auto;
+}
+#roomsInfo .list-group-item, #roomsInfo2 .list-group-item {
+    height: 100%;
+    width: 100%;
+} 
+
+
+#onlineUsersContainer {
+    background-color: white;
 }
 
+.chatEngineMode {
+    background-color: #daf5f7;
+}
+.leaveRoom:hover {
+    background-color: #ff6666;
+}
+.list-onlineUsers {
+    list-style-type: none;
+}
 
- 
+#chatEngineHeadContainer .row {
+    height: 100% !important;
+  
+}
+#chatenginehead {
+    height: 100% !important;
+} .row {
+    padding-top: 0 !important;
+}
+#onlineUsersContainer {
+    border: 1px solid #d1e0e0;
+    padding-left: 0 !important;
+}

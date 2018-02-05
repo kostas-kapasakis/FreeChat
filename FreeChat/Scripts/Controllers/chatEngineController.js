@@ -34,21 +34,18 @@
     };
 
     function initImpl(config) {
-
+      
+        $(".content-wrapper").addClass("chatEngineMode");
         $("#sidenavToggler").trigger("click");
 
         _roomName = config.RoomName;
      
-        //1)metavlhth gia thn hmeromhnia panw aristera
-        //2)topothethsh shmerinhs hmeromhnias sto top container
-
-        var d = new Date();
-
-        $("#date").append("<p>" + d.toDateString() + "</p>");
            
 
             // Declare a proxy to reference the hub.
-             _$chat = $.connection.chat;
+            _$chat = $.connection.chat;
+
+       
 
             //energopoihsh tou hub logging
             $.connection.hub.logging = true;
@@ -66,14 +63,11 @@
             //start the connection // Start Hub
             $.connection.hub.start().done(function () {
 
-
                     _$chat.server.joinRoom(_roomName);
                     _$chat.server.sendUsername();
                     _$chat.server.sendRoomConnectedUsers(_roomName);
                     _$chat.server.sendSavedRoomMessages(_roomName);
                     $("#send").click(onSend);
-
-
 
             })
                 .fail(function () {
@@ -81,45 +75,20 @@
                     window.location.href = '/Home/Index';
                 });
 
-            $('#leaveRoom').click(leaveRoom);
-            $('#logoff').click(leaveRoom);
-
-            $(document).on("click", ".onlineUser", function () {
-                isInPrivateChat($(this).attr('id'));
-            });
-
-       
-
-      
-
-
-        function leaveRoom() {
-            _$chat.server.leaveRoom(_roomName);
-            _$chat.server.sendRoomConnectedUsers(_roomName);
-            //$('.list-unstyled').empty();
-            window.location.href = '/Home/Index';
-
-
-        }
-
+            
 
         function connectedUsers(users) {
 
-            $('.list-unstyled').empty();
+            $("#list-onlineUsers").empty();
 
             for (var i = 0, len = users.length; i < len; i++) {
-
-                $(".list-unstyled").append("<li class ='online' id=" + users[i].substring(0, 4) + "ou" + "><div class ='onlineUser' id=" + users[i] + " >" +
-                    " <center><strong class='primary-font'>" + users[i]
-                    + "</strong><img src='/Content/images/privateMessage.png' id='privateMessageIcon' onmouseover='this.width=40px; this.height=40px;' onmouseout='this.width=30px; this.height=30px;'/></center></div></li>");
+                $("#list-onlineUsers").append("<li class ='list-group-item text-center' id=" + users[i].substring(0, 4) + "ou" + "><div class ='onlineUser text-center' id=" + users[i] + " >" +
+                     users[i].toString() + "</div></li>");
             }
 
 
 
         }
-
-
-
 
         $.connection.hub.error(function (err) {
             alert("An error occured: " + err);
@@ -128,13 +97,21 @@
        
     }
 
+    function leaveRoom() {
+        _$chat.server.leaveRoom(_roomName);
+        _$chat.server.sendRoomConnectedUsers(_roomName);
+        window.location.href = "/Home/AllChatRooms";
+    }
+
+
     function onNewMessage(message) {
 
         var d = new Date();
         d.toLocaleTimeString();
         userFullName = message[0];
         realMessage = message[1];
-
+        console.log(userFullName);
+        console.log(realMessage);
 
 
 
@@ -144,23 +121,23 @@
 
 
         //if the message sender is the current user then the message displays to the right otherwise to the left
-        if (userFullName.substring(0, 4) !== username) {
+        if (userFullName.substring(0, 4) !== connectedUser) {
             //if()
-            $('.inner-list').append("<li class='left clearfix' id ='" + user + messageCount + "nm" + "'> " +
+            $(".inner-list").append("<li class='left clearfix' id ='" + user + messageCount + "nm" + "'> " +
                 " <span class='chat-img1 pull-left' id='" + user + messageCount + "img" + "'></span>" +
                 '<div class="chat-body1 clearfix">' +
-                '<p class="real_message">' + "<h5 class='chatRealUsername'>" + userFullName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + realMessage + '</h4></p>' +
-                '<div class="chat_time pull-right">' + d.toLocaleTimeString() + '</div>' +
-                ' </div>' +
-                '</li>');
+                '<p class="real_message">' + "<h5 class='chatRealUsername'>" + userFullName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + realMessage + "</h4></p>" +
+                '<div class="chat_time pull-right">' + d.toLocaleTimeString() + "</div>" +
+                " </div>" +
+                "</li>");
         } else {
-            $('.inner-list').append("<li class='left clearfix admin_chat' id ='" + user + messageCount + "nm" + "'> " +
+            $(".inner-list").append("<li class='left clearfix admin_chat' id ='" + user + messageCount + "nm" + "'> " +
                 "<span class='chat-img1 pull-right'id='" + user + messageCount + "img" + "'></span>" +
                 '<div class="chat-body1 clearfix">' +
-                '<p class="real_message">' + "<h4 class='chatRealMessage'>" + realMessage + '</h4></p>' +
-                '<div class="chat_time pull-left">' + d.toLocaleTimeString() + '</div>' +
-                ' </div>' +
-                '</li>');
+                '<p class="real_message">' + "<h4 class='chatRealMessage'>" + realMessage + "</h4></p>" +
+                '<div class="chat_time pull-left">' + d.toLocaleTimeString() + "</div>" +
+                " </div>" +
+                "</li>");
         }
         //if it isnt the first message in the chat area
         //take the previous li sibling
@@ -204,14 +181,13 @@
         document.getElementById('messageTyped').value = "";
 
         //krataw to div sunexws se scroll bottom wste na fainontai ta kainourgia munhmata
-        $(".chat_area").scrollTop($(".chat_area")[0].scrollHeight);
+        //$(".chat_area").scrollTop($(".chat_area")[0].scrollHeight);
 
 
     };
 
     function createTabsForPrivate(name) {
         var selector = "#" + name.substring(0, 4) + "ou";
-        console.log(selector.toString());
         $(selector).css("background-color", "#e6ffff");
 
     }
@@ -237,8 +213,12 @@
 
     function showHistory(existing) {
 
+        if (existing.length <= 0)
+            return;
+
+
         for (var i = 0, len = existing.length; i < len; i++) {
-            if (existing[i].UserName.substring(0, 4) !== username) {
+            if (existing[i].UserName.substring(0, 4) !== connectedUser) {
                 $('.inner-list').append("<li class='left clearfix'> " +
                     " <span class='chat-img1 pull-left' id=" + existing[i].UserName.substring(0, 4) + messageCountHistory + "></span>" +
                     '<div class="chat-body1 clearfix">' +
@@ -350,11 +330,22 @@
     }
 
     function listeners() {
-        $(document).ready(function() {          
-            $("#hideShowInfoButton").live("click", function (event) {
-                console.log("hit");
-                $("#chatEngineHeadContainer").toggle("show");
-                });      
+        $(document).ready(function () {
+            $("#hideShowInfoButton").on("click", function (event) {
+                $(this).text(function (i, text) {
+                    return text === "Hide Infos" ? "Show Infos" : "Hide Infos";
+                });
+                $("#chatEngineHeadContainer").slideToggle();
+            });
+
+
+            $("#leaveRoomBtn").click(leaveRoom);
+              
+            $("#logoff").click(leaveRoom);
+
+            $(document).on("click", ".onlineUser", function () {
+                isInPrivateChat($(this).attr("id"));
+            });
         });
     }
 

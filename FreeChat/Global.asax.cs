@@ -18,6 +18,8 @@ namespace FreeChat
         protected void Application_Start()
         {
 
+
+
             AutoMapper.Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
 
             AreaRegistration.RegisterAllAreas();

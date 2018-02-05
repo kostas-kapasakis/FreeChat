@@ -1,17 +1,15 @@
-﻿using System;
+﻿using FreeChat.Models;
+using Microsoft.AspNet.SignalR;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNet.SignalR;
-using FreeChat.Models;
-using Microsoft.AspNet.SignalR.Hubs;
-using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
 namespace FreeChat.Hubs
 {
     [Authorize]
-    [HubName("chat")]
-    public class ChatHub : Hub
+    public class Chat : Hub
     {
         //Dictionary gia tous online users
         private static readonly ConcurrentDictionary<string, string> CoUsers =
@@ -50,7 +48,7 @@ namespace FreeChat.Hubs
         public void SendMessageToRoom(string room, string message)
         {
 
-            var messageSend = new List<string> {Context.User.Identity.Name, message};
+            var messageSend = new List<string> { Context.User.Identity.Name, message };
 
 
             // foreach (var connectionId in _connections.GetConnections(Context.User.Identity.Name))
@@ -264,8 +262,8 @@ namespace FreeChat.Hubs
         public void SendSavedRoomMessages(string room)
         {
             MessageCaching.TryGetValue(room, out var existingMessageCashing);
-            Clients.Caller.loadHistory(existingMessageCashing.ToArray());
 
+            if (existingMessageCashing != null) Clients.Caller.loadHistory(existingMessageCashing.ToArray());
         }
 
 
@@ -392,7 +390,7 @@ namespace FreeChat.Hubs
                 //if at least one of the linq queries result are not empty meaning that the roomname have been found make the active field true
 
             }*/
-    
+
 
 
 

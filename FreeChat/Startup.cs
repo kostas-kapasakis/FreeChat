@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(FreeChat.Startup))]
+[assembly: OwinStartup(typeof(FreeChat.Startup))]
 namespace FreeChat
 {
     public partial class Startup
