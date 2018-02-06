@@ -98,5 +98,10 @@ namespace FreeChat.Services
             var roomsFull = _topicsRepoRepository.GetTopicsFull();
             return Mapper.Map<IEnumerable<Topics>, IEnumerable<TopicsFullDto>>(roomsFull);
         }
+
+        public bool ChangeTopicStatus(long id, bool status)
+        {
+            return _topicsRepoRepository.ChangeTopicStatus(id, status);
+        }
     }
 }

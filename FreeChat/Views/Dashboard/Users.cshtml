@@ -35,12 +35,6 @@
 @section scripts{
     @Scripts.Render("~/bundles/IndexView")
 
-    @*        <script type="text/javascript">*@
-    @*            $(function() {*@
-    @*                IndexController.Init();*@
-    @*            });*@
-    @*        </script>*@
-
     <script>
 
         var $table;
@@ -66,13 +60,11 @@
                         render: function(data, type, user) {
 
                             if (user.Active) {
-                                console.log("active");
-                                console.log(user);
+                   
                                 return `<button class='btn-link js-deactivate btn-info' data-user-id=${user.Id
                                     }>Deactivate</button>`;
                             } else {
-                                console.log("deaactive");
-                                console.log(user);
+                             
                                 return `<button class='btn-link js-deactivate btn-warning' data-user-id=${user.Id
                                     }>Activate</button>`;
                             }

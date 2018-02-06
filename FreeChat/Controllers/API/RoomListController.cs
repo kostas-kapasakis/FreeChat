@@ -47,7 +47,24 @@ namespace FreeChat.Controllers.API
         [HttpGet]
         //        [Authorize(Roles = "Administrator")]
         public IHttpActionResult GetTopicsFull()
-            => Ok(_service.GetTopicsFull());
+        {
+            var topics = _service.GetTopicsFull();
+
+            return Ok(topics);
+        }
+
+
+        [HttpPost]
+        public IHttpActionResult ChangeTopicStatus(long id, bool status)
+        {
+            return Ok(_service.ChangeTopicStatus(id, status));
+        }
+
+
+        [HttpDelete]
+        public IHttpActionResult DeleteTopic(long Id)
+            => Ok(_service.DeleteTopicById(Id));
+
 
 
 

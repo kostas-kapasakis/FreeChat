@@ -16,6 +16,11 @@ namespace FreeChat.Repositories
             _context = context;
         }
 
+        public ApplicationUser GetUser(string id)
+        {
+            return _context.Users.FirstOrDefault(i => i.Id == id);
+        }
+
         public long CountRegisteredUsers()
         {
             return _context.ConnectedUsers.Count();

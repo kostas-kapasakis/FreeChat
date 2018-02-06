@@ -20,6 +20,14 @@ namespace FreeChat.Controllers.API
         }
 
         [HttpGet]
+        public IHttpActionResult GetUser(string id)
+        {
+            return Ok(_usersService.GetUser(id));
+        }
+
+
+
+        [HttpGet]
         public IHttpActionResult GetRegisteredUsers()
         {
 

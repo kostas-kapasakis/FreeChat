@@ -23,21 +23,50 @@
         <div class="table-responsive">
             <table id="allChatRoomsAdmin" class="table table-bordered table-hover">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Genre</th>
-                        <th>Description</th>
-                        <th>Date Expired</th>
-                        <th>Creator</th>
-                        <th>Change Status</th>
-                        <th>Delete</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Genre</th>
+                    <th>Description</th>
+                    <th>Date Expired</th>
+                    <th>Creator</th>
+                    <th>Change Status</th>
+                    <th>Delete</th>
+                </tr>
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
     </div>
     <div class="card-footer small text-muted">Updated @DateTime.Today.ToShortDateString()</div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="User" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="User">User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="usersModalBody">
+                <ul class="list-group" id="listModal">
+                    <li class="list-group-item-action" id="userNameLabelModal"><strong>User Name :&nbsp; </strong></li>
+                    <li class="list-group-item-action" id="idLabelModal"><strong>Id :&nbsp; </strong></li>
+                    <li class="list-group-item-action" id="emailLabelModal"><strong>Email :&nbsp; </strong></li>
+                    <li class="list-group-item-action" id="statusLabelModal"><strong>Status :&nbsp; </strong></li>
+                    <li class="list-group-item-action" id="roomsLeftLabelModal"><strong>Rooms Left :&nbsp; </strong></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 

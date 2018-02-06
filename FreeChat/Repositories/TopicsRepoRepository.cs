@@ -87,5 +87,24 @@ namespace FreeChat.Repositories
         {
             return _context.Topics;
         }
+
+        public bool ChangeTopicStatus(long id, bool status)
+        {
+            var topic = _context.Topics.FirstOrDefault(x => x.Id == id);
+            if (topic == null)
+                return false;
+
+            if (status)//topic is active so disable it and return current status
+            {
+                topic.Active = false;
+                _context.SaveChanges();
+                return false;
+            }
+
+            topic.Active = true;
+            _context.SaveChanges();
+            return true;
+
+        }
     }
 }

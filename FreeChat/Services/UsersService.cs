@@ -1,4 +1,6 @@
-﻿using FreeChat.Models;
+﻿using AutoMapper;
+using FreeChat.Models;
+using FreeChat.Models.DTO;
 using FreeChat.Repositories.Interfaces;
 using FreeChat.Services.ServicesInterfaces;
 using System.Collections.Generic;
@@ -12,6 +14,11 @@ namespace FreeChat.Services
         public UsersService(IUsers userRepo)
         {
             _userRepo = userRepo;
+        }
+
+        public UserDto GetUser(string id)
+        {
+            return Mapper.Map<ApplicationUser, UserDto>(_userRepo.GetUser(id));
         }
 
         public long CountRegisteredUsers()

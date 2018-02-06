@@ -51,3 +51,7 @@
     #cardBlockRoomsAdmin a:first-child {
         margin-right: 60%;
     }
+
+#listModal {
+    list-style-type: none;
+}

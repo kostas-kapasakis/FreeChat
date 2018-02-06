@@ -15,6 +15,7 @@ namespace FreeChat.Repositories.Interfaces
         int RoomsRemainingForUser(string id);
 
 
+        bool ChangeTopicStatus(long id, bool status);
         IEnumerable<Topics> GetTopicsFull();
 
 

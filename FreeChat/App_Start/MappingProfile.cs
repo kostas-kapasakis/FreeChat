@@ -20,6 +20,7 @@ namespace FreeChat
             CreateMap<TopicsFullDto, Topics>();
             CreateMap<ApplicationUser, UserDto>();
             CreateMap<UserDto, ApplicationUser>();
+
         }
     }
 }
