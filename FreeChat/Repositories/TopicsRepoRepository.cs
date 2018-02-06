@@ -94,7 +94,7 @@ namespace FreeChat.Repositories
             if (topic == null)
                 return false;
 
-            if (status)//topic is active so disable it and return current status
+            if (!status)//topic is active so disable it and return current status
             {
                 topic.Active = false;
                 _context.SaveChanges();

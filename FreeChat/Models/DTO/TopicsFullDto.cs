@@ -6,6 +6,8 @@ namespace FreeChat.Models.DTO
 {
     public class TopicsFullDto
     {
+        public long Id { get; set; }
+
         [Required]
         [StringLength(50)]
         [DisplayName("Room Name")]

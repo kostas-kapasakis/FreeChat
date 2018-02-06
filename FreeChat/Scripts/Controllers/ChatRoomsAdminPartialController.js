@@ -65,7 +65,7 @@
                 {
                     data: "Id",
                     render: function (data, type, room) {
-                        return "<button class='btn btn-danger deleteRoomBtn' id='" + data + "'>Delete</button>";
+                        return "<button class='btn btn-danger deleteRoomBtn' id='" + room.Id + "'>Delete</button>";
                     }
                 }
             ]
@@ -73,43 +73,20 @@
     }
 
     function listeners() {
-        $(_document).on("click", ".changeStatusBtn", function () {
-            var roomId = $(this).attr("id");
-
-            $.ajax({
-                method: "post",
-                url: "/api/RoomList/ChangeTopicStatus",
-                data: {
-                    id:roomId,
-                    status:false
-                },
-                success: function (data) {
-                    if (data) {
-                        window.location = "/ChatEngine/ChatStart?roomid=" + roomId;
-                    } else {
-                        alert("Room Anavailable");
-                    }
-
-                }
-
-            });
-        });
 
         $(_document).on("click", ".deleteRoomBtn", function () {
             var roomId = $(this).attr("id");
+            var button = $(this);
             bootbox.confirm("Are you sure you want to delete this room?",
                 function(result) {
                     if (result) {
 
                         $.ajax({
                             method: "delete",
-                            url: "/api/RoomList/DeleteTopic",
-                            data: {
-                                id: roomId
-                            },
+                            url: "/api/RoomList/DeleteTopic?Id="+roomId,
                             success: function(data) {
                                 if (data) {
-                                    alert("Room deleted");
+                                    $table.row(button.parents("tr")).remove().draw();
                                 } else {
                                     alert("Room Anavailable");
                                 }
@@ -150,19 +127,15 @@
         $("#allChatRoomsAdmin").on("click",
             ".changeStatusBtn",
             function () {
-                if ($(this).hasClass("active")) {
+                if ($(this).hasClass("btn-info")) {
                     var button = $(this);
                     var roomId = button.attr("data-room-id");
                     bootbox.confirm("Are you sure you want to deactivate this room?",
                         function (result) {
                             if (result) {
                                 $.ajax({
-                                    method: "post",
-                                    url: "/api/RoomList/ChangeTopicStatus",
-                                    data: {
-                                        id: roomId,
-                                        status: false
-                                    },
+                                    method: "POST",
+                                    url: "/api/RoomList/ChangeTopicStatus?id="+roomId + "&status=false",
                                     success: function (response) {
                                         $table.row(button.text("Activate").removeClass("btn-info")
                                             .addClass("btn-warning")).draw();
@@ -178,12 +151,9 @@
                         function (result) {
                             if (result) {
                                 $.ajax({
-                                    method: "post",
-                                    url: "/api/RoomList/ChangeTopicStatus",
-                                    data: {
-                                        id: roomId2,
-                                        status: true
-                                    },
+                                    method: "POST",
+                                    url: "/api/RoomList/ChangeTopicStatus?id=" + roomId2 + "&status=true",
+                                   
                                     success: function (response) {
                                         $table.row(button2.text("Deactivate").removeClass("btn-warning")
                                             .addClass("btn-info")).draw();
