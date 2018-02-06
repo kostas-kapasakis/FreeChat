@@ -400,3 +400,7 @@
     border: 1px solid #d1e0e0;
     padding-left: 0 !important;
 }
+.inner-list img {
+    height: 34px;
+    width: 34px;
+}

@@ -108,6 +108,8 @@
 
         var d = new Date();
         d.toLocaleTimeString();
+        console.log("datetime");
+        console.log(d);
         userFullName = message[0];
         realMessage = message[1];
 
@@ -242,81 +244,106 @@
 
         switch (letter) {
             case "a":
+            case "A":
                 imagePath = "/Content/images/letters/Letter-A-blue-icon.png";
                 break;
 
             case "b":
+            case "B":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "c":
+            case "C":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "d":
+            case "D":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "e":
+            case "E":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "f":
+            case "F":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "g":
+            case "G":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "h":
+            case "H":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "i":
+            case "I":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "j":
+            case "J":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "k":
+            case "K":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "l":
+            case "L":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "m":
+            case "M":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "n":
+            case "N":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "o":
+            case "O":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "p":
+            case "P":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "q":
+            case "Q":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "r":
+            case "R":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "s":
+            case "S":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "t":
+            case "T":
                 imagePath = "/Content/images/letters/Letter-T-blue-icon.png";
                 break;
             case "u":
+            case "U":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "x":
+            case "X":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "y":
+            case "Y":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
             case "z":
+            case "Z":
                 imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
                 break;
 
             default:
                 console.log("Usernmame doesnt belong in any category");
+                imagePath = "/Content/images/letters/Letter-K-blue-icon.png";
         }
         return imagePath;
     }

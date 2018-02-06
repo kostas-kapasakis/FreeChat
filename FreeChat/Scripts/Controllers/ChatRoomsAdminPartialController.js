@@ -97,23 +97,28 @@
 
         $(_document).on("click", ".deleteRoomBtn", function () {
             var roomId = $(this).attr("id");
+            bootbox.confirm("Are you sure you want to delete this room?",
+                function(result) {
+                    if (result) {
 
-            $.ajax({
-                method: "delete",
-                url: "/api/RoomList/DeleteTopic",
-                data: {
-                    id: roomId
-                },
-                success: function (data) {
-                    if (data) {
-                        alert("Room deleted");
-                    } else {
-                        alert("Room Anavailable");
+                        $.ajax({
+                            method: "delete",
+                            url: "/api/RoomList/DeleteTopic",
+                            data: {
+                                id: roomId
+                            },
+                            success: function(data) {
+                                if (data) {
+                                    alert("Room deleted");
+                                } else {
+                                    alert("Room Anavailable");
+                                }
+
+                            }
+
+                        });
                     }
-
-                }
-
-            });
+                });
         });
 
 
@@ -142,8 +147,8 @@
             });
         });
 
-        $("#registeredUsers").on("click",
-            ".js-deactivate",
+        $("#allChatRoomsAdmin").on("click",
+            ".changeStatusBtn",
             function () {
                 if ($(this).hasClass("active")) {
                     var button = $(this);
