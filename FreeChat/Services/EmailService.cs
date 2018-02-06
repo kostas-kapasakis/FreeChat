@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Threading.Tasks;
-using System.Web;
-using FreeChat.Models;
+﻿using FreeChat.Models;
 using FreeChat.Services.ServicesInterfaces;
+using System;
+using System.Web.Helpers;
 
 namespace FreeChat.Services
 {
@@ -16,39 +10,68 @@ namespace FreeChat.Services
     {
         private const string adminEmail = "kkkapasakis@yahoo.gr";
 
-        public async Task<int> EmailSender(EmailFormModel model)
+        public int EmailSender(EmailFormModel model)
         {
-            var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-            var message = new MailMessage();
-            message.To.Add(new MailAddress(adminEmail));
-            message.From = new MailAddress(model.FromEmail);
-            message.Subject = "free Chat Contact";
-            message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
-            message.IsBodyHtml = true;
+
             try
             {
-                using (var smtp = new SmtpClient())
-                {
-                    var credential = new NetworkCredential
-                    {
-                        UserName = adminEmail, // replace with valid value
-                        Password = "trypes!@#$" // replace with valid value
-                    };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp-mail.outlook.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    await smtp.SendMailAsync(message);
+                //Configuring webMail class to send emails  
+                //gmail smtp server  
+                WebMail.SmtpServer = "smtp.gmail.com";
+                //gmail port to send emails  
+                WebMail.SmtpPort = 587;
+                WebMail.SmtpUseDefaultCredentials = true;
+                //sending emails with secure protocol  
+                WebMail.EnableSsl = true;
+                //EmailId used to send emails from application  
+                WebMail.UserName = "kremusicman@gmail.com";
+                WebMail.Password = "aggelakas";
 
-                    return 1;
-                }
+                //Sender email address.  
+                WebMail.From = model.FromEmail;
+
+                //Send email  
+                WebMail.Send(to: model.ToEmail, subject: model.EmailSubject, body: model.Message, isBodyHtml: true);
+                return 1;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.Write(e.Message);
                 return 0;
+
             }
+            //            var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+            //            var message = new MailMessage();
+            //            message.To.Add(new MailAddress(adminEmail));
+            //            message.From = new MailAddress(model.FromEmail);
+            //            message.Subject = "free Chat Contact";
+            //            message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
+            //            message.IsBodyHtml = true;
+            //            try
+            //            {
+            //                using (var smtp = new SmtpClient())
+            //                {
+            //                    var credential = new NetworkCredential
+            //                    {
+            //                        UserName = adminEmail, // replace with valid value
+            //                        Password = "trypes!@#$" // replace with valid value
+            //                    };
+            //                    smtp.Credentials = credential;
+            //                    smtp.Host = "smtp-mail.outlook.com";
+            //                    smtp.Port = 587;
+            //                    smtp.EnableSsl = true;
+            //                    await smtp.SendMailAsync(message);
+            //
+            //                    return 1;
+            //                }
+            //            }
+            //            catch (Exception e)
+            //            {
+            //                Debug.Write(e.Message);
+            //                return 0;
+            //            }
 
         }
+
+
     }
 }
