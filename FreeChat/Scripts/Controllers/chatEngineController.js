@@ -108,8 +108,7 @@
 
         var d = new Date();
         d.toLocaleTimeString();
-        console.log("datetime");
-        console.log(d);
+      
         userFullName = message[0];
         realMessage = message[1];
 

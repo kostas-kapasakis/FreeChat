@@ -14,15 +14,18 @@ namespace FreeChat.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly ApplicationDbContext _context;
 
-        public AccountController()
+        public AccountController(ApplicationDbContext context)
         {
+            _context = context;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext context)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _context = context;
         }
 
         public ApplicationSignInManager SignInManager
@@ -57,10 +60,25 @@ namespace FreeChat.Controllers
             {
                 return View(model);
             }
+            var user = _context.Users.SingleOrDefault(x => x.UserName == model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", @"Invalid login attempt.");
+                return View(model);
+            }
+            else
+            {
+                if (!user.Active)
+                {
+                    ModelState.AddModelError("", @"This account is disabled.Contact us to solve the issue.");
+                    return View(model);
+                }
+            }
+
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -99,6 +117,7 @@ namespace FreeChat.Controllers
         {
             if (!ModelState.IsValid)
             {
+
                 return View(model);
             }
 
@@ -377,7 +396,7 @@ namespace FreeChat.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult SignOut()
@@ -440,7 +459,7 @@ namespace FreeChat.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MainCategories", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

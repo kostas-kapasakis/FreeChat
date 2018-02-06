@@ -9,6 +9,8 @@ namespace FreeChat.Models.DTO
         {
 
         }
+
+        public long Id { get; set; }
         [Required(ErrorMessage = "A Topic Name is required")]
         [StringLength(30)]
         public string Name { get; set; }

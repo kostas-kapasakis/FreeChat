@@ -75,7 +75,7 @@
             $("#registeredUsers").on("click",
                 ".js-deactivate",
                 function() {
-                    if ($(this).hasClass("active")) {
+                    if ($(this).hasClass("btn-info")) {
                         var button = $(this);
                         var userId = button.attr("data-user-id");
                         bootbox.confirm("Are you sure you want to deactivate this user?",
@@ -98,7 +98,7 @@
                             function(result) {
                                 if (result) {
                                     $.ajax({
-                                        url: `/api/Users/UpdateUserActiveStatus?status=false&userId=${userId2}`,
+                                        url: `/api/Users/UpdateUserActiveStatus?status=true&userId=${userId2}`,
                                         method: "POST",
                                         success: function(response) {
                                             $table.row(button2.text("Deactivate").removeClass("btn-warning")

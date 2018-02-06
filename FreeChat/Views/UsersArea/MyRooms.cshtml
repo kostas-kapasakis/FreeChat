@@ -26,7 +26,7 @@
                         <small>Date Expiring:&nbsp;@room.DateExpired</small>
                         <span class="pull-right">
                             <span class="btn btn btn-default">
-                                <span class="fa fa-arrow-circle-o-right fa-2x "aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Enter Room!"></span>
+                                <span class="fa fa-arrow-circle-o-right fa-2x  roomEnter" aria-hidden="true" data-toggle="tooltip" data-placement="right" id="@room.Id" title="Enter Room!"></span>
                             </span>
                         </span>
                     </a>
@@ -42,10 +42,10 @@
                         <small>@DateTime.Today</small>
                     </div>
                     <p class="mb-1">Create a Room</p>
-               
+
                     <span class="pull-right">
                         <span class="btn btn btn-default">
-                            <span class="fa fa-arrow-circle-o-right fa-2x "aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Create a Room!"></span>
+                            <span class="fa fa-arrow-circle-o-right fa-2x " aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Create a Room!"></span>
                         </span>
                     </span>
                 </a>
@@ -55,3 +55,30 @@
     </div>
 
 </div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/IndexView")
+
+    <script>
+        $(document).on("click", ".roomEnter", function () {
+            var roomId = $(this).attr("id");
+
+            $.ajax({
+                method: "get",
+                url: "/api/ChatEngineApi/Chatengine?roomId=" + roomId,
+
+                success: function (data) {
+                    if (data) {
+                        window.location = "/ChatEngine/ChatStart?roomid=" + roomId;
+                    } else {
+                        alert("Room Anavailable");
+                    }
+
+                }
+
+            });
+        });
+
+    </script>
+   
+}

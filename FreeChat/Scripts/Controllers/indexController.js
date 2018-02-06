@@ -44,6 +44,25 @@
                 populateDataTable(categId);
             });
 
+        $(_document).on("click", ".roominBtn", function () {
+            var roomId = $(this).attr("id");
+
+            $.ajax({
+                method: "get",
+                url: "/api/ChatEngineApi/Chatengine?roomId=" + roomId,
+
+                success: function (data) {
+                    if (data) {
+                        window.location = "/ChatEngine/ChatStart?roomid=" + roomId;
+                    } else {
+                        alert("Room Anavailable");
+                    }
+
+                }
+
+            });
+        });
+
     }
     function displayRoomsByCateg() {
         $("#container-categories-img-list").fadeOut(200);
@@ -81,7 +100,7 @@
                 {
                     data: "Id",
                     render: function (data, type, room) {
-                        return "<button class='btn btn-success roominitBtn' id='" + data + "'>Enter Room</button>";
+                        return "<button class='btn btn-success roominBtn' id='" + data + "'>Enter Room</button>";
                     }
                 }
             ]
