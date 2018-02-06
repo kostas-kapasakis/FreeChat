@@ -16,5 +16,11 @@ namespace FreeChat.Controllers
         {
             return View();
         }
+
+        public ActionResult Rooms()
+        {
+
+            return View();
+        }
     }
 }

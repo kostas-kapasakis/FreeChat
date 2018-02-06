@@ -1,16 +1,18 @@
 ﻿
+
 @{
     ViewBag.Title = "Free Chat";
     Layout = "~/Views/Shared/_AdminTemplate.cshtml";
 }
 
-@Styles.Render("~/bundles/allChatRoomsViewStyle")
+@Styles.Render("~/bundles/chatRoomsAdminViewStyle")
 
-<div class="card text-center" id="redirectPanelAllChatRooms">
-    <div class="card-block" id="cardBlockallChatRooms">
-        @Html.ActionLink("Back to Main Categories", "MainCategories", "Home", null, new { @class = "btn btn-primary" })
+<div class="card text-center" id="redirectPaneRoomsAdmin">
+    <div class="card-block" id="cardBlockRoomsAdmin">
+        
+        @Html.ActionLink("Users", "Users", "Dashboard", null, new {@class = "btn btn-primary"})
 
-        @Html.ActionLink("Create a room", "Create", "ChatRoom", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Go to Rooms", "AllChatRooms", "Home", null, new {@class = "btn btn-primary"})
     </div>
 </div>
 <div class="card m-5">
@@ -19,14 +21,16 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="allChatRooms" class="table table-bordered table-hover">
+            <table id="allChatRoomsAdmin" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Genre</th>
                         <th>Description</th>
                         <th>Date Expired</th>
-                        <th>Go</th>
+                        <th>Creator</th>
+                        <th>Change Status</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -38,10 +42,10 @@
 
 
 @section scripts{
-    @Scripts.Render("~/bundles/allChatRoomsPartial")
+    @Scripts.Render("~/bundles/chatRoomsAdminPartial")
     <script>
         $(function () {
-            AllChatRoomsPartialController.Init();
+            ChatRoomsAdminPartialController.Init();
         });
     </script>
 }

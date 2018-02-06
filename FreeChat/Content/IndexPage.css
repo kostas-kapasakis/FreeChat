@@ -29,14 +29,25 @@
     background-color: #007bff;
 }
 
-#redirectPanel2 {
+#redirectPanelAllChatRooms {
     margin-top: 2%;
 }
 
-#cardBlock2 a:first-child {
+#cardBlockallChatRooms a:first-child {
     margin-right: 60%;
 }
 
-#cardBlock2 {
+#cardBlockallChatRooms {
     background-color: #007bff;
 }
+
+#redirectPanelAllChatRooms {
+    margin-top: 2%;
+}
+#cardBlockRoomsAdmin {
+    background-color: #007bff;
+}
+
+    #cardBlockRoomsAdmin a:first-child {
+        margin-right: 60%;
+    }

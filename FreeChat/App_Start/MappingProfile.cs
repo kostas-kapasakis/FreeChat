@@ -16,6 +16,8 @@ namespace FreeChat
             CreateMap<MainCategoriesDto, MainCategories>();
             CreateMap<Topics, TopicsDto>();
             CreateMap<TopicsDto, Topics>();
+            CreateMap<Topics, TopicsFullDto>();
+            CreateMap<TopicsFullDto, Topics>();
             CreateMap<ApplicationUser, UserDto>();
             CreateMap<UserDto, ApplicationUser>();
         }

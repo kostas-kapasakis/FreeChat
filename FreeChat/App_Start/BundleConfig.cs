@@ -102,6 +102,17 @@ namespace FreeChat
                 ));
 
 
+            bundles.Add(new ScriptBundle("~/bundles/chatRoomsAdminPartial").Include(
+                "~/Scripts/Services/indexService.js",
+                "~/Scripts/Controllers/chatRoomsAdminPartialController.js"
+            ));
+
+            bundles.Add(new StyleBundle("~/bundles/chatRoomsAdminViewStyle").Include(
+                "~/Content/IndexPage.css"
+            ));
+
+
+
             bundles.Add(new StyleBundle("~/bundles/MyRoomsViewStyle").Include(
                 "~/Content/MyRooms.css"
             ));

@@ -13,5 +13,11 @@ namespace FreeChat.Repositories.Interfaces
         int DeleteTopicById(long id);
         IEnumerable<Topics> GetUserTopics(string id);
         int RoomsRemainingForUser(string id);
+
+
+        IEnumerable<Topics> GetTopicsFull();
+
+
+
     }
 }

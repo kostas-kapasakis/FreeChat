@@ -16,6 +16,7 @@ namespace FreeChat.Services.ServicesInterfaces
         TopicValidationPriorEnteringEnum ValidateRoom(long id);
         IEnumerable<TopicsDto> GetUserTopics(string id);
         int RoomsRemainingForUser(string id);
+        IEnumerable<TopicsFullDto> GetTopicsFull();
 
     }
 }

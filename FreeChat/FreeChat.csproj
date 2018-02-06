@@ -20,9 +20,12 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44345</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -260,6 +263,7 @@
       <DependentUpon>201802021337470_ChangeAdminRoleColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ConnectionMapping.cs" />
+    <Compile Include="Models\DTO\TopicsFullDto.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\Enums\UsersRoleEnum.cs" />
     <Compile Include="Models\MessageDetail.cs" />
@@ -637,6 +641,7 @@
     <Content Include="Scripts\Controllers\allChatRoomsPartialController.js" />
     <Content Include="Scripts\Controllers\chatEngineController.js" />
     <Content Include="Scripts\Controllers\chatRoomController.js" />
+    <Content Include="Scripts\Controllers\chatRoomsAdminPartialController.js" />
     <Content Include="Scripts\Controllers\indexController.js" />
     <Content Include="Scripts\Controllers\monitorController.js" />
     <Content Include="Scripts\copy_csv_xls_pdf.swf" />
@@ -825,6 +830,7 @@
     <Content Include="Views\ChatEngine\Chatengine.cshtml" />
     <Content Include="Views\CustomError\CustomError.cshtml" />
     <Content Include="Views\UsersArea\MyRooms.cshtml" />
+    <Content Include="Views\Dashboard\Rooms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -92,5 +92,11 @@ namespace FreeChat.Services
         {
             return _topicsRepoRepository.RoomsRemainingForUser(userId);
         }
+
+        public IEnumerable<TopicsFullDto> GetTopicsFull()
+        {
+            var roomsFull = _topicsRepoRepository.GetTopicsFull();
+            return Mapper.Map<IEnumerable<Topics>, IEnumerable<TopicsFullDto>>(roomsFull);
+        }
     }
 }

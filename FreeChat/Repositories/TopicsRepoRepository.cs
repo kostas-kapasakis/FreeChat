@@ -82,5 +82,10 @@ namespace FreeChat.Repositories
 
             return user?.RoomsLeft ?? 0;
         }
+
+        public IEnumerable<Topics> GetTopicsFull()
+        {
+            return _context.Topics;
+        }
     }
 }
