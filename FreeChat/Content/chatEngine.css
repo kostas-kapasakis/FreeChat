@@ -123,7 +123,7 @@
    border-bottom:none;
    }
 .member_list {
-    max-height: 600px !important;
+    max-height: 300px !important;
     overflow-y: scroll !important;
 }
    .sub_menu_ {
@@ -334,8 +334,8 @@
     padding-left: 0 !important;  
 }
 #messagesContainerArea {
-    max-height: 600px;
-    min-height: 600px;
+    max-height: 300px;
+    min-height: 300px;
     overflow-y: auto;
 }
 #hideShowInfoButton {
