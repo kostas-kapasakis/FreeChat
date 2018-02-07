@@ -3,6 +3,7 @@ using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,13 +43,11 @@ namespace FreeChat.Hubs
             Clients.Caller.SendName(name);
 
         }
-
-
         //(2) Send Messages to room and cashing <=50 messages for this room
         public void SendMessageToRoom(string room, string message)
         {
-
-            var messageSend = new List<string> { Context.User.Identity.Name, message };
+            var date = DateTime.Now;
+            var messageSend = new List<string> { Context.User.Identity.Name, message, date.ToString(CultureInfo.InvariantCulture) };
 
 
             // foreach (var connectionId in _connections.GetConnections(Context.User.Identity.Name))
@@ -64,7 +63,7 @@ namespace FreeChat.Hubs
                 {
                     Message = message,
                     UserName = Context.User.Identity.Name,
-                    TimeSend = DateTime.Now.ToShortTimeString()
+                    TimeSend = date.ToString(CultureInfo.InvariantCulture)
                 });
             }
 
@@ -81,6 +80,10 @@ namespace FreeChat.Hubs
                 .Key;
             Clients.User(group2Name).createTabsForPrivate();
             Clients.User(user).newMessage(username + " : " + message);
+
+            // Call the broadcastMessage method to update clients.
+            Clients.Caller.NewMessagePrivate(nameToChat, message);
+            // Clients.Client(dic[to]).broadcastMessage(name, message);
 
         }
 

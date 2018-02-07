@@ -122,12 +122,10 @@
    .member_list li:last-child {
    border-bottom:none;
    }
-   .member_list {
-    min-height: 600px;
-   overflow-x: hidden;
-   overflow-y: auto;
-   
-   }
+.member_list {
+    max-height: 600px !important;
+    overflow-y: scroll !important;
+}
    .sub_menu_ {
   background: #c6ddf1 none repeat scroll 0 0;
   left: 100%;
@@ -187,7 +185,7 @@
 }
 .chat_area {
   float: left;
-  height: 600px;
+  max-height: 600px;
   overflow-x:hidden;
   word-wrap: break-word;
   overflow-y: scroll;
@@ -210,9 +208,8 @@
   height: 30px;
   width: 30px;
   display:inline-block;
-  
-
 }
+
 .chat_area .chat-body1 {
   margin-left: 30px;
   background-color:#e5e5e4;
@@ -282,7 +279,7 @@
    
 }
 .real_message{
-      background-color:white;
+     
       padding: 2px;
       font-family:Open sans;
       display:inline-block;
@@ -335,8 +332,11 @@
 }
 .chatEngineMiddle .col-lg-2 {
     padding-left: 0 !important;  
-} 
-
+}
+#messagesContainerArea {
+    max-height: 600px;
+    overflow-y: auto;
+}
 #hideShowInfoButton {
     top: 2%;
     right: 35%;
@@ -404,3 +404,81 @@
     height: 34px;
     width: 34px;
 }
+
+/**/
+
+.left,.right {
+    width: 100%;
+} 
+
+.right {
+    float: right;
+}
+
+#messagesArea {
+
+
+}
+
+
+.messageContainer {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    min-height: 100px;
+    overflow: hidden;
+    -ms-word-break: break-all;
+    word-break: break-all;
+}
+
+.real_message {
+    max-width: 300px;
+}
+.messageContainer .real_message {
+    -ms-word-break: break-all;
+    word-break: break-all;
+} 
+    
+    .sameUsername {
+        border-color: #D0D0D0;
+        background-color: white;
+    }
+
+/* Clear floats */
+.messageContainer::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.messageContainer img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+    /* Style the right image */
+    .messageContainer img.right {
+        float: right;
+        margin-left: 20px;
+        margin-right: 0;
+    }
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+
+

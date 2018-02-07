@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using FreeChat.Models;
+using FreeChat.Services.ServicesInterfaces;
 using System.Web.Http;
 using System.Web.Mvc;
-using FreeChat.Models;
-using FreeChat.Services.ServicesInterfaces;
 
 namespace FreeChat.Controllers.API
 {
@@ -22,11 +16,11 @@ namespace FreeChat.Controllers.API
 
         [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IHttpActionResult> SendEmail(EmailFormModel emailFormModel)
+        public IHttpActionResult SendEmail(EmailFormModel emailFormModel)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var result = await _service.EmailSender(emailFormModel);
+            var result = _service.EmailSender(emailFormModel);
 
             if (result > 0)
                 return Ok();

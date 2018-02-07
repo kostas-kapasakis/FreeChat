@@ -6,7 +6,7 @@
     var _config;
     var _roomName;
     var _$chat;
-    var messageCountHistory = 0;
+    var messageCountHistory = 100;//
     var connectedUser;
     var userFullName;
     var realMessage;
@@ -51,6 +51,8 @@
             $.connection.hub.logging = true;
 
             _$chat.client.newMessage = onNewMessage;
+
+            _$chat.client.newMessagePrivate = onNewMessagePrivate;
 
             _$chat.client.onlineUsers = connectedUsers;
 
@@ -111,29 +113,30 @@
       
         userFullName = message[0];
         realMessage = message[1];
-
+        timeSend = message[2];
         var user = message[0].substring(0, 4);
-
-
+      
+      
         //if the message sender is the current user then the message displays to the right otherwise to the left
-        if (userFullName.substring(0, 4) !== connectedUser) {
-            //if()
-            $(".inner-list").append("<li class='left clearfix' id ='" + user + messageCount + "nm" + "'> " +
-                " <span class='chat-img1 pull-left' id='" + user + messageCount + "img" + "'></span>" +
-                '<div class="chat-body1 clearfix">' +
-                '<p class="real_message">' + "<h5 class='chatRealUsername'>" + userFullName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + realMessage + "</h4></p>" +
-                '<div class="chat_time pull-right">' + d.toLocaleTimeString() + "</div>" +
-                " </div>" +
-                "</li>");
+        if (userFullName.substring(0, 4) !== connectedUser.substring(0,4)) {
+            $(".inner-list").append(
+                "<li class='left clearfix' id ='" + user + messageCount + "nm" + "'> " +
+                "<div class='messageContainer'>"+
+                "<img src='' alt='Avatar' id='" + user + messageCount + "img" + "'>" +
+                '<p class="real_message">' + "<h5 class='chatRealUsername'>" + userFullName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + realMessage + '</h4></p>' +
+                "<span class='time-right'>"+ timeSend +"</span>"+
+                "</div></li>");
         } else {
-            $(".inner-list").append("<li class='left clearfix admin_chat' id ='" + user + messageCount + "nm" + "'> " +
-                "<span class='chat-img1 pull-right'id='" + user + messageCount + "img" + "'></span>" +
-                '<div class="chat-body1 clearfix">' +
-                '<p class="real_message">' + "<h4 class='chatRealMessage'>" + realMessage + "</h4></p>" +
-                '<div class="chat_time pull-left">' + d.toLocaleTimeString() + "</div>" +
-                " </div>" +
-                "</li>");
+            $(".inner-list").append(
+                "<li class='right clearfix' id ='" + user + messageCount + "nm" + "'> " +
+                "<div class='messageContainer sameUsername'>" +
+                "<img src='' alt='Avatar' class='right'  id='" + user + messageCount + "img" +  "'>" +
+                '<p class="real_message">' + "<h5 class='chatRealUsername'>" + userFullName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + realMessage + '</h4></p>' +
+                "<span class='time-left'>" + timeSend + "</span>" +
+                "</div></li>");
         }
+
+        
         //if it isnt the first message in the chat area
         //take the previous li sibling
         //take his second children which must be the username of the previous message sender 
@@ -154,9 +157,49 @@
 
         messageCount = messageCount + 1;
 
-        $(selectorForImg).append("<img src='" + imagePath + "' alt='User Avatar' class='img-circle' />");
+        $(selectorForImg).attr("src", imagePath);
+        $("#messageTyped").val("");
 
     };
+
+
+    function onNewMessagePrivate(message) {
+        userFullName = message[0];
+        realMessage = message[1];
+        timeSend = message[2];
+        var user = message[0].substring(0, 4);
+
+
+        //if the message sender is the current user then the message displays to the right otherwise to the left
+        if (userFullName.substring(0, 4) !== connectedUser.substring(0, 4)) {
+            //if()
+
+            $(".inner-list").append(
+                "<li class='left clearfix' id ='" + user + messageCount + "nm" + "'> " +
+                "<div class='messageContainer'>" +
+                "<img src='' alt='Avatar' id='" + user + messageCount + "img" + "'>" +
+                "<p>" + realMessage + "</p>" +
+                "<span class='time-right'>" + timeSend + "</span>" +
+                "</div></li>");
+        } else {
+            $(".inner-list").append(
+                "<li class='right clearfix' id ='" + user + messageCount + "nm" + "'> " +
+                "<div class='messageContainer sameUsername'>" +
+                "<img src='' alt='Avatar' class='right'  id='" + user + messageCount + "img" + "'>" +
+                "<p>" + realMessage + "</p>" +
+                "<span class='time-left'>" + timeSend + "</span>" +
+                "</div></li>");
+        }
+
+        var letter = user.substring(0, 1);
+        imagePath = findApropriateImage(letter);
+        var selectorForImg = "#" + user + messageCount + "img";
+
+        messageCount = messageCount + 1;
+
+        $(selectorForImg).attr("src", imagePath);
+        $("#messageTyped").val("");
+    }
 
     function onSend() {
         var message = $('#messageTyped').val();
@@ -209,32 +252,34 @@
         if (existing.length <= 0)
             return;
 
-
+       
         for (var i = 0, len = existing.length; i < len; i++) {
-            if (existing[i].UserName.substring(0, 4) !== connectedUser) {
-                $('.inner-list').append("<li class='left clearfix'> " +
-                    " <span class='chat-img1 pull-left' id=" + existing[i].UserName.substring(0, 4) + messageCountHistory + "></span>" +
-                    '<div class="chat-body1 clearfix">' +
+            if (existing[i].UserName.substring(0, 4) !== connectedUser.substring(0, 4)) {
+                   $(".inner-list").append(
+                    "<li class='left clearfix' id ='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "nm" + "'> " +
+                    "<div class='messageContainer'>"+
+                    "<img src='' alt='Avatar' id='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "img" + "'>" +
                     '<p class="real_message">' + "<h5 class='chatRealUsername'>" + existing[i].UserName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + existing[i].Message + '</h4></p>' +
-                    '<div class="chat_time pull-right">' + existing[i].timeSend + '</div>' +
-                    ' </div>' +
-                    '</li>');
+                    "<span class='time-right'>" + existing[i].TimeSend +"</span>"+
+                    "</div></li>");
             } else {
-                $('.inner-list').append("<li class='left clearfix admin_chat'>" +
-                    "<span class='chat-img1 pull-right'id=" + existing[i].UserName.substring(0, 4) + messageCountHistory + "></span>" +
-                    '<div class="chat-body1 clearfix">' +
-                    '<p class="real_message">' + "<h4 class='chatRealMessage'>" + existing[i].Message + '</h4></p>' +
-                    '<div class="chat_time pull-left">' + existing[i].timeSend + '</div>' +
-                    ' </div>' +
-                    '</li>');
+
+                $(".inner-list").append(
+                    "<li class='right clearfix' id ='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "nm" + "'> " +
+                    "<div class='messageContainer sameUsername'>" +
+                    "<img src='' alt='Avatar' class='right'  id='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "img" + "'>" +
+                    '<p class="real_message">' + "<h5 class='chatRealUsername'>" + existing[i].UserName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + existing[i].Message + '</h4></p>' +
+                    "<span class='time-left'>" + existing[i].TimeSend + "</span>" +
+                    "</div></li>");
+        
             }
             var letter = existing[i].UserName.substring(0, 1);
-            var selector = "#" + existing[i].UserName.substring(0, 4) + messageCountHistory;
+            var selector = "#" + existing[i].UserName.substring(0, 4) + messageCountHistory + "img";
             messageCountHistory++;
             var imagePathhistory = findApropriateImage(letter);
-            $(selector).append("<img src='" + imagePathhistory + "' alt='User Avatar' class='img-circle' />");
+            $(selector).attr("src", imagePathhistory );
 
-
+          
 
         }
     }
@@ -364,6 +409,8 @@
             $(document).on("click", ".onlineUser", function () {
                 isInPrivateChat($(this).attr("id"));
             });
+
+            
         });
     }
 

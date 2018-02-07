@@ -45,7 +45,7 @@ namespace FreeChat.Controllers.API
 
 
         [HttpGet]
-        //        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public IHttpActionResult GetTopicsFull()
         {
             var topics = _service.GetTopicsFull();
