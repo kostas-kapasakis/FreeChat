@@ -11,6 +11,8 @@
     var userFullName;
     var realMessage;
     var timeSend;
+    var _$privateChatAlreadInProgress = false;
+    var _userInPrivateChat="";
     //chat room name sto opoio sundethike o xrhsths
 
     var imagePath;
@@ -45,10 +47,8 @@
             // Declare a proxy to reference the hub.
             _$chat = $.connection.chat;
 
-       
-
             //energopoihsh tou hub logging
-            $.connection.hub.logging = true;
+             $.connection.hub.logging = true;
 
             _$chat.client.newMessage = onNewMessage;
 
@@ -88,10 +88,7 @@
                      users[i].toString() + "</div></li>");
             }
 
-
-
         }
-
         $.connection.hub.error(function (err) {
             alert("An error occured: " + err);
 
@@ -103,7 +100,9 @@
         _$chat.server.leaveRoom(_roomName);
         _$chat.server.sendRoomConnectedUsers(_roomName);
         window.location.href = "/Home/AllChatRooms";
-    }
+    } 
+
+
 
 
     function onNewMessage(message) {
@@ -202,12 +201,18 @@
     }
 
     function onSend() {
-        var message = $('#messageTyped').val();
+
+
+
+        var message = $("#messageTyped").val();
+
+
         if (message !== null && message.length > 0) {
             //klhsh ths server method gia apostolh se olous tous xrhstes sundedemenous me to room efoson
             //o xrhsths plhkrologhse kati
-
-            _$chat.server.sendMessageToRoom(_roomName, $('#messageTyped').val());
+            (_$privateChatAlreadInProgress) ? 
+           _$chat.server.sendMessageToUser(_userInPrivateChat,$('#messageTyped').val(), _roomName):
+           _$chat.server.sendMessageToRoom(_roomName, $('#messageTyped').val());
         }
         else {
             alert("You have to type something first");
@@ -222,11 +227,7 @@
 
     };
 
-    function createTabsForPrivate(name) {
-        var selector = "#" + name.substring(0, 4) + "ou";
-        $(selector).css("background-color", "#e6ffff");
 
-    }
 
     function onlineUsers() {
         _$chat.server.connectedUsers();
@@ -241,7 +242,7 @@
 
         if (id !== connectedUser) {
             _$chat.server.privateChat(id);
-            createTabsForPrivate(id);
+          
         }
 
 
@@ -407,7 +408,31 @@
             $("#logoff").click(leaveRoom);
 
             $(document).on("click", ".onlineUser", function () {
-                isInPrivateChat($(this).attr("id"));
+                var ulListOnlineUsers = $(this).parents("ul").children();
+                var isTheSameUser = false;
+
+                //check to see if there is a private discussion already
+                $.each(ulListOnlineUsers,
+                    function (i, x) {
+                        if ($(x).hasClass("privateMessage")) {
+                            _$privateChatAlreadInProgress = true;
+                            return false;
+                        }   
+                    });
+
+                //check if not the same user is clicked
+                if (connectedUser !== $(this).attr("id")) {
+                    if (!_$privateChatAlreadInProgress) {
+                        $(this).parent("li").addClass("privateMessage");
+                        _userInPrivateChat = $(this).attr("id");
+
+                    }
+                } 
+              
+                   
+
+
+
             });
 
             

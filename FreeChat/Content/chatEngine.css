@@ -335,6 +335,7 @@
 }
 #messagesContainerArea {
     max-height: 600px;
+    min-height: 600px;
     overflow-y: auto;
 }
 #hideShowInfoButton {
@@ -427,7 +428,7 @@
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
-    min-height: 100px;
+    min-height: 80px;
     overflow: hidden;
     -ms-word-break: break-all;
     word-break: break-all;
@@ -473,12 +474,18 @@
 .time-right {
     float: right;
     color: #aaa;
+    font-size: smaller;
 }
 
 /* Style time text */
 .time-left {
     float: left;
     color: #999;
+    font-size: smaller;
+}
+
+.privateMessage {
+    background-color: #ccffcc;
 }
 
 

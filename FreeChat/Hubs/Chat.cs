@@ -50,10 +50,8 @@ namespace FreeChat.Hubs
             var messageSend = new List<string> { Context.User.Identity.Name, message, date.ToString(CultureInfo.InvariantCulture) };
 
 
-            // foreach (var connectionId in _connections.GetConnections(Context.User.Identity.Name))
-            //{
             Clients.Group(room).newMessage(messageSend);
-            // }
+
 
             if ((MessageCaching.TryGetValue(room, out var existingMessageCashing)) &&
                 (existingMessageCashing.Count <= 50))
@@ -73,18 +71,13 @@ namespace FreeChat.Hubs
         //(3)Send Message to Specific user inside the room
         public void SendMessageToUser(string nameToChat, string message, string group2Name)
         {
-            var username = Context.User.Identity.Name;
-
+            var date = DateTime.Now;
             var user = RoomsUsers
                 .FirstOrDefault(x => x.Value.Contains(nameToChat))
                 .Key;
-            Clients.User(group2Name).createTabsForPrivate();
-            Clients.User(user).newMessage(username + " : " + message);
+            var messageSend = new List<string> { Context.User.Identity.Name, message, date.ToString(CultureInfo.InvariantCulture) };
 
-            // Call the broadcastMessage method to update clients.
-            Clients.Caller.NewMessagePrivate(nameToChat, message);
-            // Clients.Client(dic[to]).broadcastMessage(name, message);
-
+            Clients.User(user).newMessage(messageSend);
         }
 
 
