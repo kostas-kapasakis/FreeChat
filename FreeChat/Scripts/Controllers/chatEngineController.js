@@ -423,7 +423,7 @@
                 //check if not the same user is clicked
                 if (connectedUser !== $(this).attr("id")) {
                     if (!_$privateChatAlreadInProgress) {
-                        $(this).parent("li").addClass("privateMessage");
+                        $(this).parent("li").toggleClass("privateMessage");
                         _userInPrivateChat = $(this).attr("id");
 
                     }

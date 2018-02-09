@@ -338,6 +338,22 @@
     min-height: 300px;
     overflow-y: auto;
 }
+
+@media (min-width:801px)  {#messagesContainerArea {
+                               max-height: 300px;
+                               min-height: 300px;
+                               overflow-y: auto;
+                           } }
+@media (min-width:1025px) { #messagesContainerArea {
+                                max-height: 400px;
+                                min-height: 400px;
+                                overflow-y: auto;
+                            } }
+@media (min-width:1281px) {  #messagesContainerArea {
+                                 max-height: 600px;
+                                 min-height: 600px;
+                                 overflow-y: auto;
+                             } }
 #hideShowInfoButton {
     top: 2%;
     right: 35%;
@@ -416,10 +432,7 @@
     float: right;
 }
 
-#messagesArea {
 
-
-}
 
 
 .messageContainer {
