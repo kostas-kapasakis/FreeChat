@@ -1,15 +1,15 @@
-﻿body {
-    position: relative;
-}
+﻿/*body {*/
+/*   position: relative;*/
+/*}*/
 
-#createInfo {
-    width:40%;
-    float:right;
-    position:relative;
-    display:inline-block;
-    margin-right:10%;
-    margin-bottom:-10%;
-}
+/*#createInfo {*/
+/*    width:40%;*/
+/*    float:right;*/
+/*    position:relative;*/
+/*    display:inline-block;*/
+/*    margin-right:10%;*/
+/*    margin-bottom:-10%;*/
+/*}*/
 
 a {
     color:#27428d;
@@ -21,10 +21,7 @@ a:hover{
       text-decoration:none;
       color:cornflowerblue;
 }
-#footer{
-    margin-top:130px;
- 
-}
+
 
 
 
@@ -32,15 +29,15 @@ a:hover{
     background-color: #007bff;
 }
 
-.row {
-    margin-top: 5%!important;
-    max-height: 20% !important;
-}
+/*.row {*/
+/*    margin-top: 5%!important;*/
+/*    max-height: 20% !important;*/
+/*}*/
 
-#userRoomsList {
-    overflow-y: scroll;
-}
-#usersInfo #nav-tabContent #list-messages {
-    height: 220px !important;
-    overflow-y: auto !important;
-}
+/*#userRoomsList {*/
+/*    overflow-y: scroll;*/
+/*}*/
+/*#usersInfo #nav-tabContent #list-messages {*/
+/*    height: 220px !important;*/
+/*    overflow-y: auto !important;*/
+/*}*/

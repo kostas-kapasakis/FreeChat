@@ -21,28 +21,6 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-/*input,*/
-/*select,*/
-/*textarea {*/
-/*    max-width: 280px;*/
-/*}*/
-/**/
-/*#container {*/
-/*    width: 350px*/
-/*}*/
-/**/
-/*#tabbox {*/
-/*    height: 40px*/
-/*}*/
-/**/
-/*#panel {*/
-/*    background-color: #FFF;*/
-/*    height: 300px;*/
-/*}*/
-
-
-/*Bootsrap Overrides*/
 
 
 .panel-heading {
@@ -198,9 +176,7 @@ h6,
     z-index: 2;
     display: block;
 }
-#register_container {
-    max-width: 300px;
-}
+
 
 #topRightMenu, #topRightMenu li {
     text-overflow: ellipsis;
@@ -417,9 +393,7 @@ h6,
 }
 
 
-#register_container {
-    box-sizing:unset !important;
-}
+
 
 #registeredUsers {
     width: 100%;
