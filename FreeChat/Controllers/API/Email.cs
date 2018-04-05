@@ -1,7 +1,7 @@
-﻿using FreeChat.Models;
-using FreeChat.Services.ServicesInterfaces;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Models;
 
 namespace FreeChat.Controllers.API
 {

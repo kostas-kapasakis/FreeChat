@@ -1,6 +1,6 @@
-﻿using FreeChat.Models.Enums;
-using FreeChat.Services.ServicesInterfaces;
-using System.Web.Http;
+﻿using System.Web.Http;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Models.Enums;
 
 namespace FreeChat.Controllers.API
 {

@@ -109,11 +109,11 @@
                 success: function (data) {
                     if (data) {
 
-                        $("#userNameLabelModal").append(data.UserName);
-                        $("#idLabelModal").append(data.Id);
-                        $("#emailLabelModal").append(data.Email);
-                        $("#statusLabelModal").append(data.Active);
-                        $("#roomsLeftLabelModal").append(data.RoomsLeft);
+                        $("#userNameLabelModal .valueofModal").append(data.UserName);
+                        $("#idLabelModal .valueofModal").append(data.Id);
+                        $("#emailLabelModal .valueofModal").append(data.Email);
+                        $("#statusLabelModal .valueofModal").append(data.Active);
+                        $("#roomsLeftLabelModal .valueofModal").append(data.RoomsLeft);
 
                     } else {
                         alert("User Does not exist");
@@ -123,6 +123,8 @@
 
             });
         });
+
+
 
         $("#allChatRoomsAdmin").on("click",
             ".changeStatusBtn",
@@ -166,7 +168,10 @@
                 }
             });
 
-     
+        $("#closeModal").click(function() {
+            $("#usersModalBody .valueofModal").text("");
+            console.log($("#usersModalBody .valueofModal"));
+        });
 
     }
 

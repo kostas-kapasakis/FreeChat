@@ -1,11 +1,13 @@
-﻿using FreeChat.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using FreeChat.Core.Contracts;
+using FreeChat.Core.Models;
+using FreeChat.ViewModels;
 
 namespace FreeChat.Controllers
 {
@@ -14,14 +16,14 @@ namespace FreeChat.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ApplicationDbContext _context;
+        private readonly IDbContext _context;
 
-        public AccountController(ApplicationDbContext context)
+        public AccountController(IDbContext context)
         {
             _context = context;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext context)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IDbContext context)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -298,7 +300,8 @@ namespace FreeChat.Controllers
             }
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
             var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+            return View(new SendCodeViewModel {  ReturnUrl = returnUrl, RememberMe = rememberMe });
+            //Providers = factorOptions,
         }
 
         //

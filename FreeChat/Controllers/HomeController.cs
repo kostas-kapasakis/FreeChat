@@ -1,6 +1,6 @@
-﻿using FreeChat.Models.ViewModels;
-using FreeChat.Services.ServicesInterfaces;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.ViewModels;
 
 namespace FreeChat.Controllers
 {

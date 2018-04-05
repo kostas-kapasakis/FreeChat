@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using FreeChat.Models;
-using FreeChat.Models.DTO;
-using FreeChat.Services.ServicesInterfaces;
 using System.Linq;
 using System.Web.Http;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Models;
+using FreeChat.Core.Models.DTO;
 
 namespace FreeChat.Controllers.API
 {

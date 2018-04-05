@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using FreeChat.Models.Domain;
-using FreeChat.Models.DTO;
-using FreeChat.Models.ViewModels;
-using FreeChat.Services.ServicesInterfaces;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Models.Domain;
+using FreeChat.Core.Models.DTO;
+using FreeChat.ViewModels;
 
 namespace FreeChat.Controllers
 {

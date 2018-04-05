@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using FreeChat.Models;
-using FreeChat.Models.Domain;
-using FreeChat.Models.DTO;
+using FreeChat.Core.Models;
+using FreeChat.Core.Models.Domain;
+using FreeChat.Core.Models.DTO;
 
 namespace FreeChat
 {

@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat", "FreeChat\FreeChat.csproj", "{C6F16E13-287D-4F8C-8161-018C104B6891}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.Web", "FreeChat\FreeChat.Web.csproj", "{C6F16E13-287D-4F8C-8161-018C104B6891}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.Tests", "FreeChat.Tests\FreeChat.Tests.csproj", "{D4FF0819-63E0-4CB8-8799-72D6182EE8AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.Core", "FreeChat.Core\FreeChat.Core.csproj", "{E690A2EB-6FDE-459E-91EF-FDF57E4D396E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.Persistence", "FreeChat.Persistence\FreeChat.Persistence.csproj", "{C3CA4135-2069-47CC-B466-5BE0656187FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,14 @@ Global
 		{C6F16E13-287D-4F8C-8161-018C104B6891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6F16E13-287D-4F8C-8161-018C104B6891}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6F16E13-287D-4F8C-8161-018C104B6891}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4FF0819-63E0-4CB8-8799-72D6182EE8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4FF0819-63E0-4CB8-8799-72D6182EE8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4FF0819-63E0-4CB8-8799-72D6182EE8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4FF0819-63E0-4CB8-8799-72D6182EE8AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E690A2EB-6FDE-459E-91EF-FDF57E4D396E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E690A2EB-6FDE-459E-91EF-FDF57E4D396E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E690A2EB-6FDE-459E-91EF-FDF57E4D396E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E690A2EB-6FDE-459E-91EF-FDF57E4D396E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3CA4135-2069-47CC-B466-5BE0656187FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3CA4135-2069-47CC-B466-5BE0656187FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3CA4135-2069-47CC-B466-5BE0656187FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3CA4135-2069-47CC-B466-5BE0656187FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

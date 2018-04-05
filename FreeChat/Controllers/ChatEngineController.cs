@@ -1,10 +1,7 @@
-﻿using System;
-using FreeChat.Services.ServicesInterfaces;
-using Microsoft.AspNet.SignalR.Messaging;
-using System.Web.Mvc;
-using Autofac.Core;
-using FreeChat.Models.Domain;
-using FreeChat.Models.ViewModels;
+﻿using System.Web.Mvc;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Models.Domain;
+using FreeChat.ViewModels;
 
 namespace FreeChat.Controllers
 {

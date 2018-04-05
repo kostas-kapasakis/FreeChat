@@ -1,5 +1,5 @@
-﻿using FreeChat.Models;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using FreeChat.Core.Models;
 
 namespace FreeChat.Controllers
 {
