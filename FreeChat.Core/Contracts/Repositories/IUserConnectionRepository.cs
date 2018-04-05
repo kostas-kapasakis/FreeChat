@@ -3,7 +3,7 @@ using FreeChat.Core.Models.Domain;
 
 namespace FreeChat.Core.Contracts.Repositories
 {
-    public interface IUserConnectionsRepo
+    public interface IUserConnectionRepository:IGenericRepository<UserConnections>
     {
         bool AddUserConnection(long connectionId, int userId);
         bool RemoveUserConnection(long connectionId);

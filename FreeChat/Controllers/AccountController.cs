@@ -17,14 +17,14 @@ namespace FreeChat.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ApplicationDbContext _context;
+        private readonly FreeChatContext _context;
 
-        public AccountController(ApplicationDbContext context)
+        public AccountController(FreeChatContext context)
         {
             _context = context;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext context)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, FreeChatContext context)
         {
             UserManager = userManager;
             SignInManager = signInManager;

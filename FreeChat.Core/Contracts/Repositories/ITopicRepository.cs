@@ -3,7 +3,7 @@ using FreeChat.Core.Models.Domain;
 
 namespace FreeChat.Core.Contracts.Repositories
 {
-    public interface ITopicsRepo
+    public interface ITopicRepository:IGenericRepository<Topics>
     {
         Topics GetTopicById(long id);
         IEnumerable<Topics> GetActiveTopics();

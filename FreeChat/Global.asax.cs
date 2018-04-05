@@ -37,7 +37,7 @@ namespace FreeChat
             builder.RegisterModule(new ServiceModule());
 
             builder.RegisterType<TopicsService>().As<ITopicsService>();
-            builder.RegisterType<ApplicationDbContext>().AsSelf();
+            builder.RegisterType<FreeChatContext>().AsSelf();
 
 
             var container = builder.Build();

@@ -6,20 +6,20 @@ using FreeChat.Core.Models.Domain;
 
 namespace FreeChat.Persistence.Repositories
 {
-    public class UserConnectionsRepository : IUserConnectionsRepo
+    public class UserConnectionsRepository : IUserConnectionRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly FreeChatContext FreeChatContext;
 
-        public UserConnectionsRepository(ApplicationDbContext context)
+        public UserConnectionsRepository(FreeChatContext context)
         {
-            _context = context;
+            FreeChatContext = context;
         }
 
 
         public bool AddUserConnection(long connectionId, int userId)
         {
 
-            var user = _context.Users.FirstOrDefault(x => x.Id == userId.ToString());
+            var user = FreeChatContext.Users.FirstOrDefault(x => x.Id == userId.ToString());
 
             if (user == null)
                 return false;
@@ -30,8 +30,8 @@ namespace FreeChat.Persistence.Repositories
                 Username = user.UserName,
                 User = user
             };
-            _context.UserConnections.Add(connection);
-            _context.SaveChanges();
+            FreeChatContext.UserConnections.Add(connection);
+            FreeChatContext.SaveChanges();
 
             return true;
 
@@ -39,13 +39,13 @@ namespace FreeChat.Persistence.Repositories
 
         public bool RemoveUserConnection(long connectionId)
         {
-            var connection = _context.UserConnections.FirstOrDefault(x => x.ConnectionId == connectionId);
+            var connection = FreeChatContext.UserConnections.FirstOrDefault(x => x.ConnectionId == connectionId);
 
             if (connection == null)
                 return false;
 
-            _context.Entry(connection).State = EntityState.Deleted;
-            _context.SaveChanges();
+            FreeChatContext.Entry(connection).State = EntityState.Deleted;
+            FreeChatContext.SaveChanges();
 
             return true;
 
@@ -53,7 +53,7 @@ namespace FreeChat.Persistence.Repositories
 
         public IEnumerable<UserConnections> GetUserConnectionsIdsByUserId(long id)
         {
-            var listOfConnections = _context.UserConnections.Where(x => x.User.Id == id.ToString());
+            var listOfConnections = FreeChatContext.UserConnections.Where(x => x.User.Id == id.ToString());
             if (!listOfConnections.Any())
                 return new List<UserConnections>();
 
@@ -63,15 +63,15 @@ namespace FreeChat.Persistence.Repositories
 
         public bool RemoveUserConnections(long id)
         {
-            var listOfConnections = _context.UserConnections.Where(x => x.User.Id == id.ToString());
+            var listOfConnections = FreeChatContext.UserConnections.Where(x => x.User.Id == id.ToString());
             if (!listOfConnections.Any())
                 return false;
 
             foreach (var connection in listOfConnections)
             {
-                _context.Entry(connection).State = EntityState.Deleted;
+                FreeChatContext.Entry(connection).State = EntityState.Deleted;
             }
-            _context.SaveChanges();
+            FreeChatContext.SaveChanges();
 
             return true;
         }

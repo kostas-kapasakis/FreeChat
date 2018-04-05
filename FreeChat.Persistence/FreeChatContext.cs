@@ -6,21 +6,21 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FreeChat.Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>,IDbContext
+    public class FreeChatContext : IdentityDbContext<ApplicationUser>,IDbContext
     {
         public DbSet<Topics> Topics { get; set; }
         public DbSet<UserConnections> UserConnections { get; set; }
         public DbSet<ConnectedUsers> ConnectedUsers { get; set; }
         public DbSet<MainCategories> MainCategories { get; set; }
 
-        public ApplicationDbContext()
+        public FreeChatContext()
             : base((string) "DefaultConnection", (bool) false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static FreeChatContext Create()
         {
-            return new ApplicationDbContext();
+            return new FreeChatContext();
         }
     }
 }

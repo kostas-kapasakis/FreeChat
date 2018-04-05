@@ -11,9 +11,9 @@ namespace FreeChat.Core.Services
 {
     public class TopicsService : ITopicsService
     {
-        private readonly ITopicsRepo _topicsRepoRepository;
+        private readonly ITopicRepository _topicsRepoRepository;
 
-        public TopicsService(ITopicsRepo topicsRepoRepository)
+        public TopicsService(ITopicRepository topicsRepoRepository)
         {
             _topicsRepoRepository = topicsRepoRepository;
         }

@@ -8,16 +8,17 @@ using FreeChat.Core.Models.Domain;
 
 namespace FreeChat.Persistence.Repositories
 {
-    public class TopicsRepoRepository : ITopicsRepo
+    public class TopicRepository : GenericRepository<Topics>,ITopicRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly FreeChatContext _context;
         private readonly IUsersService _usersService;
 
-        public TopicsRepoRepository(ApplicationDbContext context, IUsersService usersService)
+        public TopicRepository(FreeChatContext context, IUsersService usersService)
+            : base(context)
         {
-            _context = context;
             _usersService = usersService;
         }
+
 
         public Topics GetTopicById(long Id)
         {

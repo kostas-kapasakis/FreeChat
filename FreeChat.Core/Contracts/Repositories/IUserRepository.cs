@@ -3,7 +3,7 @@ using FreeChat.Core.Models;
 
 namespace FreeChat.Core.Contracts.Repositories
 {
-    public interface IUsers
+    public interface IUserRepository:IGenericRepository<ApplicationUser>
     {
         IEnumerable<ApplicationUser> GetRegisteredUsers();
 
