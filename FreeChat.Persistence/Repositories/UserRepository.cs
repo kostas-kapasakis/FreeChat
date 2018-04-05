@@ -7,46 +7,47 @@ using FreeChat.Core.Models.Enums;
 
 namespace FreeChat.Persistence.Repositories
 {
-    public class UserRepositoryRepository : IUsers
+    public class UserRepository :GenericRepository<ApplicationUser>, IUserRepository
     {
-        private readonly FreeChatContext FreeChatContext;
+        private readonly FreeChatContext _freeChatContext;
 
-        public UserRepositoryRepository(FreeChatContext context)
+        public UserRepository(FreeChatContext context)
+            :base(context)
         {
-            FreeChatContext = context;
+            _freeChatContext = context;
         }
 
         public ApplicationUser GetUser(string id)
         {
-            return FreeChatContext.Users.FirstOrDefault(i => i.Id == id);
+            return _freeChatContext.Users.FirstOrDefault(i => i.Id == id);
         }
 
         public long CountRegisteredUsers()
         {
-            return FreeChatContext.ConnectedUsers.Count();
+            return _freeChatContext.ConnectedUsers.Count();
         }
 
         public IEnumerable<ApplicationUser> GetRegisteredUsers()
         {
-            return FreeChatContext.Users;
+            return _freeChatContext.Users;
         }
 
         public bool UpdateUserStatus(bool status, string userId)
         {
-            var user = FreeChatContext.Users.FirstOrDefault(x => x.Id == userId);
+            var user = _freeChatContext.Users.FirstOrDefault(x => x.Id == userId);
 
             if (user == null) { return false; }
 
             user.Active = status;
-            FreeChatContext.Entry(user).State = EntityState.Modified;
-            FreeChatContext.SaveChanges();
+            _freeChatContext.Entry(user).State = EntityState.Modified;
+            _freeChatContext.SaveChanges();
 
             return true;
         }
 
         public bool IsAdmin(string userId)
         {
-            var user = FreeChatContext.Users.FirstOrDefault(x => x.Id == userId);
+            var user = _freeChatContext.Users.FirstOrDefault(x => x.Id == userId);
 
             if (user == null)
                 return false;
