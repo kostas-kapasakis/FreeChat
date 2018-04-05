@@ -7,7 +7,7 @@ namespace FreeChat.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(Assembly.Load("FreeChat"))
+            builder.RegisterAssemblyTypes(Assembly.Load("FreeChat.Core"))
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces()
                 .PropertiesAutowired()

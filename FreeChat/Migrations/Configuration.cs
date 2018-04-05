@@ -1,7 +1,9 @@
+using FreeChat.Core.Contracts;
 using FreeChat.Core.Models;
 
 namespace FreeChat.Migrations
 {
+    using FreeChat.Persistence;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,6 +11,7 @@ namespace FreeChat.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;

@@ -7,6 +7,7 @@ using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using FreeChat.Core.Models;
+using FreeChat.Persistence;
 
 namespace FreeChat
 {

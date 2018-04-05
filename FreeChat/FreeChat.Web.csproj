@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FreeChat</RootNamespace>
-    <AssemblyName>FreeChat</AssemblyName>
+    <RootNamespace>FreeChat.Web</RootNamespace>
+    <AssemblyName>FreeChat.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -887,6 +887,10 @@
     <ProjectReference Include="..\FreeChat.Core\FreeChat.Core.csproj">
       <Project>{e690a2eb-6fde-459e-91ef-fdf57e4d396e}</Project>
       <Name>FreeChat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FreeChat.Persistence\FreeChat.Persistence.csproj">
+      <Project>{c3ca4135-2069-47cc-b466-5be0656187fb}</Project>
+      <Name>FreeChat.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

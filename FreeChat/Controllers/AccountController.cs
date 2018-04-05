@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using FreeChat.Core.Contracts;
 using FreeChat.Core.Models;
+using FreeChat.Persistence;
 using FreeChat.ViewModels;
 
 namespace FreeChat.Controllers
@@ -16,14 +17,14 @@ namespace FreeChat.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly IDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public AccountController(IDbContext context)
+        public AccountController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IDbContext context)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext context)
         {
             UserManager = userManager;
             SignInManager = signInManager;

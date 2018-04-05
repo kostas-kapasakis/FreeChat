@@ -107,36 +107,6 @@ namespace FreeChat.Persistence.Repositories
 
         }
 
-        Topics ITopicsRepo.GetTopicById(long id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IEnumerable<Topics> ITopicsRepo.GetActiveTopics()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IEnumerable<Topics> ITopicsRepo.GetActiveTopicsByGenreId(long id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IEnumerable<MainCategories> ITopicsRepo.GetMainCategories()
-        {
-            throw new System.NotImplementedException();
-        }
-
-       
-
-        IEnumerable<Topics> ITopicsRepo.GetUserTopics(string id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IEnumerable<Topics> ITopicsRepo.GetTopicsFull()
-        {
-            throw new System.NotImplementedException();
-        }
+ 
     }
 }
