@@ -7,7 +7,8 @@ namespace FreeChat.Core.Contracts.Repositories
 {
     public interface IGenericRepository<TEntity> where TEntity:class
     {
-        TEntity Get(int id);
+        TEntity Get(string id);
+        TEntity Get(long id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 

@@ -1,5 +1,4 @@
 ﻿using FreeChat.Core.Contracts.Repositories;
-using FreeChat.Core.Contracts.Services;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,104 +9,113 @@ namespace FreeChat.Persistence.Repositories
 {
     public class TopicRepository : GenericRepository<Topics>,ITopicRepository
     {
-        private readonly FreeChatContext _context;
-        private readonly IUsersService _usersService;
 
-        public TopicRepository(FreeChatContext context, IUsersService usersService)
+        public TopicRepository(FreeChatContext context)
             : base(context)
         {
-            _usersService = usersService;
         }
 
-
-        public Topics GetTopicById(long Id)
+        public override Topics Get(long id)
         {
-            return _context.Topics.Include(c => c.MainCategory).FirstOrDefault(x => x.Id == Id);
+            return FreeChatContext.Topics.Include(c => c.MainCategory).FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Topics> GetActiveTopics()
         {
-            return _context.Topics.Include(c => c.MainCategory).Where(x => x.Active);
+            return FreeChatContext.Topics.Include(c => c.MainCategory).Where(x => x.Active);
         }
 
         public IEnumerable<Topics> GetActiveTopicsByGenreId(long id)
         {
-            return _context.Topics.Include(c => c.MainCategory).Where(x => x.MainCategoryId == id);
+            return FreeChatContext.Topics.Include(c => c.MainCategory).Where(x => x.MainCategoryId == id);
         }
 
-        public bool AddTopic(Topics topic)
+        public override void Add(Topics entity)
         {
-            var user = _context.Users.SingleOrDefault(x => x.Id == topic.UserCreatorId);
+            var user = FreeChatContext.Users.SingleOrDefault(x => x.Id == entity.UserCreatorId);
+            if (user.RoomsLeft == 0)
+                return;
+
+            /*if (!_usersService.IsAdmin(user.Id))
+                user.RoomsLeft--;*/
+
+            FreeChatContext.Users.Attach(user);
+            FreeChatContext.Entry(user).Property(x => x.RoomsLeft).IsModified = true;
+
+
+            FreeChatContext.Topics.Add(entity);
+            FreeChatContext.SaveChanges();
+        }
+
+        public bool AddTopic(Topics topic, bool isAdmin)
+        {
+            var user = FreeChatContext.Users.SingleOrDefault(x => x.Id == topic.UserCreatorId);
             if (user == null || user.RoomsLeft == 0)
                 return false;
 
-            if (!_usersService.IsAdmin(user.Id))
+            if (!isAdmin)
                 user.RoomsLeft--;
 
-            _context.Users.Attach(user);
-            _context.Entry(user).Property(x => x.RoomsLeft).IsModified = true;
+            FreeChatContext.Users.Attach(user);
+            FreeChatContext.Entry(user).Property(x => x.RoomsLeft).IsModified = true;
 
 
-            _context.Topics.Add(topic);
-            _context.SaveChanges();
+            FreeChatContext.Topics.Add(topic);
+            FreeChatContext.SaveChanges();
 
             return true;
         }
 
         public IEnumerable<MainCategories> GetMainCategories()
         {
-            return _context.MainCategories.Where(x => x.Active);
+            return FreeChatContext.MainCategories.Where(x => x.Active);
         }
 
-        public int DeleteTopicById(long Id)
+     
+        public int DeleteTopicById(long id)
         {
-            var topic = _context.Topics.First(x => x.Id == Id);
+            var topic = FreeChatContext.Topics.First(x => x.Id == id);
 
             if (topic == null)
                 return -1;
 
-            _context.Entry(topic).State = EntityState.Deleted;
-            return _context.SaveChanges();
+            FreeChatContext.Entry(topic).State = EntityState.Deleted;
+            return FreeChatContext.SaveChanges();
         }
 
         public IEnumerable<Topics> GetUserTopics(string id)
         {
-            var topics = _context.Topics.Where(x => x.UserCreatorId == id).Where(x => x.Active);
+            var topics = FreeChatContext.Topics.Where(x => x.UserCreatorId == id).Where(x => x.Active);
 
             return topics;
         }
 
         public int RoomsRemainingForUser(string userId)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            var user = FreeChatContext.Users.FirstOrDefault(u => u.Id == userId);
 
             return user?.RoomsLeft ?? 0;
         }
 
-        public IEnumerable<Topics> GetTopicsFull()
-        {
-            return _context.Topics;
-        }
-
         public bool ChangeTopicStatus(long id, bool status)
         {
-            var topic = _context.Topics.FirstOrDefault(x => x.Id == id);
+            var topic = FreeChatContext.Topics.FirstOrDefault(x => x.Id == id);
             if (topic == null)
                 return false;
 
             if (!status)//topic is active so disable it and return current status
             {
                 topic.Active = false;
-                _context.SaveChanges();
+                FreeChatContext.SaveChanges();
                 return false;
             }
 
             topic.Active = true;
-            _context.SaveChanges();
+            FreeChatContext.SaveChanges();
             return true;
 
         }
 
- 
+        public FreeChatContext FreeChatContext => Context as FreeChatContext;
     }
 }

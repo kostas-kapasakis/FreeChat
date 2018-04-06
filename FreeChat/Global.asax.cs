@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using FreeChat.Core.Contracts.Repositories;
 using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models;
 using FreeChat.Core.Services;
@@ -38,6 +39,8 @@ namespace FreeChat
 
             builder.RegisterType<TopicsService>().As<ITopicsService>();
             builder.RegisterType<FreeChatContext>().AsSelf();
+
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
 
 
             var container = builder.Build();

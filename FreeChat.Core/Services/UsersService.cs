@@ -9,36 +9,32 @@ namespace FreeChat.Core.Services
 {
     public class UsersService : IUsersService
     {
-        private readonly IUserRepository _userRepositoryRepo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UsersService(IUserRepository userRepositoryRepo)
+        public UsersService(IUnitOfWork unitOfWork)
         {
-            _userRepositoryRepo = userRepositoryRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public UserDto GetUser(string id)
-        {
-            return Mapper.Map<ApplicationUser, UserDto>(_userRepositoryRepo.GetUser(id));
-        }
-
+            => Mapper.Map<ApplicationUser, UserDto>(_unitOfWork.User.Get(id));
+       
         public long CountRegisteredUsers()
-            => _userRepositoryRepo.CountRegisteredUsers();
+            => _unitOfWork.User.CountRegisteredUsers();
 
         public IEnumerable<ApplicationUser> GetRegisteredUsers()
-        {
-            return _userRepositoryRepo.GetRegisteredUsers();
-
-        }
+            => _unitOfWork.User.GetAll();
 
         public bool UpdateUserStatus(bool status, string userId)
         {
-            return _userRepositoryRepo.UpdateUserStatus(status, userId);
-        }
-
+            var result = _unitOfWork.User.UpdateUserStatus(status, userId);
+            _unitOfWork.Complete();
+            return result;
+        } 
+        
         public bool IsAdmin(string userId)
-        {
-            return _userRepositoryRepo.IsAdmin(userId);
-        }
+            => _unitOfWork.User.IsAdmin(userId);
+        
 
     }
 }

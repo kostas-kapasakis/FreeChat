@@ -11,12 +11,17 @@ namespace FreeChat.Persistence.Repositories
     {
         protected readonly DbContext Context;
 
-        public GenericRepository(FreeChatContext context)
+        public GenericRepository(DbContext context)
         {
             Context = context;
         }
 
-        public TEntity Get(int id)
+        public virtual TEntity Get(string id)
+        {
+            return Context.Set<TEntity>().Find(id);
+        }
+
+        public virtual TEntity Get(long id)
         {
             return Context.Set<TEntity>().Find(id);
         }
@@ -26,17 +31,17 @@ namespace FreeChat.Persistence.Repositories
             return Context.Set<TEntity>().ToList();
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return Context.Set<TEntity>().Where(predicate);
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
         }
 
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
             Context.Set<TEntity>().Remove(entity);
         }

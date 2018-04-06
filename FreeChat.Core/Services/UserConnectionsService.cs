@@ -7,26 +7,44 @@ namespace FreeChat.Core.Services
 {
     public class UserConnectionsService : IUserConnectionsService
     {
-        private readonly IUserConnectionRepository _userConnectionRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserConnectionsService(IUserConnectionRepository userConnectionRepository)
+        public UserConnectionsService(IUnitOfWork unitOfWork)
         {
-            _userConnectionRepository = userConnectionRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public bool AddUserConnection(long connectionId, int userId)
-            => _userConnectionRepository.AddUserConnection(connectionId, userId);
+        {
+            var result =   _unitOfWork.UserConnection.AddUserConnection(connectionId, userId);
+            _unitOfWork.Complete();
+            return result;
+        }
+
+
 
 
         public bool RemoveUserConnection(long connectionId)
-            => _userConnectionRepository.RemoveUserConnection(connectionId);
+        {
+            var result =  _unitOfWork.UserConnection.RemoveUserConnection(connectionId);
+            _unitOfWork.Complete();
+            return result;
+        }
+
+      
 
 
         public IEnumerable<UserConnections> GetUserConnectionsIdsByUserId(long id)
-            => _userConnectionRepository.GetUserConnectionsIdsByUserId(id);
+            => _unitOfWork.UserConnection.GetUserConnectionsIdsByUserId(id);
 
         public bool RemoveUserConnections(long id)
-            => _userConnectionRepository.RemoveUserConnections(id);
+        {
+            var result = _unitOfWork.UserConnection.RemoveUserConnections(id);
+            _unitOfWork.Complete();
+            return result;
+        }
+
+       
 
 
 
