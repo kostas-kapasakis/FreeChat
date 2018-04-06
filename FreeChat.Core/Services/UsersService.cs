@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using FreeChat.Core.Contracts.Repositories;
 using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Contracts.UOW;
 using FreeChat.Core.Models;
 using FreeChat.Core.Models.DTO;
 
@@ -9,9 +9,9 @@ namespace FreeChat.Core.Services
 {
     public class UsersService : IUsersService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUsersUnitOfWork _unitOfWork;
 
-        public UsersService(IUnitOfWork unitOfWork)
+        public UsersService(IUsersUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

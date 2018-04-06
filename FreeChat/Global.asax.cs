@@ -12,6 +12,7 @@ using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models;
 using FreeChat.Core.Services;
 using FreeChat.Persistence;
+using FreeChat.Persistence.UOW;
 
 namespace FreeChat
 {

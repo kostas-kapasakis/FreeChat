@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using FreeChat.Core.Contracts.Repositories;
 using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Contracts.UOW;
 using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
 using FreeChat.Core.Models.Enums;
@@ -11,9 +11,9 @@ namespace FreeChat.Core.Services
 {
     public class TopicsService : ITopicsService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITopicsUnitOfWork _unitOfWork;
 
-        public TopicsService(IUnitOfWork unitOfWork)
+        public TopicsService(ITopicsUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

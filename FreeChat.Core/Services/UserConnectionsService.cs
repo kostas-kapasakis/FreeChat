@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using FreeChat.Core.Contracts.Repositories;
 using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Contracts.UOW;
 using FreeChat.Core.Models.Domain;
 
 namespace FreeChat.Core.Services
 {
     public class UserConnectionsService : IUserConnectionsService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserConnectionsUnitOfWork _unitOfWork;
 
-        public UserConnectionsService(IUnitOfWork unitOfWork)
+        public UserConnectionsService(IUserConnectionsUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
