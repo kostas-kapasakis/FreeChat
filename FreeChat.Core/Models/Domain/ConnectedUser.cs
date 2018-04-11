@@ -10,8 +10,11 @@ namespace FreeChat.Core.Models.Domain
         }
 
         public long Id { get; set; }
-        public ApplicationUser ApplicationUserId { get; set; }
+
+        public ApplicationUser User { get; set; }
+
         public IList<UserConnection> UserConnections { get; set; }
+
         public string Username { get; set; }
 
     }

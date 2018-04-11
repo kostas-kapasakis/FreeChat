@@ -7,6 +7,24 @@ namespace FreeChat.Persistence.FluentConfigurations
     {
         public TopicConfiguration()
         {
+            Property(n => n.Name)
+                .HasMaxLength(50)
+                .IsRequired();
+
+
+            Property(g => g.Genre)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            Property(d => d.Description)
+                .IsRequired()
+                .HasMaxLength(500);
+
+            HasRequired(u => u.UserCreator);
+
+            HasRequired(m => m.MainCategory);
+
+
 
         }
     }

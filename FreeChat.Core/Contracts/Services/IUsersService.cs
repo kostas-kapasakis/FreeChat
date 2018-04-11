@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using FreeChat.Core.Models;
+﻿using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
+using System.Collections.Generic;
 
 namespace FreeChat.Core.Contracts.Services
 {

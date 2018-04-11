@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using FreeChat.Core.Contracts.Repositories;
+using FreeChat.Core.Models.Domain;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using FreeChat.Core.Contracts.Repositories;
-using FreeChat.Core.Models.Domain;
 
 namespace FreeChat.Persistence.Repositories
 {
@@ -26,8 +26,7 @@ namespace FreeChat.Persistence.Repositories
 
             var connection = new UserConnection
             {
-                ConnectionId = connectionId,
-                Username = user.UserName,
+                ConnectedUserId = connectionId,
                 User = user
             };
             _context.UserConnections.Add(connection);
@@ -39,7 +38,7 @@ namespace FreeChat.Persistence.Repositories
 
         public bool RemoveUserConnection(long connectionId)
         {
-            var connection = _context.UserConnections.FirstOrDefault(x => x.ConnectionId == connectionId);
+            var connection = _context.UserConnections.FirstOrDefault(x => x.ConnectedUserId == connectionId);
 
             if (connection == null)
                 return false;

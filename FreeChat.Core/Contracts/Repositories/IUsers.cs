@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using FreeChat.Core.Models;
+﻿using FreeChat.Core.Models.Domain;
+using System.Collections.Generic;
 
 namespace FreeChat.Core.Contracts.Repositories
 {

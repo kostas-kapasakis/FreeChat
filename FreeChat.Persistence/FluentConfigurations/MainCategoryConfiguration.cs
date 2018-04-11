@@ -19,7 +19,13 @@ namespace FreeChat.Persistence.FluentConfigurations
                     .HasMaxLength(1000);
 
 
+            Property(p => p.CategoryImage)
+                .IsRequired()
+                .HasMaxLength(3000);
 
+            HasMany(t => t.Topics)
+                .WithRequired(t => t.MainCategory)
+                .HasForeignKey(t => t.MainCategoryId);
 
         }
     }

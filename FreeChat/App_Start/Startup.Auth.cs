@@ -1,4 +1,4 @@
-﻿using FreeChat.Core.Models;
+﻿using FreeChat.Core.Models.Domain;
 using FreeChat.Persistence;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using FreeChat.Core.Contracts.Repositories;
+using FreeChat.Core.Models.Domain;
+using FreeChat.Core.Models.Enums;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using FreeChat.Core.Contracts.Repositories;
-using FreeChat.Core.Models;
-using FreeChat.Core.Models.Enums;
 
 namespace FreeChat.Persistence.Repositories
 {

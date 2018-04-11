@@ -29,6 +29,9 @@ namespace FreeChat.Persistence
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new MainCategoryConfiguration());
+            modelBuilder.Configurations.Add(new ConnectedUserConfiguration());
+            modelBuilder.Configurations.Add(new TopicConfiguration());
+            modelBuilder.Configurations.Add(new UserConnectionConfiguration());
 
         }
     }

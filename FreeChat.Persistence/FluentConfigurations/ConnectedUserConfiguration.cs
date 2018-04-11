@@ -13,8 +13,11 @@ namespace FreeChat.Persistence.FluentConfigurations
                 .IsRequired()
                 .HasMaxLength(50);
 
-            //            HasMany(c=>c.UserConnections)
-            //            .WithRequired(c=>c.conn)
+            HasMany(c => c.UserConnections)
+                .WithRequired(c => c.ConnectedUser)
+                .HasForeignKey(c => c.ConnectedUserId);
+
+
 
         }
     }
