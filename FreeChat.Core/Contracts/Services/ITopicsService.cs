@@ -7,8 +7,8 @@ namespace FreeChat.Core.Contracts.Services
 {
     public interface ITopicsService
     {
-        Topics GetTopicById(long id);
-        IEnumerable<Topics> GetActiveTopics();
+        Topic GetTopicById(long id);
+        IEnumerable<Topic> GetActiveTopics();
         IEnumerable<TopicsDto> GetActiveTopicsByGenreId(long id);
         IEnumerable<MainCategoriesDto> GetMainCategories();
         bool AddTopic(TopicsDto chatRoom);

@@ -1,6 +1,6 @@
 ﻿namespace FreeChat.Core.Models.Domain
 {
-    public class UserConnections
+    public class UserConnection
     {
         public long Id { get; set; }
         public long ConnectionId { get; set; }

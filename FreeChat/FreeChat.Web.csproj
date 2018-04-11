@@ -344,6 +344,10 @@
     <Compile Include="Migrations\201802011637107_AddRoomsLEftColumn.Designer.cs">
       <DependentUpon>201802011637107_AddRoomsLEftColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804111351438_AddMainCategoriesFluentConfiguration.cs" />
+    <Compile Include="Migrations\201804111351438_AddMainCategoriesFluentConfiguration.Designer.cs">
+      <DependentUpon>201804111351438_AddMainCategoriesFluentConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -715,7 +719,9 @@
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -881,6 +887,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802021337470_ChangeAdminRoleColumn.resx">
       <DependentUpon>201802021337470_ChangeAdminRoleColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804111351438_AddMainCategoriesFluentConfiguration.resx">
+      <DependentUpon>201804111351438_AddMainCategoriesFluentConfiguration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

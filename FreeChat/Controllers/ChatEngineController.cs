@@ -18,7 +18,7 @@ namespace FreeChat.Controllers
         [HttpGet]
         public ActionResult ChatStart(long? roomid)
         {
-            var topic = new Topics();
+            var topic = new Topic();
 //            /var currentUser = System.Web.HttpContext.Current.User.Identity.Name;
             var topicId = roomid.GetValueOrDefault();
             if (topicId != 0)

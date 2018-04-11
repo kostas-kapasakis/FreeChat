@@ -1,18 +1,17 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Services;
 using FreeChat.Modules;
+using FreeChat.Persistence;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using FreeChat.Core.Contracts.Services;
-using FreeChat.Core.Models;
-using FreeChat.Core.Services;
-using FreeChat.Persistence;
 
-namespace FreeChat
+namespace FreeChat.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -42,7 +41,7 @@ namespace FreeChat
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); //Set the MVC DependencyResolver
-            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container); //Set the WebApi DependencyResolver
 
 
         }

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using FreeChat.Core.Models;
 using FreeChat.ViewModels;
+using FreeChat.Web;
 
 namespace FreeChat.Controllers
 {

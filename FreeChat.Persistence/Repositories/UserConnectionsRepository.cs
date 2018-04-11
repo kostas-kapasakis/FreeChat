@@ -24,7 +24,7 @@ namespace FreeChat.Persistence.Repositories
             if (user == null)
                 return false;
 
-            var connection = new UserConnections
+            var connection = new UserConnection
             {
                 ConnectionId = connectionId,
                 Username = user.UserName,
@@ -51,11 +51,11 @@ namespace FreeChat.Persistence.Repositories
 
         }
 
-        public IEnumerable<UserConnections> GetUserConnectionsIdsByUserId(long id)
+        public IEnumerable<UserConnection> GetUserConnectionsIdsByUserId(long id)
         {
             var listOfConnections = _context.UserConnections.Where(x => x.User.Id == id.ToString());
             if (!listOfConnections.Any())
-                return new List<UserConnections>();
+                return new List<UserConnection>();
 
             return listOfConnections;
 

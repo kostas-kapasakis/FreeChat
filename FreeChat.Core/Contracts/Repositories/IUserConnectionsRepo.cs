@@ -7,7 +7,7 @@ namespace FreeChat.Core.Contracts.Repositories
     {
         bool AddUserConnection(long connectionId, int userId);
         bool RemoveUserConnection(long connectionId);
-        IEnumerable<UserConnections> GetUserConnectionsIdsByUserId(long id);
+        IEnumerable<UserConnection> GetUserConnectionsIdsByUserId(long id);
         bool RemoveUserConnections(long id);
     }
 }

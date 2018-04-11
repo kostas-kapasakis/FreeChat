@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace FreeChat
+namespace FreeChat.Web
 {
     public class RouteConfig
     {

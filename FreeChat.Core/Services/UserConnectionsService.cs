@@ -22,7 +22,7 @@ namespace FreeChat.Core.Services
             => _userConnectionsRepo.RemoveUserConnection(connectionId);
 
 
-        public IEnumerable<UserConnections> GetUserConnectionsIdsByUserId(long id)
+        public IEnumerable<UserConnection> GetUserConnectionsIdsByUserId(long id)
             => _userConnectionsRepo.GetUserConnectionsIdsByUserId(id);
 
         public bool RemoveUserConnections(long id)

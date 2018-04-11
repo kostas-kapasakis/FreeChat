@@ -34,7 +34,7 @@ namespace FreeChat.Controllers
 
             return View("Create", new NewChatRoomViewModel
             {
-                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories),
+                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategory>>(mainCategories),
                 RoomsLeft = roomsLeft,
                 RoomsCreated = roomsCreated,
                 UserTopics = topicsDtos
@@ -54,7 +54,7 @@ namespace FreeChat.Controllers
 
                 return View("Create", new NewChatRoomViewModel
                 {
-                    MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
+                    MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategory>>(mainCategories)
                 });
             }
             var user = User.Identity.GetUserId();

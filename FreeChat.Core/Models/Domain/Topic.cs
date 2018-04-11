@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FreeChat.Core.Models.Domain
 {
-    public class Topics
+    public class Topic
     {
         public long Id { get; set; }
 
@@ -29,6 +29,6 @@ namespace FreeChat.Core.Models.Domain
         [DisplayName("Main Categories")]
         public long MainCategoryId { get; set; }//convention that treats this property as an foreign key
 
-        public virtual MainCategories MainCategory { get; set; }
+        public virtual MainCategory MainCategory { get; set; }
     }
 }

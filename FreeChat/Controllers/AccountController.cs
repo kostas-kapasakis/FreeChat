@@ -9,6 +9,7 @@ using FreeChat.Core.Contracts;
 using FreeChat.Core.Models;
 using FreeChat.Persistence;
 using FreeChat.ViewModels;
+using FreeChat.Web;
 
 namespace FreeChat.Controllers
 {

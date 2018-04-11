@@ -18,16 +18,16 @@ namespace FreeChat.Core.Services
             _topicsRepoRepository = topicsRepoRepository;
         }
 
-        public Topics GetTopicById(long id)
+        public Topic GetTopicById(long id)
             => _topicsRepoRepository.GetTopicById(id);
 
-        public IEnumerable<Topics> GetActiveTopics()
+        public IEnumerable<Topic> GetActiveTopics()
             => _topicsRepoRepository.GetActiveTopics();
 
         public IEnumerable<TopicsDto> GetActiveTopicsByGenreId(long id)
         {
             var topics = _topicsRepoRepository.GetActiveTopicsByGenreId(id);
-            return Mapper.Map<IEnumerable<Topics>, IEnumerable<TopicsDto>>(topics);
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsDto>>(topics);
         }
 
 
@@ -35,7 +35,7 @@ namespace FreeChat.Core.Services
         {
             var categories = _topicsRepoRepository.GetMainCategories();
 
-            return Mapper.Map<IEnumerable<MainCategories>, IEnumerable<MainCategoriesDto>>(categories);
+            return Mapper.Map<IEnumerable<MainCategory>, IEnumerable<MainCategoriesDto>>(categories);
 
         }
 
@@ -61,7 +61,7 @@ namespace FreeChat.Core.Services
 
             chatRoom.DateExpired = chatRoom.DateCreated.AddDays(5);
 
-            var topic = Mapper.Map<TopicsDto, Topics>(chatRoom);
+            var topic = Mapper.Map<TopicsDto, Topic>(chatRoom);
             topic.MaxClientsOnline = 100;
 
             return _topicsRepoRepository.AddTopic(topic);
@@ -84,7 +84,7 @@ namespace FreeChat.Core.Services
         public IEnumerable<TopicsDto> GetUserTopics(string id)
         {
             var userTopics = _topicsRepoRepository.GetUserTopics(id);
-            return Mapper.Map<IEnumerable<Topics>, IEnumerable<TopicsDto>>(userTopics);
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsDto>>(userTopics);
         }
 
 
@@ -96,7 +96,7 @@ namespace FreeChat.Core.Services
         public IEnumerable<TopicsFullDto> GetTopicsFull()
         {
             var roomsFull = _topicsRepoRepository.GetTopicsFull();
-            return Mapper.Map<IEnumerable<Topics>, IEnumerable<TopicsFullDto>>(roomsFull);
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsFullDto>>(roomsFull);
         }
 
         public bool ChangeTopicStatus(long id, bool status)

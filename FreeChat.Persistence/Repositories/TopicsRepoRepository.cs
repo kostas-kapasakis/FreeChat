@@ -19,22 +19,22 @@ namespace FreeChat.Persistence.Repositories
             _usersService = usersService;
         }
 
-        public Topics GetTopicById(long Id)
+        public Topic GetTopicById(long Id)
         {
             return _context.Topics.Include(c => c.MainCategory).FirstOrDefault(x => x.Id == Id);
         }
 
-        public IEnumerable<Topics> GetActiveTopics()
+        public IEnumerable<Topic> GetActiveTopics()
         {
             return _context.Topics.Include(c => c.MainCategory).Where(x => x.Active);
         }
 
-        public IEnumerable<Topics> GetActiveTopicsByGenreId(long id)
+        public IEnumerable<Topic> GetActiveTopicsByGenreId(long id)
         {
             return _context.Topics.Include(c => c.MainCategory).Where(x => x.MainCategoryId == id);
         }
 
-        public bool AddTopic(Topics topic)
+        public bool AddTopic(Topic topic)
         {
             var user = _context.Users.SingleOrDefault(x => x.Id == topic.UserCreatorId);
             if (user == null || user.RoomsLeft == 0)
@@ -53,7 +53,7 @@ namespace FreeChat.Persistence.Repositories
             return true;
         }
 
-        public IEnumerable<MainCategories> GetMainCategories()
+        public IEnumerable<MainCategory> GetMainCategories()
         {
             return _context.MainCategories.Where(x => x.Active);
         }
@@ -69,7 +69,7 @@ namespace FreeChat.Persistence.Repositories
             return _context.SaveChanges();
         }
 
-        public IEnumerable<Topics> GetUserTopics(string id)
+        public IEnumerable<Topic> GetUserTopics(string id)
         {
             var topics = _context.Topics.Where(x => x.UserCreatorId == id).Where(x => x.Active);
 
@@ -83,7 +83,7 @@ namespace FreeChat.Persistence.Repositories
             return user?.RoomsLeft ?? 0;
         }
 
-        public IEnumerable<Topics> GetTopicsFull()
+        public IEnumerable<Topic> GetTopicsFull()
         {
             return _context.Topics;
         }

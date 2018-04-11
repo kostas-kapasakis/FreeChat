@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace FreeChat
+namespace FreeChat.Web
 {
     public class FilterConfig
     {
