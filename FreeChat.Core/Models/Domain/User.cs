@@ -17,9 +17,12 @@ namespace FreeChat.Core.Models.Domain
 
         public IList<UserConnection> UserConnections { get; set; }
 
+        public IList<Topic> TopicsConnected { get; set; }
+
         public User()
         {
             UserConnections = new List<UserConnection>();
+            TopicsConnected = new List<Topic>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

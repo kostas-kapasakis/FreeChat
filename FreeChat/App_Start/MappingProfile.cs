@@ -10,14 +10,14 @@ namespace FreeChat.Web
         public MappingProfile()
         {
 
-            CreateMap<Topic, TopicsDto>();
-            CreateMap<TopicsDto, Topic>();
-            CreateMap<MainCategory, MainCategoriesDto>();
-            CreateMap<MainCategoriesDto, MainCategory>();
-            CreateMap<Topic, TopicsDto>();
-            CreateMap<TopicsDto, Topic>();
-            CreateMap<Topic, TopicsFullDto>();
-            CreateMap<TopicsFullDto, Topic>();
+            CreateMap<Topic, TopicDto>();
+            CreateMap<TopicDto, Topic>();
+            CreateMap<MainCategory, MainCategoryDto>();
+            CreateMap<MainCategoryDto, MainCategory>();
+            CreateMap<Topic, TopicDto>();
+            CreateMap<TopicDto, Topic>();
+            CreateMap<Topic, TopicExtendedDto>();
+            CreateMap<TopicExtendedDto, Topic>();
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
 

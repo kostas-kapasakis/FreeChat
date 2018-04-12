@@ -1,14 +1,8 @@
-using FreeChat.Core.Contracts;
-using FreeChat.Core.Models;
+using FreeChat.Persistence;
+using System.Data.Entity.Migrations;
 
-namespace FreeChat.Migrations
+namespace FreeChat.Web.Migrations
 {
-    using FreeChat.Persistence;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
     internal sealed class Configuration : DbMigrationsConfiguration<FreeChatContext>
     {
 

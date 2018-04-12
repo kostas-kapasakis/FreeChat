@@ -6,16 +6,11 @@ namespace FreeChat.Web.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Topics", "MainCategory_Id", "dbo.MainCategories");
-            DropIndex("dbo.Topics", new[] { "MainCategory_Id" });
-            DropColumn("dbo.Topics", "MainCategoryId");
-            RenameColumn(table: "dbo.Topics", name: "MainCategory_Id", newName: "MainCategoryId");
+          
+    
             AlterColumn("dbo.Topics", "Name", c => c.String());
             AlterColumn("dbo.Topics", "Description", c => c.String());
             AlterColumn("dbo.Topics", "MainCategoryId", c => c.Byte(nullable: true));
-            AlterColumn("dbo.Topics", "MainCategoryId", c => c.Byte(nullable: true));
-            CreateIndex("dbo.Topics", "MainCategoryId");
-            AddForeignKey("dbo.Topics", "MainCategoryId", "dbo.MainCategories", "Id", cascadeDelete: true);
         }
 
         public override void Down()

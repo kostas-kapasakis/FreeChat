@@ -373,25 +373,17 @@
     <Compile Include="Migrations\201804111533596_AddFluentApiModelBuilder.Designer.cs">
       <DependentUpon>201804111533596_AddFluentApiModelBuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804111535116_AddFluentApiModelBuilder1.cs" />
-    <Compile Include="Migrations\201804111535116_AddFluentApiModelBuilder1.Designer.cs">
-      <DependentUpon>201804111535116_AddFluentApiModelBuilder1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201804121018309_AddMessageDatatable.cs" />
     <Compile Include="Migrations\201804121018309_AddMessageDatatable.Designer.cs">
       <DependentUpon>201804121018309_AddMessageDatatable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804121147280_addUserConfigurations.cs" />
-    <Compile Include="Migrations\201804121147280_addUserConfigurations.Designer.cs">
-      <DependentUpon>201804121147280_addUserConfigurations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804121155247_addUserConfigurations.cs" />
-    <Compile Include="Migrations\201804121155247_addUserConfigurations.Designer.cs">
-      <DependentUpon>201804121155247_addUserConfigurations.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.cs" />
     <Compile Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.Designer.cs">
       <DependentUpon>201804121157510_addDEfaultValuesInUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121438535_AddOnlineUsersColumnInTopicsTable.cs" />
+    <Compile Include="Migrations\201804121438535_AddOnlineUsersColumnInTopicsTable.Designer.cs">
+      <DependentUpon>201804121438535_AddOnlineUsersColumnInTopicsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
@@ -955,20 +947,14 @@
     <EmbeddedResource Include="Migrations\201804111533596_AddFluentApiModelBuilder.resx">
       <DependentUpon>201804111533596_AddFluentApiModelBuilder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804111535116_AddFluentApiModelBuilder1.resx">
-      <DependentUpon>201804111535116_AddFluentApiModelBuilder1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804121018309_AddMessageDatatable.resx">
       <DependentUpon>201804121018309_AddMessageDatatable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121147280_addUserConfigurations.resx">
-      <DependentUpon>201804121147280_addUserConfigurations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121155247_addUserConfigurations.resx">
-      <DependentUpon>201804121155247_addUserConfigurations.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.resx">
       <DependentUpon>201804121157510_addDEfaultValuesInUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121438535_AddOnlineUsersColumnInTopicsTable.resx">
+      <DependentUpon>201804121438535_AddOnlineUsersColumnInTopicsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

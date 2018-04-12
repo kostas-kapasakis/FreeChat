@@ -25,6 +25,17 @@ namespace FreeChat.Persistence.FluentConfigurations
             HasRequired(m => m.MainCategory);
 
 
+            HasMany(x => x.UsersOnline)
+                .WithMany(c => c.TopicsConnected)
+                .Map(m =>
+                    {
+                        m.ToTable("UsersInTopics");
+                        m.MapLeftKey("UserId");
+                        m.MapRightKey("TopicId");
+                    }
+                );
+
+
 
         }
     }
