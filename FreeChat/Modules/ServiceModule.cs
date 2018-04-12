@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using Autofac;
+﻿using Autofac;
+using System.Reflection;
 
 namespace FreeChat.Web.Modules
 {
@@ -11,6 +11,7 @@ namespace FreeChat.Web.Modules
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces()
                 .PropertiesAutowired()
+                .PreserveExistingDefaults()
                 .InstancePerLifetimeScope();
         }
     }

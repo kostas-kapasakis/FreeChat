@@ -18,8 +18,8 @@ namespace FreeChat.Web
             CreateMap<TopicsDto, Topic>();
             CreateMap<Topic, TopicsFullDto>();
             CreateMap<TopicsFullDto, Topic>();
-            CreateMap<ApplicationUser, UserDto>();
-            CreateMap<UserDto, ApplicationUser>();
+            CreateMap<User, UserDto>();
+            CreateMap<UserDto, User>();
 
         }
     }

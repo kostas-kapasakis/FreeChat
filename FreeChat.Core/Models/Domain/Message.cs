@@ -10,6 +10,6 @@ namespace FreeChat.Core.Models.Domain
 
         public DateTime DateSent { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public User User { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace FreeChat.Persistence.FluentConfigurations
 {
-    public class UserConfiguration : EntityTypeConfiguration<ApplicationUser>
+    public class UserConfiguration : EntityTypeConfiguration<User>
     {
         public UserConfiguration()
         {

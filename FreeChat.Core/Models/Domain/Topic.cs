@@ -20,7 +20,7 @@ namespace FreeChat.Core.Models.Domain
 
         public long MaxClientsOnline { get; set; }
 
-        public ApplicationUser UserCreator { get; set; }
+        public User UserCreator { get; set; }
 
         public string UserCreatorId { get; set; }
 

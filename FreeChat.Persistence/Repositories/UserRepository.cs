@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FreeChat.Persistence.Repositories
 {
-    public class UserRepository : GenericRepository<ApplicationUser>, IUserRepository
+    public class UserRepository : GenericRepository<User>, IUserRepository
     {
         public UserRepository(FreeChatContext context)
             : base(context)

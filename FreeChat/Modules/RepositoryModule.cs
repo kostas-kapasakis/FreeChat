@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using Autofac;
+﻿using Autofac;
+using System.Reflection;
 
 namespace FreeChat.Web.Modules
 {
@@ -7,8 +7,8 @@ namespace FreeChat.Web.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(Assembly.Load("FreeChat.Persistence"))
-                .Where(t => t.Name.EndsWith("Repository") && t.Name.EndsWith("UnitOfWork"))
+            builder.RegisterAssemblyTypes(Assembly.Load("FreeChat.Persistence"), Assembly.Load("FreeChat.Core"))
+                .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces()
                 .PropertiesAutowired()
                 .InstancePerLifetimeScope();
