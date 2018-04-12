@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using FreeChat.Core.Models;
+using FreeChat.Hubs;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using FreeChat.Core.Models;
 
-namespace FreeChat.Hubs
+namespace FreeChat.Web.Hubs
 {
     [Authorize]
     public class Chat : Hub

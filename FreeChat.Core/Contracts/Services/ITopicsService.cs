@@ -11,17 +11,17 @@ namespace FreeChat.Core.Contracts.Services
 
         IEnumerable<Topic> GetActiveTopics();
 
-        IEnumerable<TopicsDto> GetActiveTopicsByGenreId(long id);
+        IEnumerable<TopicDto> GetActiveTopicsByGenreId(long id);
 
-        IEnumerable<MainCategoriesDto> GetMainCategories();
+        IEnumerable<MainCategoryDto> GetMainCategories();
 
-        bool AddTopic(TopicsDto chatRoom);
+        bool AddTopic(TopicDto chatRoom);
 
         TopicDeletionVerdictEnum DeleteTopicById(long id);
 
         TopicValidationPriorEnteringEnum ValidateRoom(long id);
 
-        IEnumerable<TopicsDto> GetUserTopics(string id);
+        IEnumerable<TopicDto> GetUserTopics(string id);
 
         int RoomsRemainingForUser(string id);
 

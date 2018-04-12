@@ -381,6 +381,10 @@
     <Compile Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.Designer.cs">
       <DependentUpon>201804121157510_addDEfaultValuesInUsersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804121438535_AddOnlineUsersColumnInTopicsTable.cs" />
+    <Compile Include="Migrations\201804121438535_AddOnlineUsersColumnInTopicsTable.Designer.cs">
+      <DependentUpon>201804121438535_AddOnlineUsersColumnInTopicsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -948,6 +952,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.resx">
       <DependentUpon>201804121157510_addDEfaultValuesInUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121438535_AddOnlineUsersColumnInTopicsTable.resx">
+      <DependentUpon>201804121438535_AddOnlineUsersColumnInTopicsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

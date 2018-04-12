@@ -2,7 +2,7 @@
 
 namespace FreeChat.Core.Models.DTO
 {
-    public class MainCategoriesDto
+    public class MainCategoryDto
     {
         public byte Id { get; set; }
 

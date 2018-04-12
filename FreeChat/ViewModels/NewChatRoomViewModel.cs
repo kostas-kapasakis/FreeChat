@@ -12,6 +12,6 @@ namespace FreeChat.ViewModels
         public Topic Topic { get; set; }
         public int RoomsLeft { get; set; }
         public int RoomsCreated { get; set; }
-        public IEnumerable<TopicsDto> UserTopics { get; set; }
+        public IEnumerable<TopicDto> UserTopics { get; set; }
     }
 }

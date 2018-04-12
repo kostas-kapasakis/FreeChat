@@ -29,12 +29,12 @@ namespace FreeChat.Web.Controllers
             var mainCategories = _topicsService.GetMainCategories();
             var roomsLeft = _topicsService.RoomsRemainingForUser(user);
             var userTopics = _topicsService.GetUserTopics(user);
-            var topicsDtos = userTopics as IList<TopicsDto> ?? userTopics.ToList();
+            var topicsDtos = userTopics as IList<TopicDto> ?? userTopics.ToList();
             var roomsCreated = topicsDtos.Count;
 
             return View("Create", new NewChatRoomViewModel
             {
-                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategory>>(mainCategories),
+                MainCategories = Mapper.Map<IEnumerable<MainCategoryDto>, IEnumerable<MainCategory>>(mainCategories),
                 RoomsLeft = roomsLeft,
                 RoomsCreated = roomsCreated,
                 UserTopics = topicsDtos
@@ -54,12 +54,12 @@ namespace FreeChat.Web.Controllers
 
                 return View("Create", new NewChatRoomViewModel
                 {
-                    MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategory>>(mainCategories)
+                    MainCategories = Mapper.Map<IEnumerable<MainCategoryDto>, IEnumerable<MainCategory>>(mainCategories)
                 });
             }
             var user = User.Identity.GetUserId();
             var genre = mainCategories.Where(x => x.Id == chatRoom.Topic.MainCategoryId);
-            var topic = new TopicsDto
+            var topic = new TopicDto
             {
                 Name = chatRoom.Topic.Name,
                 Description = chatRoom.Topic.Description,
