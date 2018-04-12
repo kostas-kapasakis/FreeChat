@@ -1,5 +1,4 @@
 ﻿using FreeChat.Core.Contracts;
-using FreeChat.Core.Models;
 using FreeChat.Core.Models.Domain;
 using FreeChat.Persistence.FluentConfigurations;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -13,6 +12,7 @@ namespace FreeChat.Persistence
         public DbSet<UserConnection> UserConnections { get; set; }
         public DbSet<ConnectedUser> ConnectedUsers { get; set; }
         public DbSet<MainCategory> MainCategories { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         public ApplicationDbContext()
             : base((string)"DefaultConnection", (bool)false)
@@ -32,6 +32,7 @@ namespace FreeChat.Persistence
             modelBuilder.Configurations.Add(new ConnectedUserConfiguration());
             modelBuilder.Configurations.Add(new TopicConfiguration());
             modelBuilder.Configurations.Add(new UserConnectionConfiguration());
+            modelBuilder.Configurations.Add(new MessageConfiguration());
 
         }
     }

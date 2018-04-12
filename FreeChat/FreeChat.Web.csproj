@@ -376,6 +376,10 @@
     <Compile Include="Migrations\201804111535116_AddFluentApiModelBuilder1.Designer.cs">
       <DependentUpon>201804111535116_AddFluentApiModelBuilder1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804121018309_AddMessageDatatable.cs" />
+    <Compile Include="Migrations\201804121018309_AddMessageDatatable.Designer.cs">
+      <DependentUpon>201804121018309_AddMessageDatatable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -939,6 +943,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804111535116_AddFluentApiModelBuilder1.resx">
       <DependentUpon>201804111535116_AddFluentApiModelBuilder1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121018309_AddMessageDatatable.resx">
+      <DependentUpon>201804121018309_AddMessageDatatable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
