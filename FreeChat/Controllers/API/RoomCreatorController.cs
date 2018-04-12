@@ -16,7 +16,7 @@ namespace FreeChat.Web.Controllers.API
 
         [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
-        public IHttpActionResult CreateRoom(TopicsDto chatRoom)
+        public IHttpActionResult CreateRoom(TopicDto chatRoom)
         {
             return Ok(_service.AddTopic(chatRoom));
         }

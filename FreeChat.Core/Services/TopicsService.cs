@@ -24,17 +24,17 @@ namespace FreeChat.Core.Services
         public IEnumerable<Topic> GetActiveTopics()
             => _unitOfWork.Topics.GetActiveTopics();
 
-        public IEnumerable<TopicsDto> GetActiveTopicsByGenreId(long id)
+        public IEnumerable<TopicDto> GetActiveTopicsByGenreId(long id)
         {
             var topics = _unitOfWork.Topics.GetActiveTopicsByGenreId(id);
-            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsDto>>(topics);
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicDto>>(topics);
         }
 
 
-        public IEnumerable<MainCategoriesDto> GetMainCategories()
+        public IEnumerable<MainCategoryDto> GetMainCategories()
         {
             var categories = _unitOfWork.Topics.GetMainCategories();
-            return Mapper.Map<IEnumerable<MainCategory>, IEnumerable<MainCategoriesDto>>(categories);
+            return Mapper.Map<IEnumerable<MainCategory>, IEnumerable<MainCategoryDto>>(categories);
         }
 
         public TopicValidationPriorEnteringEnum ValidateRoom(long id)
@@ -53,7 +53,7 @@ namespace FreeChat.Core.Services
 
 
 
-        public bool AddTopic(TopicsDto chatRoom)
+        public bool AddTopic(TopicDto chatRoom)
         {
             var user = _unitOfWork.User.Get(chatRoom.UserCreatorId);
             if (user == null || user.RoomsLeft == 0)
@@ -68,7 +68,7 @@ namespace FreeChat.Core.Services
 
             chatRoom.DateExpired = chatRoom.DateCreated.AddDays(5);
 
-            var topic = Mapper.Map<TopicsDto, Topic>(chatRoom);
+            var topic = Mapper.Map<TopicDto, Topic>(chatRoom);
             topic.MaxClientsOnline = 100;
 
             var result = _unitOfWork.Topics.AddTopic(topic, adminVerdict);
@@ -93,10 +93,10 @@ namespace FreeChat.Core.Services
                 : TopicDeletionVerdictEnum.TopicSuccesfullyDeleted;
         }
 
-        public IEnumerable<TopicsDto> GetUserTopics(string id)
+        public IEnumerable<TopicDto> GetUserTopics(string id)
         {
             var userTopics = _unitOfWork.Topics.GetUserTopics(id);
-            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsDto>>(userTopics);
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicDto>>(userTopics);
         }
 
 
@@ -105,10 +105,10 @@ namespace FreeChat.Core.Services
             return _unitOfWork.Topics.RoomsRemainingForUser(userId);
         }
 
-        public IEnumerable<TopicsFullDto> GetTopicsFull()
+        public IEnumerable<TopicExtendedDto> GetTopicsFull()
         {
             var roomsFull = _unitOfWork.Topics.GetAll();
-            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsFullDto>>(roomsFull);
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicExtendedDto>>(roomsFull);
         }
 
         public bool ChangeTopicStatus(long id, bool status)

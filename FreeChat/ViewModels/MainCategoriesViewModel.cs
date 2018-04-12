@@ -6,6 +6,6 @@ namespace FreeChat.ViewModels
     public class MainCategoriesViewModel
     {
 
-        public IEnumerable<MainCategoriesDto> MainCategories { get; set; }
+        public IEnumerable<MainCategoryDto> MainCategories { get; set; }
     }
 }

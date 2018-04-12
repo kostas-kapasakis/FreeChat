@@ -9,7 +9,6 @@ namespace FreeChat.Migrations
         {
             DropForeignKey("dbo.Topics", "MainCategory_Id", "dbo.MainCategories");
             DropIndex("dbo.Topics", new[] { "MainCategory_Id" });
-            DropColumn("dbo.Topics", "MainCategoryId");
             RenameColumn(table: "dbo.Topics", name: "MainCategory_Id", newName: "MainCategoryId");
             AlterColumn("dbo.Topics", "Name", c => c.String());
             AlterColumn("dbo.Topics", "Description", c => c.String());

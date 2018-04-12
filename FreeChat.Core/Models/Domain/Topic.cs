@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FreeChat.Core.Models.Domain
 {
@@ -27,5 +28,13 @@ namespace FreeChat.Core.Models.Domain
         public byte MainCategoryId { get; set; }
 
         public virtual MainCategory MainCategory { get; set; }
+
+        public IList<User> UsersOnline { get; set; }
+
+
+        public Topic()
+        {
+            UsersOnline = new List<User>();
+        }
     }
 }

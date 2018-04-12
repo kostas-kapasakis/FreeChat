@@ -5,7 +5,7 @@ namespace FreeChat.ViewModels
 {
     public class MyRoomsViewModel
     {
-        public IEnumerable<TopicsDto> MyTopics { get; set; }
+        public IEnumerable<TopicDto> MyTopics { get; set; }
 
     }
 }
