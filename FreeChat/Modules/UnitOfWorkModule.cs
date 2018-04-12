@@ -7,7 +7,7 @@ namespace FreeChat.Web.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(Assembly.Load("FreeChat.Core"))
+            builder.RegisterAssemblyTypes(Assembly.Load("FreeChat.Core"), Assembly.Load("FreeChat.Persistence"))
                 .Where(t => t.Name.EndsWith("UnitOfWork"))
                 .AsImplementedInterfaces()
                 .PropertiesAutowired()

@@ -7,7 +7,7 @@ using System.Data.Entity;
 namespace FreeChat.Persistence
 {
 
-    public class FreeChatContext : IdentityDbContext<ApplicationUser>, IDbContext
+    public class FreeChatContext : IdentityDbContext<User>, IDbContext
     {
         public DbSet<Topic> Topics { get; set; }
         public DbSet<UserConnection> UserConnections { get; set; }
@@ -35,6 +35,7 @@ namespace FreeChat.Persistence
             modelBuilder.Configurations.Add(new TopicConfiguration());
             modelBuilder.Configurations.Add(new UserConnectionConfiguration());
             modelBuilder.Configurations.Add(new MessageConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
 
         }
     }

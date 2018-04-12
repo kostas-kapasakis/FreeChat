@@ -251,6 +251,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\Chat.cs" />
+    <Compile Include="InfrastructureConfiguration.cs" />
     <Compile Include="Migrations\201802021335531_addRoleColumnInapplicationUser.cs" />
     <Compile Include="Migrations\201802021335531_addRoleColumnInapplicationUser.Designer.cs">
       <DependentUpon>201802021335531_addRoleColumnInapplicationUser.cs</DependentUpon>
@@ -379,6 +380,18 @@
     <Compile Include="Migrations\201804121018309_AddMessageDatatable.cs" />
     <Compile Include="Migrations\201804121018309_AddMessageDatatable.Designer.cs">
       <DependentUpon>201804121018309_AddMessageDatatable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121147280_addUserConfigurations.cs" />
+    <Compile Include="Migrations\201804121147280_addUserConfigurations.Designer.cs">
+      <DependentUpon>201804121147280_addUserConfigurations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121155247_addUserConfigurations.cs" />
+    <Compile Include="Migrations\201804121155247_addUserConfigurations.Designer.cs">
+      <DependentUpon>201804121155247_addUserConfigurations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.cs" />
+    <Compile Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.Designer.cs">
+      <DependentUpon>201804121157510_addDEfaultValuesInUsersTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
@@ -947,6 +960,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804121018309_AddMessageDatatable.resx">
       <DependentUpon>201804121018309_AddMessageDatatable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121147280_addUserConfigurations.resx">
+      <DependentUpon>201804121147280_addUserConfigurations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121155247_addUserConfigurations.resx">
+      <DependentUpon>201804121155247_addUserConfigurations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121157510_addDEfaultValuesInUsersTable.resx">
+      <DependentUpon>201804121157510_addDEfaultValuesInUsersTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

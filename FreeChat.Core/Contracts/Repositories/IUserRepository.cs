@@ -2,7 +2,7 @@
 
 namespace FreeChat.Core.Contracts.Repositories
 {
-    public interface IUserRepository : IGenericRepository<ApplicationUser>
+    public interface IUserRepository : IGenericRepository<User>
     {
         long CountRegisteredUsers();
 

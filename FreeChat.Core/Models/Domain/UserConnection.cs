@@ -8,7 +8,7 @@
 
         public long ConnectedUserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public User User { get; set; }
 
     }
 }

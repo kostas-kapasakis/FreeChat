@@ -11,7 +11,7 @@ namespace FreeChat.Core.Models.Domain
 
         public long Id { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public User User { get; set; }
 
         public IList<UserConnection> UserConnections { get; set; }
 

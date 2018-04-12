@@ -10,7 +10,7 @@ namespace FreeChat.Core.Contracts.Services
 
         long CountRegisteredUsers();
 
-        IEnumerable<ApplicationUser> GetRegisteredUsers();
+        IEnumerable<User> GetRegisteredUsers();
 
         bool UpdateUserStatus(bool status, string userId);
 

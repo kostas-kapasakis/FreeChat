@@ -34,7 +34,7 @@ namespace FreeChat.Web.Controllers.API
 
             var users = _usersService.GetRegisteredUsers();
 
-            var userdto = users.ToList().Select(Mapper.Map<ApplicationUser, UserDto>);
+            var userdto = users.ToList().Select(Mapper.Map<User, UserDto>);
 
             return Ok(userdto);
         }

@@ -18,12 +18,12 @@ namespace FreeChat.Core.Services
         }
 
         public UserDto GetUser(string id)
-            => Mapper.Map<ApplicationUser, UserDto>(_unitOfWork.User.Get(id));
+            => Mapper.Map<User, UserDto>(_unitOfWork.User.Get(id));
 
         public long CountRegisteredUsers()
             => _unitOfWork.User.CountRegisteredUsers();
 
-        public IEnumerable<ApplicationUser> GetRegisteredUsers()
+        public IEnumerable<User> GetRegisteredUsers()
             => _unitOfWork.User.GetAll();
 
         public bool UpdateUserStatus(bool status, string userId)
