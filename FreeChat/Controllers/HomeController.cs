@@ -1,8 +1,8 @@
-﻿using System.Web.Mvc;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
 using FreeChat.ViewModels;
+using System.Web.Mvc;
 
-namespace FreeChat.Controllers
+namespace FreeChat.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -25,7 +25,7 @@ namespace FreeChat.Controllers
             return View();
         }
         [AllowAnonymous]
-    
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

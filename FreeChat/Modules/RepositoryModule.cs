@@ -1,7 +1,7 @@
-﻿using Autofac;
-using System.Reflection;
+﻿using System.Reflection;
+using Autofac;
 
-namespace FreeChat.Modules
+namespace FreeChat.Web.Modules
 {
     public class RepositoryModule : Autofac.Module
     {

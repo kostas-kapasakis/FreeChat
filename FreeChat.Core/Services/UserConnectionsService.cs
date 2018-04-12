@@ -1,32 +1,52 @@
-﻿using System.Collections.Generic;
-using FreeChat.Core.Contracts.Repositories;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Contracts.UOW;
 using FreeChat.Core.Models.Domain;
+using System.Collections.Generic;
+
 
 namespace FreeChat.Core.Services
 {
     public class UserConnectionsService : IUserConnectionsService
     {
-        private readonly IUserConnectionsRepo _userConnectionsRepo;
+        private readonly IUserConnectionsUnitOfWork _unitOfWork;
 
-        public UserConnectionsService(IUserConnectionsRepo userConnectionsRepo)
+        public UserConnectionsService(IUserConnectionsUnitOfWork unitOfWork)
         {
-            _userConnectionsRepo = userConnectionsRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public bool AddUserConnection(long connectionId, int userId)
-            => _userConnectionsRepo.AddUserConnection(connectionId, userId);
+        {
+            var result = _unitOfWork.UserConnection.AddUserConnection(connectionId, userId);
+            _unitOfWork.Complete();
+            return result;
+        }
+
+
 
 
         public bool RemoveUserConnection(long connectionId)
-            => _userConnectionsRepo.RemoveUserConnection(connectionId);
+        {
+            var result = _unitOfWork.UserConnection.RemoveUserConnection(connectionId);
+            _unitOfWork.Complete();
+            return result;
+        }
+
+
+
 
 
         public IEnumerable<UserConnection> GetUserConnectionsIdsByUserId(long id)
-            => _userConnectionsRepo.GetUserConnectionsIdsByUserId(id);
+            => _unitOfWork.UserConnection.GetUserConnectionsIdsByUserId(id);
 
         public bool RemoveUserConnections(long id)
-            => _userConnectionsRepo.RemoveUserConnections(id);
+        {
+            var result = _unitOfWork.UserConnection.RemoveUserConnection(id);
+            _unitOfWork.Complete();
+            return result;
+        }
+
+
 
 
 

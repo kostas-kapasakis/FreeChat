@@ -3,8 +3,8 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Services;
-using FreeChat.Modules;
 using FreeChat.Persistence;
+using FreeChat.Web.Modules;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -17,9 +17,6 @@ namespace FreeChat.Web
     {
         protected void Application_Start()
         {
-
-
-
             AutoMapper.Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
 
             AreaRegistration.RegisterAllAreas();
@@ -34,9 +31,12 @@ namespace FreeChat.Web
 
             builder.RegisterModule(new RepositoryModule());
             builder.RegisterModule(new ServiceModule());
+            builder.RegisterModule(new UnitOfWorkModule());
 
             builder.RegisterType<TopicsService>().As<ITopicsService>();
-            builder.RegisterType<ApplicationDbContext>().AsSelf();
+            builder.RegisterType<FreeChatContext>().AsSelf();
+
+
 
 
             var container = builder.Build();
