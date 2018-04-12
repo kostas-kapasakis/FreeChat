@@ -1,20 +1,17 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Services;
+using FreeChat.Persistence;
+using FreeChat.Web.Modules;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using FreeChat.Core.Contracts.Repositories;
-using FreeChat.Core.Contracts.Services;
-using FreeChat.Core.Models;
-using FreeChat.Core.Services;
-using FreeChat.Persistence;
-using FreeChat.Persistence.UOW;
-using FreeChat.Web.Modules;
 
-namespace FreeChat
+namespace FreeChat.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -39,7 +36,7 @@ namespace FreeChat
             builder.RegisterType<TopicsService>().As<ITopicsService>();
             builder.RegisterType<FreeChatContext>().AsSelf();
 
-           
+
 
 
             var container = builder.Build();
