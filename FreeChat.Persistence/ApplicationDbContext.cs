@@ -33,6 +33,7 @@ namespace FreeChat.Persistence
             modelBuilder.Configurations.Add(new TopicConfiguration());
             modelBuilder.Configurations.Add(new UserConnectionConfiguration());
             modelBuilder.Configurations.Add(new MessageConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
 
         }
     }

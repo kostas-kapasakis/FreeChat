@@ -8,7 +8,7 @@ namespace FreeChat.Modules
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.Load("FreeChat.Persistence"))
-                .Where(t => t.Name.EndsWith("Repository"))
+                .Where(t => t.Name.EndsWith("Repository") && t.Name.EndsWith("UnitOfWork"))
                 .AsImplementedInterfaces()
                 .PropertiesAutowired()
                 .InstancePerLifetimeScope();
