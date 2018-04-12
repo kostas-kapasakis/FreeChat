@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class refiningForeignKey : DbMigration
     {
         public override void Up()
@@ -15,7 +14,7 @@ namespace FreeChat.Migrations
             AddForeignKey("dbo.Topics", "MainCategory_Id", "dbo.MainCategories", "Id");
             DropColumn("dbo.MainCategories", "Topics_Id");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.MainCategories", "Topics_Id", c => c.Long());

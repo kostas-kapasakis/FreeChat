@@ -1,7 +1,7 @@
-namespace FreeChat.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
 
+namespace FreeChat.Web.Migrations
+{
     public partial class AddRoomsLEftColumn : DbMigration
     {
         public override void Up()

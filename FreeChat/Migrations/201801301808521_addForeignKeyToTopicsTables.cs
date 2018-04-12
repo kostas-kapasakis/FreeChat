@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class addForeignKeyToTopicsTables : DbMigration
     {
         public override void Up()
@@ -12,7 +11,7 @@ namespace FreeChat.Migrations
             Sql(@"UPDATE dbo.Topics SET MainCategoryId = 1
               where MainCategoryId IS NULL");
         }
-        
+
         public override void Down()
         {
             DropColumn("dbo.Topics", "MainCategoryId");

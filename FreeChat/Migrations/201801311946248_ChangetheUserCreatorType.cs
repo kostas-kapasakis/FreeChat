@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class ChangetheUserCreatorType : DbMigration
     {
         public override void Up()
@@ -13,7 +12,7 @@ namespace FreeChat.Migrations
             AlterColumn("dbo.Topics", "UserCreatorId", c => c.String(maxLength: 128));
             CreateIndex("dbo.Topics", "UserCreatorId");
         }
-        
+
         public override void Down()
         {
             DropIndex("dbo.Topics", new[] { "UserCreatorId" });

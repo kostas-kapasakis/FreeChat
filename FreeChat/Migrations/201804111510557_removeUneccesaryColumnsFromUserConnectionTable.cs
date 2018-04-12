@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class removeUneccesaryColumnsFromUserConnectionTable : DbMigration
     {
         public override void Up()
@@ -12,7 +11,7 @@ namespace FreeChat.Migrations
             DropColumn("dbo.UserConnections", "ConnectionId");
             DropColumn("dbo.UserConnections", "Username");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.UserConnections", "Username", c => c.String());

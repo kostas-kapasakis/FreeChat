@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class populateForeignKey : DbMigration
     {
         public override void Up()
@@ -14,7 +13,7 @@ namespace FreeChat.Migrations
             Sql(@"UPDATE dbo.Topics SET MainCategory_id = 3
               where Genre='Trips'");
         }
-        
+
         public override void Down()
         {
         }

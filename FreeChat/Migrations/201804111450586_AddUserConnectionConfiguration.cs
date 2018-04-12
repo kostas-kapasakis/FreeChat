@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class AddUserConnectionConfiguration : DbMigration
     {
         public override void Up()
@@ -14,7 +13,7 @@ namespace FreeChat.Migrations
             AlterColumn("dbo.MainCategories", "Name", c => c.String(nullable: false, maxLength: 50));
             AlterColumn("dbo.MainCategories", "CategoryDescription", c => c.String(nullable: false, maxLength: 1000));
         }
-        
+
         public override void Down()
         {
             AlterColumn("dbo.MainCategories", "CategoryDescription", c => c.String());

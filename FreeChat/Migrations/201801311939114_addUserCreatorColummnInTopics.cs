@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class addUserCreatorColummnInTopics : DbMigration
     {
         public override void Up()
@@ -12,7 +11,7 @@ namespace FreeChat.Migrations
             CreateIndex("dbo.Topics", "UserCreator_Id");
             AddForeignKey("dbo.Topics", "UserCreator_Id", "dbo.AspNetUsers", "Id");
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Topics", "UserCreator_Id", "dbo.AspNetUsers");

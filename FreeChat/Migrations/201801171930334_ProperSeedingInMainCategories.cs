@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class ProperSeedingInMainCategories : DbMigration
     {
         public override void Up()
@@ -18,7 +17,7 @@ namespace FreeChat.Migrations
 
         }
 
-    public override void Down()
+        public override void Down()
         {
         }
     }

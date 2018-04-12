@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class AddConnectedUsersConfig : DbMigration
     {
         public override void Up()
@@ -17,7 +16,7 @@ namespace FreeChat.Migrations
             CreateIndex("dbo.UserConnections", "ConnectedUserId");
             AddForeignKey("dbo.UserConnections", "ConnectedUserId", "dbo.ConnectedUsers", "Id", cascadeDelete: true);
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.UserConnections", "ConnectedUserId", "dbo.ConnectedUsers");

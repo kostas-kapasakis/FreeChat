@@ -1,8 +1,7 @@
-namespace FreeChat.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FreeChat.Web.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class AddTopicsConfiguration2 : DbMigration
     {
         public override void Up()
@@ -18,7 +17,7 @@ namespace FreeChat.Migrations
             CreateIndex("dbo.Topics", "MainCategoryId");
             AddForeignKey("dbo.Topics", "MainCategoryId", "dbo.MainCategories", "Id", cascadeDelete: true);
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Topics", "MainCategoryId", "dbo.MainCategories");

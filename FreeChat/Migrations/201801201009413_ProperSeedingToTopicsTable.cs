@@ -1,7 +1,7 @@
-namespace FreeChat.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
 
+namespace FreeChat.Web.Migrations
+{
     public partial class ProperSeedingToTopicsTable : DbMigration
     {
         public override void Up()
