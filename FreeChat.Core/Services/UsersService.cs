@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+
 using AutoMapper;
 using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Contracts.UOW;
-using FreeChat.Core.Models;
+using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
+using System.Collections.Generic;
 
 namespace FreeChat.Core.Services
 {
@@ -18,7 +19,7 @@ namespace FreeChat.Core.Services
 
         public UserDto GetUser(string id)
             => Mapper.Map<ApplicationUser, UserDto>(_unitOfWork.User.Get(id));
-       
+
         public long CountRegisteredUsers()
             => _unitOfWork.User.CountRegisteredUsers();
 
@@ -30,11 +31,11 @@ namespace FreeChat.Core.Services
             var result = _unitOfWork.User.UpdateUserStatus(status, userId);
             _unitOfWork.Complete();
             return result;
-        } 
-        
+        }
+
         public bool IsAdmin(string userId)
             => _unitOfWork.User.IsAdmin(userId);
-        
+
 
     }
 }

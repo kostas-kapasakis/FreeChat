@@ -1,18 +1,23 @@
-﻿using System.Collections.Generic;
-using FreeChat.Core.Models.Domain;
+﻿using FreeChat.Core.Models.Domain;
+using System.Collections.Generic;
 
 namespace FreeChat.Core.Contracts.Repositories
 {
-    public interface ITopicRepository:IGenericRepository<Topics>
+    public interface ITopicRepository : IGenericRepository<Topic>
     {
-        IEnumerable<Topics> GetActiveTopics();
-        IEnumerable<Topics> GetActiveTopicsByGenreId(long id);
-        IEnumerable<MainCategories> GetMainCategories();
-        bool AddTopic(Topics chatRoom, bool isAdmin);
-        int DeleteTopicById(long id);
-        IEnumerable<Topics> GetUserTopics(string id);
-        int RoomsRemainingForUser(string id);
+        IEnumerable<Topic> GetActiveTopics();
 
+        IEnumerable<Topic> GetActiveTopicsByGenreId(long id);
+
+        IEnumerable<MainCategory> GetMainCategories();
+
+        bool AddTopic(Topic chatRoom, bool isAdmin);
+
+        int DeleteTopicById(long id);
+
+        IEnumerable<Topic> GetUserTopics(string id);
+
+        int RoomsRemainingForUser(string id);
 
         bool ChangeTopicStatus(long id, bool status);
 

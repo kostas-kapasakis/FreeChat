@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Contracts.UOW;
 using FreeChat.Core.Models.Domain;
+using System.Collections.Generic;
+
 
 namespace FreeChat.Core.Services
 {
@@ -16,7 +17,7 @@ namespace FreeChat.Core.Services
 
         public bool AddUserConnection(long connectionId, int userId)
         {
-            var result =   _unitOfWork.UserConnection.AddUserConnection(connectionId, userId);
+            var result = _unitOfWork.UserConnection.AddUserConnection(connectionId, userId);
             _unitOfWork.Complete();
             return result;
         }
@@ -26,25 +27,26 @@ namespace FreeChat.Core.Services
 
         public bool RemoveUserConnection(long connectionId)
         {
-            var result =  _unitOfWork.UserConnection.RemoveUserConnection(connectionId);
+            var result = _unitOfWork.UserConnection.RemoveUserConnection(connectionId);
             _unitOfWork.Complete();
             return result;
         }
 
-      
 
 
-        public IEnumerable<UserConnections> GetUserConnectionsIdsByUserId(long id)
+
+
+        public IEnumerable<UserConnection> GetUserConnectionsIdsByUserId(long id)
             => _unitOfWork.UserConnection.GetUserConnectionsIdsByUserId(id);
 
         public bool RemoveUserConnections(long id)
         {
-            var result = _unitOfWork.UserConnection.RemoveUserConnections(id);
+            var result = _unitOfWork.UserConnection.RemoveUserConnection(id);
             _unitOfWork.Complete();
             return result;
         }
 
-       
+
 
 
 

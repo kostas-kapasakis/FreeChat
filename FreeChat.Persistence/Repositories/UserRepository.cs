@@ -1,15 +1,15 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using FreeChat.Core.Contracts.Repositories;
-using FreeChat.Core.Models;
+﻿using FreeChat.Core.Contracts.Repositories;
+using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.Enums;
+using System.Data.Entity;
+using System.Linq;
 
 namespace FreeChat.Persistence.Repositories
 {
-    public class UserRepository :GenericRepository<ApplicationUser>, IUserRepository
+    public class UserRepository : GenericRepository<ApplicationUser>, IUserRepository
     {
         public UserRepository(FreeChatContext context)
-            :base(context)
+            : base(context)
         {
         }
 

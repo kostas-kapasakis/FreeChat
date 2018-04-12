@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
-using FreeChat.Core.Models.Domain;
+﻿using FreeChat.Core.Models.Domain;
+using System.Collections.Generic;
 
 namespace FreeChat.Core.Contracts.Repositories
 {
-    public interface IUserConnectionRepository:IGenericRepository<UserConnections>
+    public interface IUserConnectionRepository : IGenericRepository<UserConnection>
     {
         bool AddUserConnection(long connectionId, int userId);
+
         bool RemoveUserConnection(long connectionId);
-        IEnumerable<UserConnections> GetUserConnectionsIdsByUserId(long id);
-        bool RemoveUserConnections(long id);
+
+        IEnumerable<UserConnection> GetUserConnectionsIdsByUserId(long id);
+
+        bool RemoveAllUserConnections(long connectionId);
     }
 }

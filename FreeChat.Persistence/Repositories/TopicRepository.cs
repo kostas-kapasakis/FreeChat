@@ -1,13 +1,12 @@
 ﻿using FreeChat.Core.Contracts.Repositories;
+using FreeChat.Core.Models.Domain;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-using FreeChat.Core.Models.Domain;
-
 namespace FreeChat.Persistence.Repositories
 {
-    public class TopicRepository : GenericRepository<Topics>,ITopicRepository
+    public class TopicRepository : GenericRepository<Topic>, ITopicRepository
     {
 
         public TopicRepository(FreeChatContext context)
@@ -15,22 +14,22 @@ namespace FreeChat.Persistence.Repositories
         {
         }
 
-        public override Topics Get(long id)
+        public override Topic Get(long id)
         {
             return FreeChatContext.Topics.Include(c => c.MainCategory).FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<Topics> GetActiveTopics()
+        public IEnumerable<Topic> GetActiveTopics()
         {
             return FreeChatContext.Topics.Include(c => c.MainCategory).Where(x => x.Active);
         }
 
-        public IEnumerable<Topics> GetActiveTopicsByGenreId(long id)
+        public IEnumerable<Topic> GetActiveTopicsByGenreId(long id)
         {
             return FreeChatContext.Topics.Include(c => c.MainCategory).Where(x => x.MainCategoryId == id);
         }
 
-        public override void Add(Topics entity)
+        public override void Add(Topic entity)
         {
             var user = FreeChatContext.Users.SingleOrDefault(x => x.Id == entity.UserCreatorId);
             if (user.RoomsLeft == 0)
@@ -47,7 +46,7 @@ namespace FreeChat.Persistence.Repositories
             FreeChatContext.SaveChanges();
         }
 
-        public bool AddTopic(Topics topic, bool isAdmin)
+        public bool AddTopic(Topic topic, bool isAdmin)
         {
             var user = FreeChatContext.Users.SingleOrDefault(x => x.Id == topic.UserCreatorId);
             if (user == null || user.RoomsLeft == 0)
@@ -66,12 +65,12 @@ namespace FreeChat.Persistence.Repositories
             return true;
         }
 
-        public IEnumerable<MainCategories> GetMainCategories()
+        public IEnumerable<MainCategory> GetMainCategories()
         {
             return FreeChatContext.MainCategories.Where(x => x.Active);
         }
 
-     
+
         public int DeleteTopicById(long id)
         {
             var topic = FreeChatContext.Topics.First(x => x.Id == id);
@@ -83,7 +82,7 @@ namespace FreeChat.Persistence.Repositories
             return FreeChatContext.SaveChanges();
         }
 
-        public IEnumerable<Topics> GetUserTopics(string id)
+        public IEnumerable<Topic> GetUserTopics(string id)
         {
             var topics = FreeChatContext.Topics.Where(x => x.UserCreatorId == id).Where(x => x.Active);
 

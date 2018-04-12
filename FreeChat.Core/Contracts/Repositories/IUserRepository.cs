@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using FreeChat.Core.Models;
+﻿using FreeChat.Core.Models.Domain;
 
 namespace FreeChat.Core.Contracts.Repositories
 {
-    public interface IUserRepository:IGenericRepository<ApplicationUser>
+    public interface IUserRepository : IGenericRepository<ApplicationUser>
     {
         long CountRegisteredUsers();
 

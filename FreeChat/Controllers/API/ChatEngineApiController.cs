@@ -1,8 +1,8 @@
-﻿using System.Web.Http;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models.Enums;
+using System.Web.Http;
 
-namespace FreeChat.Controllers.API
+namespace FreeChat.Web.Controllers.API
 {
     public class ChatEngineApiController : ApiController
     {
@@ -13,10 +13,12 @@ namespace FreeChat.Controllers.API
             _service = service;
         }
 
+
+
         [HttpGet]
         public IHttpActionResult ChatEngine(long roomId)
         {
-            var room = _service.GetTopicById(roomId);
+            var room = _service.GetTopic(roomId);
             var verdict = _service.ValidateRoom(room.Id);
 
 

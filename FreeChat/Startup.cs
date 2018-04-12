@@ -1,8 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using FreeChat.Web;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(FreeChat.Startup))]
-namespace FreeChat
+[assembly: OwinStartup(typeof(Startup))]
+namespace FreeChat.Web
 {
     public partial class Startup
     {

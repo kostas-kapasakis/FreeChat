@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace FreeChat
+namespace FreeChat.Web
 {
     public class BundleConfig
     {

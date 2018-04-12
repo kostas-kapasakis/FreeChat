@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-using FreeChat.Core.Models;
+﻿using FreeChat.Core.Models;
+using System.Web.Mvc;
 
-namespace FreeChat.Controllers
+namespace FreeChat.Web.Controllers
 {
     [Authorize(Roles = RoleName.Admin)]
     public class ChartsController : Controller

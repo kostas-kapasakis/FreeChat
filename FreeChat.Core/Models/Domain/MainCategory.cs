@@ -1,13 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 
 namespace FreeChat.Core.Models.Domain
 {
-    public class MainCategories
+    public class MainCategory
     {
+        public MainCategory()
+        {
+            Topics = new List<Topic>();
+        }
+
         public byte Id { get; set; }
 
-        [Required]
-        [StringLength(255)]
         public string Name { get; set; }
 
         public bool Active { get; set; }
@@ -16,6 +19,8 @@ namespace FreeChat.Core.Models.Domain
 
         public string CategoryDescription { get; set; }
 
-       
+        public IList<Topic> Topics { get; set; }
+
+
     }
 }

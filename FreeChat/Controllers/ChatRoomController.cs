@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using Microsoft.AspNet.Identity;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
 using FreeChat.ViewModels;
+using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
-namespace FreeChat.Controllers
+namespace FreeChat.Web.Controllers
 {
     public class ChatRoomController : Controller
     {
@@ -34,7 +34,7 @@ namespace FreeChat.Controllers
 
             return View("Create", new NewChatRoomViewModel
             {
-                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories),
+                MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategory>>(mainCategories),
                 RoomsLeft = roomsLeft,
                 RoomsCreated = roomsCreated,
                 UserTopics = topicsDtos
@@ -54,7 +54,7 @@ namespace FreeChat.Controllers
 
                 return View("Create", new NewChatRoomViewModel
                 {
-                    MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategories>>(mainCategories)
+                    MainCategories = Mapper.Map<IEnumerable<MainCategoriesDto>, IEnumerable<MainCategory>>(mainCategories)
                 });
             }
             var user = User.Identity.GetUserId();

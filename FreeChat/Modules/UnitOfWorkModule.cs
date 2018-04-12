@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Autofac;
 using System.Reflection;
-using System.Web;
-using Autofac;
 
 namespace FreeChat.Web.Modules
 {
-    public class UnitOfWorkModule:Autofac.Module
+    public class UnitOfWorkModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {

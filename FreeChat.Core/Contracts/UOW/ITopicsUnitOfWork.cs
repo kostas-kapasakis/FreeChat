@@ -2,9 +2,10 @@
 
 namespace FreeChat.Core.Contracts.UOW
 {
-    public interface ITopicsUnitOfWork:IGenericUnitOfWork
+    public interface ITopicsUnitOfWork : IGenericUnitOfWork
     {
         ITopicRepository Topics { get; }
+
         IUserRepository User { get; }
     }
 }

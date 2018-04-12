@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNet.Identity;
-using System.Web.Mvc;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
 using FreeChat.ViewModels;
+using Microsoft.AspNet.Identity;
+using System.Web.Mvc;
 
-namespace FreeChat.Controllers
+namespace FreeChat.Web.Controllers
 {
     public class UsersAreaController : Controller
     {

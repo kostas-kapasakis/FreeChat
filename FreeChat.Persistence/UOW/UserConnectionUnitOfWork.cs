@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Text;
-using FreeChat.Core.Contracts.Repositories;
+﻿using FreeChat.Core.Contracts.Repositories;
 using FreeChat.Core.Contracts.UOW;
 using FreeChat.Persistence.Repositories;
 
 namespace FreeChat.Persistence.UOW
 {
-    public class UserConnectionUnitOfWork:GenericUnitOfWork,IUserConnectionsUnitOfWork
+    public class UserConnectionUnitOfWork : GenericUnitOfWork, IUserConnectionsUnitOfWork
     {
         public UserConnectionUnitOfWork(FreeChatContext context) : base(context)
         {
