@@ -1,11 +1,12 @@
-﻿using AutoMapper;
+
+using AutoMapper;
 using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
 using System.Linq;
 using System.Web.Http;
 
-namespace FreeChat.Controllers.API
+namespace FreeChat.Web.Controllers.API
 {
     public class UsersController : ApiController
     {
@@ -51,7 +52,6 @@ namespace FreeChat.Controllers.API
         }
 
         [HttpGet]
-
         public IHttpActionResult GetRoomsLeftForUser(string userId)
         {
             var roomsLeft = _topicsService.RoomsRemainingForUser(userId);

@@ -1,51 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
-using FreeChat.Core.Contracts.Repositories;
+﻿using AutoMapper;
 using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Contracts.UOW;
 using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
 using FreeChat.Core.Models.Enums;
+using System;
+using System.Collections.Generic;
 
 namespace FreeChat.Core.Services
 {
     public class TopicsService : ITopicsService
     {
-        private readonly ITopicsRepo _topicsRepoRepository;
+        private readonly ITopicsUnitOfWork _unitOfWork;
 
-        public TopicsService(ITopicsRepo topicsRepoRepository)
+        public TopicsService(ITopicsUnitOfWork unitOfWork)
         {
-            _topicsRepoRepository = topicsRepoRepository;
+            _unitOfWork = unitOfWork;
         }
 
-        public Topic GetTopicById(long id)
-            => _topicsRepoRepository.GetTopicById(id);
+        public Topic GetTopic(long id)
+            => _unitOfWork.Topics.Get(id);
 
         public IEnumerable<Topic> GetActiveTopics()
-            => _topicsRepoRepository.GetActiveTopics();
+            => _unitOfWork.Topics.GetActiveTopics();
 
         public IEnumerable<TopicsDto> GetActiveTopicsByGenreId(long id)
         {
-            var topics = _topicsRepoRepository.GetActiveTopicsByGenreId(id);
+            var topics = _unitOfWork.Topics.GetActiveTopicsByGenreId(id);
             return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsDto>>(topics);
         }
 
 
         public IEnumerable<MainCategoriesDto> GetMainCategories()
         {
-            var categories = _topicsRepoRepository.GetMainCategories();
-
+            var categories = _unitOfWork.Topics.GetMainCategories();
             return Mapper.Map<IEnumerable<MainCategory>, IEnumerable<MainCategoriesDto>>(categories);
-
         }
 
         public TopicValidationPriorEnteringEnum ValidateRoom(long id)
         {
-            var topic = _topicsRepoRepository.GetTopicById(id);
+            var topic = _unitOfWork.Topics.Get(id);
             if (topic == null)
             {
                 return TopicValidationPriorEnteringEnum.RoomIsNotActivatedAnymore;
             }
+            _unitOfWork.Complete();
 
             return topic.Active
                 ? TopicValidationPriorEnteringEnum.RoomExistsAndisAvailable
@@ -56,6 +55,14 @@ namespace FreeChat.Core.Services
 
         public bool AddTopic(TopicsDto chatRoom)
         {
+            var user = _unitOfWork.User.Get(chatRoom.UserCreatorId);
+            if (user == null || user.RoomsLeft == 0)
+                return false;
+
+            var adminVerdict = _unitOfWork.User.IsAdmin(user.Id);
+            if (!adminVerdict)
+                user.RoomsLeft--;
+
             if (chatRoom.DateCreated < DateTime.Today)
                 chatRoom.DateCreated = DateTime.Today;
 
@@ -64,7 +71,12 @@ namespace FreeChat.Core.Services
             var topic = Mapper.Map<TopicsDto, Topic>(chatRoom);
             topic.MaxClientsOnline = 100;
 
-            return _topicsRepoRepository.AddTopic(topic);
+            var result = _unitOfWork.Topics.AddTopic(topic, adminVerdict);
+
+            if (result)
+                _unitOfWork.Complete();
+
+            return _unitOfWork.Topics.AddTopic(topic, adminVerdict);
         }
 
 
@@ -72,36 +84,40 @@ namespace FreeChat.Core.Services
         public TopicDeletionVerdictEnum DeleteTopicById(long id)
         {
 
-            var verdict = _topicsRepoRepository.DeleteTopicById(id);
+            var verdict = _unitOfWork.Topics.DeleteTopicById(id);
+
+            _unitOfWork.Complete();
 
             return verdict <= 0
                 ? TopicDeletionVerdictEnum.TopicNotFound
                 : TopicDeletionVerdictEnum.TopicSuccesfullyDeleted;
         }
 
-
-
         public IEnumerable<TopicsDto> GetUserTopics(string id)
         {
-            var userTopics = _topicsRepoRepository.GetUserTopics(id);
+            var userTopics = _unitOfWork.Topics.GetUserTopics(id);
             return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsDto>>(userTopics);
         }
 
 
         public int RoomsRemainingForUser(string userId)
         {
-            return _topicsRepoRepository.RoomsRemainingForUser(userId);
+            return _unitOfWork.Topics.RoomsRemainingForUser(userId);
         }
 
         public IEnumerable<TopicsFullDto> GetTopicsFull()
         {
-            var roomsFull = _topicsRepoRepository.GetTopicsFull();
+            var roomsFull = _unitOfWork.Topics.GetAll();
             return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicsFullDto>>(roomsFull);
         }
 
         public bool ChangeTopicStatus(long id, bool status)
         {
-            return _topicsRepoRepository.ChangeTopicStatus(id, status);
+            var result = _unitOfWork.Topics.ChangeTopicStatus(id, status);
+            if (!result) return false;
+
+            _unitOfWork.Complete();
+            return true;
         }
     }
 }

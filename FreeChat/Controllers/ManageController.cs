@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using FreeChat.ViewModels;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using FreeChat.Core.Models;
-using FreeChat.ViewModels;
-using FreeChat.Web;
 
-namespace FreeChat.Controllers
+namespace FreeChat.Web.Controllers
 {
     [Authorize]
     public class ManageController : Controller
@@ -345,21 +343,13 @@ namespace FreeChat.Controllers
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PasswordHash != null;
-            }
-            return false;
+            return user?.PasswordHash != null;
         }
 
         private bool HasPhoneNumber()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PhoneNumber != null;
-            }
-            return false;
+            return user?.PhoneNumber != null;
         }
 
         public enum ManageMessageId

@@ -1,7 +1,6 @@
 ﻿using FreeChat.Core.Models.Domain;
 using FreeChat.Persistence;
 using FreeChat.ViewModels;
-using FreeChat.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -10,21 +9,21 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FreeChat.Controllers
+namespace FreeChat.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ApplicationDbContext _context;
+        private readonly FreeChatContext _context;
 
-        public AccountController(ApplicationDbContext context)
+        public AccountController(FreeChatContext context)
         {
             _context = context;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext context)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, FreeChatContext context)
         {
             UserManager = userManager;
             SignInManager = signInManager;

@@ -6,7 +6,8 @@ using System.Data.Entity;
 
 namespace FreeChat.Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDbContext
+
+    public class FreeChatContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
         public DbSet<Topic> Topics { get; set; }
         public DbSet<UserConnection> UserConnections { get; set; }
@@ -14,14 +15,15 @@ namespace FreeChat.Persistence
         public DbSet<MainCategory> MainCategories { get; set; }
         public DbSet<Message> Messages { get; set; }
 
-        public ApplicationDbContext()
-            : base((string)"DefaultConnection", (bool)false)
+
+        public FreeChatContext()
+            : base("DefaultConnection", false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static FreeChatContext Create()
         {
-            return new ApplicationDbContext();
+            return new FreeChatContext();
         }
 
 

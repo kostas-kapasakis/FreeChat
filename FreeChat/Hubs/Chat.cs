@@ -280,7 +280,7 @@ namespace FreeChat.Hubs
         /*public void InformActiveField(int value)
         {
             int usersCount = 0;
-            var context1 = new ApplicationDbContext();
+            var context1 = new FreeChatContext();
 
             foreach (var items in RoomsUsers)
             {

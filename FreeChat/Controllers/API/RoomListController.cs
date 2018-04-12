@@ -1,7 +1,7 @@
-﻿using System.Web.Http;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
+using System.Web.Http;
 
-namespace FreeChat.Controllers.API
+namespace FreeChat.Web.Controllers.API
 {
     public class RoomListController : ApiController
     {
@@ -48,7 +48,7 @@ namespace FreeChat.Controllers.API
         //[Authorize(Roles = "Administrator")]
         public IHttpActionResult GetTopicsFull()
         {
-            var topics = _service.GetTopicsFull();
+            var topics = _service.GetActiveTopics();//previous GetTopicsFull
 
             return Ok(topics);
         }

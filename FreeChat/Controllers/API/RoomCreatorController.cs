@@ -1,9 +1,9 @@
-﻿using System.Web.Http;
-using System.Web.Mvc;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models.DTO;
+using System.Web.Http;
+using System.Web.Mvc;
 
-namespace FreeChat.Controllers.API
+namespace FreeChat.Web.Controllers.API
 {
     public class RoomCreatorController : ApiController
     {

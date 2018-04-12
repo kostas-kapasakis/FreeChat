@@ -1,6 +1,7 @@
-﻿using AutoMapper;
-using FreeChat.Core.Contracts.Repositories;
+
+using AutoMapper;
 using FreeChat.Core.Contracts.Services;
+using FreeChat.Core.Contracts.UOW;
 using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
 using System.Collections.Generic;
@@ -9,36 +10,32 @@ namespace FreeChat.Core.Services
 {
     public class UsersService : IUsersService
     {
-        private readonly IUsers _userRepo;
+        private readonly IUsersUnitOfWork _unitOfWork;
 
-        public UsersService(IUsers userRepo)
+        public UsersService(IUsersUnitOfWork unitOfWork)
         {
-            _userRepo = userRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public UserDto GetUser(string id)
-        {
-            return Mapper.Map<ApplicationUser, UserDto>(_userRepo.GetUser(id));
-        }
+            => Mapper.Map<ApplicationUser, UserDto>(_unitOfWork.User.Get(id));
 
         public long CountRegisteredUsers()
-            => _userRepo.CountRegisteredUsers();
+            => _unitOfWork.User.CountRegisteredUsers();
 
         public IEnumerable<ApplicationUser> GetRegisteredUsers()
-        {
-            return _userRepo.GetRegisteredUsers();
-
-        }
+            => _unitOfWork.User.GetAll();
 
         public bool UpdateUserStatus(bool status, string userId)
         {
-            return _userRepo.UpdateUserStatus(status, userId);
+            var result = _unitOfWork.User.UpdateUserStatus(status, userId);
+            _unitOfWork.Complete();
+            return result;
         }
 
         public bool IsAdmin(string userId)
-        {
-            return _userRepo.IsAdmin(userId);
-        }
+            => _unitOfWork.User.IsAdmin(userId);
+
 
     }
 }

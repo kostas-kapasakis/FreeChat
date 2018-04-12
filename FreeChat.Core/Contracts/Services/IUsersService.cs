@@ -7,9 +7,13 @@ namespace FreeChat.Core.Contracts.Services
     public interface IUsersService
     {
         UserDto GetUser(string id);
+
         long CountRegisteredUsers();
+
         IEnumerable<ApplicationUser> GetRegisteredUsers();
+
         bool UpdateUserStatus(bool status, string userId);
+
         bool IsAdmin(string userId);
     }
 }

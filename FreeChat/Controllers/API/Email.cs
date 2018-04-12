@@ -1,9 +1,9 @@
-﻿using System.Web.Http;
-using System.Web.Mvc;
-using FreeChat.Core.Contracts.Services;
+﻿using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models;
+using System.Web.Http;
+using System.Web.Mvc;
 
-namespace FreeChat.Controllers.API
+namespace FreeChat.Web.Controllers.API
 {
     public class Email : ApiController
     {
