@@ -405,3 +405,7 @@ h6,
 #allChatRooms_paginate {
     float: right;
 }
+
+#imgLogin {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}

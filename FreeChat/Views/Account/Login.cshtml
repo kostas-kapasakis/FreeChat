@@ -1,5 +1,5 @@
 ﻿@using FreeChat.ViewModels
-@model FreeChat.ViewModels.LoginViewModel
+@model LoginViewModel
 
 
 @{
@@ -8,17 +8,23 @@
 }
 
 <div class="container">
+    <div id="imgLogin">
+        <center>
+            <h2>Free Chat</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoXEzTOO3vSqXKOhZujzxBm1V7Kp3E37RfMqDTObtfC50BxgR7vQ" alt="stringCupsPicture" class="img-fluid center">
+            <h4>Sign In</h4>
+        </center>
+    </div>
     <div class="row">
-    
+
         <div class="col-lg-3">
-            </div>
+        </div>
 
         <div class="col-lg-6">
             <section id="loginForm">
                 @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
                 {
                     @Html.AntiForgeryToken()
-                    <h4>Log In</h4>
                     <hr/>
                     @Html.ValidationSummary(true, "", new {@class = "text-danger"})
                     <div class="form-group">
@@ -49,20 +55,20 @@
                                 @Html.ActionLink("Forgot your password?", "ForgotPassword")
                             </div>
                         </div>
-                    
+
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-offset-2 col-lg-6">
                                 <input type="submit" value="Log in" class="btn btn-primary"/>
                             </div>
-                 
+
                             <div class="col-md-offset-2 col-lg-6">
                                 <a href="@Url.Action("Register", "Account")" class="btn btn-info">Not a member yet ?</a>
                             </div>
                         </div>
-                 
-                </div>
+
+                    </div>
                 }
                 <div class="offset-lg-6 col-lg-10">
                     <section id="socialLoginForm">
@@ -75,8 +81,8 @@
         </div>
         <div class="col-lg-3"></div>
 
-     </div>
-               
+    </div>
+
 </div>
 
   

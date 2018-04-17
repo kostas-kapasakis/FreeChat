@@ -840,6 +840,7 @@
     <Content Include="Views\CustomError\CustomError.cshtml" />
     <Content Include="Views\UsersArea\MyRooms.cshtml" />
     <Content Include="Views\Dashboard\Rooms.cshtml" />
+    <Content Include="Views\Home\NewLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
