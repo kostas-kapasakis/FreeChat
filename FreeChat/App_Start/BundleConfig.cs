@@ -63,9 +63,11 @@ namespace FreeChat.Web
 
 
             bundles.Add(new ScriptBundle("~/bundles/loginLayout").Include(
+                "~/Scrips/jquery-ui-1.12.1/jquery-ui.min.js",
                 "~/Content/MDB/js/bootstrap.min.js",
                 "~/Content/MDB/js/jquery-3.2.1.min.js",
                 "~/Content/MDB/js/mdb.min.js"
+
             ));
 
 

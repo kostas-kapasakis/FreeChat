@@ -1,5 +1,5 @@
 ﻿@using FreeChat.ViewModels
-@model LoginViewModel
+@model RegisterViewModel
 @{
     ViewBag.Title = "Log in";
     Layout = "~/Views/Shared/_Login.cshtml";
@@ -9,69 +9,159 @@
 @Styles.Render("~/bundles/loginLayoutStyle")
 
 
-<div class="container">
-            <div class="row justify-content-center" id="loginContainer">
-                <div class="col-md-8">
-                    <div class="card-group">
-                        <div class="card p-4">
-                            <div class="card-body">
-                                <h2>Welcome to Free Chat</h2>
-                                <h4 class="text-muted">Sign In</h4>
-                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "md-form", role = "form",id="loginForm" }))
+<div class="container" id="globalLoginContainer">
+    <div class="row justify-content-center" id="loginContainer">
+        <div class="col-md-8">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h2>Welcome to Free Chat</h2>
+                        <h4 class="text-muted">Sign In</h4>
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "md-form", role = "form", id = "loginForm" }))
                         {
                             @Html.AntiForgeryToken()
 
-                            
+
                             <div class="input-group mb-3">
-                                
-                                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <i class="fa fa-envelope prefix"></i>
-                                @Html.TextBoxFor(m => m.Email, new {@class = "form-control",id="emailInput"})
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "emailInput" })
                                 <label for="emailInput">Email</label>
-                                @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
                             </div>
-                           
+
                             <div class="input-group mb-4">
                                 <i class="fa fa-key prefix"></i>
-                                @Html.PasswordFor(m => m.Password, new {@class = "form-control",id="passInput"})
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "passInput" })
                                 <label for="passInput">Password</label>
-                                @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
                             </div>
-                            
-                                <div class="text-center mt-4">
-                                    <button class="btn btn-default" type="submit">Login</button>
-                                </div>
-                                
-                          
-                }
+
+                            <div class="text-center mt-4">
+                                <button class="btn btn-default" type="submit">Login</button>
                             </div>
-                        </div>
-                        <div id="signPanel" class="card py-5" style="width: 44%">
-                            <div class="card-body text-center">
-                              
-                                <h4 id="connectWithLabel" class="text-muted">Or Connect With</h4>
-                                <section id="socialLoginForm">
-                                    @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
-                                </section>
-
-                                <section>
-                                    <div class="list-group" id="registerSectionLogin">
-                                        <a href="@Url.Action("Register", "Account")" class="list-group-item list-group-item-action btn-default waves-effect">Not a member yet ?</a>
-                                        <a href="@Url.Action("ForgotPassword", "Account")" class="list-group-item list-group-item-action btn-default waves-effect">Forgot Password ?</a>                                  
-                                    </div>
-                                </section>
 
 
+                        }
+                    </div>
+                </div>
+                <div id="signPanel" class="card py-5" style="width: 44%">
+                    <div class="card-body text-center">
+
+                        <h4 id="connectWithLabel" class="text-muted">Or Connect With</h4>
+                        <section id="socialLoginForm">
+                            @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                        </section>
+
+                        <section>
+                            <div class="list-group" id="registerSectionLogin">
+                                <a href="#" class="list-group-item list-group-item-action btn-default waves-effect" id="registerBtn">Not a member yet ?</a>
+                                <a href="@Url.Action("ForgotPassword", "Account")" class="list-group-item list-group-item-action btn-default waves-effect">Forgot Password ?</a>
                             </div>
-                        </div>
+                        </section>
+
+
                     </div>
                 </div>
             </div>
         </div>
-  
-               
+    </div>
+</div>
+
+<div class="container" id="globalRegisterContainer">
+    <div class="row justify-content-center" id="registerContainer">
+        <div class="col-md-8">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h2>Welcome to Free Chat</h2>
+                        <h4 class="text-muted">Sign Up</h4>
+                        @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "md-form", role = "form", id = "registerForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+
+                            <div class="input-group mb-3">
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <i class="fa fa-envelope prefix"></i>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "emailInput" })
+                                <label for="emailInput">Email</label>
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="input-group mb-3">
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <i class="fa fa-user prefix"></i>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", id = "nameInput" })
+                                <label for="nameInput">Username</label>
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="input-group mb-4">
+                                <i class="fa fa-key prefix"></i>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "passInput" })
+                                <label for="passInput">Password</label>
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="input-group mb-4">
+                                <i class="fa fa-user-secret prefix"></i>
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", id = "confirmPassInput" })
+                                <label for="confirmPassInput"> Confirm Password</label>
+                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button class="btn btn-default" type="submit">Sign Up</button>
+                            </div>
+                        }
+                    </div>
+
+
+                </div>
+                <div id="signPanel" class="card py-5" style="width: 44%">
+                    <div class="card-body text-center">
+
+                        <h4 id="connectWithLabel" class="text-muted">Or Connect With</h4>
+                        <section id="socialLoginForm">
+                            @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                        </section>
+
+                        <section>
+                            <div class="list-group" id="registerSectionLogin">
+                                <a href="#" class="list-group-item list-group-item-action btn-default waves-effect" id="loginBtn">Already a member ?</a>
+                            </div>
+                        </section>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#registerBtn").on("click",function() {
+        $("#globalLoginContainer").slideUp();
+        $("#globalRegisterContainer").show(250);
+
+    })
+    $("#loginBtn").on("click",function() {
+        $("#globalLoginContainer").show(250);
+        $("#globalRegisterContainer").slideUp();
+
+    })
+</script>
 
 
 
