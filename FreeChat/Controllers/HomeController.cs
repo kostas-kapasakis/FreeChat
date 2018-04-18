@@ -47,9 +47,5 @@ namespace FreeChat.Web.Controllers
             return View();
         }
 
-        public ActionResult NewLogin()
-        {
-            return View("NewLogin");
-        }
     }
 }

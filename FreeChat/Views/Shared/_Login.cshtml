@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Free Chat</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"> 
+    @Styles.Render("~/bundles/loginLayoutStyle")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+<div  id="mainContainer">
+    @RenderBody()
+</div>
+
+@Scripts.Render("~/bundles/loginLayout")
+@RenderSection("scripts", required: false)
+</body>
+</html>

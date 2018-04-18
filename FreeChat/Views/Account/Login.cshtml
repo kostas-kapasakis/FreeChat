@@ -1,92 +1,83 @@
 ﻿@using FreeChat.ViewModels
 @model LoginViewModel
-
-
 @{
-    <br/>
     ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Login.cshtml";
 }
 
+@**@
+@Styles.Render("~/bundles/loginLayoutStyle")
+
+
 <div class="container">
-    <div id="imgLogin">
-        <center>
-            <h2>Free Chat</h2>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoXEzTOO3vSqXKOhZujzxBm1V7Kp3E37RfMqDTObtfC50BxgR7vQ" alt="stringCupsPicture" class="img-fluid center">
-            <h4>Sign In</h4>
-        </center>
-    </div>
-    <div class="row">
+            <div class="row justify-content-center" id="loginContainer">
+                <div class="col-md-8">
+                    <div class="card-group">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <h2>Welcome to Free Chat</h2>
+                                <h4 class="text-muted">Sign In</h4>
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "md-form", role = "form",id="loginForm" }))
+                        {
+                            @Html.AntiForgeryToken()
 
-        <div class="col-lg-3">
-        </div>
+                            
+                            <div class="input-group mb-3">
+                                
+                                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                                <i class="fa fa-envelope prefix"></i>
+                                @Html.TextBoxFor(m => m.Email, new {@class = "form-control",id="emailInput"})
+                                <label for="emailInput">Email</label>
+                                @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
 
-        <div class="col-lg-6">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-                {
-                    @Html.AntiForgeryToken()
-                    <hr/>
-                    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new {@class = "col-sm-2 control-label"})
-                        <div class="col-lg-10">
-                            @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
-                            @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
-                        </div>
-                    </div>
+                            </div>
+                           
+                            <div class="input-group mb-4">
+                                <i class="fa fa-key prefix"></i>
+                                @Html.PasswordFor(m => m.Password, new {@class = "form-control",id="passInput"})
+                                <label for="passInput">Password</label>
+                                @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
 
-
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new {@class = "col-sm-2 control-label"})
-                        <div class="col-lg-10">
-                            @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
-                            @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-offset-2  col-lg-6">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                            
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-default" type="submit">Login</button>
                                 </div>
-                            </div>
-                            <div class="col-md-offset-2  col-lg-5">
-                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-offset-2 col-lg-6">
-                                <input type="submit" value="Log in" class="btn btn-primary"/>
-                            </div>
-
-                            <div class="col-md-offset-2 col-lg-6">
-                                <a href="@Url.Action("Register", "Account")" class="btn btn-info">Not a member yet ?</a>
-                            </div>
-                        </div>
-
-                    </div>
+                                
+                          
                 }
-                <div class="offset-lg-6 col-lg-10">
-                    <section id="socialLoginForm">
-                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
-                    </section>
+                            </div>
+                        </div>
+                        <div id="signPanel" class="card py-5" style="width: 44%">
+                            <div class="card-body text-center">
+                              
+                                <h4 id="connectWithLabel" class="text-muted">Or Connect With</h4>
+                                <section id="socialLoginForm">
+                                    @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
+                                </section>
+
+                                <section>
+                                    <div class="list-group" id="registerSectionLogin">
+                                        <a href="@Url.Action("Register", "Account")" class="list-group-item list-group-item-action btn-default waves-effect">Not a member yet ?</a>
+                                        <a href="@Url.Action("ForgotPassword", "Account")" class="list-group-item list-group-item-action btn-default waves-effect">Forgot Password ?</a>                                  
+                                    </div>
+                                </section>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
-
-
+            </div>
         </div>
-        <div class="col-lg-3"></div>
-
-    </div>
-
-</div>
-
   
+               
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+

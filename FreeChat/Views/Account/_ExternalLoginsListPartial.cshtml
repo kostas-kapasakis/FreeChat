@@ -1,22 +1,44 @@
 ﻿@model FreeChat.ViewModels.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
+@Scripts.Render("~/bundles/jquery")
 
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     var authenticationDescriptions = loginProviders as AuthenticationDescription[] ?? loginProviders.ToArray();
 
-    using (Html.BeginForm("ExternalLogin", "Account", new {ReturnUrl = Model.ReturnUrl}))
+    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
     {
         @Html.AntiForgeryToken()
         <div id="socialLoginList">
-            <p>
+            <div class="list-group">
+         
                 @foreach (var p in authenticationDescriptions)
                 {
-                    <button type="submit" class="btn btn-link" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account"> Continue with @p.AuthenticationType</button>
+                    if (p.AuthenticationType == "Facebook")
+                    {
+  
+                    <button type="submit" class="list-group-item list-group-item-action btn-light-blue waves-effect linkSubmit" title="Log in using your @p.Caption account" value="@p.AuthenticationType">
+                        <i class="fa fa-facebook float-left"></i>
+                        @p.AuthenticationType
+                    </button>
+                   
+                    }
+                    else if (p.AuthenticationType == "Google")
+                    {
+                        <button class="list-group-item list-group-item-action btn-light-blue waves-effect linkSubmit" title="Log in using your @p.Caption account"  value="@p.AuthenticationType">
+                            <i class="fa fa-google float-left"></i>
+                            @p.AuthenticationType
+                        </button>
+                    }
+
+
                 }
-            </p>
+            </div>
+
         </div>
+
+  
 
 
     }

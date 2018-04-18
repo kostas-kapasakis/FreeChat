@@ -49,7 +49,32 @@ namespace FreeChat.Web
 
             //-----------------------End of Admin Template Bundles 
 
+            //----------------------Login Layout--------------------
 
+
+            bundles.Add(new StyleBundle("~/bundles/loginLayoutStyle").Include(
+                "~/Content/MDB/css/bootstrap.min.css",
+                "~/Content/MDB/css/mdb.min.css",
+                "~/Content/MDB/scss/free/_forms.scss",
+                "~/Content/Login.css",
+                "~/Content/font-awesome/css/font-awesome.min.css"
+
+            ));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/loginLayout").Include(
+                "~/Content/MDB/js/bootstrap.min.js",
+                "~/Content/MDB/js/jquery-3.2.1.min.js",
+                "~/Content/MDB/js/mdb.min.js"
+            ));
+
+
+
+
+
+
+
+            //-----------end of login layout-------------------------
 
 
             //---------------------------------Views Bundles

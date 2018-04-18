@@ -1,0 +1,57 @@
+﻿body, html {
+    height: 100%;
+    font-family:'Dosis'
+}
+
+
+
+#loginContainer, #registerContainer {
+    padding-top: 20%;
+}
+
+
+    #loginContainer div a, #loginContainer input, #registerContainer div a, #registerContainer  input{
+        line-height: 20px !important;
+    }
+    #loginContainer div .list-group-item, #registerContainer div .list-group-item {
+        padding: 6px 10px !important;
+        margin-top: 10px !important;
+        cursor: pointer
+    }
+
+
+
+#mainContainer {
+    height: 100%;
+    /* The image used */
+    background-image: url('images/login.jpg');
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#registerSectionLogin {
+    padding-top:18%;
+}
+#connectWithLabel {
+    margin-top:20px!Important;
+}
+
+.active {
+    color: lightblue !important;
+  
+}
+
+#loginForm input {
+    border-bottom-color: lightblue !important;
+    box-shadow: none;
+}
+
+
+#registerForm input {
+    border-bottom-color: lightblue !important;
+    box-shadow: none;
+}
