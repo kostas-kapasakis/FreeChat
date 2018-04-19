@@ -153,12 +153,13 @@
 <script>
     $("#registerBtn").on("click",function() {
         $("#globalLoginContainer").slideUp();
-        $("#globalRegisterContainer").show(250);
+        $("#globalRegisterContainer").slideToggle();
 
     })
-    $("#loginBtn").on("click",function() {
-        $("#globalLoginContainer").show(250);
+    $("#loginBtn").on("click", function () {
         $("#globalRegisterContainer").slideUp();
+        $("#globalLoginContainer").slideToggle();
+       
 
     })
 </script>
