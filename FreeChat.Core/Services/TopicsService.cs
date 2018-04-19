@@ -21,8 +21,20 @@ namespace FreeChat.Core.Services
         public Topic GetTopic(long id)
             => _unitOfWork.Topics.Get(id);
 
-        public IEnumerable<Topic> GetActiveTopics()
-            => _unitOfWork.Topics.GetActiveTopics();
+        public IEnumerable<TopicDto> GetActiveTopics()
+        {
+            var topics = _unitOfWork.Topics.GetActiveTopics();
+
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicDto>>(topics);
+        }
+
+
+        public IEnumerable<TopicDto> GetTopicsExtended()
+        {
+            var topics = _unitOfWork.Topics.GetAll();
+            return Mapper.Map<IEnumerable<Topic>, IEnumerable<TopicDto>>(topics);
+
+        }
 
         public IEnumerable<TopicDto> GetActiveTopicsByGenreId(long id)
         {

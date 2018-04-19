@@ -26,7 +26,9 @@ namespace FreeChat.Web
             bundles.Add(new ScriptBundle("~/bundles/adminTemplateLayout").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.signalR-2.2.2.min.js",
-                "~/Scripts/bootstrap4/bootstrap.bundle.js",
+                "~/Scripts/umd/popper.min.js",
+                "~/Content/MDB/js/bootstrap.min.js",
+                "~/Content/MDB/js/mdb.min.js",
                 "~/Scripts/bootbox.js",
                 "~/Scripts/AdminTemplate/sb-admin.js",
                 "~/Scripts/datatables/jquery.dataTables.min.js",
@@ -39,7 +41,8 @@ namespace FreeChat.Web
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/adminTemplateLayoutStyle").Include(
-                "~/Content/bootstrap4/bootstrap.min.css",
+                "~/Content/MDB/css/bootstrap.min.css",
+                "~/Content/MDB/css/mdb.min.css",
                 "~/Content/sb-admin.css",
                 "~/Content/datatables/css/datatables.bootstrap4.min.css",
                 "~/Content/datatables/css/responsive.bootstrap.min.css",

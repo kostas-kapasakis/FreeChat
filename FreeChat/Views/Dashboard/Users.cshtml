@@ -59,11 +59,11 @@
 
                             if (user.Active) {
                    
-                                return `<button class='btn-link js-deactivate btn-info' data-user-id=${user.Id
+                                return `<button class='btn btn-outline-warning deactivate waves-effect js-deactivate ' data-user-id=${user.Id
                                     }>Deactivate</button>`;
                             } else {
                              
-                                return `<button class='btn-link js-deactivate btn-warning' data-user-id=${user.Id
+                                return `<button class='btn btn-outline-warning activate waves-effect js-deactivate ' data-user-id=${user.Id
                                     }>Activate</button>`;
                             }
                         }
@@ -75,7 +75,7 @@
             $("#registeredUsers").on("click",
                 ".js-deactivate",
                 function() {
-                    if ($(this).hasClass("btn-info")) {
+                    if ($(this).hasClass("deactivate")) {
                         var button = $(this);
                         var userId = button.attr("data-user-id");
                         bootbox.confirm("Are you sure you want to deactivate this user?",
@@ -85,8 +85,7 @@
                                         url: `/api/Users/UpdateUserActiveStatus?status=false&userId=${userId}`,
                                         method: "POST",
                                         success: function(response) {
-                                            $table.row(button.text("Activate").removeClass("btn-info")
-                                                .addClass("btn-warning")).draw();
+                                            $table.row(button.text("Activate")).draw();
                                         }
                                     });
                                 }
@@ -101,8 +100,7 @@
                                         url: `/api/Users/UpdateUserActiveStatus?status=true&userId=${userId2}`,
                                         method: "POST",
                                         success: function(response) {
-                                            $table.row(button2.text("Deactivate").removeClass("btn-warning")
-                                                .addClass("btn-info")).draw();
+                                            $table.row(button2.text("Deactivate")).draw();
                                         }
                                     });
                                 }

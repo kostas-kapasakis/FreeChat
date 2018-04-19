@@ -47,17 +47,17 @@
                     data: "UserCreatorId",
                     render: function (data, type, room) {
                     
-                        return "<button class='btn btn-default userBtn' id='" + data + "' data-toggle='modal' data-target='#usersModal'>User</button>";
+                        return "<button class='btn btn-default userBtn' id='" + data + "' data-toggle='modal' data-target='#usersModal'><i class='fa fa-user'></i>&nbsp;User</button>";
                     }
                 },
                 {
                     data: "Id",
                     render: function (data, type, room) {
                         if (room.Active) {
-                            return `<button class='btn-link js-deactivate btn-info changeStatusBtn' data-room-id='${room.Id
+                            return `<button class='btn btn-outline-warning waves-effect js-deactivate  changeStatusBtn' data-room-id='${room.Id
                                 }'>Deactivate</button>`;
                         } else {
-                            return `<button class='btn-link js-deactivate btn-warning changeStatusBtn' data-room-id='${room.Id
+                            return `<button class='btn btn-outline-warning waves-effect js-deactivate btn-warning changeStatusBtn' data-room-id='${room.Id
                                 }'>Activate</button>`;
                         }
                     }
@@ -65,7 +65,7 @@
                 {
                     data: "Id",
                     render: function (data, type, room) {
-                        return "<button class='btn btn-danger deleteRoomBtn' id='" + room.Id + "'>Delete</button>";
+                        return "<button class='btn btn-outline-danger waves-effect deleteRoomBtn' id='" + room.Id + "'>Delete</button>";
                     }
                 }
             ]
@@ -139,8 +139,7 @@
                                     method: "POST",
                                     url: "/api/RoomList/ChangeTopicStatus?id="+roomId + "&status=false",
                                     success: function (response) {
-                                        $table.row(button.text("Activate").removeClass("btn-info")
-                                            .addClass("btn-warning")).draw();
+                                        $table.row(button.text("Activate")).draw();
 
                                     }
                                 });
@@ -157,8 +156,7 @@
                                     url: "/api/RoomList/ChangeTopicStatus?id=" + roomId2 + "&status=true",
                                    
                                     success: function (response) {
-                                        $table.row(button2.text("Deactivate").removeClass("btn-warning")
-                                            .addClass("btn-info")).draw();
+                                        $table.row(button2.text("Deactivate")).draw();
 
 
                                     }

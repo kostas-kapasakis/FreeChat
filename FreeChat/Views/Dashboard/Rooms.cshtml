@@ -7,14 +7,7 @@
 
 @Styles.Render("~/bundles/chatRoomsAdminViewStyle")
 
-<div class="card text-center" id="redirectPaneRoomsAdmin">
-    <div class="card-block" id="cardBlockRoomsAdmin">
 
-        @Html.ActionLink("Users", "Users", "Dashboard", null, new {@class = "btn btn-primary"})
-
-        @Html.ActionLink("Go to Rooms", "AllChatRooms", "Home", null, new {@class = "btn btn-primary"})
-    </div>
-</div>
 <div class="card m-5">
     <div class="card-header">
         <i class="fa fa-table"></i> Chat Rooms
@@ -42,7 +35,6 @@
 
 
 
-
 <!-- Modal -->
 <div class="modal fade" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="User" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -63,7 +55,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Close</button>
+                <button type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal" id="closeModal">Close</button>
             </div>
         </div>
     </div>

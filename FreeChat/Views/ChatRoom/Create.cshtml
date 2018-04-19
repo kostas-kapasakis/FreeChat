@@ -4,104 +4,106 @@
 
 }
 
+@Styles.Render("~/bundles/ChatRoomViewStyle")
 
 
+< div class="container">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h4>
+            Create the chat room you want
+        </h4><br />
+        @using (Html.BeginForm("CreateRoom", "ChatRoom", new { @class = "md-form", role = "form", id = "createRoomForm" }))
+        {
 
-<div class="container">
-    <div class="row" id="usersInfo" style="margin-top: 2%;margin-bottom: 2%;">
-        <div class="col-md-4">
-            <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action " id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Rooms Created</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Rooms Left</a>
-                <a class="list-group-item list-group-item-action active" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">My Rooms</a>
-                <a class="list-group-item list-group-item-action" id="list-info-list" data-toggle="list" href="#list-info" role="tab" aria-controls="messages">Info</a>
+            @Html.AntiForgeryToken()
+
+            <div class="input-group mb-4">
+                @Html.DropDownListFor(m => m.Topic.MainCategoryId, new SelectList(Model.MainCategories, "Id", "Name"), "", new { @class = "form-control", id = "drpdownMainCateg" })
+                <label for="drpdownMainCateg">Main Categories</label>
+                @Html.ValidationMessageFor(m => m.MainCategories)
             </div>
-        </div>
-        <div class="col-md-8">
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade " id="list-home" role="tabpanel" aria-labelledby="list-home-list"><h1>@Model.RoomsCreated</h1></div>
-                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><h1>@Model.RoomsLeft</h1></div>
-                <div class="tab-pane fade show active" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                    <ul class="list-group">
-                        @{
 
-                            if (Model.UserTopics.Any())
-                            {
-                                foreach (var topic in Model.UserTopics)
-                                {
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div>
-                                            <strong>@topic.Name</strong><br/>
-                                            Description :@topic.Description<br/>
-                                            Date Expiring:@topic.DateExpired
-                                        </div>
-                                    </a>
-                                }
-                            }
-                            else
-                            {
-                                <a href="#" class="list-group-item list-group-item-action"><strong>No Rooms yet</strong></a>
-                            }
-
-                        }
-
-                    </ul>
-                </div>
-                <div class="tab-pane fade" id="list-info" role="tabpanel" aria-labelledby="list-info-list">
-                    <ul>
-                        <li class="list-group-item">Create Chat Room Instructions</li>
-                        <li class="list-group-item">1)Check remaining rooms</li>
-                        <li class="list-group-item">2)Complete and  save the form below</li>
-                        <li class="list-group-item">3)If you have not any rooms left check the expiration date and retry then</li>
-                    </ul>
-                </div>
-
+            <div class="input-group mb-4">
+                @Html.TextBoxFor(m => m.Topic.Name, new { @class = "form-control", autofocus = "autofocus", id = "nameInput" })
+                <label for="nameInput">Room Name</label>
+                @Html.ValidationMessageFor(m => m.Topic.Name)
             </div>
-        </div>
+
+            <div class="input-group mb-4">
+                @Html.TextBoxFor(m => m.Topic.Description, new { @class = "form-control", autofocus = "autofocus", id = "roomDescription" })
+                <label for="roomDescription">Description</label>
+                @Html.ValidationMessageFor(m => m.Topic.Description)
+            </div>
+
+            <button class="btn btn-default" type="submit">Save</button>
+            @Html.ActionLink("Back to Chat Rooms list", "MainCategories", "Home", null, new { @class = "btn btn-warning" })
+        }
+
     </div>
-        
-    
-   
-    
-
-
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div id="form" class="col-md-8">
-            <h4>
-                Create the chat room you want
-            </h4><br/>
-            @using (Html.BeginForm("CreateRoom", "ChatRoom"))
-            {
-                <p class="alert alert-info">
-                    All fields are <strong>required</strong>.
-                </p>
-                @Html.AntiForgeryToken()
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Topic.MainCategoryId)
-                    @Html.DropDownListFor(m => m.Topic.MainCategoryId, new SelectList(Model.MainCategories, "Id", "Name"), "", new {@class = "form-control"})
-                    @Html.ValidationMessageFor(m => m.MainCategories)
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Topic.Name)
-                    @Html.TextBoxFor(m => m.Topic.Name, new {@class = "form-control", autofocus = "autofocus"})
-                    @Html.ValidationMessageFor(m => m.Topic.Name)
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Topic.Description)
-                    @Html.TextBoxFor(m => m.Topic.Description, new {@class = "form-control", autofocus = "autofocus"})
-                    @Html.ValidationMessageFor(m => m.Topic.Description)
-                </div>
-
-                <button type="submit" class="btn btn-primary">Save</button>
-                @Html.ActionLink("Back to Chat Rooms list", "MainCategories", "Home", null, new {@class = "btn btn-warning"})
-            }
-
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-
+    <div class="col-md-2"></div>
 </div>
+
+
+<div class="row" id="usersInfo" style="margin-top: 2%; margin-bottom: 2%;">
+    <div class="col-md-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action " id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Rooms Created</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Rooms Left</a>
+            <a class="list-group-item list-group-item-action active" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">My Rooms</a>
+            <a class="list-group-item list-group-item-action" id="list-info-list" data-toggle="list" href="#list-info" role="tab" aria-controls="messages">Info</a>
+        </div>
+    </div>
+            <div class="col-md-8">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade " id="list-home" role="tabpanel" aria-labelledby="list-home-list"><h1>@Model.RoomsCreated</h1></div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><h1>@Model.RoomsLeft</h1></div>
+                    <div class="tab-pane fade show active" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                        <ul class="list-group">
+                            @{
+    
+                                if (Model.UserTopics.Any())
+                                {
+                                    foreach (var topic in Model.UserTopics)
+                                    {
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div>
+                                                <strong>@topic.Name</strong><br/>
+                                                Description :@topic.Description<br/>
+                                                Date Expiring:@topic.DateExpired
+                                            </div>
+                                        </a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a href="#" class="list-group-item list-group-item-action"><strong>No Rooms yet</strong></a>
+                                }
+    
+                            }
+    
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="list-info" role="tabpanel" aria-labelledby="list-info-list">
+                        <ul>
+                            <li class="list-group-item">Create Chat Room Instructions</li>
+                            <li class="list-group-item">1)Check remaining rooms</li>
+                            <li class="list-group-item">2)Complete and  save the form below</li>
+                            <li class="list-group-item">3)If you have not any rooms left check the expiration date and retry then</li>
+                        </ul>
+                    </div>
+    
+                </div>
+            </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/ChatRoomView")
+}
+
+
+
+
+
+

@@ -24,22 +24,11 @@
 
     function initialListeners() {
 
-        $(_document).on("mouseenter",
-            ".inner",
-            function() {
-                var $target = this;
-                $($target).parent("li").find("button").css("display", "block");
-               
-            });
-        $(_document).on("mouseleave",
-            ".inner",
-            function() {
-                var $target = this;
-                $($target).parent("li").find("button").css("display", "none");
-            });
         $(_document).on("click",".goToRoomsBtn",
             function() {
                 var categId = $(this).parents("li").attr("data-categ-id");
+
+                loadingAnimation();
                 displayRoomsByCateg();
                 populateDataTable(categId);
             });

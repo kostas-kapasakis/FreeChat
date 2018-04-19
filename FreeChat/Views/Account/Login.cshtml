@@ -152,13 +152,17 @@
 
 <script>
     $("#registerBtn").on("click",function() {
-        $("#globalLoginContainer").slideUp();
-        $("#globalRegisterContainer").slideToggle();
+        $("#globalLoginContainer").slideUp("fast",function() {
+            $("#globalRegisterContainer").slideToggle("fast");
+        });
+       
 
     })
     $("#loginBtn").on("click", function () {
-        $("#globalRegisterContainer").slideUp();
-        $("#globalLoginContainer").slideToggle();
+        $("#globalRegisterContainer").slideUp("fast",function() {
+            $("#globalLoginContainer").slideToggle("fast");
+        });
+      
        
 
     })

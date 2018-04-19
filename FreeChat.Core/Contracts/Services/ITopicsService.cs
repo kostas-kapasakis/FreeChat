@@ -9,7 +9,9 @@ namespace FreeChat.Core.Contracts.Services
     {
         Topic GetTopic(long id);
 
-        IEnumerable<Topic> GetActiveTopics();
+        IEnumerable<TopicDto> GetActiveTopics();
+
+        IEnumerable<TopicDto> GetTopicsExtended();
 
         IEnumerable<TopicDto> GetActiveTopicsByGenreId(long id);
 

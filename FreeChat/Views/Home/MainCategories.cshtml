@@ -7,34 +7,34 @@
 @Styles.Render("~/bundles/IndexViewStyle")
 
 <div class="container" id="container-categories-img-list">
+    <a href="@Url.Action("Create","ChatRoom")" class="btn btn-default btn-lg btn-block" id="blockBtnMAinCateg">Create a Room </a>
+
     <ul class="list img-list" id="imglistMainCategories">
-       @{
-           foreach (var categ in Model.MainCategories)
-           {
-           <li data-categ-id='@categ.Id'>
-               <a href='#' class='inner'>
-                   <div class='li-img'>
-                       <img src='@categ.CategoryImage' alt='@categ.Name' height='120'/>
-                   </div>                                                                        
-                   <div class='li-text'>
-                       <h3 class='li-head'>@categ.Name</h3>
-                       <div class='li-sub'>
-                           <p>@categ.CategoryDescription</p>
-                       </div>
-                   </div>
-               </a>
-               <button type="button" class="btn btn-primary goToRoomsBtn">See Rooms</button>
-           </li>               
-           }
-       }
+        @{
+            foreach (var categ in Model.MainCategories)
+            {
+                <li data-categ-id='@categ.Id'>
+                    <a href='#' class='inner'>
+                        <div class='li-img'>
+                            <img src='@categ.CategoryImage' alt='@categ.Name' height='120'/>
+                        </div>
+                        <div class='li-text'>
+                            <h3 class='li-head'>@categ.Name</h3>
+                            <div class='li-sub'>
+                                <p>@categ.CategoryDescription</p>
+                            </div>
+                        </div>
+                    </a>
+                    <button type="button" class="btn btn-primary goToRoomsBtn">See Rooms</button>
+                </li>
+            }
+        }
     </ul>
 </div>
 
 <div class="card text-center" id="redirectPanel">
     <div class="card-block" id="cardBlock">
-        @Html.ActionLink("Back to Main Categories","MainCategories","Home", null,new { @class = "btn btn-primary"})
-
-        @Html.ActionLink("Create a room","Create","ChatRoom",null, new { @class = "btn btn-primary" })
+        <a href="@Url.Action("MainCategories","Home")" class="btn btn-default btn-lg btn-block">Back to Main Categories</a>
     </div>
 </div>
 
