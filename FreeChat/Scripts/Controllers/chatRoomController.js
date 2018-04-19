@@ -1,4 +1,4 @@
-﻿(function (self, $, _document, _console, _chatRoomService, undefined) {
+﻿(function (self, $, _document, _console,  undefined) {
     "use strict";
 
     var _$doc;
@@ -42,4 +42,4 @@
 //        });
 //    }
 
-}(window.ChatRoomController = window.ChatRoomController || {}, jQuery, document, console, ChatRoomService));
+}(window.ChatRoomController = window.ChatRoomController || {}, jQuery, document, console));

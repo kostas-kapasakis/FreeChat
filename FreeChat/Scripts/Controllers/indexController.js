@@ -28,7 +28,7 @@
             function() {
                 var categId = $(this).parents("li").attr("data-categ-id");
 
-                loadingAnimation();
+           
                 displayRoomsByCateg();
                 populateDataTable(categId);
             });

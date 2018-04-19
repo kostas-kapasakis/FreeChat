@@ -47,7 +47,8 @@ namespace FreeChat.Web
                 "~/Content/datatables/css/datatables.bootstrap4.min.css",
                 "~/Content/datatables/css/responsive.bootstrap.min.css",
                 "~/Content/Site.css",
-                "~/Content/font-awesome/css/font-awesome.min.css"
+                "~/Content/font-awesome/css/font-awesome.min.css",
+                "~/Content/MDB/scss/free/_forms.scss"
               ));
 
             //-----------------------End of Admin Template Bundles 

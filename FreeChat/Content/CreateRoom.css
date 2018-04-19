@@ -1,18 +1,4 @@
-﻿/*body {*/
-/*   position: relative;*/
-/*}*/
-
-/*#createInfo {*/
-/*    width:40%;*/
-/*    float:right;*/
-/*    position:relative;*/
-/*    display:inline-block;*/
-/*    margin-right:10%;*/
-/*    margin-bottom:-10%;*/
-/*}*/
-
-
-body, html {
+﻿body, html {
     -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 1s; /* Firefox < 16 */
     -ms-animation: fadein 1s; /* Internet Explorer */
@@ -76,12 +62,7 @@ body, html {
     }
 }
 
-a {
-    color:#27428d;
-    font-family:Open sans;
-    font-size:18px;
-  
-}
+
 a:hover{
       text-decoration:none;
       color:cornflowerblue;
