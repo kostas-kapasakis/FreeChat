@@ -2,7 +2,7 @@
 using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models.Domain;
 using FreeChat.Core.Models.DTO;
-using FreeChat.ViewModels;
+using FreeChat.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +13,11 @@ namespace FreeChat.Web.Controllers
     public class ChatRoomController : Controller
     {
         private readonly ITopicsService _topicsService;
-        private readonly IUsersService _usersService;
+
 
         public ChatRoomController(ITopicsService topicsService, IUsersService usersService)
         {
             _topicsService = topicsService;
-            _usersService = usersService;
         }
 
 
@@ -47,23 +46,26 @@ namespace FreeChat.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateRoom(NewChatRoomViewModel chatRoom)
         {
+            var user = User.Identity.GetUserId();
             var mainCategories = _topicsService.GetMainCategories();
 
             if (!ModelState.IsValid)
             {
-
+                var userTopics = _topicsService.GetUserTopics(user);
+                var topicsDtos = userTopics as IList<TopicDto> ?? userTopics.ToList();
                 return View("Create", new NewChatRoomViewModel
                 {
-                    MainCategories = Mapper.Map<IEnumerable<MainCategoryDto>, IEnumerable<MainCategory>>(mainCategories)
+                    MainCategories = Mapper.Map<IEnumerable<MainCategoryDto>, IEnumerable<MainCategory>>(mainCategories),
+                    UserTopics = topicsDtos
                 });
             }
-            var user = User.Identity.GetUserId();
-            var genre = mainCategories.Where(x => x.Id == chatRoom.Topic.MainCategoryId);
+
+            var genre = mainCategories.Where(x => x.Id == chatRoom.MainCategoryId);
             var topic = new TopicDto
             {
-                Name = chatRoom.Topic.Name,
-                Description = chatRoom.Topic.Description,
-                MainCategoryId = chatRoom.Topic.MainCategoryId,
+                Name = chatRoom.RoomName,
+                Description = chatRoom.Description,
+                MainCategoryId = chatRoom.MainCategoryId,
                 Genre = genre.Select(room => room.Name).SingleOrDefault(),
                 Active = true,
                 UserCreatorId = user

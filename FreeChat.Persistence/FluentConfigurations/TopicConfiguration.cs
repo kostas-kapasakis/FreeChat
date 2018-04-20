@@ -12,6 +12,7 @@ namespace FreeChat.Persistence.FluentConfigurations
                 .IsRequired();
 
 
+
             Property(g => g.Genre)
                 .HasMaxLength(50)
                 .IsRequired();

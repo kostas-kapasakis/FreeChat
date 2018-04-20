@@ -26,16 +26,16 @@
 
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <i class="fa fa-envelope prefix"></i>
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "emailInput" })
-                                <label for="emailInput">Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "emailInputLogin" })
+                                <label for="emailInputLogin">Email</label>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
                             </div>
 
                             <div class="input-group mb-4">
                                 <i class="fa fa-key prefix"></i>
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "passInput" })
-                                <label for="passInput">Password</label>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "passInputLogin" })
+                                <label for="passInputLogin">Password</label>
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
                             </div>
@@ -88,8 +88,8 @@
 
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <i class="fa fa-envelope prefix"></i>
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "emailInput" })
-                                <label for="emailInput">Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "emailInputRegister" })
+                                <label for="emailInputRegister">Email</label>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
                             </div>
@@ -106,8 +106,8 @@
 
                             <div class="input-group mb-4">
                                 <i class="fa fa-key prefix"></i>
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "passInput" })
-                                <label for="passInput">Password</label>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "passInputRegister" })
+                                <label for="passInputRegister">Password</label>
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
                             </div>

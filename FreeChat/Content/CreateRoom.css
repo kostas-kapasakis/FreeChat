@@ -5,7 +5,8 @@
     -o-animation: fadein 1s; /* Opera < 12.1 */
     animation: fadein 1s;
     height: 100%;
-    font-family: 'Dosis'
+    font-family: 'Dosis';
+    overflow-y: hidden;
 }
 
 @keyframes fadein {
@@ -68,22 +69,43 @@ a:hover{
       color:cornflowerblue;
 }
 
+/*#nav-tabContent {*/
+/**/
+/*    height: 20%!important;*/
+/*  */
+/*    overflow: auto;*/
+/*    overflow-x: hidden;*/
+/*}*/
 
 
+#myRoomsCardCreateRoom {
+    height: 15% !important;
+    overflow: auto !important;
+    overflow-x: hidden !important;
+}
+
+    #myRoomsCardCreateRoom .card-title {
+
+        position: fixed !important;
+    }
+    
+    #createRoomContainer {
+        margin-left: 0px !important;
+    }
+#createRoomContainerRow {
+    margin-top: 5%;
+    width:80vw !important;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: initial;
+
+}
 
 #cardBlockCreateRoom {
     background-color: #007bff;
 }
 
-/*.row {*/
-/*    margin-top: 5%!important;*/
-/*    max-height: 20% !important;*/
-/*}*/
-
-/*#userRoomsList {*/
-/*    overflow-y: scroll;*/
-/*}*/
-/*#usersInfo #nav-tabContent #list-messages {*/
-/*    height: 220px !important;*/
-/*    overflow-y: auto !important;*/
-/*}*/
+.field-validation-error {
+    color: red !important;
+    font-weight: bold;
+}
