@@ -1,12 +1,15 @@
-﻿@model FreeChat.ViewModels.ChatEngineViewModel
-@using Microsoft.Owin.Security
+﻿@model FreeChat.Web.ViewModels.ChatEngineViewModel
 
-@{   ViewBag.Title = "ChatEngine";
+
+@{ ViewBag.Title = "ChatEngine";
 
 }
 
 @Styles.Render("~/bundles/ChatEngineViewStyle")
 
+<div class="container text-center">
+    <div id="loader" class="col-lg-4 offset-lg-4"></div>
+</div>
 
 <div class="container-fluid" id="ChatEngineContainer">
     <div class="row" id="chatEngineHeadContainer">
@@ -24,20 +27,20 @@
                         <li class="list-group-item"><strong>Date</strong>&nbsp;&nbsp;@DateTime.Now<br /> <strong>Expiring</strong>&nbsp;&nbsp;@Model.ExpirationDate  <br /><strong>Created</strong>&nbsp;&nbsp;@Model.CreatedDate</li>
                     </ul>
                 </div>
-               
+
             </div>
-           
+
         </div>
         <div class="col-lg-2">
             <ul class="list-group" id="roomsInfo3">
                 <li class="list-group-item text-center" id="usersConnected"><strong>Users Connected</strong><div class="text-center"><h1><a href="#">1</a></h1> </div></li>
-               
+
             </ul>
         </div>
-  
+
     </div>
-    <button class="btn btn-info align-content-center" id="hideShowInfoButton">Hide Infos</button>      
-    <button class="btn btn-warning align-content-center" id="leaveRoomBtn">Exit Room</button>      
+    <button class="btn btn-info align-content-center" id="hideShowInfoButton">Hide Infos</button>
+    <button class="btn btn-warning align-content-center" id="leaveRoomBtn">Exit Room</button>
     <div class="row" id="chatEngineMiddle">
         <div class="col-lg-10" id="messagesContainerArea">
             <div id="messagesArea">
@@ -63,7 +66,7 @@
             </div>
         </div>
         <div class="col-lg-2">
-        
+
         </div>
     </div>
 </div>
@@ -75,7 +78,7 @@
 
     <script type="text/javascript">
         $(function () {
-         
+
             ChatEngineController.Init({
                 RoomName:"@Model.Name.ToString()"
             });

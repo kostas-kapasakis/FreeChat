@@ -11,6 +11,7 @@
     var userFullName;
     var realMessage;
     var timeSend;
+    var _loader;
     var _$privateChatAlreadInProgress = false;
     var _userInPrivateChat="";
     //chat room name sto opoio sundethike o xrhsths
@@ -36,7 +37,10 @@
     };
 
     function initImpl(config) {
-      
+        $(document).ready(function () {
+            initialLoadEffect();
+        });
+       
         $(".content-wrapper").addClass("chatEngineMode");
         $("#sidenavToggler").trigger("click");
 
@@ -227,7 +231,13 @@
 
     };
 
-
+    function initialLoadEffect() {
+        _loader = setTimeout(showPage, 1500);
+    }
+    function showPage() {
+        $("#ChatEngineContainer").fadeIn(100);
+        $("#loader").hide();
+    }
 
     function onlineUsers() {
         _$chat.server.connectedUsers();

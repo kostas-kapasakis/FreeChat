@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FreeChat.ViewModels
+namespace FreeChat.Web.ViewModels
 {
     public class ChatEngineViewModel
     {

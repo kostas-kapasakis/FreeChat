@@ -1,6 +1,6 @@
 ﻿using FreeChat.Core.Contracts.Services;
 using FreeChat.Core.Models.Domain;
-using FreeChat.ViewModels;
+using FreeChat.Web.ViewModels;
 using System.Web.Mvc;
 
 namespace FreeChat.Web.Controllers
@@ -19,7 +19,7 @@ namespace FreeChat.Web.Controllers
         public ActionResult ChatStart(long? roomid)
         {
             var topic = new Topic();
-            //            /var currentUser = System.Web.HttpContext.Current.User.Identity.Name;
+
             var topicId = roomid.GetValueOrDefault();
             if (topicId != 0)
                 topic = _service.GetTopic(topicId);

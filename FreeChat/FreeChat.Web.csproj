@@ -911,7 +911,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ChatRoom\Create.cshtml" />
-    <Content Include="Views\ChatEngine.cshtml" />
     <Content Include="Views\Shared\_AdminTemplate.cshtml" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />

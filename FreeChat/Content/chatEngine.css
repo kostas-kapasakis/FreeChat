@@ -305,7 +305,7 @@
 #privateMessageIcon{
     display:inline-block;
     height:30px;
-    width:30px;
+    width:30px;Fo
     margin-right:-10px;
    
 }
@@ -314,6 +314,7 @@
     background-color: white;
 }
 #ChatEngineContainer {
+    display: none;
     width: 100%!important;
     margin: 0 !important;
 }
@@ -501,4 +502,20 @@
     background-color: #ccffcc;
 }
 
+#loader {
+    margin-top:  30%!important;
+    border-top: 16px solid blue;
+    border-right: 16px solid whitesmoke;
+    border-bottom: 16px solid lightblue;
+  
+}
 
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
