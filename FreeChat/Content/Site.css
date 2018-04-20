@@ -236,9 +236,7 @@ h6,
 }
 
 #loader {
-/*    position: absolute;*/
-/*    left: 55%;*/
-/*    top: 40%;*/
+
     z-index: 1;
     width: 150px;
     height: 150px;
