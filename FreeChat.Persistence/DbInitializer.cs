@@ -57,7 +57,7 @@ namespace FreeChat.Persistence
                 context.Roles.AddOrUpdate(role);
             }
 
-            if (!context.Users.Any(u => u.UserName == "administrator@gmail.com"))
+            if (context.Users.SingleOrDefault(u => u.UserName == "administrator@gmail.com") != null)
             {
                 var store = new UserStore<User>(context);
                 var manager = new UserManager<User>(store);
@@ -76,7 +76,7 @@ namespace FreeChat.Persistence
                 context.Roles.AddOrUpdate(role);
             }
 
-            if (!context.Users.Any(u => u.UserName == "exampleuser@gmail.com"))
+            if (context.Users.SingleOrDefault(u => u.UserName == "exampleuser@gmail.com") != null)
             {
                 var store = new UserStore<User>(context);
                 var manager = new UserManager<User>(store);
