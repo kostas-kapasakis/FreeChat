@@ -19,6 +19,7 @@ namespace FreeChat.Persistence
         public FreeChatContext()
             : base("DefaultConnection", false)
         {
+            Database.SetInitializer<FreeChatContext>(new DbInitializer<FreeChatContext>());
         }
 
         public static FreeChatContext Create()
