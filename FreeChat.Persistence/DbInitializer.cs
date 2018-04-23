@@ -80,13 +80,6 @@ namespace FreeChat.Persistence
                 manager.AddToRole(exampleUser.Id, "RegisteredUser");
             }
 
-
-
-
-
-
-
-
             //add seed data for main categories
             var mainCategories = new List<MainCategory>
             {
