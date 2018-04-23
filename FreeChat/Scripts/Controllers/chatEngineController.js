@@ -1,4 +1,4 @@
-﻿(function(self,$,_document,_console,_chatEngineService,undefined) {
+﻿(function(self,$,_document,_console,_utils,_chatEngineService,undefined) {
     "use strict";
 
     var _$doc;
@@ -294,6 +294,31 @@
 
         }
     }
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+
+        $("#dateValue").text(h + ":" + m + ":" + s);;
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+        return i;
+    }
+
+    function fillModalBodyWithRoomDetails() {
+        var currentDate = new Date().toLocaleString();
+        var resArray = startTime();
+      
+        
+
+    }
+
+
     function findApropriateImage(letter) {
         var imagePath;
 
@@ -405,12 +430,7 @@
 
     function listeners() {
         $(document).ready(function () {
-            $("#hideShowInfoButton").on("click", function (event) {
-                $(this).text(function (i, text) {
-                    return text === "Hide Infos" ? "Show Infos" : "Hide Infos";
-                });
-                $("#chatEngineHeadContainer").slideToggle();
-            });
+            $("#modalInitializerBtn").click(fillModalBodyWithRoomDetails);
 
 
             $("#leaveRoomBtn").click(leaveRoom);
@@ -449,4 +469,4 @@
         });
     }
 
-}(window.ChatEngineController = window.ChatEngineController || {},jQuery,document,console,ChatEngineService));
+}(window.ChatEngineController = window.ChatEngineController || {},jQuery,document,console,UtilsController,ChatEngineService));

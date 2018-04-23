@@ -680,6 +680,7 @@
     <Content Include="Scripts\Controllers\chatRoomsAdminPartialController.js" />
     <Content Include="Scripts\Controllers\indexController.js" />
     <Content Include="Scripts\Controllers\monitorController.js" />
+    <Content Include="Scripts\Controllers\UtilsController.js" />
     <Content Include="Scripts\copy_csv_xls_pdf.swf" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />

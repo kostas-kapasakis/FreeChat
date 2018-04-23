@@ -13,36 +13,8 @@
 
 
 <div class="container-fluid" id="ChatEngineContainer">
-@*    <div class="row" id="chatEngineHeadContainer">*@
-@*        <div class="col-lg-10">*@
-@*            <div class="row">*@
-@*                <div class="col-lg-6">*@
-@*                    <div id="chatenginehead">*@
-@*                        <ul class="list-group" id="roomsInfo">*@
-@*                            <li class="list-group-item"><strong>Name</strong>&nbsp;&nbsp;@Model.Name <br /><strong>Description</strong>&nbsp;&nbsp;@Model.Description<br /><strong>Genre</strong>&nbsp;&nbsp;@Model.Genre</li>*@
-@*                        </ul>*@
-@*                    </div>*@
-@*                </div>*@
-@*                <div class="col-lg-6">*@
-@*                    <ul class="list-group " id="roomsInfo2">*@
-@*                        <li class="list-group-item"><strong>Date</strong>&nbsp;&nbsp;@DateTime.Now<br /> <strong>Expiring</strong>&nbsp;&nbsp;@Model.ExpirationDate  <br /><strong>Created</strong>&nbsp;&nbsp;@Model.CreatedDate</li>*@
-@*                    </ul>*@
-@*                </div>*@
-@**@
-@*            </div>*@
-@**@
-@*        </div>*@
-@*        <div class="col-lg-2">*@
-@*            <ul class="list-group" id="roomsInfo3">*@
-@*                <li class="list-group-item text-center" id="usersConnected"><strong>Users Connected</strong><div class="text-center"><h1><a href="#">1</a></h1> </div></li>*@
-@**@
-@*            </ul>*@
-@*        </div>*@
-@**@
-@*    </div>*@
-    <button class="btn btn-info align-content-center" id="hideShowInfoButton">Hide Infos</button>
     <button class="btn btn-warning align-content-center  " id="leaveRoomBtn">Exit Room</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fullHeightModalRight">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">
         Room Infos
     </button>
 
@@ -76,8 +48,105 @@
     </div>
 </div>
 
-<div class="modal fade top" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-full-height modal-top" role="document">
+<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-info"></i>
+                    &nbsp;
+                    Room details
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover dark-grey-text">
+                    <tbody>
+                        <tr>
+                            <td>Creator</td>
+                            <td>
+                                <div class="chip chip-md lighten-4">
+                                    <a data-dismiss="myModalLabel" data-toggle="modal" data-target="#exampleModalLabel" >
+                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> John Doe
+                                    </a>
+
+                                </div>
+                            </td>@*have to add the user creator inside a tag and open his other rooms*@
+
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>@Model.Name</td>
+
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>@Model.Description</td>
+                        </tr>
+                        <tr>
+                            <td>Genre</td>
+                            <td>@Model.Genre</td>
+                        </tr>
+                        <tr>
+                            <td>Created at </td>
+                            <td>@Model.CreatedDate</td>
+                        </tr>
+                        <tr>
+                            <td>Expiring at</td>
+                            <td>@Model.ExpirationDate</td>
+                        </tr>
+                        <tr>
+                            <td>Users joined in</td>
+                            <td><h4><span class="badge badge-pill indigo">34</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td>Users online</td>
+                            <td><h4><span class="badge badge-pill indigo">7</span></h4></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <div class="card">
+                    <div class="card-body">
+                        Chat room effectiveness
+                        <div class="progress " style="height: 20px">
+                            <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        Chat room productivity
+                        <div class="progress " style="height: 20px">
+                            <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card">
+                    <div class="card-body align-content-center" id="cardRoomModalInfoDateDetails">
+                        <h6 id="dateValue" class="float-left"></h6>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -86,16 +155,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ul class="list-group" id="roomsInfo">
-                    <li class="list-group-item"><strong>Name</strong>&nbsp;&nbsp;@Model.Name <br /><strong>Description</strong>&nbsp;&nbsp;@Model.Description<br /><strong>Genre</strong>&nbsp;&nbsp;@Model.Genre</li>
-                </ul>
-                <ul class="list-group " id="roomsInfo2">
-                    <li class="list-group-item"><strong>Date</strong>&nbsp;&nbsp;@DateTime.Now<br /> <strong>Expiring</strong>&nbsp;&nbsp;@Model.ExpirationDate  <br /><strong>Created</strong>&nbsp;&nbsp;@Model.CreatedDate</li>
-                </ul>
-                
-                <ul class="list-group" id="roomsInfo3">
-                    <li class="list-group-item text-center" id="usersConnected"><strong>Users Connected</strong><div class="text-center"><h1><a href="#">1</a></h1> </div></li>
-                </ul>
+                ...
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

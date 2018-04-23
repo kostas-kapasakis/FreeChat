@@ -159,3 +159,4 @@ namespace FreeChat.Persistence
         }
     }
 }
+//https://blog.oneunicorn.com/2013/05/28/database-initializer-and-migrations-seed-methods/
