@@ -3,6 +3,7 @@ using FreeChat.Core.Models.Domain;
 using FreeChat.Persistence.FluentConfigurations;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace FreeChat.Persistence
 {
@@ -37,6 +38,7 @@ namespace FreeChat.Persistence
             modelBuilder.Configurations.Add(new UserConnectionConfiguration());
             modelBuilder.Configurations.Add(new MessageConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
         }
     }
