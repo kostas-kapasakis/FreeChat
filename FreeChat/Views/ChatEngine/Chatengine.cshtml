@@ -11,12 +11,47 @@
     <div id="loader" class="col-lg-4 offset-lg-4"></div>
 </div>
 
-
+@*id="leaveRoomBtn"*@
 <div class="container-fluid" id="ChatEngineContainer">
-    <button class="btn btn-warning align-content-center  " id="leaveRoomBtn">Exit Room</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">
-        Room Infos
-    </button>
+    <div class="card">
+        <div class="card-body toast-top-full-width" id="headerCardHeight">
+            <table class="table table-hover dark-grey-text">
+            <tbody>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">
+                        Room Infos
+                    </button>
+       
+                </td>
+                <td>
+                    <h5 class="d-inline center">Room Name : &nbsp;@Model.Name </h5>
+                </td>
+                <td>
+                    <h5 class="d-inline center">Genre :&nbsp;@Model.Name </h5>
+                </td>
+                <td>
+                               
+                    <button class="btn btn-warning  float-right">Exit Room</button>
+                </td>
+            </tr>
+            </tbody>
+                </table>
+        </div>
+    </div>
+@*    <div class="row">*@
+@*        <h5 class="primary-color-dark align-middle"> Room name : @Model.Name</h5>*@
+@*        <h5 class="primary-color-dark align-middle"> Genre : @Model.Genre</h5>*@
+@**@
+@*        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">*@
+@*            Room Infos*@
+@*        </button>*@
+@**@
+@*        <button class="btn btn-warning  float-right">Exit Room</button>*@
+@**@
+@*    </div>*@
+
+
 
     <div class="row" id="chatEngineMiddle">
         <div class="col-lg-10" id="messagesContainerArea">
@@ -68,7 +103,7 @@
                             <td>Creator</td>
                             <td>
                                 <div class="chip chip-md lighten-4">
-                                    <a data-dismiss="myModalLabel" data-toggle="modal" data-target="#exampleModalLabel" >
+                                    <a data-dismiss="myModalLabel" data-toggle="modal" data-target="#exampleModalLabel">
                                         <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> John Doe
                                     </a>
 

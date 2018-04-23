@@ -543,4 +543,8 @@
         height: 52px;
         width: 52px;
     }
-                
+
+
+#headerCardHeight {
+    max-height: 5%!important;
+}            
