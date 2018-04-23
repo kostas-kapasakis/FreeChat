@@ -37,7 +37,11 @@ namespace FreeChat.Persistence
             };
 
             adminUser.PasswordHash = passwordHasher.HashPassword("Admin!@3");
+            adminUser.SecurityStamp = Guid.NewGuid().ToString();
+
             exampleUser.PasswordHash = passwordHasher.HashPassword("Example!@3");
+            exampleUser.SecurityStamp = Guid.NewGuid().ToString();
+
 
             context.Users.AddOrUpdate(adminUser);
             context.Users.AddOrUpdate(exampleUser);
@@ -85,6 +89,7 @@ namespace FreeChat.Persistence
             {
                 new MainCategory
                 {
+                    Id = 1,
                     Name = "Music",
                     Active = true,
                     CategoryImage = "/Content/images/music.jpg",
@@ -92,6 +97,7 @@ namespace FreeChat.Persistence
                 },
                 new MainCategory
                 {
+                    Id = 2,
                     Name = "Sports",
                     Active = true,
                     CategoryImage = "/Content/images/sports.jpg",
@@ -99,6 +105,7 @@ namespace FreeChat.Persistence
                 },
                 new MainCategory
                 {
+                    Id = 3,
                     Name = "Trips",
                     Active = true,
                     CategoryImage = "/Content/images/trips.jpg",
