@@ -1,8 +1,11 @@
 using FreeChat.Core.Models.Domain;
 using FreeChat.Persistence;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace FreeChat.Web.Migrations
 {
@@ -22,17 +25,80 @@ namespace FreeChat.Web.Migrations
                 //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
                 //  to avoid creating duplicate seed data.
 
+                //create and add the users
+
+                var passwordHasher = new PasswordHasher();
+
                 var adminUser = new User
                 {
-                    UserName = "admiinistrator@gmail.com",
+                    UserName = "administrator@gmail.com",
                     Email = "admiinistrator@gmail.com",
                     Active = true,
                     RoomsLeft = 1000,
                     Role = "Administrator"
                 };
+
+                var exampleUser = new User
+                {
+                    UserName = "exampleuser@gmail.com",
+                    Email = "exampleuser@gmail.com",
+                    Active = true,
+                    RoomsLeft = 10,
+                    Role = "RegisteredUser"
+                };
+
+                adminUser.PasswordHash = passwordHasher.HashPassword("Admin!@3");
+                exampleUser.PasswordHash = passwordHasher.HashPassword("Example!@3");
+
                 context.Users.AddOrUpdate(adminUser);
+                context.Users.AddOrUpdate(exampleUser);
+
+                //create and add the roles
+                if (!context.Roles.Any(r => r.Name == "Administrator"))
+                {
+                    var store = new RoleStore<IdentityRole>(context);
+                    var manager = new RoleManager<IdentityRole>(store);
+                    var role = new IdentityRole { Name = "Administrator" };
+
+                    manager.Create(role);
+                    context.Roles.AddOrUpdate(role);
+                }
+
+                if (!context.Users.Any(u => u.UserName == "administrator@gmail.com"))
+                {
+                    var store = new UserStore<User>(context);
+                    var manager = new UserManager<User>(store);
+
+                    manager.AddToRole(adminUser.Id, "Administrator");
+                }
 
 
+                if (!context.Roles.Any(r => r.Name == "RegisteredUser"))
+                {
+                    var store = new RoleStore<IdentityRole>(context);
+                    var manager = new RoleManager<IdentityRole>(store);
+                    var role = new IdentityRole { Name = "RegisteredUser" };
+
+                    manager.Create(role);
+                    context.Roles.AddOrUpdate(role);
+                }
+
+                if (!context.Users.Any(u => u.UserName == "exampleuser@gmail.com"))
+                {
+                    var store = new UserStore<User>(context);
+                    var manager = new UserManager<User>(store);
+
+                    manager.AddToRole(exampleUser.Id, "RegisteredUser");
+                }
+
+
+
+
+
+
+
+
+                //add seed data for main categories
                 var mainCategories = new List<MainCategory>
             {
                 new MainCategory
@@ -58,6 +124,9 @@ namespace FreeChat.Web.Migrations
                 },
             };
                 mainCategories.ForEach(c => context.MainCategories.AddOrUpdate(c));
+
+
+                //add seed dat for topics table
 
                 var topics = new List<Topic>
             {
@@ -94,6 +163,9 @@ namespace FreeChat.Web.Migrations
             };
 
                 topics.ForEach(s => context.Topics.AddOrUpdate(s));
+
+
+
                 context.SaveChanges();
             }
         }
