@@ -339,10 +339,6 @@
     <Compile Include="Migrations\201801311946248_ChangetheUserCreatorType.Designer.cs">
       <DependentUpon>201801311946248_ChangetheUserCreatorType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801311948438_seedtheUserCreatorColumn.cs" />
-    <Compile Include="Migrations\201801311948438_seedtheUserCreatorColumn.Designer.cs">
-      <DependentUpon>201801311948438_seedtheUserCreatorColumn.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201802011637107_AddRoomsLEftColumn.cs" />
     <Compile Include="Migrations\201802011637107_AddRoomsLEftColumn.Designer.cs">
       <DependentUpon>201802011637107_AddRoomsLEftColumn.cs</DependentUpon>
@@ -1041,9 +1037,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801311946248_ChangetheUserCreatorType.resx">
       <DependentUpon>201801311946248_ChangetheUserCreatorType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801311948438_seedtheUserCreatorColumn.resx">
-      <DependentUpon>201801311948438_seedtheUserCreatorColumn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802011637107_AddRoomsLEftColumn.resx">
       <DependentUpon>201802011637107_AddRoomsLEftColumn.cs</DependentUpon>
