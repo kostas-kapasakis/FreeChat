@@ -52,8 +52,8 @@ namespace FreeChat.Web.Migrations
                         TopicId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.TopicId })
-                .ForeignKey("dbo.Topics", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.TopicId, cascadeDelete: true)
+                .ForeignKey("dbo.Topics", t => t.UserId, cascadeDelete: false)
+                .ForeignKey("dbo.Users", t => t.TopicId, cascadeDelete: false)
                 .Index(t => t.UserId);
 
             DropForeignKey("dbo.Topics", "UserCreatorId", "dbo.AspNetUsers");
