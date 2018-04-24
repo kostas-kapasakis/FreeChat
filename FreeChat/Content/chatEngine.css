@@ -500,6 +500,10 @@
     margin-right: 2.5%;
 }
 
+.inner-list .card {
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+}
 
 .messageContainer img {
     float: left;
