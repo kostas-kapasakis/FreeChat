@@ -12,8 +12,6 @@
 </div>
 
 <div class="container-fluid" id="ChatEngineContainer">
-@*    <div class="card">*@
-@*        <div class="card-body toast-top-full-width" id="headerCardHeight">*@
             <table class="table dark-grey-text table-sm cyan lighten-5" id="headerTableInfo">
             <tbody>
             <tr>
@@ -49,43 +47,46 @@
             </tr>
             </tbody>
                 </table>
-@*        </div>*@
-@*    </div>*@
+
     <div class="row" id="chatEngineMiddle">
         <div class="col-lg-10" id="messagesContainerArea">
-            <div id="messagesArea">
+            <div id="messagesArea card-body">
                 <ul class="inner-list"></ul>
+                <div class="card left">
+                    <div class="card-body">
+                        <p class="card-text"><strong>administrator@gmail.com</strong> :  <small class="text-muted pull-right">15:23pm</small> </p>
+                        <p class="card-text">This is some text within a panel body.</p>
+@*                        <p class="card-text pull-right">*@
+@*                            <small class="text-muted">15:23pm</small>*@
+@*                        </p>*@
+                    </div>
+                </div>
+                
+
             </div>
         </div>
         <div class="col-lg-2" id="onlineUsersContainer">
-@*            <div class="member_list">*@
-@*            *@
-@**@
-@*            </div>*@
-            
-            <div class="card">
-                <div class="card text-center">
-                    <div class="card-header white ">Online Users</div>
-                    <div class="card-body" id="card-body-online">
-                        <form class="form-inline" id="searchOnlineUsers">
-                            <div class="md-form mt-2 toast-top-full-width">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                            </div>
-                        </form>
-                    </div>
+            <div class="card text-center">
+                <div class="card-header white ">Online Users</div>
+                <div class="card-body" id="card-body-online">
+                    <form class="form-inline" id="searchOnlineUsers">
+                        <div class="md-form mt-2 toast-top-full-width">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <div class="row" id="chatEngineFooterContainer">
         <div class="col-lg-12" id="chatEngineFooter">
-            <div class="message_write">
-                <textarea class=" d-inline-block form-control" placeholder="Add your message" id="messageTyped"></textarea>
-                <button class="pull-right btn btn-outline-success  waves-effect col-md-1" id="send">Send</button>
-            </div>
+            <textarea class=" d-inline-block form-control" placeholder="Add your message" id="messageTyped"></textarea>
+            <button class="pull-right btn btn-outline-success  waves-effect col-md-1" id="send">Send</button>
         </div>
     </div>
-</div>
+    </div>
+    
+
 
 <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-full-height modal-right" role="document">
@@ -101,7 +102,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-hover dark-grey-text">
+                <table class="table table-hover dark-grey-text" id="tableInModalRoomInfos">
                     <tbody>
                         <tr>
                             <td>Creator</td>
@@ -137,7 +138,7 @@
                             <td>@Model.ExpirationDate</td>
                         </tr>
                         <tr>
-                            <td>Users joined in</td>
+                            <td>Users joined </td>
                             <td><h4><span class="badge badge-pill indigo">34</span></h4></td>
                         </tr>
                         <tr>
@@ -176,7 +177,7 @@
 
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-warning " data-dismiss="modal">Close</button>
             </div>
 
 

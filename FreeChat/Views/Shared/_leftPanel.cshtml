@@ -9,28 +9,28 @@
 
         if (Context.User.IsInRole("Administrator"))
         {
-@*            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">*@
-@*                <a class="nav-link" href="@Url.Action("AdminDashBoard", "Dashboard")">*@
-@*                    <i class="fa fa-fw fa-dashboard"></i>*@
-@*                    <span class="nav-link-text">Dashboard</span>*@
-@*                </a>*@
-@**@
-@*            </li>*@
-@*            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">*@
-@*                <a class="nav-link" href="@Url.Action("Charts", "Charts")">*@
-@*                    <i class="fa fa-fw fa-area-chart"></i>*@
-@*                    <span class="nav-link-text">Charts</span>*@
-@*                </a>*@
-@*            </li>*@
+            @*            <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="Dashboard">*@
+            @*                <a class="nav-link" href="@Url.Action("AdminDashBoard", "Dashboard")">*@
+            @*                    <i class="fa fa-fw fa-dashboard"></i>*@
+            @*                    <span class="nav-link-text">Dashboard</span>*@
+            @*                </a>*@
+            @**@
+            @*            </li>*@
+            @*            <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="Charts">*@
+            @*                <a class="nav-link" href="@Url.Action("Charts", "Charts")">*@
+            @*                    <i class="fa fa-fw fa-area-chart"></i>*@
+            @*                    <span class="nav-link-text">Charts</span>*@
+            @*                </a>*@
+            @*            </li>*@
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
+            <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="Users">
                 <a class="nav-link" href="@Url.Action("Users", "Dashboard")">
                     <i class="fa fa-fw fa-users"></i>
                     <span class="nav-link-text">Users</span>
                 </a>
             </li>
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Rooms">
+            <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="Rooms">
                 <a class="nav-link" href="@Url.Action("Rooms", "Dashboard")">
                     <i class="fa fa-fw fa-comment"></i>
                     <span class="nav-link-text">Rooms</span>
@@ -40,7 +40,7 @@
 
 
 
-    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+    <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#leftNavBar">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Chat Rooms</span>
@@ -54,7 +54,7 @@
             </li>
         </ul>
     </li>
-    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Create Chat Room">
+    <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="Create Chat Room">
         <a class="nav-link" href="@Url.Action("Create", "ChatRoom")">
             <i class="fa fa-fw fa-group"></i>
             <span class="nav-link-text">Create a chat room</span>
@@ -63,13 +63,13 @@
 }
 
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="About">
+        <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="About">
             <a class="nav-link" href="@Url.Action("About", "Home")">
                 <i class="fa fa-fw fa-info"></i>
                 <span class="nav-link-text">About</span>
             </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Contact">
+        <li class="nav-item navItemsLeftPanel" data-toggle="tooltip" data-placement="right" title="Contact">
             <a class="nav-link" href="@Url.Action("Contact", "Home")">
                 <i class="fa fa-fw fa-address-book"></i>
                 <span class="nav-link-text">Contact</span>

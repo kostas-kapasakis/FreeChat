@@ -408,4 +408,12 @@ footer.sticky-footer {
     margin-top: 3%!important;
 }
 
+
+.navItemsLeftPanel {
+    z-index: 10000 !important;
+}
+
+.tooltip {
+    pointer-events: none !important;
+}
 /*Bootrap override for chrome different representation of login*/

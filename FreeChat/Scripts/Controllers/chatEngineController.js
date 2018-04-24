@@ -84,8 +84,8 @@
             
 
         function connectedUsers(users) {
-            var chipContainer, linkContainer, container;
-            var usersContainer = $("#card-body-online");
+           let chipContainer, linkContainer, container;
+           const usersContainer = $("#card-body-online");
 
             $("#list-onlineUsers").empty();
             
@@ -114,7 +114,7 @@
             }
 
         $.connection.hub.error(function (err) {
-            alert("An error occured: " + err);
+            alert(`An error occured: ${err}`);
 
         });
        
@@ -130,57 +130,51 @@
 
 
     function onNewMessage(message) {
-
-        var d = new Date();
-        d.toLocaleTimeString();
-      
         userFullName = message[0];
         realMessage = message[1];
         timeSend = message[2];
-        var user = message[0].substring(0, 4);
-      
-      
-        //if the message sender is the current user then the message displays to the right otherwise to the left
-        if (userFullName.substring(0, 4) !== connectedUser.substring(0,4)) {
-            $(".inner-list").append(
-                "<li class='left clearfix' id ='" + user + messageCount + "nm" + "'> " +
-                "<div class='messageContainer'>"+
-                "<img src='' alt='Avatar' id='" + user + messageCount + "img" + "'>" +
-                '<p class="real_message">' + "<h5 class='chatRealUsername'>" + userFullName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + realMessage + '</h4></p>' +
-                "<span class='time-right'>"+ timeSend +"</span>"+
-                "</div></li>");
-        } else {
-            $(".inner-list").append(
-                "<li class='right clearfix' id ='" + user + messageCount + "nm" + "'> " +
-                "<div class='messageContainer sameUsername'>" +
-                "<img src='' alt='Avatar' class='right'  id='" + user + messageCount + "img" +  "'>" +
-                '<p class="real_message">' + "<h5 class='chatRealUsername'>" + userFullName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + realMessage + '</h4></p>' +
-                "<span class='time-left'>" + timeSend + "</span>" +
-                "</div></li>");
-        }
 
-        
-        //if it isnt the first message in the chat area
-        //take the previous li sibling
-        //take his second children which must be the username of the previous message sender 
+        const sameUser = userFullName === connectedUser ? true : false;
 
-        /* if (messageCount > 0) {
-             var sibling = document.getElementById(user + (messageCount-1) + "nm").children[1];
-    
-             var usernameFrPreMessage = sibling.children[1].innerHTML;
-             console.log("sibling " + sibling);
-             console.log("h5selector " + usernameFrPreMessage);
-    
-             
-         }*/
+        const pullClass = sameUser ? "pull-right" : "pull-left";
+        const alignContentsClass = sameUser ? "left" : "right";
 
-        var letter = user.substring(0, 1);
+        const timestamp = $.now();
+
+        const messageList = $(".inner-list");
+
+        const userInfo = $("<p/>")
+            .addClass("card-text")
+            .addClass("d-inline")
+            .append(`<strong>&nbsp;&nbsp;${userFullName}</strong> : `)
+            .append(`<small class="text-muted ${pullClass}">${timeSend}</small>`);
+
+        const messageData = $("<p/>")
+            .addClass("card-text")
+            .addClass("realMessageContent")
+            .append(realMessage);
+
+        const messageBody = $("<div/>")
+            .addClass("card-body")
+            .append(`<img src='' class='${sameUser ? "" : "right"}' alt='User Avatar' id='${timestamp + "img"}'>` )
+            .append(userInfo)
+            .append(messageData);
+
+        const messageContainer = $("<div/>")
+            .addClass("card")
+            .addClass(alignContentsClass)
+            .prop("Id",timestamp)
+            .append(messageBody);
+
+
+        messageList.append(messageContainer);
+
+        let letter = userFullName.substring(0, 1);
         imagePath = findApropriateImage(letter);
-        var selectorForImg = "#" + user + messageCount + "img";
 
         messageCount = messageCount + 1;
 
-        $(selectorForImg).attr("src", imagePath);
+        $(`#${timestamp}img`).attr("src", imagePath);
         $("#messageTyped").val("");
 
     };
@@ -192,6 +186,7 @@
         timeSend = message[2];
         var user = message[0].substring(0, 4);
 
+       
 
         //if the message sender is the current user then the message displays to the right otherwise to the left
         if (userFullName.substring(0, 4) !== connectedUser.substring(0, 4)) {
@@ -245,9 +240,6 @@
         //katharismos tou text area meta apo apostolh munhmatos
         $("#messageTyped").text("");
 
-        //krataw to div sunexws se scroll bottom wste na fainontai ta kainourgia munhmata
-        //$(".chat_area").scrollTop($(".chat_area")[0].scrollHeight);
-
 
     };
 
@@ -265,6 +257,7 @@
 
     function saveUsernameGotFromHub(name) {
         connectedUser = name;
+        console.log("the name i got form the server is " + name);
     }
 
 
