@@ -123,8 +123,9 @@
    border-bottom:none;
    }
 .member_list {
+    border-top:cyan !important;
     max-height: 300px !important;
-    overflow-y: scroll !important;
+/*    overflow-y: scroll !important;*/
 }
    .sub_menu_ {
   background: #c6ddf1 none repeat scroll 0 0;
@@ -237,20 +238,28 @@
 
 #send{
     display:inline-block;
+    margin-right: 3%;
 }
+
+#exitRoomBtn {
+   left: -50px!important;
+} 
+
+
 .message_write textarea.form-control {
-  height: 70px;
-  max-width:780px;
-  padding: 10px;
-  resize:none;
-   border: none;
+    height: 70px;
+    max-width: 84.5%;
+    padding: 10px;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    resize: none;
+    border: none;
     overflow: auto;
     outline: none;
-     display:inline-block;
+    display: inline-block;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
- 
 }
 
 .chat_bottom {
@@ -410,6 +419,8 @@
 }
 #onlineUsersContainer {
     border: 1px solid #d1e0e0;
+    border-top: none!important;
+    border-bottom: none!important;
     padding-left: 0 !important;
 }
 .inner-list img {
@@ -547,4 +558,53 @@
 
 #headerCardHeight {
     max-height: 5%!important;
-}            
+}
+
+#headerTableInfo {
+    height: 40px !important;
+    margin-bottom: -1rem !important;
+}
+
+#card-body-online {
+    height: 100% !important;
+}
+
+
+    #card-body-online .chip.chip-lg {
+        height: 52px;
+        line-height: 52px;
+        border-radius: 26px;
+        padding-right: 20px;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        width: 12vw;
+        background-color: white;
+    }
+        #card-body-online .chip.chip-lg img {
+            padding-top: 0 !important;
+            margin-top: 0 !important;
+            float: left;
+            height: 52px;
+            width: 52px;
+            border-radius: 26px;
+        }
+.onlineUserActualPart:hover, .onlineUserActualPart a:hover {
+    font-weight: bold;
+}
+
+.onlineUserActualPart a{
+    font-size: 11px;
+    width: 11vw!important;
+}
+.onlineUsersContainer #card-body-online {
+    height: 100% !important;
+}
+
+#searchOnlineUsers {
+    width: 100%;
+    margin-left: 20px;
+}
+#card-body-online {
+    min-height: 65vh!important;
+    
+}

@@ -11,48 +11,46 @@
     <div id="loader" class="col-lg-4 offset-lg-4"></div>
 </div>
 
-@*id="leaveRoomBtn"*@
 <div class="container-fluid" id="ChatEngineContainer">
-    <div class="card">
-        <div class="card-body toast-top-full-width" id="headerCardHeight">
-            <table class="table table-hover dark-grey-text">
+@*    <div class="card">*@
+@*        <div class="card-body toast-top-full-width" id="headerCardHeight">*@
+            <table class="table dark-grey-text table-sm cyan lighten-5" id="headerTableInfo">
             <tbody>
             <tr>
                 <td>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">
                         Room Infos
                     </button>
-       
                 </td>
                 <td>
-                    <h5 class="d-inline center">Room Name : &nbsp;@Model.Name </h5>
+                    <div class="card d-inline center">
+                        <div class="card-body">
+                            <i>Room Name</i><br/><strong>@Model.Name</strong>
+                        </div>
+                    </div>
                 </td>
                 <td>
-                    <h5 class="d-inline center">Genre :&nbsp;@Model.Name </h5>
+                    <div class="card d-inline center">
+                        <div class="card-body">
+                            <i>Genre</i><br/><strong>@Model.Genre</strong>
+                        </div>
+                    </div>
                 </td>
                 <td>
-                               
-                    <button class="btn btn-warning  float-right">Exit Room</button>
+                    <div class="card d-inline center">
+                        <div class="card-body">
+                            <i>Description</i><br/><strong>@Model.Description</strong>
+                        </div>
+                    </div>
+                </td>
+                <td>    
+                    <button class="btn btn-outline-warning  float-right" id="exitRoomBtn" >Exit Room</button>
                 </td>
             </tr>
             </tbody>
                 </table>
-        </div>
-    </div>
-@*    <div class="row">*@
-@*        <h5 class="primary-color-dark align-middle"> Room name : @Model.Name</h5>*@
-@*        <h5 class="primary-color-dark align-middle"> Genre : @Model.Genre</h5>*@
-@**@
-@*        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">*@
-@*            Room Infos*@
-@*        </button>*@
-@**@
-@*        <button class="btn btn-warning  float-right">Exit Room</button>*@
-@**@
+@*        </div>*@
 @*    </div>*@
-
-
-
     <div class="row" id="chatEngineMiddle">
         <div class="col-lg-10" id="messagesContainerArea">
             <div id="messagesArea">
@@ -60,25 +58,31 @@
             </div>
         </div>
         <div class="col-lg-2" id="onlineUsersContainer">
-            <div class="member_list ">
-                <div class="card">
-                    <div class="card-block text-center">
-                        <h5>Online Users</h5>
+@*            <div class="member_list">*@
+@*            *@
+@**@
+@*            </div>*@
+            
+            <div class="card">
+                <div class="card text-center">
+                    <div class="card-header white ">Online Users</div>
+                    <div class="card-body" id="card-body-online">
+                        <form class="form-inline" id="searchOnlineUsers">
+                            <div class="md-form mt-2 toast-top-full-width">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <ul id="list-onlineUsers" class="list-group"></ul>
             </div>
         </div>
     </div>
     <div class="row" id="chatEngineFooterContainer">
-        <div class="col-lg-10" id="chatEngineFooter">
+        <div class="col-lg-12" id="chatEngineFooter">
             <div class="message_write">
-                <textarea class="form-control" placeholder="type a message" id="messageTyped"></textarea>
-                <button class="pull-right btn btn-success col-md-1" id="send">Send</button>
+                <textarea class=" d-inline-block form-control" placeholder="Add your message" id="messageTyped"></textarea>
+                <button class="pull-right btn btn-outline-success  waves-effect col-md-1" id="send">Send</button>
             </div>
-        </div>
-        <div class="col-lg-2">
-
         </div>
     </div>
 </div>
@@ -106,8 +110,8 @@
                                     <a data-dismiss="myModalLabel" data-toggle="modal" data-target="#exampleModalLabel">
                                         <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> John Doe
                                     </a>
-
                                 </div>
+
                             </td>@*have to add the user creator inside a tag and open his other rooms*@
 
                         </tr>

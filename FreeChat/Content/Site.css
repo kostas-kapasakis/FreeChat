@@ -357,9 +357,9 @@ h6,
         border-radius: 10%;
         transition: all .2s ease-in-out; 
     }
-        #imglistMainCategories .li-img img:hover {
-            transform: scale(1.1);
-        }
+/*        #imglistMainCategories .li-img img:hover {*/
+/*            transform: scale(1.1);*/
+/*        }*/
 
 #imglistMainCategories .li-text {
     display: table-cell;

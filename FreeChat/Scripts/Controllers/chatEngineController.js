@@ -84,15 +84,35 @@
             
 
         function connectedUsers(users) {
+            var chipContainer, linkContainer, container;
+            var usersContainer = $("#card-body-online");
 
             $("#list-onlineUsers").empty();
+            
 
-            for (var i = 0, len = users.length; i < len; i++) {
-                $("#list-onlineUsers").append("<li class ='list-group-item text-center' id=" + users[i].substring(0, 4) + "ou" + "><div class ='onlineUser text-center' id=" + users[i] + " >" +
-                     users[i].toString() + "</div></li>");
+            for (var x = 0, leng = users.length; x < leng; x++) {
+                chipContainer = $("<div/>")
+                    .addClass("chip")
+                    .addClass("chip-lg")
+                    .append(
+                    "<img src='https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg' class='hoverable' alt='Contact Person'>" + users[x].toString());
+
+
+                linkContainer = $("<a/>")
+                    .addClass("list-group-item-light")
+                    .append(chipContainer);
+
+                container = $("<div/>")
+                    .addClass("onlineUserActualPart")
+                    .prop("Id", users[x])
+                    .append(linkContainer);
+
+
+                usersContainer.append(container);
+
+             }
             }
 
-        }
         $.connection.hub.error(function (err) {
             alert("An error occured: " + err);
 
