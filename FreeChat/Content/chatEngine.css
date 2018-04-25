@@ -500,9 +500,14 @@
     margin-right: 2.5%;
 }
 
+#messagesArea .card-body small {
+    font-size: 13px !important;
+} 
+
+
 .inner-list .card {
-    margin-top: 5px!important;
-    margin-bottom: 5px!important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
 }
 
 .messageContainer img {
@@ -511,6 +516,7 @@
     width: 100%;
     margin-right: 20px;
     border-radius: 50%;
+  
 }
 
     /* Style the right image */
@@ -518,6 +524,7 @@
         float: right;
         margin-left: 20px;
         margin-right: 0;
+        border-radius: 26px;
     }
 
 /* Style time text */
@@ -538,12 +545,15 @@
     background-color: #ccffcc;
 }
 
+.realMessageContent {
+    font-size: 17px!important;    
+}
+
 #loader {
-    margin-top:  30%!important;
+    margin-top: 30% !important;
     border-top: 16px solid blue;
     border-right: 16px solid whitesmoke;
     border-bottom: 16px solid lightblue;
-  
 }
 
 @-webkit-keyframes spin {
@@ -607,7 +617,9 @@
     }
     
     
-    
+#card-body-onine-container {
+    height: 100% !important;
+}
     
     #card-body-online {
         height: 100% !important;

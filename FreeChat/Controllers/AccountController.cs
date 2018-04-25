@@ -1,6 +1,6 @@
 ﻿using FreeChat.Core.Models.Domain;
 using FreeChat.Persistence;
-using FreeChat.ViewModels;
+using FreeChat.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -56,8 +56,12 @@ namespace FreeChat.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+
+        public async Task<ActionResult> Login(LoginRegisterViewModel model, string returnUrl)
         {
+
+            ModelState.Remove("Name");
+            ModelState.Remove("ConfirmPassword");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -154,7 +158,7 @@ namespace FreeChat.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(LoginRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {

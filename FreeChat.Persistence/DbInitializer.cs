@@ -21,7 +21,7 @@ namespace FreeChat.Persistence
             var adminUser = new User
             {
                 UserName = "administrator@gmail.com",
-                Email = "admiinistrator@gmail.com",
+                Email = "administrator@gmail.com",
                 Active = true,
                 RoomsLeft = 1000,
                 Role = "Administrator"

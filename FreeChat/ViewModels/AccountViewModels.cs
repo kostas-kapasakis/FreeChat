@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FreeChat.ViewModels
+namespace FreeChat.Web.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -18,7 +18,7 @@ namespace FreeChat.ViewModels
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }
-//        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+        //        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
         public string ReturnUrl { get; set; }
         public bool RememberMe { get; set; }
     }

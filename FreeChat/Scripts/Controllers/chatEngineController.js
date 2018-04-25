@@ -88,7 +88,7 @@
            let chipContainer, linkContainer, container;
            const usersContainer = $("#card-body-online");
 
-            $("#list-onlineUsers").empty();
+           $(".onlineUserActualPart").remove();
             
 
             for (var x = 0, leng = users.length; x < leng; x++) {
@@ -135,10 +135,10 @@
         realMessage = message[1];
         timeSend = message[2];
 
-        const sameUser = userFullName === connectedUser ? true : false;
+//        const sameUser = userFullName === connectedUser ? true : false;
 
-        const pullClass = sameUser ? "pull-right" : "pull-left";
-        const alignContentsClass = sameUser ? "left" : "right";
+//        const pullClass = sameUser ? "pull-right" : "pull-left";
+//        const alignContentsClass = sameUser ? "left" : "right";
 
         const timestamp = $.now();
 
@@ -146,7 +146,8 @@
             .addClass("card-text")
             .addClass("d-inline")
             .append(`<strong>&nbsp;&nbsp;${userFullName}</strong> : `)
-            .append(`<small class="text-muted ${pullClass}">${timeSend}</small>`);
+            //.append(`<small class="text-muted ${pullClass}">${timeSend}</small>`);
+            .append(`<small class="text-muted pull-right">${timeSend}</small>`);
 
         const messageData = $("<p/>")
             .addClass("card-text")
@@ -155,13 +156,13 @@
 
         const messageBody = $("<div/>")
             .addClass("card-body")
-            .append(`<img src='' class='${sameUser ? "" : "right"}' alt='User Avatar' id='${timestamp + "img"}'>` )
+            .append(`<img src=''  rounded-circle hoverable' alt='User Avatar' id='${timestamp + "img"}'>`)
             .append(userInfo)
             .append(messageData);
 
         const messageContainer = $("<div/>")
             .addClass("card")
-            .addClass(alignContentsClass)
+            .addClass("left")
             .prop("Id",timestamp)
             .append(messageBody);
 
@@ -186,10 +187,10 @@
 
         var user = message[0].substring(0, 4);
 
-        const sameUser = userFullName === connectedUser ? true : false;
-
-        const pullClass = sameUser ? "pull-right" : "pull-left";
-        const alignContentsClass = sameUser ? "left" : "right";
+//        const sameUser = userFullName === connectedUser ? true : false;
+//
+//        const pullClass = sameUser ? "pull-right" : "pull-left";
+//        const alignContentsClass = sameUser ? "left" : "right";
 
         const timestamp = $.now();
 
@@ -197,7 +198,8 @@
             .addClass("card-text")
             .addClass("d-inline")
             .append(`<strong>&nbsp;&nbsp;${userFullName}</strong> : `)
-            .append(`<small class="text-muted ${pullClass}">${timeSend}</small>`);
+           // .append(`<small class="text-muted ${pullClass}">${timeSend}</small>`);
+            .append(`<small class="text-muted pull-right">${timeSend}</small>`);
 
         const messageData = $("<p/>")
             .addClass("card-text")
@@ -206,43 +208,24 @@
 
         const messageBody = $("<div/>")
             .addClass("card-body")
-            .append(`<img src='' class='${sameUser ? "" : "right"}' alt='User Avatar' id='${timestamp + "img"}'>`)
+            .append(`<img src=''  rounded-circle hoverable' alt='User Avatar' id='${timestamp + "img"}'>`)
             .append(userInfo)
             .append(messageData);
 
         const messageContainer = $("<div/>")
             .addClass("card")
-            .addClass(alignContentsClass)
+           // .addClass(alignContentsClass)
+            .addClass("left")
             .prop("Id", timestamp)
             .append(messageBody);
 
 
         messageList.append(messageContainer);
 
-//        //if the message sender is the current user then the message displays to the right otherwise to the left
-//        if (userFullName.substring(0, 4) !== connectedUser.substring(0, 4)) {
-//            //if()
-//
-//            $(".inner-list").append(
-//                "<li class='left clearfix' id ='" + user + messageCount + "nm" + "'> " +
-//                "<div class='messageContainer'>" +
-//                "<img src='' alt='Avatar' id='" + user + messageCount + "img" + "'>" +
-//                "<p>" + realMessage + "</p>" +
-//                "<span class='time-right'>" + timeSend + "</span>" +
-//                "</div></li>");
-//        } else {
-//            $(".inner-list").append(
-//                "<li class='right clearfix' id ='" + user + messageCount + "nm" + "'> " +
-//                "<div class='messageContainer sameUsername'>" +
-//                "<img src='' alt='Avatar' class='right'  id='" + user + messageCount + "img" + "'>" +
-//                "<p>" + realMessage + "</p>" +
-//                "<span class='time-left'>" + timeSend + "</span>" +
-//                "</div></li>");
-//        }
+
 
         const letter = user.substring(0, 1);
         imagePath = findApropriateImage(letter);
-        var selectorForImg = "#" + user + messageCount + "img";
 
         messageCount = messageCount + 1;
 
@@ -302,10 +285,10 @@
         if (existing.length <= 0)
             return;
         for (var x = 0, lenght = existing.length; x < lenght; x++) {
-            sameUser = existing[x].UserName === connectedUser ? true : false;
+//            sameUser = existing[x].UserName === connectedUser ? true : false;
 
-             pullClass = sameUser ? "pull-right" : "pull-left";
-             alignContentsClass = sameUser ? "left" : "right";
+//             pullClass = sameUser ? "pull-right" : "pull-left";
+//             alignContentsClass = sameUser ? "left" : "right";
 
              timestamp = `_${Math.random().toString(36).substr(2, 9)}`;;
 
@@ -313,24 +296,27 @@
                 .addClass("card-text")
                 .addClass("d-inline")
                 .append(`<strong>&nbsp;&nbsp;${existing[x].UserName}</strong> : `)
-                .append(`<small class="text-muted ${pullClass}">${existing[x].TimeSend}</small>`);
+                //.append(`<small class="text-muted ${pullClass}">${existing[x].TimeSend}</small>`);
+                .append(`<small class="text-muted pull-right">${existing[x].TimeSend}</small>`);
 
              messageData = $("<p/>")
                 .addClass("card-text")
                 .addClass("realMessageContent")
-                 .append(existing[x].Message);
+                .append(existing[x].Message);
 
              messageBody = $("<div/>")
                 .addClass("card-body")
-                .append(`<img src='' class='${sameUser ? "" : "right"}' alt='User Avatar' id='${timestamp + "img"}'>`)
+                //.append(`<img src='' class='${sameUser ? "" : "right"}  rounded-circle hoverable' alt='User Avatar' id='${timestamp + "img"}'>`)
+                .append(`<img src=''   rounded-circle hoverable' alt='User Avatar' id='${timestamp + "img"}'>`)
                 .append(userInfo)
                 .append(messageData);
 
              messageContainer = $("<div/>")
                 .addClass("card")
-                .addClass(alignContentsClass)
+                //.addClass(alignContentsClass)
+                 .addClass("left")
                 .prop("Id", timestamp)
-                .append(messageBody);
+                .append(messageBody );
 
 
              messageList.append(messageContainer);
@@ -340,32 +326,7 @@
 
             $(`#${timestamp}img`).attr("src", imagePathhistory);
 
-        }
-//        for (var i = 0, len = existing.length; i < len; i++) {
-//            if (existing[i].UserName.substring(0, 4) !== connectedUser.substring(0, 4)) {
-//                   $(".inner-list").append(
-//                    "<li class='left clearfix' id ='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "nm" + "'> " +
-//                    "<div class='messageContainer'>"+
-//                    "<img src='' alt='Avatar' id='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "img" + "'>" +
-//                    '<p class="real_message">' + "<h5 class='chatRealUsername'>" + existing[i].UserName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + existing[i].Message + '</h4></p>' +
-//                    "<span class='time-right'>" + existing[i].TimeSend +"</span>"+
-//                    "</div></li>");
-//            } else {
-//
-//                $(".inner-list").append(
-//                    "<li class='right clearfix' id ='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "nm" + "'> " +
-//                    "<div class='messageContainer sameUsername'>" +
-//                    "<img src='' alt='Avatar' class='right'  id='" + existing[i].UserName.substring(0, 4) + messageCountHistory + "img" + "'>" +
-//                    '<p class="real_message">' + "<h5 class='chatRealUsername'>" + existing[i].UserName + "</h5>" + " : " + "<h4 class='chatRealMessage'>" + existing[i].Message + '</h4></p>' +
-//                    "<span class='time-left'>" + existing[i].TimeSend + "</span>" +
-//                    "</div></li>");
-//        
-//            }
-       
-
-          
-
-       
+        }       
     }
     function startTime() {
         var today = new Date();
