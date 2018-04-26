@@ -1,0 +1,101 @@
+﻿
+@model FreeChat.Web.ViewModels.ChatEngineViewModel
+    
+
+<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-info"></i>
+                    &nbsp;
+                    Room details
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover dark-grey-text" id="tableInModalRoomInfos">
+                    <tbody>
+                        <tr>
+                            <td>Creator</td>
+                            <td>
+                                <div class="chip chip-md lighten-4">
+                                    <a data-dismiss="myModalLabel" data-toggle="modal" data-target="#exampleModalLabel">
+                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> John Doe
+                                    </a>
+                                </div>
+
+                            </td>@*have to add the user creator inside a tag and open his other rooms*@
+
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>@Model.Name</td>
+
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>@Model.Description</td>
+                        </tr>
+                        <tr>
+                            <td>Genre</td>
+                            <td>@Model.Genre</td>
+                        </tr>
+                        <tr>
+                            <td>Created at </td>
+                            <td>@Model.CreatedDate</td>
+                        </tr>
+                        <tr>
+                            <td>Expiring at</td>
+                            <td>@Model.ExpirationDate</td>
+                        </tr>
+                        <tr>
+                            <td>Users joined </td>
+                            <td><h4><span class="badge badge-pill indigo">34</span></h4></td>
+                        </tr>
+                        <tr>
+                            <td>Users online</td>
+                            <td><h4><span class="badge badge-pill indigo">7</span></h4></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <div class="card">
+                    <div class="card-body">
+                        Chat room effectiveness
+                        <div class="progress " style="height: 20px">
+                            <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        Chat room productivity
+                        <div class="progress " style="height: 20px">
+                            <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card">
+                    <div class="card-body align-content-center" id="cardRoomModalInfoDateDetails">
+                        <h6 id="dateValue" class="float-left"></h6>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-outline-warning " data-dismiss="modal">Close</button>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

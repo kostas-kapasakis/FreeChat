@@ -967,6 +967,8 @@
     <Content Include="Scripts\popper\popper.js.map" />
     <Content Include="Scripts\popper\popper-utils.min.js.map" />
     <Content Include="Scripts\popper\popper-utils.js.map" />
+    <Content Include="Views\ChatEngine\ChatEngineRoomDetailsModalPartialView.cshtml" />
+    <Content Include="Views\ChatEngine\ChatEngineUserProfilModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

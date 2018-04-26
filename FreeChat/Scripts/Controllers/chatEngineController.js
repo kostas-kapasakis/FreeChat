@@ -38,7 +38,21 @@
             initialLoadEffect();
         });
 
-
+        $(document).ready(function() {
+            $('.modal').on('show.bs.modal',
+                function() {
+                    if ($(document).height() > $(window).height()) {
+                        // no-scroll
+                        $('body').addClass("modal-open-noscroll");
+                    } else {
+                        $('body').removeClass("modal-open-noscroll");
+                    }
+                });
+            $('.modal').on('hide.bs.modal',
+                function() {
+                    $('body').removeClass("modal-open-noscroll");
+                });
+        });
        
         $(".content-wrapper").addClass("chatEngineMode");
         $("#sidenavToggler").trigger("click");
@@ -115,7 +129,6 @@
         $(".onlineUserActualPart").remove();
     }
 
-
     function displayConnectedUsersInRoom(users) {
         let chipContainer, linkContainer, container;
         clearTheOnlineUsersList();
@@ -125,7 +138,7 @@
                 .addClass("chip")
                 .addClass("chip-lg")
                 .append(
-                    "<img src='https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg' class='hoverable' alt='Contact Person'>" + users[x].toString());
+                    `<img src='https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg' class='hoverable' alt='Contact Person'>${users[x].toString()}`);
 
 
             linkContainer = $("<a/>")
@@ -154,9 +167,6 @@
             });
       
     } 
-
-
-
 
     function displayNewMessage(message) {
         _$userFullName = message[0];
@@ -200,7 +210,6 @@
         _domElems.userMessageTextArea.val("");
 
     };
-
 
     function displayPrivateMessage(message) {
         _$userFullName = message[0];
@@ -279,7 +288,6 @@
         _$connectedUser = name;
     }
 
-
     function isInPrivateChat(id) {
 
         if (id !== _$connectedUser) {
@@ -332,6 +340,7 @@
 
         }       
     }
+
     function startTime() {
         const today = new Date();
         const h = today.getHours();
@@ -343,6 +352,7 @@
         $("#dateValue").text(h + ":" + m + ":" + s);;
         setTimeout(startTime, 500);
     }
+
     function checkTime(i) {
         if (i < 10) { i = `0${i}` };  // add zero in front of numbers < 10
         return i;
@@ -351,7 +361,6 @@
     function fillModalBodyWithRoomDetails() {
 
     }
-
 
     function findApropriateImage(letter) {
         var imagePath;
@@ -461,9 +470,6 @@
         }
         return imagePath;
     }
-
- 
-
 
     function filterOnlineUsers(event) {
         const filter = $(event.target).val().toUpperCase();
