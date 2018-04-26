@@ -1,34 +1,26 @@
-﻿(function(self,$,_document,_console,_utils,_chatEngineService,undefined) {
+﻿(function(self,$,_document,_console,_utils,_ui,_chatEngineService,undefined) {
     "use strict";
 
-    var _$doc;
-    var _$html;
-    var _config;
-    var _roomName;
-    var _$chat;
-    var messageCountHistory = 100;//
-    var connectedUser;
-    var userFullName;
-    var realMessage;
-    var timeSend;
-    var _loader;
-    var _$privateChatAlreadInProgress = false;
-    var _userInPrivateChat = "";
-    const messageList = $(".inner-list");
-    //chat room name sto opoio sundethike o xrhsths
-
-    var imagePath;
-
-    //metavlhth gia to connection
-
-
-    var messageCount = 0;
-
+//    var _$doc;
+//    var _$html;
+    var _config,
+        _roomName,
+        _$chat,
+        _$messageCountHistory = 100,
+        _$connectedUser,
+        _$userFullName,
+        _$realMessage,
+        _$timeSend,
+        _loader,
+        _$privateChatAlreadInProgress = false,
+        _userInPrivateChat = "",
+        _domElems,
+        _$imagePath,
+        _messageCount = 0;
 
     self.Init = function (config) {
         digestConfig(config);
         listeners();
-
         initImpl(config);
       
     };
@@ -38,9 +30,13 @@
     };
 
     function initImpl(config) {
+        _domElems = _ui.viewDomElems();
+
         $(document).ready(function () {
             initialLoadEffect();
         });
+
+
        
         $(".content-wrapper").addClass("chatEngineMode");
         $("#sidenavToggler").trigger("click");
@@ -74,21 +70,20 @@
                     _$chat.server.sendUsername();
                     _$chat.server.sendRoomConnectedUsers(_roomName);
                     _$chat.server.sendSavedRoomMessages(_roomName);
-                    $("#send").click(onSend);
+                    _domElems.sendMessageBtn.click(onSend);
 
             })
                 .fail(function () {
-                    alert("Error connecting to group : " + _roomName);
-                    window.location.href = '/Home/Index';
+                    alert(`Error connecting to group : ${_roomName}`);
+                    window.location.href = "/Home/Index";
                 });
 
             
 
         function connectedUsers(users) {
            let chipContainer, linkContainer, container;
-           const usersContainer = $("#card-body-online");
 
-           $(".onlineUserActualPart").remove();
+           _domElems.onlineUserContainer.remove();
             
 
             for (var x = 0, leng = users.length; x < leng; x++) {
@@ -109,10 +104,11 @@
                     .append(linkContainer);
 
 
-                usersContainer.append(container);
+                _domElems.onlineUserWrapper.append(container);
 
              }
             }
+
 
         $.connection.hub.error(function (err) {
             alert(`An error occured: ${err}`);
@@ -131,28 +127,22 @@
 
 
     function onNewMessage(message) {
-        userFullName = message[0];
-        realMessage = message[1];
-        timeSend = message[2];
-
-//        const sameUser = userFullName === connectedUser ? true : false;
-
-//        const pullClass = sameUser ? "pull-right" : "pull-left";
-//        const alignContentsClass = sameUser ? "left" : "right";
+        _$userFullName = message[0];
+        _$realMessage = message[1];
+        _$timeSend = message[2];
 
         const timestamp = $.now();
 
         const userInfo = $("<p/>")
             .addClass("card-text")
             .addClass("d-inline")
-            .append(`<strong>&nbsp;&nbsp;${userFullName}</strong> : `)
-            //.append(`<small class="text-muted ${pullClass}">${timeSend}</small>`);
-            .append(`<small class="text-muted pull-right">${timeSend}</small>`);
+            .append(`<strong>&nbsp;&nbsp;${_$userFullName}</strong> : `)
+            .append(`<small class="text-muted pull-right">${_$timeSend}</small>`);
 
         const messageData = $("<p/>")
             .addClass("card-text")
             .addClass("realMessageContent")
-            .append(realMessage);
+            .append(_$realMessage);
 
         const messageBody = $("<div/>")
             .addClass("card-body")
@@ -167,44 +157,36 @@
             .append(messageBody);
 
 
-        messageList.append(messageContainer);
+        _domElems.messageList.append(messageContainer);
 
-        let letter = userFullName.substring(0, 1);
-        imagePath = findApropriateImage(letter);
+        const letter = _$userFullName.substring(0, 1);
+        _$imagePath = findApropriateImage(letter);
 
-        messageCount = messageCount + 1;
+        _messageCount = _messageCount + 1;
 
-        $(`#${timestamp}img`).attr("src", imagePath);
-        $("#messageTyped").val("");
+        $(`#${timestamp}img`).attr("src", _$imagePath);
+        _domElems.userMessageTextArea.val("");
 
     };
 
 
     function onNewMessagePrivate(message) {
-        userFullName = message[0];
-        realMessage = message[1];
-        timeSend = message[2];
-
-        var user = message[0].substring(0, 4);
-
-//        const sameUser = userFullName === connectedUser ? true : false;
-//
-//        const pullClass = sameUser ? "pull-right" : "pull-left";
-//        const alignContentsClass = sameUser ? "left" : "right";
+        _$userFullName = message[0];
+        _$realMessage = message[1];
+        _$timeSend = message[2];
 
         const timestamp = $.now();
 
         const userInfo = $("<p/>")
             .addClass("card-text")
             .addClass("d-inline")
-            .append(`<strong>&nbsp;&nbsp;${userFullName}</strong> : `)
-           // .append(`<small class="text-muted ${pullClass}">${timeSend}</small>`);
-            .append(`<small class="text-muted pull-right">${timeSend}</small>`);
+            .append(`<strong>&nbsp;&nbsp;${_$userFullName}</strong> : `)
+            .append(`<small class="text-muted pull-right">${_$timeSend}</small>`);
 
         const messageData = $("<p/>")
             .addClass("card-text")
             .addClass("realMessageContent")
-            .append(realMessage);
+            .append(_$realMessage);
 
         const messageBody = $("<div/>")
             .addClass("card-body")
@@ -214,41 +196,40 @@
 
         const messageContainer = $("<div/>")
             .addClass("card")
-           // .addClass(alignContentsClass)
             .addClass("left")
             .prop("Id", timestamp)
             .append(messageBody);
 
 
-        messageList.append(messageContainer);
+        _domElems.messageList.append(messageContainer);
 
 
 
         const letter = user.substring(0, 1);
-        imagePath = findApropriateImage(letter);
+        _$imagePath = findApropriateImage(letter);
 
-        messageCount = messageCount + 1;
+        _messageCount = _messageCount + 1;
 
-        $(`#${timestamp}img`).attr("src", imagePath);
-        $("#messageTyped").val("");
+        $(`#${timestamp}img`).attr("src", _$imagePath);
+       _domElems.userMessageTextArea.val("");
     }
 
     function onSend() {
-        var message = $("#messageTyped").val();
+        const message = _domElems.userMessageTextArea.val();
 
 
         if (message !== null && message.length > 0) {
             //klhsh ths server method gia apostolh se olous tous xrhstes sundedemenous me to room efoson
             //o xrhsths plhkrologhse kati
             (_$privateChatAlreadInProgress) ? 
-           _$chat.server.sendMessageToUser(_userInPrivateChat,$('#messageTyped').val(), _roomName):
-           _$chat.server.sendMessageToRoom(_roomName, $('#messageTyped').val());
+                _$chat.server.sendMessageToUser(_userInPrivateChat, _domElems.userMessageTextArea.val(), _roomName):
+                _$chat.server.sendMessageToRoom(_roomName, _domElems.userMessageTextArea.val());
         }
         else {
             alert("You have to type something first");
         }
         //katharismos tou text area meta apo apostolh munhmatos
-        $("#messageTyped").text("");
+        _domElems.userMessageTextArea.val("");
     };
 
     function initialLoadEffect() {
@@ -256,8 +237,8 @@
     }
 
     function showPage() {
-        $("#ChatEngineContainer").fadeIn(100);
-        $("#loader").hide();
+        _domElems.chatEngineWrapperContainer.fadeIn(100);
+        _domElems.chatEngineLoader.hide();
     }
 
     function onlineUsers() {
@@ -265,30 +246,26 @@
     }
 
     function saveUsernameGotFromHub(name) {
-        connectedUser = name;
+        _$connectedUser = name;
         console.log("the name i got form the server is " + name);
     }
 
 
     function isInPrivateChat(id) {
 
-        if (id !== connectedUser) {
+        if (id !== _$connectedUser) {
             _$chat.server.privateChat(id);
           
         }
     }
 
     function showHistory(existing) {
-        let sameUser, pullClass, alignContentsClass, userInfo, messageData, messageBody, messageContainer,timestamp = $.now();
+        let userInfo, messageData, messageBody, messageContainer,timestamp;
 
 
         if (existing.length <= 0)
             return;
         for (var x = 0, lenght = existing.length; x < lenght; x++) {
-//            sameUser = existing[x].UserName === connectedUser ? true : false;
-
-//             pullClass = sameUser ? "pull-right" : "pull-left";
-//             alignContentsClass = sameUser ? "left" : "right";
 
              timestamp = `_${Math.random().toString(36).substr(2, 9)}`;;
 
@@ -296,7 +273,6 @@
                 .addClass("card-text")
                 .addClass("d-inline")
                 .append(`<strong>&nbsp;&nbsp;${existing[x].UserName}</strong> : `)
-                //.append(`<small class="text-muted ${pullClass}">${existing[x].TimeSend}</small>`);
                 .append(`<small class="text-muted pull-right">${existing[x].TimeSend}</small>`);
 
              messageData = $("<p/>")
@@ -306,7 +282,6 @@
 
              messageBody = $("<div/>")
                 .addClass("card-body")
-                //.append(`<img src='' class='${sameUser ? "" : "right"}  rounded-circle hoverable' alt='User Avatar' id='${timestamp + "img"}'>`)
                 .append(`<img src=''   rounded-circle hoverable' alt='User Avatar' id='${timestamp + "img"}'>`)
                 .append(userInfo)
                 .append(messageData);
@@ -319,9 +294,9 @@
                 .append(messageBody );
 
 
-             messageList.append(messageContainer);
+             _domElems.messageList.append(messageContainer);
             const letter = existing[x].UserName.substring(0, 1);
-            messageCountHistory++;
+            _$messageCountHistory++;
             const imagePathhistory = findApropriateImage(letter);
 
             $(`#${timestamp}img`).attr("src", imagePathhistory);
@@ -329,26 +304,22 @@
         }       
     }
     function startTime() {
-        var today = new Date();
-        var h = today.getHours();
+        const today = new Date();
+        const h = today.getHours();
         var m = today.getMinutes();
         var s = today.getSeconds();
         m = checkTime(m);
         s = checkTime(s);
 
         $("#dateValue").text(h + ":" + m + ":" + s);;
-        var t = setTimeout(startTime, 500);
+        setTimeout(startTime, 500);
     }
     function checkTime(i) {
-        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+        if (i < 10) { i = `0${i}` };  // add zero in front of numbers < 10
         return i;
     }
 
     function fillModalBodyWithRoomDetails() {
-        var currentDate = new Date().toLocaleString();
-        var resArray = startTime();
-      
-        
 
     }
 
@@ -464,16 +435,15 @@
 
     function listeners() {
         $(document).ready(function () {
+
             $("#modalInitializerBtn").click(fillModalBodyWithRoomDetails);
-
-
-            $("#leaveRoomBtn").click(leaveRoom);
-              
+            $("#leaveRoomBtn").click(leaveRoom);           
             $("#logoff").click(leaveRoom);
 
+
             $(document).on("click", ".onlineUser", function () {
-                var ulListOnlineUsers = $(this).parents("ul").children();
-                var isTheSameUser = false;
+                const ulListOnlineUsers = $(this).parents("ul").children();
+                const isTheSameUser = false;
 
                 //check to see if there is a private discussion already
                 $.each(ulListOnlineUsers,
@@ -481,26 +451,38 @@
                         if ($(x).hasClass("privateMessage")) {
                             _$privateChatAlreadInProgress = true;
                             return false;
-                        }   
+                        }
+                        return false;
                     });
 
                 //check if not the same user is clicked
-                if (connectedUser !== $(this).attr("id")) {
+                if (_$connectedUser !== $(this).attr("id")) {
                     if (!_$privateChatAlreadInProgress) {
                         $(this).parent("li").toggleClass("privateMessage");
                         _userInPrivateChat = $(this).attr("id");
 
                     }
-                } 
+                }
+
+
               
-                   
-
-
 
             });
-
+            $("#searchOnlineUsers input").on("keyup", filterOnlineUsers);
             
         });
     }
 
-}(window.ChatEngineController = window.ChatEngineController || {},jQuery,document,console,UtilsController,ChatEngineService));
+
+    function filterOnlineUsers(event) {
+        const filter = $(event.target).val();
+        $("#cancelIconFilter").css("display", "block");
+
+    
+      
+
+
+
+    }
+
+}(window.ChatEngineController = window.ChatEngineController || {}, jQuery, document, console, UtilsController,ChatEngineUiController,ChatEngineService));

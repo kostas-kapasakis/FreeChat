@@ -677,6 +677,7 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Scripts\Controllers\allChatRoomsPartialController.js" />
     <Content Include="Scripts\Controllers\chatEngineController.js" />
+    <Content Include="Scripts\Controllers\chatEngineUiController.js" />
     <Content Include="Scripts\Controllers\chatRoomController.js" />
     <Content Include="Scripts\Controllers\chatRoomsAdminPartialController.js" />
     <Content Include="Scripts\Controllers\indexController.js" />
