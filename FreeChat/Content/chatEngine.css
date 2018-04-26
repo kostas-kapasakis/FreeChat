@@ -406,6 +406,12 @@
     background-color: white;
 }
 
+
+#cancelFilterBtn {
+    outline: none!important;
+    border: 0!important;
+}
+
 .chatEngineMode {
     background-color: #daf5f7;
 }
@@ -662,7 +668,9 @@
 
 #searchOnlineUsers {
     width: 100%;
-    margin-left: 20px;
+    margin-left: 20%;
+    margin-top: 0!important;
+    padding-top: 0 !important;
 }
 #card-body-online {
     font-size: 18px!important;

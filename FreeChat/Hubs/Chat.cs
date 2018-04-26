@@ -1,4 +1,5 @@
 ﻿using FreeChat.Core.Models;
+using FreeChat.Core.Models.Enums.ChatEngineEnums;
 using FreeChat.Hubs;
 using Microsoft.AspNet.SignalR;
 using System;
@@ -169,9 +170,24 @@ namespace FreeChat.Web.Hubs
 
 
         //(9)Use the return value of GetRoomConnectedUsers method and send it back to the client
-        public void SendRoomConnectedUsers(string room)
+        public void SendRoomConnectedUsers(string room, OnlineUsersSituationEnum situation)
         {
-            Clients.Group(room).onlineUsers(GetConnectedRoomUsers(room));
+            var connectedUsers = GetConnectedRoomUsers(room);
+            switch (situation)
+            {
+                case OnlineUsersSituationEnum.InitialSeeding:
+                    Clients.Group(room).onlineUsers(connectedUsers);
+                    break;
+                case OnlineUsersSituationEnum.UpdateOnlineUsers:
+                    Clients.Group(room).onlineUsersUpdate(connectedUsers);
+                    break;
+                case OnlineUsersSituationEnum.Confirmation:
+                    Clients.Group(room).onlineUsersUpdate(connectedUsers);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(situation), situation, null);
+            }
+
         }
 
 

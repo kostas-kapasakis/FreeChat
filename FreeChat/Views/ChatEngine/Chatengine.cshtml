@@ -1,4 +1,5 @@
-﻿@model FreeChat.Web.ViewModels.ChatEngineViewModel
+﻿@using FreeChat.Core.Models.Enums.ChatEngineEnums
+@model FreeChat.Web.ViewModels.ChatEngineViewModel
 
 
 @{ ViewBag.Title = "ChatEngine";
@@ -61,7 +62,7 @@
                     <form class="form-inline" id="searchOnlineUsers">
                         <div class="md-form mt-2 toast-top-full-width">
                             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="filterOnlineUsers">
-                            <button type="button" class="close d-inline" aria-label="Close" >
+                            <button type="button" class="close d-inline" aria-label="Close" id="cancelFilterBtn" >
                                 <span aria-hidden="true" id="cancelIconFilter"style="display: none">&times;</span>
                             </button>
                         </div>
@@ -203,10 +204,10 @@
     <script src="/signalr/hubs"></script>
 
     <script type="text/javascript">
-        $(function () {
+        $(function() {
 
             ChatEngineController.Init({
-                RoomName:"@Model.Name.ToString()"
+                RoomName: "@Model.Name.ToString()"
             });
         });
     </script>

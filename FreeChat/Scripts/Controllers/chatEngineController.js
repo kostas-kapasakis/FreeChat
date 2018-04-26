@@ -15,6 +15,7 @@
         _$privateChatAlreadInProgress = false,
         _userInPrivateChat = "",
         _domElems,
+        _onlineUsersOptions,
         _$imagePath,
         _messageCount = 0;
 
@@ -31,6 +32,7 @@
 
     function initImpl(config) {
         _domElems = _ui.viewDomElems();
+        _onlineUsersOptions = _ui.onlineUsersOptions();
 
         $(document).ready(function () {
             initialLoadEffect();
@@ -51,13 +53,15 @@
             //energopoihsh tou hub logging
              $.connection.hub.logging = true;
 
-            _$chat.client.newMessage = onNewMessage;
+            _$chat.client.newMessage = displayNewMessage;
 
-            _$chat.client.newMessagePrivate = onNewMessagePrivate;
+            _$chat.client.newMessagePrivate = displayPrivateMessage;
 
-            _$chat.client.onlineUsers = connectedUsers;
+            _$chat.client.onlineUsers = displayConnectedUsersInRoom;
 
-            _$chat.client.loadHistory = showHistory;
+            _$chat.client.onlineUsersUpdate = onlineUsersUpdate;
+
+            _$chat.client.loadHistory = displayRoomMessagesHistory;
 
             _$chat.client.sendName = saveUsernameGotFromHub;
 
@@ -65,12 +69,14 @@
 
             //start the connection // Start Hub
             $.connection.hub.start().done(function () {
-
+                  
                     _$chat.server.joinRoom(_roomName);
                     _$chat.server.sendUsername();
-                    _$chat.server.sendRoomConnectedUsers(_roomName);
+
+                     clearTheOnlineUsersList();
+                    _$chat.server.sendRoomConnectedUsers(_roomName, _onlineUsersOptions.initialSeeding);
                     _$chat.server.sendSavedRoomMessages(_roomName);
-                    _domElems.sendMessageBtn.click(onSend);
+                    _domElems.sendMessageBtn.click(broadcastMessage);
 
             })
                 .fail(function () {
@@ -78,36 +84,11 @@
                     window.location.href = "/Home/Index";
                 });
 
-            
 
-        function connectedUsers(users) {
-           let chipContainer, linkContainer, container;
-
-           _domElems.onlineUserContainer.remove();
-            
-
-            for (var x = 0, leng = users.length; x < leng; x++) {
-                chipContainer = $("<div/>")
-                    .addClass("chip")
-                    .addClass("chip-lg")
-                    .append(
-                    "<img src='https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg' class='hoverable' alt='Contact Person'>" + users[x].toString());
+        
 
 
-                linkContainer = $("<a/>")
-                    .addClass("list-group-item-light")
-                    .append(chipContainer);
-
-                container = $("<div/>")
-                    .addClass("onlineUserActualPart")
-                    .prop("Id", users[x])
-                    .append(linkContainer);
-
-
-                _domElems.onlineUserWrapper.append(container);
-
-             }
-            }
+     
 
 
         $.connection.hub.error(function (err) {
@@ -117,12 +98,57 @@
        
     }
 
+    function listeners() {
+        $(document).ready(function () {
+
+            _domElems.filterSearchBarinput.on("keyup", filterOnlineUsers);
+            _domElems.cancelFilterBtn.on("click", cancelFilterBtnClicked);
+            _domElems.exitRoomBtn.click(leaveRoom);
+            _domElems.roomDetailsModalInit.click(fillModalBodyWithRoomDetails);
+
+        });
+    }
+
+    function clearTheOnlineUsersList() {
+        let elems = _domElems.onlineUserContainer();
+        $.each(elems, function (obj) { $(obj).remove(); });
+        $(".onlineUserActualPart").remove();
+    }
+
+
+    function displayConnectedUsersInRoom(users) {
+        let chipContainer, linkContainer, container;
+        clearTheOnlineUsersList();
+
+        for (var x = 0, leng = users.length; x < leng; x++) {
+            chipContainer = $("<div/>")
+                .addClass("chip")
+                .addClass("chip-lg")
+                .append(
+                    "<img src='https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg' class='hoverable' alt='Contact Person'>" + users[x].toString());
+
+
+            linkContainer = $("<a/>")
+                .addClass("list-group-item-light")
+                .append(chipContainer);
+
+            container = $("<div/>")
+                .addClass("onlineUserActualPart")
+                .prop("Id", users[x])
+                .append(linkContainer);
+
+
+            _domElems.onlineUserWrapper.append(container);
+
+        }
+    }
+
     function leaveRoom() {
-        bootbox.confirm(`Leave Room : ${_domElems.roomNameContainer.text()} ?`,
+        bootbox.confirm(`Leave Room : ${_roomName} ?`,
             function (result) {
                 if (result) {               
                     _$chat.server.leaveRoom(_roomName);
-                    _$chat.server.sendRoomConnectedUsers(_roomName);
+                    _$chat.server.sendRoomConnectedUsers(_roomName, _onlineUsersOptions.initialSeeding);//todo must be update
                     window.location.href = "/Home/AllChatRooms";                   
                 }
             });
@@ -132,7 +158,7 @@
 
 
 
-    function onNewMessage(message) {
+    function displayNewMessage(message) {
         _$userFullName = message[0];
         _$realMessage = message[1];
         _$timeSend = message[2];
@@ -176,7 +202,7 @@
     };
 
 
-    function onNewMessagePrivate(message) {
+    function displayPrivateMessage(message) {
         _$userFullName = message[0];
         _$realMessage = message[1];
         _$timeSend = message[2];
@@ -220,13 +246,11 @@
        _domElems.userMessageTextArea.val("");
     }
 
-    function onSend() {
+    function broadcastMessage() {
         const message = _domElems.userMessageTextArea.val();
 
 
         if (message !== null && message.length > 0) {
-            //klhsh ths server method gia apostolh se olous tous xrhstes sundedemenous me to room efoson
-            //o xrhsths plhkrologhse kati
             (_$privateChatAlreadInProgress) ? 
                 _$chat.server.sendMessageToUser(_userInPrivateChat, _domElems.userMessageTextArea.val(), _roomName):
                 _$chat.server.sendMessageToRoom(_roomName, _domElems.userMessageTextArea.val());
@@ -234,7 +258,6 @@
         else {
             alert("You have to type something first");
         }
-        //katharismos tou text area meta apo apostolh munhmatos
         _domElems.userMessageTextArea.val("");
     };
 
@@ -247,14 +270,13 @@
         _domElems.chatEngineLoader.hide();
     }
 
-    function onlineUsers() {
-        var users = _$chat.server.getConnectedUsers();
-        console.log(users);
+    function onlineUsersUpdate(usersArray) {
+        clearTheOnlineUsersList();
+        displayConnectedUsersInRoom(usersArray);
     }
 
     function saveUsernameGotFromHub(name) {
         _$connectedUser = name;
-        console.log("the name i got form the server is " + name);
     }
 
 
@@ -266,7 +288,7 @@
         }
     }
 
-    function showHistory(existing) {
+    function displayRoomMessagesHistory(existing) {
         let userInfo, messageData, messageBody, messageContainer,timestamp;
 
 
@@ -440,21 +462,12 @@
         return imagePath;
     }
 
-    function listeners() {
-        $(document).ready(function () {
-
-            _domElems.filterSearchBarinput.on("keyup", filterOnlineUsers);
-            _domElems.cancelFilterBtn.on("click", cancelFilterBtnClicked);
-            _domElems.exitRoomBtn.click(leaveRoom);  
-            _domElems.roomDetailsModalInit.click(fillModalBodyWithRoomDetails);
-
-        });
-    }
+ 
 
 
     function filterOnlineUsers(event) {
         const filter = $(event.target).val().toUpperCase();
-        const connectedUsers = _domElems.onlineUserWrapper.children(".onlineUserActualPart");
+        const connectedUsers = _domElems.onlineUserContainer();
 
        _domElems.cancelFilterBtn.css("display", "block");
        
@@ -470,8 +483,8 @@
     }
 
     function cancelFilterBtnClicked(event) {
-        console.log(onlineUsers());
-
+        _domElems.filterSearchBarinput.val(""); 
+        _$chat.server.sendRoomConnectedUsers(_roomName, _onlineUsersOptions.update);
     }
 
 }(window.ChatEngineController = window.ChatEngineController || {}, jQuery, document, console, UtilsController,ChatEngineUiController,ChatEngineService));

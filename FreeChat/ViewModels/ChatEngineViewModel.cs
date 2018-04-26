@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FreeChat.Core.Models.Enums.ChatEngineEnums;
+using System;
 
 namespace FreeChat.Web.ViewModels
 {
@@ -10,5 +11,6 @@ namespace FreeChat.Web.ViewModels
         public string Description { get; set; }
         public DateTime ExpirationDate { get; set; }
         public DateTime CreatedDate { get; set; }
+        public OnlineUsersSituationEnum OnlineUsersOptions { get; set; }
     }
 }
