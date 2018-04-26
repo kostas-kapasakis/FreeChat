@@ -395,6 +395,7 @@
 #chatEngineMiddle {
     background-color: white;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 #roomsInfo .list-group-item, #roomsInfo2 .list-group-item {
     height: 100%;
