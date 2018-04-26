@@ -10,7 +10,12 @@
             onlineUserWrapper: $("#card-body-online"),
             sendMessageBtn: $("#send"),
             userMessageTextArea: $("#messageTyped"),
-            chatEngineLoader: $("#loader")
+            chatEngineLoader: $("#loader"),
+            cancelFilterBtn: $("#cancelIconFilter"),
+            filterSearchBarinput: $("#searchOnlineUsers input"),
+            exitRoomBtn: $("#exitRoomBtn"),
+            roomDetailsModalInit: $("#modalInitializerBtn"),
+            roomNameContainer: $("#roomNameValue")
         }
     }
         

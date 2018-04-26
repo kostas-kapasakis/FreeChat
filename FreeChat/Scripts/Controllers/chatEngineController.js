@@ -118,9 +118,15 @@
     }
 
     function leaveRoom() {
-        _$chat.server.leaveRoom(_roomName);
-        _$chat.server.sendRoomConnectedUsers(_roomName);
-        window.location.href = "/Home/AllChatRooms";
+        bootbox.confirm(`Leave Room : ${_domElems.roomNameContainer.text()} ?`,
+            function (result) {
+                if (result) {               
+                    _$chat.server.leaveRoom(_roomName);
+                    _$chat.server.sendRoomConnectedUsers(_roomName);
+                    window.location.href = "/Home/AllChatRooms";                   
+                }
+            });
+      
     } 
 
 
@@ -242,7 +248,8 @@
     }
 
     function onlineUsers() {
-        _$chat.server.connectedUsers();
+        var users = _$chat.server.getConnectedUsers();
+        console.log(users);
     }
 
     function saveUsernameGotFromHub(name) {
@@ -436,52 +443,34 @@
     function listeners() {
         $(document).ready(function () {
 
-            $("#modalInitializerBtn").click(fillModalBodyWithRoomDetails);
-            $("#leaveRoomBtn").click(leaveRoom);           
-            $("#logoff").click(leaveRoom);
+            _domElems.filterSearchBarinput.on("keyup", filterOnlineUsers);
+            _domElems.cancelFilterBtn.on("click", cancelFilterBtnClicked);
+            _domElems.exitRoomBtn.click(leaveRoom);  
+            _domElems.roomDetailsModalInit.click(fillModalBodyWithRoomDetails);
 
-
-            $(document).on("click", ".onlineUser", function () {
-                const ulListOnlineUsers = $(this).parents("ul").children();
-                const isTheSameUser = false;
-
-                //check to see if there is a private discussion already
-                $.each(ulListOnlineUsers,
-                    function (i, x) {
-                        if ($(x).hasClass("privateMessage")) {
-                            _$privateChatAlreadInProgress = true;
-                            return false;
-                        }
-                        return false;
-                    });
-
-                //check if not the same user is clicked
-                if (_$connectedUser !== $(this).attr("id")) {
-                    if (!_$privateChatAlreadInProgress) {
-                        $(this).parent("li").toggleClass("privateMessage");
-                        _userInPrivateChat = $(this).attr("id");
-
-                    }
-                }
-
-
-              
-
-            });
-            $("#searchOnlineUsers input").on("keyup", filterOnlineUsers);
-            
         });
     }
 
 
     function filterOnlineUsers(event) {
-        const filter = $(event.target).val();
-        $("#cancelIconFilter").css("display", "block");
+        const filter = $(event.target).val().toUpperCase();
+        const connectedUsers = _domElems.onlineUserWrapper.children(".onlineUserActualPart");
 
-    
-      
+       _domElems.cancelFilterBtn.css("display", "block");
+       
+        $.each(connectedUsers,
+            function (index, user) {
+                const username = $(user).find("div.chip").text().toUpperCase();
+                if (username.indexOf(filter) > -1) {
+                    $(user).fadeIn(250);
+                } else {
+                    $(user).fadeOut(250);
+                } 
+            });
+    }
 
-
+    function cancelFilterBtnClicked(event) {
+        console.log(onlineUsers());
 
     }
 
