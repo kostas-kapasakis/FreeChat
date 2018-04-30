@@ -20,6 +20,7 @@
         _messageCount = 0;
 
     self.Init = function (config) {
+  
         digestConfig(config);
         listeners();
         initImpl(config);
@@ -33,14 +34,16 @@
 
     function initImpl(config) {
         $.when(
-            $(".content-wrapper").addClass("chatEngineMode"),
-            $("#sidenavToggler").trigger("click")
-//            _domElems.fullchatmodeBtn.show()
+            $("#sidenavToggler").trigger("click"),
+            $(".content-wrapper").addClass("chatEngineMode")
+            
+           
         ).then(function() {
             initialLoadEffect();
         }).done(function() {
 
-            $(document).ready(function() {
+            $(document).ready(function () {
+                _domElems.fullchatmodeBtn.show(300);
                 $('.modal').on('show.bs.modal',
                     function() {
                         if ($(document).height() > $(window).height()) {
@@ -109,15 +112,67 @@
 
     function listeners() {
         $(document).ready(function () {
-
             _domElems.filterSearchBarinput.on("keyup", filterOnlineUsers);
             _domElems.cancelFilterBtn.on("click", cancelFilterBtnClicked);
             _domElems.exitRoomBtn.click(leaveRoom);
             _domElems.roomDetailsModalInit.click(fillModalBodyWithRoomDetails);
-            //_domElems.headerTableBasicRoomInfosBtn.click(headerTableClicked);
-            
-
+            _domElems.fullchatmodeBtn.on("click", fullchatModeToggle);
         });
+    }
+
+    function fullchatModeToggle() {
+        const viewportWidth = $(window).width();
+
+        if (_domElems.chatEngineContentWrapper.hasClass("fullModeOpened")) {
+            _domElems.chatEngineContentWrapper.toggleClass("fullModeOpened");
+
+            $("#nav-topMenu").slideDown("fast");
+            $("#mainNav .navbar-brand").slideDown("fast");
+            _domElems.chatEngineContentWrapper.css("margin-top", "0");
+            _domElems.chatEngineContentWrapper.css("min-height", "89%");
+            $("#leftNavBar").css("margin-top", "50px");
+
+            switch (true) {
+            case viewportWidth <= 1366:
+                $("#chatEngineMiddle").css("min-height", "400px");
+                $("#messagesContainerArea").css("min-height", "400px");
+                break;
+            case viewportWidth > 1366:
+                $("#chatEngineMiddle").css("min-height", "600px");
+                $("#messagesContainerArea").css("min-height", "600px");
+                break;
+            default:
+                console.log("not supported viewport yet for full chat mode");
+            }
+
+        } else {
+            _domElems.chatEngineContentWrapper.toggleClass("fullModeOpened");
+           
+
+            $("#nav-topMenu").slideUp("fast");
+            $("#mainNav .navbar-brand").slideUp("fast");
+            _domElems.chatEngineContentWrapper.css("margin-top", "-50px");
+            _domElems.chatEngineContentWrapper.css("min-height", "95%");
+            $("#leftNavBar").css("margin-top", "0px");
+
+            switch (true) {
+            case viewportWidth <= 1366:
+                $("#chatEngineMiddle").css("min-height", "550px");
+                $("#messagesContainerArea").css("min-height", "550px");
+                break;
+            case viewportWidth > 1366:
+                $("#chatEngineMiddle").css("min-height", "850px");
+                $("#messagesContainerArea").css("min-height", "850px");
+                break;
+            default:
+                console.log("not supported viewport yet for full chat mode");
+            }
+        }
+
+      
+    
+     
+       
     }
 //
 //    function headerTableClicked(event) {

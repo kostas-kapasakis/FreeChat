@@ -4,6 +4,7 @@
     const viewDomElems = function() {
 
         return {
+            chatEngineContentWrapper: $(".chatEngineMode"),
             chatEngineWrapperContainer: $("#ChatEngineContainer"),
             messageList: $(".inner-list"),
             onlineUserContainer: function() { return $(document).find(".onlineUserActualPart") },

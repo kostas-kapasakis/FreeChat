@@ -4,7 +4,6 @@
     -ms-animation: fadein 1s; /* Internet Explorer */
     -o-animation: fadein 1s; /* Opera < 12.1 */
     animation: fadein 1s;
-    height: 100%;
     font-family: 'Dosis';
     overflow-y: hidden;
 }
@@ -91,6 +90,7 @@ a:hover{
     
     #createRoomContainer {
         margin-left: 0px !important;
+        overflow-y: auto!important;
     }
 #createRoomContainerRow {
     margin-top: 5%;
@@ -108,4 +108,22 @@ a:hover{
 .field-validation-error {
     color: red !important;
     font-weight: bold;
+}
+
+#createrRoom-details {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+@media only screen and (min-width: 1200px) and (max-width:1366px) {
+    #createrRoom-details {
+        padding-top: 0 !important;
+        margin-top:-20px !important;
+        padding-right: 50px;
+    }
+
+    #createrRoom-details {
+        width: 450px !important;
+    }
+    
 }

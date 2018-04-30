@@ -5,6 +5,11 @@
     font-size: 18px!important;
     overflow: hidden !important;
 }
+
+#mainNav.fixed-top .navbar-sidenav {
+    height: calc(100vh)!important;
+}
+
 .main_section{
     position:relative;
    margin-top:20px;
@@ -711,12 +716,15 @@
 }
 
 .modal-footer > :not(:last-child) {
-    margin-right: 4rem!important;
+    margin-right: 3rem!important;
 }
 
 .modal-content {
     overflow-y: auto !important;
 }
+
+
+
 /*Media queries*/
 /* phones*/
 @media only screen and (max-width: 600px) {}
@@ -767,6 +775,7 @@
 
     #loader {
         margin-top: 20% !important;
+        margin-left: 40%;
         border-top: 16px solid blue;
         border-right: 16px solid whitesmoke;
         border-bottom: 16px solid lightblue;
@@ -785,8 +794,8 @@
     }
     #messagesContainerArea {
         max-height: 750px;
-        min-height: 750px!important;
+        min-height: 750px;
         overflow-y: auto;
     }
-
+   
 } 
