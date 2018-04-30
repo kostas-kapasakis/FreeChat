@@ -3,6 +3,7 @@
     overflow: hidden;
     font-family: 'Dosis'!important;
     font-size: 18px!important;
+    overflow: hidden !important;
 }
 .main_section{
     position:relative;
@@ -118,16 +119,14 @@
    
    }
    
-   
-   
-   
+    
    .member_list li:last-child {
-   border-bottom:none;
+        border-bottom:none;
    }
-.member_list {
-    border-top:cyan !important;
-    max-height: 300px !important;
-/*    overflow-y: scroll !important;*/
+
+    .member_list {
+        border-top:cyan !important;
+        max-height: 300px !important;
 }
    .sub_menu_ {
   background: #c6ddf1 none repeat scroll 0 0;
@@ -166,7 +165,7 @@
   width: 100%;
   height:100px;
 }
-#rowChatEngine,rowChatEngine2{
+#rowChatEngine{
     top:0;
     margin-top:0;
 }
@@ -405,6 +404,7 @@
 
 #onlineUsersContainer {
     background-color: white;
+    overflow: hidden;
 }
 
 
@@ -610,8 +610,8 @@
 }
 
 #headerTableInfo {
-    height: 40px !important;
-    margin-bottom: -1rem !important;
+    height: 43px !important;
+    margin-bottom: -0.6rem !important;
     font-size: 18px!important;
 }
 
@@ -709,3 +709,84 @@
     border-bottom: none;
     border-bottom-color: #daf5f7 !important;
 }
+
+.modal-footer > :not(:last-child) {
+    margin-right: 4rem!important;
+}
+
+.modal-content {
+    overflow-y: auto !important;
+}
+/*Media queries*/
+/* phones*/
+@media only screen and (max-width: 600px) {}
+
+/* XSmall devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+    /* small devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+    /* medium small devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+   
+}
+
+   /*Medium  laptops*/
+@media only screen and (min-width: 1200px) and (max-width:1366px) {
+
+    .chatEngineMode {
+        min-height: 89% !important;
+        overflow: hidden !important;
+    }
+
+    .sticky-footer {
+        width: 100% !important;
+    }
+
+    #messagesContainerArea {
+        min-height: 400px;
+        max-height: 450px;
+    }
+
+    #chatEngineMiddle {
+        max-height: 450px !important;
+    }
+
+    #card-body-online .chip.chip-lg img {
+        display: none;
+    }
+
+    #searchOnlineUsers {
+        margin-left: 5%;
+    }
+
+    #chatEngineFooter textarea.form-control {
+        max-width: 81%;
+    }
+
+    #loader {
+        margin-top: 20% !important;
+        border-top: 16px solid blue;
+        border-right: 16px solid whitesmoke;
+        border-bottom: 16px solid lightblue;
+    }
+}
+
+/* Extra large devices (large laptops and desktops > 15.6inch ) */
+@media only screen and (min-width: 1367px) {
+    .chatEngineMode {
+        min-height: 89% !important;
+        overflow: hidden !important;
+    }
+    .sticky-footer {
+        width: 100% !important;
+       
+    }
+    #messagesContainerArea {
+        max-height: 750px;
+        min-height: 750px!important;
+        overflow-y: auto;
+    }
+
+} 

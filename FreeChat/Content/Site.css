@@ -447,3 +447,6 @@ h6,
 #blockBtnMAinCateg {
     margin-top: 3%;
 }
+#leftPanel-fullchatmode {
+    display: none;
+}

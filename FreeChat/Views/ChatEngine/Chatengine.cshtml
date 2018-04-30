@@ -1,5 +1,4 @@
-﻿@using FreeChat.Core.Models.Enums.ChatEngineEnums
-@model FreeChat.Web.ViewModels.ChatEngineViewModel
+﻿@model FreeChat.Web.ViewModels.ChatEngineViewModel
 
 
 @{ ViewBag.Title = "ChatEngine";
@@ -13,42 +12,41 @@
 </div>
 
 <div class="container-fluid" id="ChatEngineContainer">
-            <table class="table dark-grey-text table-sm cyan lighten-5" id="headerTableInfo">
-            <tbody>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">
-                        Room Infos
-                    </button>
-                </td>
-                <td>
-                    <div class="card d-inline center">
-                        <div class="card-body">
-                            <i>Room Name</i><br/><strong id="roomNameValue">@Model.Name</strong>
-                        </div>
+    <table class="table dark-grey-text table-sm cyan lighten-5" id="headerTableInfo">
+        <tbody>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-outline-info  btn-sm" data-toggle="modal" data-target="#fullHeightModalRight" id="modalInitializerBtn">
+                    Room Infos
+                </button>
+            </td>
+            <td>
+                <div class="card d-inline center">
+                    <div class="card-body">
+                        Room Name<br/><strong id="roomNameValue">@Model.Name</strong>
                     </div>
-                </td>
-                <td>
-                    <div class="card d-inline center">
-                        <div class="card-body">
-                            <i>Genre</i><br/><strong>@Model.Genre</strong>
-                        </div>
+                </div>
+            </td>
+            <td>
+                <div class="card d-inline center">
+                    <div class="card-body">
+                        Genre<br/><strong>@Model.Genre</strong>
                     </div>
-                </td>
-                <td>
-                    <div class="card d-inline center">
-                        <div class="card-body">
-                            <i>Description</i><br/><strong>@Model.Description</strong>
-                        </div>
+                </div>
+            </td>
+            <td>
+                <div class="card d-inline center">
+                    <div class="card-body">
+                        Description<br/><strong>@Model.Description</strong>
                     </div>
-                </td>
-                <td>    
-                    <button class="btn btn-outline-warning  float-right" id="exitRoomBtn" >Exit Room</button>
-                </td>
-            </tr>
-            </tbody>
-                </table>
-
+                </div>
+            </td>
+            <td>    
+                <button class="btn btn-outline-warning  float-right  btn-sm" id="exitRoomBtn" >Exit Room</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
     <div class="row" id="chatEngineMiddle">
         <div class="col-lg-10 no-float" id="messagesContainerArea">
             <div id="messagesArea card-body">
@@ -62,7 +60,7 @@
                     <form class="form-inline" id="searchOnlineUsers">
                         <div class="md-form mt-2 toast-top-full-width">
                             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="filterOnlineUsers">
-                            <button type="button" class="close d-inline" aria-label="Close" id="cancelFilterBtn" >
+                            <button type="button" class="close d-inline" aria-label="Close" id="cancelFilterBtn">
                                 <span aria-hidden="true" id="cancelIconFilter"style="display: none">&times;</span>
                             </button>
                         </div>
@@ -77,8 +75,11 @@
             <button class="pull-right btn btn-outline-success  waves-effect col-md-1" id="send">Send</button>
         </div>
     </div>
-    </div>
+</div>
     
+
+
+
 
 @{ 
     Html.RenderPartial("ChatEngineRoomDetailsModalPartialView");
@@ -91,9 +92,10 @@
 
     <script type="text/javascript">
         $(function() {
-
             ChatEngineController.Init({
-                RoomName: "@Model.Name.ToString()"
+                RoomName: "@Model.Name.ToString()",
+                Description: "@Model.Description.ToString()",
+                Genre:"@Model.Genre.ToString()"
             });
         });
     </script>

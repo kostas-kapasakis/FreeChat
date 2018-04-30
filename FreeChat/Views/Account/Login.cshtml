@@ -38,12 +38,13 @@
                         <label for="passInputLogin">Password</label>
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
-@*        <div class="form-check mb-2 mr-sm-2">*@
-@*            <input class="form-check-input" type="checkbox" id="inlineFormCheck">*@
-@*            <label class="form-check-label" for="inlineFormCheck">*@
-@*                Remember me*@
-@*            </label>*@
-@*        </div>*@
+
+                  <div class="input-group" id="rememberMeCheckBox">
+                      @*                      <label  class="mx-auto">Remember me</label> *@
+                      @Html.LabelFor(m=>m.RememberMe)
+                      @Html.CheckBoxFor(m=>m.RememberMe)
+@*                      <input class="form-check-input" type="checkbox" id="inlineFormCheck">*@
+                    </div>
 
                     <div class="text-center mt-4">
                         <button class="btn btn-default" type="submit">Login</button>

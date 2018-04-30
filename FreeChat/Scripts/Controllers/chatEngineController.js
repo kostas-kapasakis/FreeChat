@@ -23,7 +23,8 @@
         digestConfig(config);
         listeners();
         initImpl(config);
-      
+        _domElems = _ui.viewDomElems();
+        _onlineUsersOptions = _ui.onlineUsersOptions();
     };
 
     function digestConfig(config) {
@@ -31,41 +32,39 @@
     };
 
     function initImpl(config) {
-        _domElems = _ui.viewDomElems();
-        _onlineUsersOptions = _ui.onlineUsersOptions();
-
-        $(document).ready(function () {
+        $.when(
+            $(".content-wrapper").addClass("chatEngineMode"),
+            $("#sidenavToggler").trigger("click")
+//            _domElems.fullchatmodeBtn.show()
+        ).then(function() {
             initialLoadEffect();
-        });
+        }).done(function() {
 
-        $(document).ready(function() {
-            $('.modal').on('show.bs.modal',
-                function() {
-                    if ($(document).height() > $(window).height()) {
-                        // no-scroll
-                        $('body').addClass("modal-open-noscroll");
-                    } else {
+            $(document).ready(function() {
+                $('.modal').on('show.bs.modal',
+                    function() {
+                        if ($(document).height() > $(window).height()) {
+                            // no-scroll
+                            $('body').addClass("modal-open-noscroll");
+                        } else {
+                            $('body').removeClass("modal-open-noscroll");
+                        }
+                    });
+                $('.modal').on('hide.bs.modal',
+                    function() {
                         $('body').removeClass("modal-open-noscroll");
-                    }
-                });
-            $('.modal').on('hide.bs.modal',
-                function() {
-                    $('body').removeClass("modal-open-noscroll");
-                });
-        });
-       
-        $(".content-wrapper").addClass("chatEngineMode");
-        $("#sidenavToggler").trigger("click");
+                    });
+            });
 
-        _roomName = config.RoomName;
-     
-           
+
+            _roomName = config.RoomName;
+
 
             // Declare a proxy to reference the hub.
             _$chat = $.connection.chat;
 
             //energopoihsh tou hub logging
-             $.connection.hub.logging = true;
+            $.connection.hub.logging = true;
 
             _$chat.client.newMessage = displayNewMessage;
 
@@ -82,34 +81,30 @@
             _$chat.client.private = isInPrivateChat;
 
             //start the connection // Start Hub
-            $.connection.hub.start().done(function () {
-                  
+            $.connection.hub.start().done(function() {
+
                     _$chat.server.joinRoom(_roomName);
                     _$chat.server.sendUsername();
 
-                     clearTheOnlineUsersList();
+                    clearTheOnlineUsersList();
                     _$chat.server.sendRoomConnectedUsers(_roomName, _onlineUsersOptions.initialSeeding);
                     _$chat.server.sendSavedRoomMessages(_roomName);
                     _domElems.sendMessageBtn.click(broadcastMessage);
 
-            })
-                .fail(function () {
+                })
+                .fail(function() {
                     alert(`Error connecting to group : ${_roomName}`);
                     window.location.href = "/Home/Index";
                 });
 
 
-        
+            $.connection.hub.error(function(err) {
+                alert(`An error occured: ${err}`);
 
-
-     
-
-
-        $.connection.hub.error(function (err) {
-            alert(`An error occured: ${err}`);
-
+            });
         });
-       
+
+
     }
 
     function listeners() {
@@ -119,12 +114,23 @@
             _domElems.cancelFilterBtn.on("click", cancelFilterBtnClicked);
             _domElems.exitRoomBtn.click(leaveRoom);
             _domElems.roomDetailsModalInit.click(fillModalBodyWithRoomDetails);
+            //_domElems.headerTableBasicRoomInfosBtn.click(headerTableClicked);
+            
 
         });
     }
+//
+//    function headerTableClicked(event) {
+//        const target = $(event.target);
+//        if (!target.is("button")) {
+//            $(this).slideToggle(300);
+//            $("#chatEngineMiddle").css("height", "530px");
+//        }
+//    }
+
 
     function clearTheOnlineUsersList() {
-        let elems = _domElems.onlineUserContainer();
+        const elems = _domElems.onlineUserContainer();
         $.each(elems, function (obj) { $(obj).remove(); });
         $(".onlineUserActualPart").remove();
     }
@@ -349,7 +355,7 @@
         m = checkTime(m);
         s = checkTime(s);
 
-        $("#dateValue").text(h + ":" + m + ":" + s);;
+        _domElems.timeContainer.text(`Current Time : ${h}:${m}:${s}`);;
         setTimeout(startTime, 500);
     }
 
@@ -359,7 +365,7 @@
     }
 
     function fillModalBodyWithRoomDetails() {
-
+        startTime();
     }
 
     function findApropriateImage(letter) {
@@ -486,10 +492,12 @@
                     $(user).fadeOut(250);
                 } 
             });
+       
     }
 
-    function cancelFilterBtnClicked(event) {
+    function cancelFilterBtnClicked() {
         _domElems.filterSearchBarinput.val(""); 
+        _domElems.cancelFilterBtn.fadeOut(300);
         _$chat.server.sendRoomConnectedUsers(_roomName, _onlineUsersOptions.update);
     }
 

@@ -6,7 +6,7 @@
         return {
             chatEngineWrapperContainer: $("#ChatEngineContainer"),
             messageList: $(".inner-list"),
-            onlineUserContainer: function () { return $(document).find(".onlineUserActualPart")},
+            onlineUserContainer: function() { return $(document).find(".onlineUserActualPart") },
             onlineUserWrapper: $("#card-body-online"),
             sendMessageBtn: $("#send"),
             userMessageTextArea: $("#messageTyped"),
@@ -14,8 +14,11 @@
             cancelFilterBtn: $("#cancelIconFilter"),
             filterSearchBarinput: $("#searchOnlineUsers input"),
             exitRoomBtn: $("#exitRoomBtn"),
-            roomDetailsModalInit: $("#modalInitializerBtn")
-        }
+            roomDetailsModalInit: $("#modalInitializerBtn"),
+            headerTableBasicRoomInfosBtn: $("#headerTableInfo"),
+            fullchatmodeBtn: $("#leftPanel-fullchatmode"),
+            timeContainer: $("#dateValue")
+    }
     }
 
     const onlineUsersOptions = function() {

@@ -1,6 +1,6 @@
 ﻿
 @model FreeChat.Web.ViewModels.ChatEngineViewModel
-    
+@using Microsoft.AspNet.Identity;
 
 <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-full-height modal-right" role="document">
@@ -23,7 +23,7 @@
                             <td>
                                 <div class="chip chip-md lighten-4">
                                     <a data-dismiss="myModalLabel" data-toggle="modal" data-target="#exampleModalLabel">
-                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> John Doe
+                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> @User.Identity.Name
                                     </a>
                                 </div>
 
@@ -78,24 +78,18 @@
                             <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="card">
                     <div class="card-body align-content-center" id="cardRoomModalInfoDateDetails">
-                        <h6 id="dateValue" class="float-left"></h6>
+                        
                     </div>
                 </div>
             </div>
 
-
             <div class="modal-footer">
-
+                <h6 id="dateValue" class="float-left p-lg-0"> </h6>
                 <button type="button" class="btn btn-outline-warning " data-dismiss="modal">Close</button>
             </div>
-
-
-
         </div>
     </div>
 </div>

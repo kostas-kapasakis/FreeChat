@@ -93,3 +93,25 @@ to   { opacity: 1; }
 #globalRegisterContainer {
     display: none;
 }
+
+#rememberMeCheckBox {
+    padding-top: 0!important;
+    margin-left: 30px;
+    padding-bottom: 10px;
+}
+ 
+#rememberMeCheckBox label {
+    margin-top: -15px !important;
+    padding-left: 20px;
+}
+
+/*Medium  laptops*/
+@media only screen and (min-width: 1200px) {
+
+
+    #loginContainer, #registerContainer {
+        padding-top: 10%!important;
+    }
+
+ 
+}
