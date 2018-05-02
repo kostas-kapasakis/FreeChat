@@ -1,4 +1,4 @@
-﻿(function (self, $, _document, _console, _indexService, undefined) {
+﻿(function (self, $, _document, _console, _indexService,_layout, undefined) {
     "use strict";
 
     var $doc;
@@ -77,4 +77,4 @@
 
    
     
-}(window.AllChatRoomsPartialController = window.AllChatRoomsPartialController || {},jQuery,document,console,IndexService ));
+}(window.AllChatRoomsPartialController = window.AllChatRoomsPartialController || {},jQuery,document,console,IndexService,LayoutController ));

@@ -723,11 +723,16 @@
     overflow-y: auto !important;
 }
 
+.onfullChatMode {
+    margin-top: 17px;
+    background-color: white;
+}
 
 
 /*Media queries*/
 /* phones*/
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+}
 
 /* XSmall devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {}
@@ -744,8 +749,8 @@
 @media only screen and (min-width: 1200px) and (max-width:1366px) {
 
     .chatEngineMode {
-        min-height: 89% !important;
-        overflow: hidden !important;
+        min-height: 89%;
+        overflow: hidden;
     }
 
     .sticky-footer {
@@ -785,8 +790,8 @@
 /* Extra large devices (large laptops and desktops > 15.6inch ) */
 @media only screen and (min-width: 1367px) {
     .chatEngineMode {
-        min-height: 89% !important;
-        overflow: hidden !important;
+        min-height: 89%;
+        overflow: hidden;
     }
     .sticky-footer {
         width: 100% !important;

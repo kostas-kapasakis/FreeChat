@@ -20,24 +20,17 @@
                     Room Infos
                 </button>
             </td>
-            <td>
+            <td  class="align-content-center">
                 <div class="card d-inline center">
-                    <div class="card-body">
-                        Room Name<br/><strong id="roomNameValue">@Model.Name</strong>
+                    <div class="card-body">           
+                        Room : <strong id="roomNameValue">@Model.Name</strong>               
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="align-content-center">
                 <div class="card d-inline center">
-                    <div class="card-body">
-                        Genre<br/><strong>@Model.Genre</strong>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="card d-inline center">
-                    <div class="card-body">
-                        Description<br/><strong>@Model.Description</strong>
+                    <div class="card-body">           
+                        Genre: <strong>@Model.Genre</strong>                   
                     </div>
                 </div>
             </td>
@@ -91,7 +84,8 @@
     <script src="/signalr/hubs"></script>
 
     <script type="text/javascript">
-        $(function() {
+        $(function () {
+            $("#sidenavToggler").trigger("click");
             ChatEngineController.Init({
                 RoomName: "@Model.Name.ToString()",
                 Description: "@Model.Description.ToString()",
