@@ -36,7 +36,6 @@
 
     function initImpl(config) {
         $.when(
-           // _layoutElems.toggleNavIcon.trigger("click"),
             _layoutElems.contentWrapper.addClass("chatEngineMode"),
             _layout.toggleAllNavItemsOnChatFullMode()
          
