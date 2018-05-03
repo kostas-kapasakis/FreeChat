@@ -12,6 +12,7 @@ namespace FreeChat.Persistence.FluentConfigurations
             Property(p => p.Role)
                 .HasMaxLength(100);
 
+          
 
         }
 

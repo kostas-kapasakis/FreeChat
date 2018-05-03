@@ -35,17 +35,22 @@
                 {
                     data: "DateExpired",
                     render: function (data) {
-                        var dateString = data;
-                        var yearDate = dateString.substring(0, dateString.indexOf("T"));
-                        var time = dateString.substring(dateString.indexOf("T") + 1, dateString.length - 4);
-                        return yearDate + "  " + time;
+                        const dateString = data;
+                        const yearDate = dateString.substring(0, dateString.indexOf("T"));
+                        const time = dateString.substring(dateString.indexOf("T") + 1, dateString.length - 3);
+                        return yearDate;
                     }
 
                 },
                 {
                     data: "Id",
                     render: function (data, type, room) {
-                        return "<button class='btn btn-success roominitBtn' id='" + data + "'>Enter Room</button>";
+                        if (room.Active) {
+                            return `<button class='btn btn-success roominitBtn' id='${data}'>Enter Room</button>`;
+                        } else {
+                            return `<button class='btn btn-warning disabled roominitBtn' id='${data}'>Unavailable</button>`;
+                        }
+                        
                     }
                 }
             ]
@@ -58,11 +63,11 @@
 
             $.ajax({
                 method: "get",
-                url: "/api/ChatEngineApi/Chatengine?roomId="+roomId,
+                url: `/api/ChatEngineApi/Chatengine?roomId=${roomId}`,
                
                 success: function(data) {
                     if (data) {                
-                        window.location = "/ChatEngine/ChatStart?roomid=" + roomId;
+                        window.location = `/ChatEngine/ChatStart?roomid=${roomId}`;
                     } else {
                         alert("Room Anavailable");
                     }    

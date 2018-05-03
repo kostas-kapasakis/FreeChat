@@ -38,7 +38,7 @@
 
             $.ajax({
                 method: "get",
-                url: "/api/ChatEngineApi/Chatengine?roomId=" + roomId,
+                url: `/api/ChatEngineApi/Chatengine?roomId=${roomId}`,
 
                 success: function (data) {
                     if (data) {
@@ -47,6 +47,14 @@
                         alert("Room Anavailable");
                     }
 
+                },
+                fail: function(jqXHR, textStatus, error) {
+                    if (jqXHR === 400) {
+                        alert("Room unavailable for the time been");
+                    }
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(error);
                 }
 
             });
@@ -60,10 +68,10 @@
     }
 
     function populateDataTable(id) {
-        
-        var $tablebyGenre = $("#ChatRoomsByGenre").DataTable({
+
+        const $tablebyGenre = $("#ChatRoomsByGenre").DataTable({
             ajax: {
-                url: "/api/RoomList/GetRoomsForSpecificGenre?id="+id,
+                url: `/api/RoomList/GetRoomsForSpecificGenre?id=${id}`,
                 dataSrc: ""
             },
             columns: [
@@ -89,13 +97,18 @@
                 {
                     data: "Id",
                     render: function (data, type, room) {
-                        return "<button class='btn btn-success roominBtn' id='" + data + "'>Enter Room</button>";
+                        if (room.Active) {
+                            return `<button class='btn btn-success roominBtn' id='${data}'>Enter Room</button>`;
+                        } else {
+                            return `<button class='btn btn-warning roominBtn disabled' id='${data}'>Unavailable</button>`;
+                        }
+                        
                     }
                 }
             ]
         });
     }
-   
+
 
     function loadingAnimation() {
         loadingVar = setTimeout(showPage, 1000);
