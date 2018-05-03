@@ -88,7 +88,7 @@ namespace FreeChat.Core.Services
             if (result)
                 _unitOfWork.Complete();
 
-            return _unitOfWork.Topics.AddTopic(topic, adminVerdict);
+            return result;
         }
 
 

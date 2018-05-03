@@ -21,7 +21,7 @@ namespace FreeChat.Web.ViewModels
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [Required]
+        
         public Topic Topic { get; set; }
 
 

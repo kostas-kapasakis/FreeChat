@@ -6,8 +6,6 @@
 @Styles.Render("~/bundles/MyRoomsViewStyle")
 
 
-
-
 <div class="container">
     <div class="list-group" id="myRoomsCardGroup">
         @{
@@ -15,9 +13,11 @@
             {
                 foreach (var room in Model.MyTopics)
                 {
+                    var status = (room.Active) ? "" : "disabled";
 
 
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start @status">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1"> @room.Name</h5>
                             <small>Genre:&nbsp;@room.Genre</small>

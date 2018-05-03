@@ -4,7 +4,7 @@
     const viewDomElems = function() {
 
         return {
-            chatEngineContentWrapper: $(".chatEngineMode"),
+            chatEngineContentWrapper: $(".content-wrapper"),
             chatEngineWrapperContainer: $("#ChatEngineContainer"),
             messageList: $(".inner-list"),
             onlineUserContainer: function() { return $(document).find(".onlineUserActualPart") },
@@ -18,7 +18,9 @@
             roomDetailsModalInit: $("#modalInitializerBtn"),
             headerTableBasicRoomInfosBtn: $("#headerTableInfo"),
             fullchatmodeBtn: $("#leftPanel-fullchatmode"),
-            timeContainer: $("#dateValue")
+            timeContainer: $("#dateValue"),
+            chatEngineViewMiddleSection: $("#chatEngineMiddle"),
+            chatEngineViewMessagesContainer: $("#messagesContainerArea")
     }
     }
 

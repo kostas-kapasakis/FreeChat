@@ -59,11 +59,11 @@
 
                             if (user.Active) {
                    
-                                return `<button class='btn btn-outline-warning deactivate waves-effect js-deactivate ' data-user-id=${user.Id
+                                return `<button class='btn btn-outline-warning deactivate waves-effect js-changestatus ' data-user-id=${user.Id
                                     }>Deactivate</button>`;
                             } else {
                              
-                                return `<button class='btn btn-outline-warning activate waves-effect js-deactivate ' data-user-id=${user.Id
+                                return `<button class='btn btn-outline-warning activate waves-effect js-changestatus' data-user-id=${user.Id
                                     }>Activate</button>`;
                             }
                         }
@@ -73,9 +73,11 @@
 
 
             $("#registeredUsers").on("click",
-                ".js-deactivate",
+                ".js-changestatus",
                 function() {
                     if ($(this).hasClass("deactivate")) {
+                        $(this).toggleClass("deactivate");
+                        $(this).toggleClass("activate");
                         var button = $(this);
                         var userId = button.attr("data-user-id");
                         bootbox.confirm("Are you sure you want to deactivate this user?",
@@ -93,6 +95,8 @@
                     } else {
                         var button2 = $(this);
                         var userId2 = button2.attr("data-user-id");
+                        $(this).toggleClass("deactivate");
+                        $(this).toggleClass("activate");
                         bootbox.confirm("Are you sure you want to activate this user?",
                             function(result) {
                                 if (result) {

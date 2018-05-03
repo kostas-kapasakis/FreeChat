@@ -11,7 +11,7 @@ namespace FreeChat.Core.Models.Domain
 
         public bool Active { get; set; }
 
-        public int RoomsLeft { get; set; }
+        public int RoomsLeft { get; set; } = 10;
 
         public string Role { get; set; }
 

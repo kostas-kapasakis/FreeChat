@@ -87,6 +87,7 @@ namespace FreeChat.Web
 
             bundles.Add(new ScriptBundle("~/bundles/ChatEngineView").Include(
              "~/Scripts/Controllers/UtilsController.js",
+             "~/Scripts/Controllers/layoutController.js",
              "~/Scripts/Controllers/chatEngineUiController.js",
              "~/Scripts/Services/chatEngineService.js",
              "~/Scripts/Controllers/chatEngineController.js"
@@ -125,6 +126,7 @@ namespace FreeChat.Web
 
 
             bundles.Add(new ScriptBundle("~/bundles/allChatRoomsPartial").Include(
+                "~/Scripts/Controllers/layoutController.js",
                 "~/Scripts/Services/indexService.js",
                 "~/Scripts/Controllers/allChatRoomsPartialController.js"
                 ));

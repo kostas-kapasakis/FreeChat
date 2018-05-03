@@ -26,7 +26,7 @@ namespace FreeChat.Persistence.Repositories
 
         public IEnumerable<Topic> GetActiveTopicsByGenreId(long id)
         {
-            return FreeChatContext.Topics.Include(c => c.MainCategory).Where(x => x.MainCategoryId == id);
+            return FreeChatContext.Topics.Include(c => c.MainCategory).Where(x => x.MainCategoryId == id && x.Active);
         }
 
         public override void Add(Topic entity)
